@@ -1,16 +1,72 @@
-<HTML>
-<H1>STORY 1</H1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories | AaHigh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; }
+        .story-card { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .story-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+    <div class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-12">
+            <div>
+                <h1 class="text-4xl font-bold tracking-tight">AaHigh Stories</h1>
+                <p class="text-slate-600 mt-1">Narrative non-fiction, reflections, and Central Valley chronicles</p>
+            </div>
+            <nav class="flex gap-6 text-sm font-medium">
+                <a href="#" class="hover:text-blue-600">Home</a>
+                <a href="https://github.com/AaHigh" target="_blank" class="hover:text-blue-600">GitHub</a>
+                <a href="#" class="hover:text-blue-600">Archive</a>
+            </nav>
+        </header>
 
-<PRE>
-<a href="http://stories.ahightower.com/dmt.html">
-http://stories.ahightower.com/dmt.html
-</a>
-</PRE>
+        <!-- Featured Story -->
+        <div class="bg-white border border-slate-200 rounded-3xl p-8 mb-12 story-card">
+            <div class="flex items-center gap-2 text-xs uppercase tracking-widest text-blue-600 font-semibold mb-3">
+                <span>NEW • JULY 2026</span>
+            </div>
+            <h2 class="text-3xl font-semibold leading-tight mb-3">
+                <a href="sinners-on-operation-no-fly-zone/sinners-on-operation-no-fly-zone.html" class="hover:underline">
+                    Sinners on Operation No Fly Zone
+                </a>
+            </h2>
+            <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                Local law enforcement success, state-level scrutiny, and federal enforcement in California's Central Valley. 
+                A factual narrative grounded in public records featuring Operation No Fly Zone, DA Lisa Smittcamp, AG Rob Bonta, and ICE advancements.
+            </p>
+            <div class="flex items-center gap-4">
+                <a href="sinners-on-operation-no-fly-zone/sinners-on-operation-no-fly-zone.html" 
+                   class="inline-flex items-center px-6 py-3 bg-slate-900 text-white rounded-2xl font-medium hover:bg-black transition-colors">
+                    Read Full Story →
+                </a>
+                <a href="sinners-on-operation-no-fly-zone/sinners-on-operation-no-fly-zone.md" 
+                   class="text-slate-500 hover:text-slate-700 text-sm flex items-center gap-1">
+                    <span>↓ Markdown</span>
+                </a>
+            </div>
+        </div>
 
-<H1>STORY 2</H1>
+        <!-- Other Stories Placeholder / Archive -->
+        <section>
+            <h3 class="uppercase text-xs tracking-widest text-slate-500 mb-6">Previous Stories</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Add more cards here as you publish -->
+                <div class="bg-white border border-slate-200 rounded-3xl p-6 story-card">
+                    <p class="text-slate-500 text-sm">Coming soon...</p>
+                </div>
+            </div>
+        </section>
 
-<PRE>
-<a href="sinners-on-operation-no-fly-zone.html">
-sinners-on-operation-no-fly-zone.html
-</a>
-</PRE>
+        <footer class="mt-20 text-center text-xs text-slate-400">
+            Built for ahightower.com / GitHub Pages • 
+            <a href="https://github.com/AaHigh" class="hover:text-slate-600">AaHigh</a>
+        </footer>
+    </div>
+</body>
+</html>
