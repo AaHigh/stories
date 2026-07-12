@@ -1,73 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta property="og:image" content="https://stories.ahightower.com/images/1.jpg">
-    <meta name="twitter:image" content="https://stories.ahightower.com/images/1.jpg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stories | AaHigh</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>High Tower District • Stories</title>
     <style>
-        body { font-family: system-ui, -apple-system, sans-serif; }
-        .story-card { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
-        .story-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --bg: #0f0f0f;
+            --card: #1a1a1a;
+            --accent: #ffcc00;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--bg);
+            color: #e0e0e0;
+            font-family: 'Inter', system_ui, sans-serif;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        
+        .tagline {
+            color: #888;
+            font-size: 1.1rem;
+        }
+        
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .story-card {
+            background: var(--card);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid #333;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        
+        .story-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .story-content {
+            padding: 24px;
+        }
+        
+        .story-title {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 0 0 12px 0;
+            line-height: 1.3;
+        }
+        
+        .story-excerpt {
+            color: #aaa;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .read-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            font-weight: 600;
+            padding: 10px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: background 0.2s ease;
+        }
+        
+        .read-btn:hover {
+            background: #ffdd44;
+        }
+        
+        .meta {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 16px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            color: #555;
+            font-size: 0.85rem;
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
-    <div class="max-w-4xl mx-auto px-6 py-12">
-        <!-- Header -->
-        <header class="flex justify-between items-center mb-12">
-            <div>
-                <h1 class="text-4xl font-bold tracking-tight">AaHigh Stories</h1>
-                <p class="text-slate-600 mt-1">Narrative non-fiction, reflections, and Central Valley chronicles</p>
-            </div>
-            <nav class="flex gap-6 text-sm font-medium">
-                <a href="#" class="hover:text-blue-600">Home</a>
-                <a href="https://github.com/AaHigh" target="_blank" class="hover:text-blue-600">GitHub</a>
-                <a href="#" class="hover:text-blue-600">Archive</a>
-            </nav>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">HIGH TOWER DISTRICT</div>
+            <div class="tagline">Stories from the bed fort • Fresno, CA</div>
         </header>
 
-        <!-- Featured Story -->
-        <div class="bg-white border border-slate-200 rounded-3xl p-8 mb-12 story-card">
-            <div class="flex items-center gap-2 text-xs uppercase tracking-widest text-blue-600 font-semibold mb-3">
-                <span>NEW • JULY 2026</span>
-            </div>
-            <h2 class="text-3xl font-semibold leading-tight mb-3">
-                <a href="sinners-on-operation-no-fly-zone.html" class="hover:underline">
-                    Sinners on Operation No Fly Zone
-                </a>
-            </h2>
-            <p class="text-slate-600 text-lg leading-relaxed mb-6">
-                Local law enforcement success, state-level scrutiny, and federal enforcement in California's Central Valley. 
-                A factual narrative grounded in public records featuring Operation No Fly Zone, DA Lisa Smittcamp, AG Rob Bonta, and ICE advancements.
-            </p>
-            <div class="flex items-center gap-4">
-                <a href="sinners-on-operation-no-fly-zone.html" 
-                   class="inline-flex items-center px-6 py-3 bg-slate-900 text-white rounded-2xl font-medium hover:bg-black transition-colors">
-                    Read Full Story →
-                </a>
-                <a href="sinners-on-operation-no-fly-zone.md" 
-                   class="text-slate-500 hover:text-slate-700 text-sm flex items-center gap-1">
-                    <span>↓ Markdown</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Other Stories Placeholder / Archive -->
-        <section>
-            <h3 class="uppercase text-xs tracking-widest text-slate-500 mb-6">Previous Stories</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Add more cards here as you publish -->
-                <div class="bg-white border border-slate-200 rounded-3xl p-6 story-card">
-                    <p class="text-slate-500 text-sm">Coming soon...</p>
+        <div class="stories-grid">
+            
+            <!-- Story 1: Personal Setup -->
+            <div class="story-card">
+                <img src="bed-fort-setup.jpg" alt="Dual iPhone mount setup in bed" class="story-image">
+                <div class="story-content">
+                    <h2 class="story-title">From 21 Screens to Bed Fort</h2>
+                    <p class="story-excerpt">Texas A&amp;M computer nerd retires, slashes power use from 21 always-on LCDs to a minimalist bed-based dual iPhone rig because PG&amp;E rates hit $0.50/kWh. This is how one creative stays in the fray without getting bled dry.</p>
+                    
+                    <a href="personal-setup-story.html" class="read-btn">Read the story →</a>
+                    
+                    <div class="meta">
+                        Personal • Practical • Tower District
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <footer class="mt-20 text-center text-xs text-slate-400">
-            Built for ahightower.com / GitHub Pages • 
-            <a href="https://github.com/AaHigh" class="hover:text-slate-600">AaHigh</a>
+            <!-- Story 2: PG&E CARE -->
+            <div class="story-card">
+                <img src="pge-care-issues.jpg" alt="PG&amp;E CARE discount issues illustration" class="story-image">
+                <div class="story-content">
+                    <h2 class="story-title">The Quiet Overcharge</h2>
+                    <p class="story-excerpt">Documented cases show PG&amp;E customers losing CARE discounts for months due to system errors. One media intervention finally forced retroactive credits. Broader CPUC actions reveal mass wrongful disenrollments across California utilities.</p>
+                    
+                    <a href="pge-care-factual-story.html" class="read-btn">Read the analysis →</a>
+                    
+                    <div class="meta">
+                        Expert Mode • Factual • Consumer Protection
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>High Tower District • Fresno, California • 2026</p>
         </footer>
     </div>
 </body>
