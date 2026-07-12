@@ -3,231 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sinners on Operation No Fly Zone | Narrative Non-Fiction</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Sinners on Operation No Fly Zone • Central Valley Narratives</title>
+    
+    <!-- Open Graph / iMessage + Social Previews -->
+    <meta property="og:title" content="Sinners on Operation No Fly Zone">
+    <meta property="og:description" content="Local law enforcement success against gangs and trafficking in Fresno, set against state-level scrutiny and rising federal enforcement in California's Central Valley. Narrative non-fiction grounded in public records.">
+    <meta property="og:image" content="https://stories.ahightower.com/pge-care-issues.jpg">
+    <meta property="og:url" content="https://stories.ahightower.com/sinners-on-operation-no-fly-zone.html">
+    <meta property="og:type" content="article">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap');
-        
-        :root {
-            --accent: #1e40af;
-        }
-        
-        body {
-            font-family: 'Inter', system_ui, sans-serif;
-        }
-        
-        .heading-serif {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-weight: 700;
-            line-height: 1.1;
-        }
-
-        .story-content {
-            max-width: 720px;
-            margin: 0 auto;
-        }
-
-        .story-content h2 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.65rem;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            color: #1e2937;
-        }
-
-        .story-content p {
-            font-size: 1.05rem;
-            line-height: 1.75;
-            margin-bottom: 1.25rem;
-            color: #334155;
-        }
-
-        .story-content blockquote {
-            border-left: 4px solid #1e40af;
-            padding-left: 1.5rem;
-            margin: 2rem 0;
-            font-style: italic;
-            color: #475569;
-            background-color: #f8fafc;
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-
-        .disclaimer {
-            background-color: #fefce8;
-            border-left: 4px solid #ca8a04;
-            padding: 1rem 1.25rem;
-            font-size: 0.925rem;
-            color: #713f12;
-        }
-
-        .section-header {
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            color: #64748b;
-            font-weight: 600;
-        }
+        body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.7; max-width: 720px; margin: 40px auto; padding: 20px; background: #0a0a0a; color: #e0e0e0; }
+        h1, h2 { color: #fff; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
-    <!-- Top Navigation -->
-    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
-        <div class="max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="flex items-center gap-x-3">
-                <div class="w-9 h-9 bg-blue-900 rounded-xl flex items-center justify-center">
-                    <i class="fa-solid fa-gavel text-white text-xl"></i>
-                </div>
-                <div>
-                    <span class="font-semibold text-xl tracking-tight">Central Valley Narratives</span>
-                </div>
-            </div>
-            <div class="flex items-center gap-x-4 text-sm">
-                <a href="#story" class="px-4 py-2 text-slate-600 hover:text-slate-900 transition-colors">Read Story</a>
-                <a href="#sources" class="px-4 py-2 text-slate-600 hover:text-slate-900 transition-colors">Sources</a>
-                <a href="sinners-on-operation-no-fly-zone.md" 
-                   class="inline-flex items-center gap-x-2 px-4 py-2 bg-slate-900 text-white text-sm font-medium rounded-2xl hover:bg-slate-800 transition-all">
-                    <i class="fa-solid fa-download text-xs"></i>
-                    <span>Download .md</span>
-                </a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero / Title Section -->
-    <header class="bg-white border-b border-slate-100">
-        <div class="max-w-screen-xl mx-auto px-6 pt-16 pb-12">
-            <div class="max-w-3xl">
-                <div class="flex items-center gap-x-2 mb-4">
-                    <span class="inline-flex items-center px-3 py-1 rounded-3xl bg-amber-100 text-amber-700 text-xs font-semibold tracking-[1px]">NARRATIVE NON-FICTION</span>
-                    <span class="text-slate-400 text-sm">• July 2026</span>
-                </div>
-                
-                <h1 class="heading-serif text-6xl md:text-7xl leading-[1.05] tracking-tighter text-slate-900 mb-6">
-                    Sinners on<br>Operation No Fly Zone
-                </h1>
-                
-                <p class="text-2xl text-slate-600 max-w-lg">
-                    Local law enforcement success, state-level scrutiny, and federal enforcement in California's Central Valley.
-                </p>
-                
-                <div class="mt-8 flex items-center gap-x-4 text-sm">
-                    <div class="flex items-center -space-x-1">
-                        <div class="w-8 h-8 bg-slate-200 rounded-full ring-2 ring-white overflow-hidden">
-                            <img src="https://picsum.photos/id/1005/32/32" alt="Author avatar" class="w-full h-full object-cover">
-                        </div>
-                    </div>
-                    <div class="text-slate-500">
-                        Compiled from public records &amp; reported events<br>
-                        <span class="text-slate-400 text-xs">No statements invented • Grounded in verifiable sources</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Story Content -->
-    <main id="story" class="max-w-screen-xl mx-auto px-6 py-12">
-        <div class="story-content prose prose-slate max-w-none">
-            
-            <p class="lead text-xl text-slate-700">In the spring of 2022, Fresno saw one of the largest coordinated law enforcement operations in its recent history. Called <strong>Operation No Fly Zone</strong>, it targeted violent street gangs — particularly the Flyboys and Hoover 107 — linked to multiple homicides, drive-by shootings, and human trafficking.</p>
-            
-            <p>The months-long investigation involved the Fresno Police Department, Fresno County Sheriff’s Office, Fresno County District Attorney’s Office, California Department of Justice, FBI, Homeland Security Investigations, ATF, and other agencies. It ended with dozens of felony arrests, federal firearms charges against several defendants, and the disruption of planned violence.</p>
-            
-            <div class="my-8">
-                <blockquote>
-                    “Today, Fresno is safer thanks to collaboration, determination, and swift action. No family should ever have to worry about drive-bys or other forms of gun violence in the neighborhoods where their children live and play… Together, we’re putting public safety first.”
-                    <footer class="mt-3 text-sm not-italic text-slate-500">— Then-Attorney General <strong>Rob Bonta</strong>, 2022</footer>
-                </blockquote>
-            </div>
-            
-            <p>Fresno County District Attorney <strong>Lisa A. Smittcamp</strong>, a prosecutor with deep roots in the county who has built her reputation on cases involving gangs, domestic violence, child exploitation, and later fentanyl trafficking, was part of that local effort. Her office has consistently emphasized maximum accountability for violent and predatory offenders.</p>
-            
-            <p>In later fentanyl-related prosecutions, she publicly stated that “fentanyl continues to claim lives in our community, and when someone knowingly sells this poison and a life is lost, we will pursue maximum accountability under the law.”</p>
-            
-            <p>Those local and state-federal partnerships produced concrete results against what Smittcamp’s office and local police described as the “sinners” — the repeat violent actors and traffickers operating in the community.</p>
-            
-            <h2>State-Level Scrutiny Emerges</h2>
-            
-            <p>By 2025–2026, a different set of stories had moved into public view involving California’s Attorney General Rob Bonta and his wife, Assemblymember Mia Bonta. Federal investigations into alleged bribery and corruption in Oakland and the East Bay centered on figures with past political and financial ties to the Bontas.</p>
-            
-            <p>Reporting documented returned campaign contributions after FBI raids, substantial legal expenditures from Bonta’s campaign funds in connection with federal interviews (his team described him as a possible victim in the probe and not a close associate), and questions about past “behested” payments and nonprofit arrangements connected to his wife. Mia Bonta’s role chairing a legislative budget subcommittee that oversees her husband’s Department of Justice budget also drew ethics commentary, even though it was not illegal.</p>
-            
-            <p>These stories moved from political niche coverage into wider public consciousness. They contributed to broader conversations about influence, self-dealing, and trust in Sacramento institutions. Some Democrats and observers began voicing concerns about patterns that went beyond normal political friction.</p>
-            
-            <h2>Federal Enforcement Advances</h2>
-            
-            <p>At the same time, the federal government under the second Trump administration launched <strong>Operation Metro Surge</strong> in Minnesota beginning in late 2025. Described by DHS as its largest immigration enforcement operation, it deployed thousands of agents to the Twin Cities, produced thousands of arrests, triggered lawsuits from Minnesota and local governments, and included temporary flight restrictions around Department of Homeland Security vehicles and facilities (later modified by the FAA following legal challenges by journalists).</p>
-            
-            <p>By mid-2026, ICE arrest numbers in California’s Central Valley had risen sharply — reported as a 58% increase in the first seven months compared with the prior year — with corresponding increases in deportations from Fresno County and surrounding areas. The enforcement emphasis on individuals with criminal histories, including those connected to trafficking and gang activity, overlapped thematically with the targets of earlier operations like No Fly Zone.</p>
-            
-            <h2>The Gap and the Reckoning</h2>
-            
-            <p>In this environment, the gap between successful local multi-agency takedowns (where District Attorney Smittcamp’s office has been a consistent partner) and the accumulating state-level political scrutiny around the Attorney General’s office became part of public discussion.</p>
-            
-            <p>Some residents and law enforcement voices argued that federal enforcement was stepping into areas where state political dynamics and sanctuary-style policies had created friction. Others raised concerns about overreach, due process, and the human costs of large-scale interior enforcement.</p>
-            
-            <p>District Attorney Lisa Smittcamp has not, in the public record, directly addressed the Bonta controversies in the terms of a “champion of law enforcement” speech. Her public statements have remained focused on the work of her office: prosecuting serious crimes, protecting victims, and maintaining partnerships with local and federal law enforcement where those partnerships produce results against violent offenders and traffickers.</p>
-            
-            <div class="my-10 p-6 bg-white border border-slate-200 rounded-3xl">
-                <p class="font-medium text-slate-700">The larger story unfolding in the Central Valley is one of competing claims about who is actually delivering accountability.</p>
-                <ul class="mt-4 space-y-2 text-sm text-slate-600">
-                    <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Documented local successes against gangs and traffickers</li>
-                    <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Sustained questions — now in the public record — about influence and integrity at the state’s top law enforcement office</li>
-                    <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Aggressive federal operations that began in Minnesota and produced measurable increases in enforcement activity in Fresno and the broader region</li>
-                </ul>
-            </div>
-            
-            <p>Whether this amounts to a “public reckoning” depends on one’s perspective. What is clear from the record is that the old model of relying primarily on Sacramento for leadership on street-level crime and trafficking has lost some of its previous authority in the eyes of many who watch both the crime data and the political scandals.</p>
-            
-            <p>Local prosecutors like Smittcamp, who built their careers in courtrooms rather than campaign committees, continue to operate in that gap — still doing the work of holding individual “sinners” accountable while the larger questions about institutional trust and which level of government is willing to act remain unresolved in the public square.</p>
-            
-        </div>
-    </main>
-
-    <!-- Sources Section -->
-    <section id="sources" class="max-w-screen-xl mx-auto px-6 pb-16">
-        <div class="max-w-3xl mx-auto">
-            <div class="section-header mb-4">Sources &amp; Further Reading</div>
-            <div class="bg-white border border-slate-200 rounded-3xl p-8 text-sm">
-                <p class="text-slate-600 mb-4">This narrative is compiled from publicly reported events and official statements. Key elements include:</p>
-                <ul class="space-y-3 text-slate-700">
-                    <li><strong>Operation No Fly Zone (Fresno, 2022)</strong>: Multi-agency gang and trafficking takedown reported by <em>Fresno Bee</em>, U.S. Attorney’s Office Eastern District of California, and California DOJ press releases.</li>
-                    <li><strong>Rob Bonta &amp; Related Investigations</strong>: Reporting from <em>San Francisco Chronicle</em>, KCRA, CalMatters, and <em>The Current Report</em> (2024–2026) on East Bay corruption probes and campaign finance matters.</li>
-                    <li><strong>Operation Metro Surge &amp; ICE Activity</strong>: DHS announcements, Minnesota and Central Valley local coverage, arrest data analysis appearing in <em>Fresno Bee</em> and <em>Fresnoland</em>.</li>
-                    <li><strong>Fresno County DA Statements</strong>: Public releases and the inaugural annual report from the Fresno County District Attorney’s Office under Lisa A. Smittcamp.</li>
-                </ul>
-                <p class="mt-6 text-xs text-slate-500">For complete context, consult the original primary sources and news articles directly.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Disclaimer Footer -->
-    <footer class="border-t border-slate-200 bg-white">
-        <div class="max-w-screen-xl mx-auto px-6 py-10">
-            <div class="max-w-3xl mx-auto">
-                <div class="disclaimer rounded-2xl">
-                    <div class="flex gap-3">
-                        <i class="fa-solid fa-info-circle text-amber-600 mt-0.5"></i>
-                        <div>
-                            <p class="font-semibold text-amber-800 text-sm tracking-wide">IMPORTANT DISCLAIMER</p>
-                            <p class="text-amber-700 text-sm mt-1">This is a <strong>factual narrative</strong> based strictly on the public record as of July 2026. It does not invent statements, private thoughts, or attribute positions to individuals beyond what has been publicly reported or officially stated by them. It is offered for informational and discussion purposes only. No endorsement of any political position, candidate, or policy is implied or intended.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-8 text-center text-xs text-slate-400">
-                    Created for archival and discussion purposes • Not affiliated with any government office or political campaign<br>
-                    Files available in repository: <code class="bg-slate-100 px-1.5 py-0.5 rounded">sinners-on-operation-no-fly-zone.md</code> and <code class="bg-slate-100 px-1.5 py-0.5 rounded">.html</code>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Simple Tailwind script for any dynamic needs (none required here)
-        console.log('%c[Sinners Story] Standalone HTML loaded successfully', 'color:#64748b');
-    </script>
+<body>
+    <h1>Sinners on Operation No Fly Zone</h1>
+    <p><strong>Local law enforcement success, state-level scrutiny, and federal enforcement in California's Central Valley.</strong></p>
+    
+    <p><em>Narrative non-fiction • July 2026 • Compiled from public records</em></p>
+    
+    <p>In the spring of 2022, Fresno saw one of the largest coordinated law enforcement operations in its recent history. Called Operation No Fly Zone, it targeted violent street gangs — particularly the Flyboys and Hoover 107 — linked to multiple homicides, drive-by shootings, and human trafficking.</p>
+    
+    <p>The months-long investigation involved the Fresno Police Department, Fresno County Sheriff’s Office, Fresno County District Attorney’s Office, California Department of Justice, FBI, Homeland Security Investigations, ATF, and other agencies.</p>
+    
+    <p>By 2025–2026, a different set of stories had moved into public view involving California’s Attorney General Rob Bonta and related federal investigations into alleged bribery and corruption in the East Bay.</p>
+    
+    <p>At the same time, federal immigration enforcement activity increased significantly in California’s Central Valley.</p>
+    
+    <p><strong>Full narrative available in the repository.</strong> This is a grounded account based strictly on the public record as of July 2026.</p>
 </body>
 </html>
