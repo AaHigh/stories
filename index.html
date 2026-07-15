@@ -3,63 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HIGH TOWER DISTRICT • STORIES</    
-    
-    <!-- Open Graph / iMessage + Social Previews -->
-    <meta property="og:title" content="High Tower District • Stories">
+    <meta property="og:title" content="HIGH TOWER DISTRICT • STORIES">
     <meta property="og:description" content="Focused pieces on building, systems, local reality, and the edges of experience. Written from a 12×12 room with two iPhones on magnets in Fresno, CA.">
     <meta property="og:image" content="https://stories.ahightower.com/bed-fort-setup.jpg">
     <meta property="og:url" content="https://stories.ahightower.com/">
-    <meta property="og:type" content="website">
-       
+    <title>HIGH TOWER DISTRICT • STORIES</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
-
+        
         :root {
-            --bg: #0a0a0a;
-            --card: #141414;
             --accent: #f4c95d;
-            --text: #e8e8e8;
-            --muted: #777;
         }
-
-        * { box-sizing: border-box; }
-
+        
         body {
             margin: 0;
             padding: 0;
-            background: var(--bg);
-            color: var(--text);
+            background: #0a0a0a;
+            color: #e8e8e8;
             font-family: 'Inter', system-ui, sans-serif;
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
         }
-
+        
         .container {
             max-width: 1080px;
             margin: 0 auto;
             padding: 48px 20px 80px;
         }
-
+        
         header {
             text-align: center;
             margin-bottom: 48px;
         }
-
+        
         .logo {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.4rem;
+            font-size: 2.8rem;
             font-weight: 600;
             letter-spacing: -0.03em;
             color: #fff;
-            margin-bottom: 8px;
         }
-
+        
         .tagline {
             color: #666;
             font-size: 1rem;
         }
-
+        
         .intro {
             max-width: 620px;
             margin: 0 auto 56px;
@@ -67,82 +57,72 @@
             color: #999;
             font-size: 0.95rem;
         }
-
+        
         .stories {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 24px;
         }
-
+        
         .story-card {
-            background: var(--card);
+            background: #141414;
             border: 1px solid #222;
             border-radius: 14px;
             overflow: hidden;
-            transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1), 
-                        border-color 0.2s ease;
-            position: relative;
+            transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
             cursor: pointer;
         }
-
+        
         .story-card:hover {
             transform: translateY(-4px);
-            border-color: #333;
+            border-color: #444;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3);
         }
-
-        .story-card:active {
-            transform: scale(0.985);
-        }
-
+        
         .card-header {
             height: 6px;
             background: linear-gradient(90deg, var(--accent), #f4c95d);
-            opacity: 0.9;
         }
-
+        
         .card-body {
             padding: 26px 26px 30px;
         }
-
+        
         .story-title {
             font-size: 1.35rem;
             font-weight: 600;
             line-height: 1.2;
             margin: 0 0 12px 0;
-            color: #fff;
         }
-
+        
         .story-meta {
             font-size: 0.75rem;
-            color: #555;
+            color: #777;
             margin-bottom: 14px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
-
+        
         .story-excerpt {
             color: #aaa;
             font-size: 0.93rem;
             line-height: 1.55;
             margin-bottom: 22px;
         }
-
+        
         .read-link {
+            color: var(--accent);
+            font-weight: 600;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: gap 0.2s ease;
         }
-
-        .story-card:hover .read-link {
+        
+        .read-link:hover {
             gap: 12px;
         }
-
-        .canvas-bg {
+        
+        canvas {
             position: fixed;
             top: 0;
             left: 0;
@@ -152,18 +132,18 @@
             opacity: 0.08;
             pointer-events: none;
         }
-
+        
         footer {
             margin-top: 80px;
             text-align: center;
-            color: #444;
+            color: #555;
             font-size: 0.8rem;
         }
     </style>
 </head>
 <body>
-    <canvas id="bg-canvas" class="canvas-bg"></canvas>
-
+    <canvas id="bg-canvas"></canvas>
+    
     <div class="container">
         <header>
             <div class="logo">HIGH TOWER DISTRICT</div>
@@ -176,8 +156,7 @@
         </p>
 
         <div class="stories">
-
-            <!-- DMT Documentary -->
+            <!-- DMT -->
             <div class="story-card" onclick="window.location.href='dmt.html'">
                 <div class="card-header"></div>
                 <div class="card-body">
@@ -188,7 +167,7 @@
                         visible language, objective information, and what it would actually take to decode it.
                     </p>
                     <div class="read-link">
-                        Enter the documentary <span>→</span>
+                        Enter the documentary <span aria-hidden="true">→</span>
                     </div>
                 </div>
             </div>
@@ -200,27 +179,27 @@
                     <div class="story-meta">PERSONAL • PRACTICAL</div>
                     <h2 class="story-title">From 21 Screens to Bed Fort</h2>
                     <p class="story-excerpt">
-                        A Texas A&amp;M computer nerd retires and slashes power consumption from 21 always-on LCDs 
-                        to a minimalist dual-iPhone rig because PG&amp;E rates hit $0.50/kWh.
+                        A Texas A&M computer nerd retires and slashes power consumption from 21 always-on LCDs 
+                        to a minimalist dual-iPhone rig because PG&E rates hit $0.50/kWh.
                     </p>
                     <div class="read-link">
-                        Read the story <span>→</span>
+                        Read the story <span aria-hidden="true">→</span>
                     </div>
                 </div>
             </div>
 
-            <!-- PG&E CARE -->
+            <!-- PG&E -->
             <div class="story-card" onclick="window.location.href='pge-care-factual-story.html'">
                 <div class="card-header"></div>
                 <div class="card-body">
                     <div class="story-meta">FACTUAL • EXPERT MODE</div>
                     <h2 class="story-title">The Quiet Overcharge</h2>
                     <p class="story-excerpt">
-                        Documented cases of PG&amp;E CARE discount failures, system errors, and mass wrongful 
+                        Documented cases of PG&E CARE discount failures, system errors, and mass wrongful 
                         disenrollments. Sourced analysis of how low-income customers get overcharged.
                     </p>
                     <div class="read-link">
-                        Read the analysis <span>→</span>
+                        Read the analysis <span aria-hidden="true">→</span>
                     </div>
                 </div>
             </div>
@@ -236,23 +215,22 @@
                         set against state-level scrutiny and rising federal enforcement in the Central Valley.
                     </p>
                     <div class="read-link">
-                        Read the narrative <span>→</span>
+                        Read the narrative <span aria-hidden="true">→</span>
                     </div>
                 </div>
             </div>
-
         </div>
 
         <footer>
             High Tower District • Fresno, California • July 2026<br>
-            <span style="opacity:0.5">Part of the letters ecosystem • aaHigh/stories</span>
+            <span style="opacity:0.6">Part of the letters ecosystem • aaHigh/stories</span>
         </footer>
     </div>
 
     <script>
-        // Subtle 60fps animated background - very restrained cinematic feel
+        // Canvas background animation
         const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d', { alpha: true });
+        const ctx = canvas.getContext('2d');
         
         let w, h, lines = [];
         
@@ -264,9 +242,7 @@
         resize();
 
         class MovingLine {
-            constructor() {
-                this.reset();
-            }
+            constructor() { this.reset(); }
             reset() {
                 this.x = Math.random() * w;
                 this.y = Math.random() * h * 1.2;
@@ -292,30 +268,19 @@
             lines.push(new MovingLine());
         }
 
-        let lastFrame = 0;
-        function loop(timestamp = 0) {
-            if (timestamp - lastFrame >= 16) { // target ~60fps
-                lastFrame = timestamp;
+        let last = 0;
+        function loop(ts = 0) {
+            if (ts - last > 16) {
+                last = ts;
                 ctx.clearRect(0, 0, w, h);
-                for (let line of lines) {
+                lines.forEach(line => {
                     line.update();
                     line.draw();
-                }
+                });
             }
             requestAnimationFrame(loop);
         }
         loop();
-
-        // Subtle card interaction
-        const cards = document.querySelectorAll('.story-card');
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.boxShadow = '0 0 0 1px rgba(244, 201, 93, 0.12)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.boxShadow = 'none';
-            });
-        });
     </script>
 </body>
 </html>
