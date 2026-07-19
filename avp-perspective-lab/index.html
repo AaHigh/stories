@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVP Perspective Lab • Spatial Anamorphosis &amp; Projection Mapping</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --accent-violet: #a78bfa;
+            --accent-cyan: #67e8f9;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .font-display {
+            font-family: 'Space Grotesk', 'Inter', system_ui, sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+        }
+
+        .glass {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .section-header {
+            font-size: 2.25rem;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+        }
+
+        .visionos-window {
+            background: rgba(20, 20, 28, 0.85);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+        }
+
+        .three-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav-active {
+            color: white;
+            border-bottom: 2px solid #a78bfa;
+        }
+
+        .metric {
+            font-variant-numeric: tabular-nums;
+        }
+
+        .explanation-card {
+            transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .explanation-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .tech-pill {
+            background: rgba(167, 139, 250, 0.1);
+            color: #c4b5fd;
+            border: 1px solid rgba(167, 139, 250, 0.2);
+        }
+
+        #source-canvas {
+            touch-action: none;
+            image-rendering: crisp-edges;
+        }
+
+        .slider-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .three-overlay {
+            pointer-events: none;
+        }
+
+        .label {
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+        
+        .sweet-spot-glow {
+            box-shadow: 0 0 20px #a78bfa,
+                        0 0 40px #a78bfa;
+        }
+    </style>
+</head>
+<body class="bg-[#0a0a0f] text-white overflow-x-hidden">
+    <!-- NAV -->
+    <nav class="border-b border-white/10 bg-[#0a0a0f]/80 backdrop-blur-xl sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="px-8 py-5 flex items-center justify-between">
+                <div class="flex items-center gap-x-3">
+                    <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-violet-500 to-cyan-400 flex items-center justify-center">
+                        <i class="fa-solid fa-cube text-black text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="font-display text-2xl tracking-tighter">AVP Perspective Lab</div>
+                        <div class="text-[10px] text-white/50 -mt-1">SPATIAL COMPUTING • 2026</div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-x-8 text-sm">
+                    <a href="#concept" class="hover:text-white/80 transition-colors">Concept</a>
+                    <a href="#how-it-works" class="hover:text-white/80 transition-colors">How AVP Enables It</a>
+                    <a href="#interactive-lab" class="hover:text-white/80 transition-colors font-medium">Interactive Lab</a>
+                    <a href="#build-it" class="hover:text-white/80 transition-colors">Build in RealityKit</a>
+                </div>
+                
+                <div class="flex items-center gap-x-3">
+                    <div class="px-3 py-1.5 rounded-full bg-white/5 text-xs flex items-center gap-x-2 border border-white/10">
+                        <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                        <span class="text-emerald-400 text-xs font-medium">POWERED BY ARKIT + REALITYKIT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="max-w-screen-2xl mx-auto px-8 pt-12 pb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7">
+                <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-3xl bg-white/5 border border-white/10 mb-6">
+                    <span class="text-xs font-mono tracking-[2px] text-violet-400">MIXED REALITY ART • ANAMORPHOSIS 2.0</span>
+                </div>
+                
+                <h1 class="section-header text-6xl lg:text-7xl leading-[0.95] tracking-tighter font-display mb-6">
+                    Perspective-Correct<br>Artwork on<br><span class="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">Any Complex Shape</span>
+                </h1>
+                
+                <p class="max-w-xl text-xl text-white/70 leading-relaxed">
+                    Apple Vision Pro makes it possible to create art that only resolves perfectly from one precise point in space — 
+                    and to project that art onto the most intricate real-world surfaces using built-in spatial tracking and shaders.
+                </p>
+                
+                <div class="flex items-center gap-x-4 mt-8">
+                    <a href="#interactive-lab" 
+                       class="inline-flex items-center justify-center gap-x-3 bg-white text-black font-semibold px-8 h-14 rounded-3xl hover:bg-white/90 active:scale-[0.985] transition-all text-base">
+                        <span>Enter the Interactive Lab</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#how-it-works" 
+                       class="inline-flex items-center justify-center gap-x-3 border border-white/20 hover:bg-white/5 font-medium px-7 h-14 rounded-3xl transition-all text-base">
+                        Understand the Technology
+                    </a>
+                </div>
+                
+                <div class="flex items-center gap-x-8 mt-8 text-sm text-white/50">
+                    <div class="flex items-center gap-x-2">
+                        <i class="fa-solid fa-eye text-violet-400"></i>
+                        <span>Eye + Head Tracking</span>
+                    </div>
+                    <div class="flex items-center gap-x-2">
+                        <i class="fa-solid fa-cube text-cyan-400"></i>
+                        <span>Scene Reconstruction</span>
+                    </div>
+                    <div class="flex items-center gap-x-2">
+                        <i class="fa-solid fa-magic text-fuchsia-400"></i>
+                        <span>Projective Shaders</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-5">
+                <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+                    <img src="images/oSBqa.jpg" 
+                         alt="Person using Apple Vision Pro viewing perspective-correct projected artwork on a complex metallic sculpture in a modern studio"
+                         class="w-full h-auto">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-5 left-5 right-5">
+                        <div class="text-xs uppercase tracking-widest text-white/60 mb-1">ILLUSTRATIVE CONCEPT</div>
+                        <div class="text-white text-lg font-medium leading-tight">Artwork resolves only from the exact sweet spot.<br>Everywhere else it is beautifully distorted.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONCEPT SECTION -->
+    <div id="concept" class="max-w-screen-2xl mx-auto px-8 pb-20">
+        <div class="max-w-4xl">
+            <div class="uppercase text-xs tracking-[3px] text-violet-400 mb-3 font-medium">THE CORE IDEA</div>
+            <h2 class="text-5xl font-display tracking-tighter leading-none mb-6">One Viewpoint.<br>Infinite Surfaces.</h2>
+            
+            <div class="prose prose-invert max-w-none text-lg text-white/80">
+                <p>Traditional art is designed to look correct from many angles or from straight-on. <strong class="text-white">Perspective-correct spatial artwork</strong> (anamorphosis + projection mapping) is the opposite: it is intentionally distorted so that it only snaps into perfect coherence when viewed from one specific point in space.</p>
+                
+                <p class="mt-4">Apple Vision Pro turns this from a mathematical curiosity into a practical creative medium because it knows — with extreme precision — exactly where your eyes and head are at every millisecond. This allows you to design for a known, trackable viewpoint and then map the result onto any geometry.</p>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10">
+            <div class="explanation-card glass rounded-3xl p-7">
+                <div class="w-10 h-10 rounded-2xl bg-violet-500/10 flex items-center justify-center mb-5">
+                    <i class="fa-solid fa-crosshairs text-violet-400 text-2xl"></i>
+                </div>
+                <div class="font-semibold text-xl mb-2">Define the Sweet Spot</div>
+                <p class="text-white/70 text-[15px]">Use AVP’s precise head and eye tracking to mark a single point in physical space. This becomes the only location from which your artwork will appear correct.</p>
+            </div>
+            
+            <div class="explanation-card glass rounded-3xl p-7">
+                <div class="w-10 h-10 rounded-2xl bg-cyan-500/10 flex items-center justify-center mb-5">
+                    <i class="fa-solid fa-project-diagram text-cyan-400 text-2xl"></i>
+                </div>
+                <div class="font-semibold text-xl mb-2">Project onto Complexity</div>
+                <p class="text-white/70 text-[15px]">Scan or model any surface — a twisted sculpture, architectural detail, irregular wall, even a moving object — and use projective texture mapping to apply your 2D artwork onto it.</p>
+            </div>
+            
+            <div class="explanation-card glass rounded-3xl p-7">
+                <div class="w-10 h-10 rounded-2xl bg-fuchsia-500/10 flex items-center justify-center mb-5">
+                    <i class="fa-solid fa-magic text-fuchsia-400 text-2xl"></i>
+                </div>
+                <div class="font-semibold text-xl mb-2">The Magic Happens in Shaders</div>
+                <p class="text-white/70 text-[15px]">Custom RealityKit / Metal shaders perform the projective math in real time. From the sweet spot the surface texture looks perfectly flat and undistorted. Move away and it warps dramatically.</p>
+            </div>
+        </div>
+
+        <!-- Research Context Figure -->
+        <div class="mt-8 glass rounded-3xl p-8 border border-white/10">
+            <div class="flex flex-col lg:flex-row gap-8 items-start">
+                <div class="lg:w-5/12">
+                    <img src="images/IMG_7146.jpg" 
+                         alt="Scientific figure showing perspective correction pipeline and optical distortion measurement for displays and cameras"
+                         class="w-full rounded-2xl border border-white/10 shadow-xl">
+                    <div class="text-[10px] text-white/50 mt-2 text-center tracking-wider">RESEARCH FIGURE • PERSPECTIVE &amp; OPTICAL CORRECTION PIPELINES</div>
+                </div>
+                <div class="lg:w-7/12">
+                    <div class="uppercase text-xs tracking-[2px] text-violet-400 mb-2">RELATED COMPUTER GRAPHICS RESEARCH</div>
+                    <h4 class="font-semibold text-2xl tracking-tight mb-3">Viewpoint-Dependent Correction is a Classic Problem</h4>
+                    <p class="text-white/75 text-[15px]">
+                        The figure above illustrates real research pipelines for <strong>perspective correction</strong> (top) and <strong>optical/lens distortion correction</strong> (bottom). 
+                        These are exactly the mathematical foundations that Apple Vision Pro + custom projective shaders build upon for spatial artwork.
+                    </p>
+                    <p class="mt-3 text-white/75 text-[15px]">
+                        In the interactive lab below, we replicate the core idea in real-time 3D: instead of correcting a captured photo after the fact, we <em>pre-warp the artwork via projective texture mapping</em> so it appears perfectly correct only from one tracked viewpoint on any complex surface.
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-white/70">SIGGRAPH-style calibration</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-white/70">HMD &amp; display undistortion</span>
+                        <span class="px-3 py-1 bg-white/5 rounded-full text-white/70">View-dependent rendering</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HOW AVP MAKES IT POSSIBLE -->
+    <div id="how-it-works" class="bg-[#111114] py-16 border-y border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-5/12">
+                    <div class="sticky top-8">
+                        <div class="uppercase text-xs tracking-[3px] text-cyan-400 mb-3 font-medium">BUILT INTO THE HARDWARE &amp; FRAMEWORKS</div>
+                        <h3 class="text-5xl font-display tracking-tighter leading-none">What Apple Vision Pro<br>Already Gives You</h3>
+                        <p class="mt-5 text-white/70">You don’t need exotic hardware. Everything required for high-fidelity, viewpoint-specific projection mapping already exists in ARKit, RealityKit, and the visionOS rendering pipeline.</p>
+                    </div>
+                </div>
+                
+                <div class="lg:w-7/12 space-y-6">
+                    <div class="glass rounded-3xl p-7 flex gap-6">
+                        <div class="shrink-0">
+                            <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10">
+                                <i class="fa-solid fa-headset text-3xl text-violet-400"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-semibold text-xl">Precise 6DoF + Eye Tracking</div>
+                            <p class="text-white/70 mt-1.5">Multiple high-speed cameras and sensors deliver sub-millimeter head pose and gaze data at low latency. This is the foundation: you can define a sweet spot to millimeter accuracy and the system always knows when the viewer is there.</p>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span class="tech-pill text-xs px-3 py-1 rounded-full">ARKit World Tracking</span>
+                                <span class="tech-pill text-xs px-3 py-1 rounded-full">Eye Tracking API</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass rounded-3xl p-7 flex gap-6">
+                        <div class="shrink-0">
+                            <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10">
+                                <i class="fa-solid fa-cubes text-3xl text-cyan-400"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-semibold text-xl">Scene Reconstruction &amp; Meshes</div>
+                            <p class="text-white/70 mt-1.5">ARKit can generate a dense 3D mesh of the real environment in real time. You can target projection onto detected planes, objects, or the full reconstructed scene — exactly the “any complex shape” capability.</p>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span class="tech-pill text-xs px-3 py-1 rounded-full">Scene Mesh</span>
+                                <span class="tech-pill text-xs px-3 py-1 rounded-full">Plane Detection</span>
+                                <span class="tech-pill text-xs px-3 py-1 rounded-full">Raycasting</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass rounded-3xl p-7 flex gap-6">
+                        <div class="shrink-0">
+                            <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10">
+                                <i class="fa-solid fa-palette text-3xl text-fuchsia-400"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-semibold text-xl">RealityKit + Custom Shaders</div>
+                            <p class="text-white/70 mt-1.5">RealityKit’s Entity-Component architecture + Metal shaders let you implement true projective texture mapping. You supply a 2D source texture and a virtual projector pose; the shader computes the correct sampling coordinates for every point on the target mesh.</p>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span class="tech-pill text-xs px-3 py-1 rounded-full">ShaderGraph / Metal</span>
+                                <span class="tech-pill text-xs px-3 py-1 rounded-full">Custom Materials</span>
+                                <span class="tech-pill text-xs px-3 py-1 rounded-full">Projective UVs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE LAB -->
+    <div id="interactive-lab" class="max-w-screen-2xl mx-auto px-8 py-16">
+        <div class="flex items-end justify-between mb-8">
+            <div>
+                <div class="uppercase tracking-[3px] text-xs text-violet-400 font-medium">HANDS-ON DEMONSTRATION</div>
+                <h2 class="font-display text-6xl tracking-tighter">The Projection Lab</h2>
+                <div class="text-xs text-white/50 mt-1">On Vision Pro / iPhone: pinch-zoom the page or rotate to landscape for comfortable slider + 3D viewing</div>
+            </div>
+            <div class="hidden lg:block text-right text-sm text-white/60 max-w-xs">
+                Move the observer freely. Adjust the Sweet Spot. Draw or load artwork.<br>
+                Watch how the projection only resolves correctly from one precise location.
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-6">
+            
+            <!-- 3D VIEWPORT -->
+            <div class="xl:col-span-8">
+                <div class="three-container bg-black relative" style="height: 560px;" id="three-container">
+                    <!-- Three.js canvas injected here by JS -->
+                </div>
+                
+                <div class="flex items-center justify-between mt-3 px-1 text-xs">
+                    <div class="flex items-center gap-x-4 text-white/60">
+                        <div><i class="fa-solid fa-mouse-pointer mr-1.5"></i> Drag to orbit • Scroll to zoom</div>
+                        <div id="alignment-indicator" 
+                             class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-mono flex items-center gap-x-1.5">
+                            <span>ALIGNMENT:</span> 
+                            <span id="alignment-value" class="font-semibold text-white/80">—</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-x-2">
+                        <button onclick="jumpToSweetSpot()" 
+                                class="px-4 h-9 text-xs rounded-2xl border border-white/20 hover:bg-white/5 active:bg-white/10 flex items-center gap-x-2 transition-colors">
+                            <i class="fa-solid fa-location-arrow"></i>
+                            <span class="font-medium">Jump to Sweet Spot</span>
+                        </button>
+                        
+                        <button onclick="resetSweetSpot()" 
+                                class="px-4 h-9 text-xs rounded-2xl border border-white/20 hover:bg-white/5 active:bg-white/10 flex items-center gap-x-2 transition-colors">
+                            <span>Reset Position</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CONTROLS -->
+            <div class="xl:col-span-4 space-y-5">
+                
+                <!-- Sweet Spot Controls -->
+                <div class="visionos-window rounded-3xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <div class="font-semibold flex items-center gap-x-2">
+                                <i class="fa-solid fa-crosshairs text-violet-400"></i>
+                                <span>Sweet Spot (Projector)</span>
+                            </div>
+                            <div class="text-xs text-white/50">The single point from which artwork resolves perfectly</div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <!-- X -->
+                        <div>
+                            <div class="flex justify-between items-baseline mb-1.5">
+                                <div class="slider-label text-violet-300">X Position</div>
+                                <div id="sweet-x-val" class="font-mono text-sm text-white/70 metric">2.40</div>
+                            </div>
+                            <input type="range" id="sweet-x" min="-6" max="6" step="0.05" value="2.4"
+                                   class="w-full accent-violet-400" oninput="updateSweetSpotFromSliders()">
+                        </div>
+                        
+                        <!-- Y -->
+                        <div>
+                            <div class="flex justify-between items-baseline mb-1.5">
+                                <div class="slider-label text-cyan-300">Y Position (Height)</div>
+                                <div id="sweet-y-val" class="font-mono text-sm text-white/70 metric">1.85</div>
+                            </div>
+                            <input type="range" id="sweet-y" min="-1" max="4" step="0.05" value="1.85"
+                                   class="w-full accent-cyan-400" oninput="updateSweetSpotFromSliders()">
+                        </div>
+                        
+                        <!-- Z -->
+                        <div>
+                            <div class="flex justify-between items-baseline mb-1.5">
+                                <div class="slider-label text-fuchsia-300">Z Position</div>
+                                <div id="sweet-z-val" class="font-mono text-sm text-white/70 metric">2.10</div>
+                            </div>
+                            <input type="range" id="sweet-z" min="-6" max="6" step="0.05" value="2.1"
+                                   class="w-full accent-fuchsia-400" oninput="updateSweetSpotFromSliders()">
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 pt-4 border-t border-white/10 flex gap-2">
+                        <button onclick="randomizeSweetSpot()" 
+                                class="flex-1 text-xs py-2.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors">
+                            <i class="fa-solid fa-dice mr-2"></i>Randomize
+                        </button>
+                        <button onclick="setSweetSpotToGoodDefault()" 
+                                class="flex-1 text-xs py-2.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors">
+                            Good Default
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Target 3D Model Selector -->
+                <div class="visionos-window rounded-3xl p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <div>
+                            <div class="font-semibold flex items-center gap-x-2">
+                                <i class="fa-solid fa-cube text-emerald-400"></i>
+                                <span>Target 3D Model</span>
+                            </div>
+                            <div class="text-xs text-white/50">Switch geometry to see projection on different canonical shapes</div>
+                        </div>
+                    </div>
+                    
+                    <select id="model-select" onchange="switchTargetGeometry(this.value)"
+                            class="w-full bg-[#1a1a22] border border-white/20 text-white rounded-2xl px-4 py-3 text-sm focus:outline-none focus:border-violet-400">
+                        <option value="torusknot">Torus Knot (highly complex)</option>
+                        <option value="teapot">Utah Teapot (classic SIGGRAPH)</option>
+                        <option value="sphere">Sphere</option>
+                        <option value="torus">Torus</option>
+                        <option value="box">Box / Cube</option>
+                    </select>
+                    <div class="text-[10px] text-white/50 mt-2 px-1">Utah Teapot &amp; Torus Knot best demonstrate complex surface projection</div>
+                </div>
+                
+                <!-- Source Artwork -->
+                <div class="visionos-window rounded-3xl p-6">
+                    <div class="mb-3 flex items-center justify-between">
+                        <div class="font-semibold flex items-center gap-x-2">
+                            <i class="fa-solid fa-paint-brush text-emerald-400"></i>
+                            <span>Source Artwork</span>
+                        </div>
+                        <div class="text-[10px] px-2.5 py-px rounded bg-emerald-400/10 text-emerald-400">2D CANVAS</div>
+                    </div>
+                    
+                    <canvas id="source-canvas" width="380" height="260" 
+                            class="w-full rounded-2xl border border-white/15 bg-[#1a1a22] cursor-crosshair shadow-inner"
+                            style="max-height: 260px; touch-action: none;"></canvas>
+                    
+                    <div class="mt-3 grid grid-cols-5 gap-2">
+                        <button onclick="applyPreset('grid')" class="text-[10px] py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 active:bg-white/20 transition-colors">Grid</button>
+                        <button onclick="applyPreset('mandala')" class="text-[10px] py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 active:bg-white/20 transition-colors">Mandala</button>
+                        <button onclick="applyPreset('text')" class="text-[10px] py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 active:bg-white/20 transition-colors">VISION</button>
+                        <button onclick="applyPreset('checker')" class="text-[10px] py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 active:bg-white/20 transition-colors">Checkers</button>
+                        <button onclick="clearCanvas()" class="text-[10px] py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 active:bg-white/20 transition-colors">Clear</button>
+                    </div>
+                    
+                    <div class="flex items-center gap-x-3 mt-3">
+                        <div class="flex-1">
+                            <input type="color" id="draw-color" value="#ffffff" class="w-full h-8 rounded-xl overflow-hidden border border-white/20 cursor-pointer">
+                        </div>
+                        <div class="text-xs text-white/60">Draw with mouse • Presets load instantly</div>
+                    </div>
+                </div>
+                
+                <button onclick="applyProjection()"
+                        class="w-full h-14 bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:brightness-110 active:brightness-95 transition-all rounded-3xl font-semibold text-lg flex items-center justify-center gap-x-3 shadow-lg shadow-violet-500/30">
+                    <i class="fa-solid fa-sync-alt"></i>
+                    <span>Re-Project Artwork from Sweet Spot</span>
+                </button>
+                
+                <div class="text-center text-[10px] text-white/50 px-4">
+                    The 2D artwork is projectively mapped onto the 3D surface using the Sweet Spot as the virtual projector position.
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Live status bar -->
+        <div class="mt-5 px-1 flex items-center justify-between text-xs text-white/50">
+            <div id="status-text" class="font-mono">Ready • Move observer or sweet spot to explore distortion vs coherence</div>
+            <div class="flex items-center gap-x-5">
+                <div>Mesh: <span class="text-white/80">Torus Knot (high complexity)</span></div>
+                <div>Projection: <span class="text-emerald-400">Live Shader</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DEEPER EXPLANATION -->
+    <div class="max-w-screen-2xl mx-auto px-8 pb-20">
+        <div class="max-w-3xl mx-auto text-center mb-10">
+            <div class="inline-block px-4 py-1 rounded-3xl bg-white/5 text-xs tracking-widest mb-3">WHY THIS WORKS MATHEMATICALLY</div>
+            <h3 class="font-display text-4xl tracking-tight">Projective Texture Mapping</h3>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            <div class="glass rounded-3xl p-8">
+                <h4 class="font-semibold text-xl mb-3 flex items-center gap-x-2">
+                    <span>The Problem</span>
+                </h4>
+                <p class="text-white/75">If you simply texture a complex 3D shape with a normal image, it will look stretched and distorted from almost every angle. The surface curvature fights against the flat artwork.</p>
+                <p class="mt-3 text-white/75">Traditional projection mapping solves this with physical projectors and careful calibration, but it’s inflexible and requires fixed hardware.</p>
+            </div>
+            
+            <div class="glass rounded-3xl p-8">
+                <h4 class="font-semibold text-xl mb-3 flex items-center gap-x-2">
+                    <span>The AVP Solution</span>
+                </h4>
+                <p class="text-white/75">Define a virtual projector at the sweet spot. For every vertex on the target mesh, transform its world position into the projector’s clip space. After perspective divide you get perfect UV coordinates for that exact viewpoint.</p>
+                <p class="mt-3 text-white/75">When the real viewer’s head is at that same location, the rendered result on the physical (or virtual) surface matches what a flat image would look like from there.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BUILD IT SECTION -->
+    <div id="build-it" class="bg-[#111114] border-t border-white/10 py-16">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="max-w-2xl mb-10">
+                <div class="uppercase tracking-[2.5px] text-xs text-fuchsia-400 mb-2">FOR DEVELOPERS &amp; ARTISTS</div>
+                <h3 class="font-display text-5xl tracking-tighter">How to Build This in Apple Vision Pro</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="glass rounded-3xl p-7">
+                    <div class="text-xs uppercase tracking-widest text-white/50 mb-4">STEP 01</div>
+                    <div class="font-semibold text-2xl leading-none mb-3">Anchor the Sweet Spot</div>
+                    <p class="text-white/70 text-[15px]">Use <span class="font-mono text-xs bg-white/10 px-1.5 py-px rounded">ARAnchor</span> or a custom entity at the desired physical location. Or let the user gaze + pinch to place it interactively with eye tracking.</p>
+                </div>
+                
+                <div class="glass rounded-3xl p-7">
+                    <div class="text-xs uppercase tracking-widest text-white/50 mb-4">STEP 02</div>
+                    <div class="font-semibold text-2xl leading-none mb-3">Acquire or Generate Target Geometry</div>
+                    <p class="text-white/70 text-[15px]">Use ARKit scene reconstruction to get a <span class="font-mono text-xs bg-white/10 px-1.5 py-px rounded">MeshAnchor</span> of real objects, or load a USDZ / procedurally generate a complex mesh (TorusKnot, architectural details, sculpture scans).</p>
+                </div>
+                
+                <div class="glass rounded-3xl p-7">
+                    <div class="text-xs uppercase tracking-widest text-white/50 mb-4">STEP 03</div>
+                    <div class="font-semibold text-2xl leading-none mb-3">Implement Projective Material</div>
+                    <p class="text-white/70 text-[15px]">Create a <span class="font-mono text-xs bg-white/10 px-1.5 py-px rounded">ShaderGraph</span> or custom Metal shader. Pass the projector’s view-projection matrix as a uniform. In the vertex shader, transform world position into projector clip space and output the resulting UVs. Sample your source texture in the fragment shader (with perspective divide and bounds checking).</p>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <div class="inline-flex items-center gap-x-2 text-sm text-white/60">
+                    <i class="fa-brands fa-apple"></i>
+                    <span>Works today with visionOS 2 + Xcode 16 + RealityKit 2</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="border-t border-white/10 py-8 text-center text-xs text-white/40">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            Built as an interactive educational experience to demonstrate spatial computing concepts possible with Apple Vision Pro’s native frameworks.<br>
+            Drag, draw, move the sweet spot — the math is running live in the browser using Three.js (analogous to RealityKit shaders).
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind script
+        function initTailwind() {
+            document.documentElement.style.setProperty('--accent-violet', '#a78bfa');
+        }
+        
+        // Three.js variables
+        let scene, camera, renderer;
+        let mesh, material, sourceTexture;
+        let projectorCamera;
+        let currentTargetMesh; // the currently displayed 3D model (mesh or group)
+        let sweetSpotPosition = new THREE.Vector3(2.4, 1.85, 2.1);
+        let targetCenter = new THREE.Vector3(0, 0.6, 0);
+        let sweetSpotHelper;
+        
+        // Orbit controls (custom, no external dep)
+        let spherical = { radius: 5.2, theta: 0.9, phi: 1.15 };
+        let isDragging = false;
+        let prevMouseX = 0, prevMouseY = 0;
+        let target = new THREE.Vector3(0, 0.6, 0);
+        
+        // Source canvas drawing
+        let sourceCanvas, ctx;
+        let isDrawing = false;
+        let lastX = 0, lastY = 0;
+        let currentColor = '#ffffff';
+        
+        // Alignment tracking
+        let alignmentUpdateInterval;
+        
+        function initThreeJS() {
+            const container = document.getElementById('three-container');
+            
+            renderer = new THREE.WebGLRenderer({ 
+                antialias: true, 
+                alpha: false,
+                powerPreference: "high-performance"
+            });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.shadowMap.enabled = true;
+            container.appendChild(renderer.domElement);
+            
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x0a0a0f);
+            scene.fog = new THREE.Fog(0x0a0a0f, 12, 35);
+            
+            // Camera
+            camera = new THREE.PerspectiveCamera(
+                58, 
+                container.clientWidth / container.clientHeight, 
+                0.1, 
+                100
+            );
+            updateCameraFromSpherical();
+            
+            // Lights - studio style
+            const hemi = new THREE.HemisphereLight(0x606080, 0x101018, 0.6);
+            scene.add(hemi);
+            
+            const keyLight = new THREE.DirectionalLight(0xffffff, 0.85);
+            keyLight.position.set(4, 8, 3);
+            scene.add(keyLight);
+            
+            const rimLight = new THREE.DirectionalLight(0xa5b4fc, 0.35);
+            rimLight.position.set(-6, 3, -4);
+            scene.add(rimLight);
+            
+            // === COMPLEX TARGET MESH (Torus Knot - highly complex geometry) ===
+            const knotGeometry = new THREE.TorusKnotGeometry(1.15, 0.33, 220, 28, 2, 3);
+            // Add some extra vertex noise for even more organic complexity (optional but nice)
+            const posAttr = knotGeometry.attributes.position;
+            for (let i = 0; i < posAttr.count; i++) {
+                const x = posAttr.getX(i);
+                const y = posAttr.getY(i);
+                const z = posAttr.getZ(i);
+                const noise = (Math.sin(x * 3.7) + Math.cos(z * 2.9)) * 0.012;
+                posAttr.setXYZ(i, x + noise, y, z + noise * 0.6);
+            }
+            posAttr.needsUpdate = true;
+            knotGeometry.computeVertexNormals();
+            
+            // Projective ShaderMaterial
+            material = new THREE.ShaderMaterial({
+                uniforms: {
+                    sourceTexture: { value: null },
+                    projectorMatrix: { value: new THREE.Matrix4() }
+                },
+                vertexShader: `
+                    uniform mat4 projectorMatrix;
+                    varying vec4 vProjectorCoord;
+                    varying vec3 vWorldNormal;
+                    varying vec3 vWorldPos;
+                    
+                    void main() {
+                        vec4 worldPos = modelMatrix * vec4(position, 1.0);
+                        vWorldPos = worldPos.xyz;
+                        vWorldNormal = normalize(mat3(modelMatrix) * normal);
+                        
+                        vProjectorCoord = projectorMatrix * worldPos;
+                        
+                        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                    }
+                `,
+                fragmentShader: `
+                    uniform sampler2D sourceTexture;
+                    varying vec4 vProjectorCoord;
+                    varying vec3 vWorldNormal;
+                    varying vec3 vWorldPos;
+                    
+                    void main() {
+                        // Perspective divide
+                        vec3 proj = vProjectorCoord.xyz / vProjectorCoord.w;
+                        
+                        // Convert to UV [0,1]
+                        vec2 uv = proj.xy * 0.5 + 0.5;
+                        
+                        // Discard if outside frustum or behind projector
+                        if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0 || proj.z < 0.0) {
+                            // Show subtle mesh form instead of pure black
+                            float ndotl = max(dot(vWorldNormal, normalize(vec3(0.3, 0.9, 0.2))), 0.15);
+                            gl_FragColor = vec4(vec3(0.08, 0.08, 0.12) * ndotl, 1.0);
+                            return;
+                        }
+                        
+                        vec4 texColor = texture2D(sourceTexture, uv);
+                        
+                        // Optional: slight fresnel / rim to show 3D form even when textured
+                        float fresnel = pow(1.0 - max(dot(normalize(vWorldNormal), normalize(vWorldPos - cameraPosition)), 0.0), 2.5);
+                        texColor.rgb = mix(texColor.rgb, texColor.rgb * 1.15 + vec3(0.1), fresnel * 0.3);
+                        
+                        gl_FragColor = texColor;
+                    }
+                `,
+                side: THREE.DoubleSide,
+                transparent: false
+            });
+            
+            mesh = new THREE.Mesh(knotGeometry, material);
+            scene.add(mesh);
+            currentTargetMesh = mesh;
+            
+            // Pedestal / base for context
+            const baseGeo = new THREE.CylinderGeometry(1.65, 1.75, 0.22, 64);
+            const baseMat = new THREE.MeshPhongMaterial({ 
+                color: 0x1f212a, 
+                shininess: 18,
+                specular: 0x222233
+            });
+            const base = new THREE.Mesh(baseGeo, baseMat);
+            base.position.y = -0.35;
+            scene.add(base);
+            
+            // Subtle ground plane
+            const groundGeo = new THREE.PlaneGeometry(18, 18);
+            const groundMat = new THREE.MeshPhongMaterial({ 
+                color: 0x111216, 
+                shininess: 4 
+            });
+            const ground = new THREE.Mesh(groundGeo, groundMat);
+            ground.rotation.x = -Math.PI / 2;
+            ground.position.y = -0.5;
+            scene.add(ground);
+            
+            // === Sweet Spot Visual Helper ===
+            sweetSpotHelper = new THREE.Group();
+            
+            // Glowing core sphere
+            const coreGeo = new THREE.SphereGeometry(0.09, 24, 24);
+            const coreMat = new THREE.MeshBasicMaterial({ 
+                color: 0xa78bfa,
+                transparent: true,
+                opacity: 0.95
+            });
+            const core = new THREE.Mesh(coreGeo, coreMat);
+            sweetSpotHelper.add(core);
+            
+            // Outer glow ring
+            const ringGeo = new THREE.RingGeometry(0.14, 0.22, 32);
+            const ringMat = new THREE.MeshBasicMaterial({ 
+                color: 0xa78bfa, 
+                transparent: true, 
+                opacity: 0.35,
+                side: THREE.DoubleSide
+            });
+            const ring = new THREE.Mesh(ringGeo, ringMat);
+            ring.rotation.x = Math.PI / 2;
+            sweetSpotHelper.add(ring);
+            
+            // Direction indicator (small cone pointing toward target)
+            const coneGeo = new THREE.ConeGeometry(0.085, 0.38, 14);
+            const coneMat = new THREE.MeshBasicMaterial({ 
+                color: 0x67e8f9, 
+                transparent: true, 
+                opacity: 0.65 
+            });
+            const cone = new THREE.Mesh(coneGeo, coneMat);
+            cone.position.z = -0.28;
+            cone.rotation.x = Math.PI / 2;
+            sweetSpotHelper.add(cone);
+            
+            scene.add(sweetSpotHelper);
+            sweetSpotHelper.position.copy(sweetSpotPosition);
+            
+            // Projector camera (virtual, not rendered, used for matrix calculation only)
+            projectorCamera = new THREE.PerspectiveCamera(62, 1.0, 0.2, 30);
+            
+            // Initial texture setup (will be replaced by canvas)
+            const placeholderTex = new THREE.DataTexture(
+                new Uint8Array([40, 40, 55, 255]), 1, 1, THREE.RGBAFormat
+            );
+            placeholderTex.needsUpdate = true;
+            material.uniforms.sourceTexture.value = placeholderTex;
+            sourceTexture = placeholderTex;
+            
+            // Initial projection setup
+            updateProjectorMatrix();
+            
+            // Mouse orbit controls
+            const canvas = renderer.domElement;
+            
+            canvas.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                prevMouseX = e.clientX;
+                prevMouseY = e.clientY;
+                document.body.style.cursor = 'grabbing';
+            });
+            
+            window.addEventListener('mouseup', () => {
+                isDragging = false;
+                document.body.style.cursor = 'default';
+            });
+            
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                
+                const deltaX = e.clientX - prevMouseX;
+                const deltaY = e.clientY - prevMouseY;
+                
+                spherical.theta -= deltaX * 0.0045;
+                spherical.phi = Math.max(0.25, Math.min(Math.PI - 0.25, spherical.phi - deltaY * 0.0045));
+                
+                prevMouseX = e.clientX;
+                prevMouseY = e.clientY;
+                
+                updateCameraFromSpherical();
+            });
+            
+            canvas.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const zoomSpeed = 0.0018;
+                spherical.radius = Math.max(1.8, Math.min(14, spherical.radius * (1 + e.deltaY * zoomSpeed)));
+                updateCameraFromSpherical();
+            }, { passive: false });
+            
+            // Touch support (basic)
+            let touchStartX = 0, touchStartY = 0;
+            canvas.addEventListener('touchstart', (e) => {
+                if (e.touches.length === 1) {
+                    isDragging = true;
+                    touchStartX = e.touches[0].clientX;
+                    touchStartY = e.touches[0].clientY;
+                }
+            });
+            
+            canvas.addEventListener('touchend', () => { isDragging = false; });
+            
+            canvas.addEventListener('touchmove', (e) => {
+                if (!isDragging || e.touches.length !== 1) return;
+                e.preventDefault();
+                
+                const deltaX = e.touches[0].clientX - touchStartX;
+                const deltaY = e.touches[0].clientY - touchStartY;
+                
+                spherical.theta -= deltaX * 0.005;
+                spherical.phi = Math.max(0.3, Math.min(Math.PI - 0.3, spherical.phi - deltaY * 0.005));
+                
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+                
+                updateCameraFromSpherical();
+            }, { passive: false });
+            
+            // Handle resize
+            window.addEventListener('resize', () => {
+                const w = container.clientWidth;
+                const h = container.clientHeight;
+                camera.aspect = w / h;
+                camera.updateProjectionMatrix();
+                renderer.setSize(w, h);
+            });
+            
+            // Start render loop
+            animate();
+            
+            // Initial alignment check
+            setTimeout(updateAlignmentIndicator, 600);
+            
+            // Seed with a nice initial drawing
+            setTimeout(() => {
+                applyPreset('grid');
+            }, 420);
+            
+            // Make sure sliders reflect initial sweet spot
+            syncSlidersToSweetSpot();
+        }
+        
+        function updateCameraFromSpherical() {
+            const x = spherical.radius * Math.sin(spherical.phi) * Math.sin(spherical.theta);
+            const y = spherical.radius * Math.cos(spherical.phi);
+            const z = spherical.radius * Math.sin(spherical.phi) * Math.cos(spherical.theta);
+            
+            camera.position.set(
+                target.x + x, 
+                target.y + y, 
+                target.z + z
+            );
+            camera.lookAt(target);
+        }
+        
+        function updateProjectorMatrix() {
+            if (!projectorCamera || !material) return;
+            
+            projectorCamera.position.copy(sweetSpotPosition);
+            projectorCamera.lookAt(targetCenter);
+            projectorCamera.updateMatrixWorld(true);
+            projectorCamera.updateProjectionMatrix();
+            
+            const projViewMatrix = new THREE.Matrix4().multiplyMatrices(
+                projectorCamera.projectionMatrix,
+                projectorCamera.matrixWorldInverse
+            );
+            
+            material.uniforms.projectorMatrix.value.copy(projViewMatrix);
+        }
+        
+        function updateSweetSpotFromSliders() {
+            const x = parseFloat(document.getElementById('sweet-x').value);
+            const y = parseFloat(document.getElementById('sweet-y').value);
+            const z = parseFloat(document.getElementById('sweet-z').value);
+            
+            sweetSpotPosition.set(x, y, z);
+            if (sweetSpotHelper) sweetSpotHelper.position.copy(sweetSpotPosition);
+            
+            // Update displayed values
+            document.getElementById('sweet-x-val').textContent = x.toFixed(2);
+            document.getElementById('sweet-y-val').textContent = y.toFixed(2);
+            document.getElementById('sweet-z-val').textContent = z.toFixed(2);
+            
+            updateProjectorMatrix();
+            updateAlignmentIndicator();
+            
+            // Live feedback
+            document.getElementById('status-text').textContent = 
+                `Sweet Spot moved to (${x.toFixed(2)}, ${y.toFixed(2)}, ${z.toFixed(2)}) — Re-project to see updated mapping`;
+        }
+        
+        function syncSlidersToSweetSpot() {
+            document.getElementById('sweet-x').value = sweetSpotPosition.x;
+            document.getElementById('sweet-y').value = sweetSpotPosition.y;
+            document.getElementById('sweet-z').value = sweetSpotPosition.z;
+            
+            document.getElementById('sweet-x-val').textContent = sweetSpotPosition.x.toFixed(2);
+            document.getElementById('sweet-y-val').textContent = sweetSpotPosition.y.toFixed(2);
+            document.getElementById('sweet-z-val').textContent = sweetSpotPosition.z.toFixed(2);
+        }
+        
+        function setSweetSpotToGoodDefault() {
+            sweetSpotPosition.set(2.35, 1.92, 2.05);
+            if (sweetSpotHelper) sweetSpotHelper.position.copy(sweetSpotPosition);
+            syncSlidersToSweetSpot();
+            updateProjectorMatrix();
+            updateAlignmentIndicator();
+            document.getElementById('status-text').textContent = 'Sweet Spot reset to a strong default viewing angle';
+        }
+        
+        function randomizeSweetSpot() {
+            const x = (Math.random() * 3.8) + 0.6;
+            const y = (Math.random() * 1.6) + 1.1;
+            const z = (Math.random() * 3.2) + 0.8;
+            
+            sweetSpotPosition.set(x, y, z);
+            if (sweetSpotHelper) sweetSpotHelper.position.copy(sweetSpotPosition);
+            syncSlidersToSweetSpot();
+            updateProjectorMatrix();
+            updateAlignmentIndicator();
+            
+            document.getElementById('status-text').textContent = 
+                `Random sweet spot at (${x.toFixed(2)}, ${y.toFixed(2)}, ${z.toFixed(2)}) — try projecting!`;
+        }
+        
+        function jumpToSweetSpot() {
+            // Animate camera to near the sweet spot (slightly offset for nice view)
+            const offset = new THREE.Vector3(0.35, 0.15, 0.55);
+            const desiredPos = sweetSpotPosition.clone().add(offset);
+            
+            const startPos = camera.position.clone();
+            const startTime = performance.now();
+            const duration = 780;
+            
+            function animateJump() {
+                const t = Math.min((performance.now() - startTime) / duration, 1);
+                const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
+                
+                camera.position.lerpVectors(startPos, desiredPos, eased);
+                camera.lookAt(targetCenter);
+                
+                // Update spherical so mouse control continues smoothly
+                const dx = camera.position.x - target.x;
+                const dy = camera.position.y - target.y;
+                const dz = camera.position.z - target.z;
+                
+                spherical.radius = Math.sqrt(dx*dx + dy*dy + dz*dz);
+                spherical.theta = Math.atan2(dx, dz);
+                spherical.phi = Math.acos(dy / spherical.radius);
+                
+                if (t < 1) {
+                    requestAnimationFrame(animateJump);
+                } else {
+                    updateAlignmentIndicator();
+                    document.getElementById('status-text').textContent = 
+                        'Observer now at Sweet Spot — artwork should appear coherent';
+                }
+            }
+            animateJump();
+        }
+        
+        function updateAlignmentIndicator() {
+            if (!camera) return;
+            
+            const dist = camera.position.distanceTo(sweetSpotPosition);
+            const dirToTarget = targetCenter.clone().sub(camera.position).normalize();
+            const sweetDir = targetCenter.clone().sub(sweetSpotPosition).normalize();
+            const angle = Math.acos(Math.max(-1, Math.min(1, dirToTarget.dot(sweetDir)))) * (180 / Math.PI);
+            
+            const alignmentEl = document.getElementById('alignment-value');
+            const container = document.getElementById('alignment-indicator');
+            
+            let score = 100;
+            score -= Math.min(55, dist * 18);
+            score -= Math.min(35, angle * 1.8);
+            score = Math.max(8, Math.min(100, Math.round(score)));
+            
+            alignmentEl.textContent = score + '%';
+            
+            if (score > 78) {
+                container.style.borderColor = 'rgba(52, 211, 153, 0.5)';
+                container.style.background = 'rgba(16, 185, 129, 0.1)';
+                alignmentEl.style.color = '#34d399';
+            } else if (score > 45) {
+                container.style.borderColor = 'rgba(251, 191, 36, 0.4)';
+                container.style.background = 'rgba(245, 158, 11, 0.08)';
+                alignmentEl.style.color = '#fbbf24';
+            } else {
+                container.style.borderColor = 'rgba(255,255,255,0.15)';
+                container.style.background = 'rgba(255,255,255,0.04)';
+                alignmentEl.style.color = 'rgba(255,255,255,0.75)';
+            }
+            
+            // Dynamic status
+            const status = document.getElementById('status-text');
+            if (score > 82) {
+                status.textContent = 'Viewing from near Sweet Spot — projection is highly coherent';
+                status.style.color = '#34d399';
+            } else if (score < 35) {
+                status.textContent = 'Far from Sweet Spot — observe strong projective distortion';
+                status.style.color = '#f59e0b';
+            } else {
+                status.textContent = 'Move observer or sweet spot to explore coherence vs distortion';
+                status.style.color = 'rgba(255,255,255,0.55)';
+            }
+        }
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // Gentle idle rotation of the knot (very slow, artistic)
+            if (mesh) {
+                mesh.rotation.y = Math.sin(Date.now() * 0.00008) * 0.035 + 0.12;
+            }
+            
+            // Update alignment occasionally
+            if (Math.random() < 0.04) {
+                updateAlignmentIndicator();
+            }
+            
+            renderer.render(scene, camera);
+        }
+        
+        // ========== SOURCE CANVAS DRAWING ==========
+        function initSourceCanvas() {
+            sourceCanvas = document.getElementById('source-canvas');
+            ctx = sourceCanvas.getContext('2d', { alpha: true });
+            
+            // Initial clean state
+            ctx.fillStyle = '#11141f';
+            ctx.fillRect(0, 0, sourceCanvas.width, sourceCanvas.height);
+            
+            // Subtle border
+            ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+            ctx.lineWidth = 3;
+            ctx.strokeRect(8, 8, sourceCanvas.width - 16, sourceCanvas.height - 16);
+            
+            // Color picker
+            const colorInput = document.getElementById('draw-color');
+            colorInput.addEventListener('input', (e) => {
+                currentColor = e.target.value;
+            });
+            
+            // Drawing events
+            sourceCanvas.addEventListener('mousedown', startDrawing);
+            sourceCanvas.addEventListener('mousemove', draw);
+            sourceCanvas.addEventListener('mouseup', endDrawing);
+            sourceCanvas.addEventListener('mouseleave', endDrawing);
+            
+            // Touch drawing
+            sourceCanvas.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                const rect = sourceCanvas.getBoundingClientRect();
+                const touch = e.touches[0];
+                startDrawing({ clientX: touch.clientX, clientY: touch.clientY });
+            }, { passive: false });
+            
+            sourceCanvas.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+                const rect = sourceCanvas.getBoundingClientRect();
+                const touch = e.touches[0];
+                draw({ clientX: touch.clientX, clientY: touch.clientY });
+            }, { passive: false });
+            
+            sourceCanvas.addEventListener('touchend', endDrawing);
+        }
+        
+        function startDrawing(e) {
+            isDrawing = true;
+            const rect = sourceCanvas.getBoundingClientRect();
+            lastX = e.clientX - rect.left;
+            lastY = e.clientY - rect.top;
+            
+            // Start a new stroke
+            ctx.strokeStyle = currentColor;
+            ctx.lineWidth = 3.5;
+            ctx.lineJoin = 'round';
+            ctx.lineCap = 'round';
+            ctx.shadowColor = currentColor;
+            ctx.shadowBlur = 1.5;
+        }
+        
+        function draw(e) {
+            if (!isDrawing) return;
+            
+            const rect = sourceCanvas.getBoundingClientRect();
+            const currentX = e.clientX - rect.left;
+            const currentY = e.clientY - rect.top;
+            
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(currentX, currentY);
+            ctx.stroke();
+            
+            lastX = currentX;
+            lastY = currentY;
+            
+            // Live update Three.js texture (throttled naturally by mouse move rate)
+            if (sourceTexture && sourceTexture.isCanvasTexture) {
+                sourceTexture.needsUpdate = true;
+            }
+        }
+        
+        function endDrawing() {
+            if (isDrawing) {
+                isDrawing = false;
+                ctx.shadowBlur = 0;
+                
+                // Final texture sync
+                if (sourceTexture && sourceTexture.isCanvasTexture) {
+                    sourceTexture.needsUpdate = true;
+                }
+            }
+        }
+        
+        function updateThreeTextureFromCanvas() {
+            if (!sourceCanvas || !material) return;
+            
+            if (!sourceTexture || !sourceTexture.isCanvasTexture) {
+                sourceTexture = new THREE.CanvasTexture(sourceCanvas);
+                sourceTexture.anisotropy = 8;
+                sourceTexture.minFilter = THREE.LinearMipmapLinearFilter;
+                sourceTexture.magFilter = THREE.LinearFilter;
+                material.uniforms.sourceTexture.value = sourceTexture;
+            } else {
+                sourceTexture.needsUpdate = true;
+            }
+        }
+        
+        function clearCanvas() {
+            ctx.fillStyle = '#11141f';
+            ctx.fillRect(0, 0, sourceCanvas.width, sourceCanvas.height);
+            
+            ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+            ctx.lineWidth = 2.5;
+            ctx.strokeRect(10, 10, sourceCanvas.width - 20, sourceCanvas.height - 20);
+            
+            updateThreeTextureFromCanvas();
+            document.getElementById('status-text').textContent = 'Canvas cleared — draw something new or apply a preset';
+        }
+        
+        function applyPreset(type) {
+            ctx.save();
+            ctx.fillStyle = '#11141f';
+            ctx.fillRect(0, 0, sourceCanvas.width, sourceCanvas.height);
+            
+            ctx.strokeStyle = '#ffffff';
+            ctx.fillStyle = '#ffffff';
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+            
+            const w = sourceCanvas.width;
+            const h = sourceCanvas.height;
+            const cx = w / 2;
+            const cy = h / 2;
+            
+            if (type === 'grid') {
+                // Perspective-friendly grid + vanishing lines
+                ctx.lineWidth = 1.2;
+                ctx.strokeStyle = 'rgba(255,255,255,0.9)';
+                
+                // Horizontal lines
+                for (let i = 0; i < 9; i++) {
+                    const y = 22 + (i * (h - 44) / 8);
+                    ctx.beginPath();
+                    ctx.moveTo(18, y);
+                    ctx.lineTo(w - 18, y);
+                    ctx.stroke();
+                }
+                
+                // Vertical lines
+                for (let i = 0; i < 11; i++) {
+                    const x = 18 + (i * (w - 36) / 10);
+                    ctx.beginPath();
+                    ctx.moveTo(x, 22);
+                    ctx.lineTo(x, h - 22);
+                    ctx.stroke();
+                }
+                
+                // Strong converging diagonals (classic anamorphosis test)
+                ctx.lineWidth = 2.5;
+                ctx.strokeStyle = '#a5b4fc';
+                ctx.beginPath();
+                ctx.moveTo(18, 22); ctx.lineTo(w - 18, h - 22); ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(w - 18, 22); ctx.lineTo(18, h - 22); ctx.stroke();
+                
+                // Center marker
+                ctx.fillStyle = '#67e8f9';
+                ctx.beginPath();
+                ctx.arc(cx, cy, 5, 0, Math.PI * 2);
+                ctx.fill();
+                
+            } else if (type === 'mandala') {
+                ctx.strokeStyle = '#e0e7ff';
+                ctx.lineWidth = 1.8;
+                
+                // Concentric circles
+                for (let r = 22; r < Math.min(w, h) * 0.48; r += 18) {
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+                
+                // Radial spokes
+                ctx.strokeStyle = '#c0c7ff';
+                for (let i = 0; i < 24; i++) {
+                    const angle = (i / 24) * Math.PI * 2;
+                    ctx.beginPath();
+                    ctx.moveTo(cx, cy);
+                    ctx.lineTo(
+                        cx + Math.cos(angle) * (Math.min(w, h) * 0.46),
+                        cy + Math.sin(angle) * (Math.min(w, h) * 0.46)
+                    );
+                    ctx.stroke();
+                }
+                
+                // Decorative dots
+                ctx.fillStyle = '#a5b4fc';
+                for (let i = 0; i < 18; i++) {
+                    const angle = (i / 18) * Math.PI * 2 + 0.3;
+                    ctx.beginPath();
+                    ctx.arc(
+                        cx + Math.cos(angle) * 68,
+                        cy + Math.sin(angle) * 68,
+                        3.5, 0, Math.PI * 2
+                    );
+                    ctx.fill();
+                }
+                
+            } else if (type === 'text') {
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '700 72px Inter, system-ui, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('VISION', cx, cy - 18);
+                
+                ctx.font = '500 22px Inter, system-ui, sans-serif';
+                ctx.fillStyle = '#a5b4fc';
+                ctx.fillText('PERSPECTIVE • PROJECTION', cx, cy + 38);
+                
+                // Subtle underline
+                ctx.strokeStyle = '#67e8f9';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.moveTo(cx - 118, cy + 58);
+                ctx.lineTo(cx + 118, cy + 58);
+                ctx.stroke();
+                
+            } else if (type === 'checker') {
+                const tile = 28;
+                for (let y = 14; y < h - 14; y += tile) {
+                    for (let x = 14; x < w - 14; x += tile) {
+                        const isEven = ((x / tile) + (y / tile)) % 2 === 0;
+                        ctx.fillStyle = isEven ? '#e0e7ff' : '#1f2937';
+                        ctx.fillRect(x, y, tile - 1, tile - 1);
+                    }
+                }
+                
+                // Border frame
+                ctx.strokeStyle = '#64748b';
+                ctx.lineWidth = 4;
+                ctx.strokeRect(12, 12, w - 24, h - 24);
+            }
+            
+            ctx.restore();
+            updateThreeTextureFromCanvas();
+            
+            document.getElementById('status-text').textContent = 
+                `Preset "${type}" loaded — click "Re-Project Artwork" to apply to the 3D surface`;
+        }
+        
+        function applyProjection() {
+            if (!sourceCanvas || !material) return;
+            
+            updateThreeTextureFromCanvas();
+            updateProjectorMatrix();
+            
+            const status = document.getElementById('status-text');
+            const oldStatus = status.textContent;
+            
+            status.textContent = 'Projecting from Sweet Spot... shader updated with new texture + projector matrix';
+            status.style.color = '#a78bfa';
+            
+            // Gentle mesh pulse to show update
+            if (mesh) {
+                const origScale = mesh.scale.x || 1.0;
+                mesh.scale.setScalar(origScale * 1.035);
+                
+                setTimeout(() => {
+                    if (mesh) mesh.scale.setScalar(origScale);
+                    status.textContent = oldStatus;
+                    status.style.color = 'rgba(255,255,255,0.55)';
+                }, 620);
+            } else {
+                setTimeout(() => {
+                    status.textContent = oldStatus;
+                    status.style.color = 'rgba(255,255,255,0.55)';
+                }, 620);
+            }
+            
+            // Update alignment after projection
+            setTimeout(updateAlignmentIndicator, 180);
+        }
+        
+        function updateSweetSpotPosition(newPos) {
+            sweetSpotPosition.copy(newPos);
+            if (sweetSpotHelper) sweetSpotHelper.position.copy(sweetSpotPosition);
+            syncSlidersToSweetSpot();
+            updateProjectorMatrix();
+        }
+        
+        // Keyboard shortcuts
+        function initKeyboardShortcuts() {
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'r' || e.key === 'R') {
+                    if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
+                    e.preventDefault();
+                    randomizeSweetSpot();
+                }
+                
+                if (e.key === 'j' || e.key === 'J') {
+                    e.preventDefault();
+                    jumpToSweetSpot();
+                }
+                
+                if (e.key === 'p' || e.key === 'P') {
+                    e.preventDefault();
+                    applyProjection();
+                }
+                
+                if (e.key.toLowerCase() === 'g') {
+                    applyPreset('grid');
+                }
+            });
+            
+            // Helpful tooltip
+            console.log('%c[AVP Lab] Keyboard: R = randomize sweet spot • J = jump to sweet spot • P = re-project • G = grid preset', 'color:#64748b');
+        }
+
+        // ========== 3D MODEL SWITCHING (SIGGRAPH Canonical Models) ==========
+        function createTargetMesh(type) {
+            let newMesh;
+            
+            if (type === 'torusknot') {
+                const geo = new THREE.TorusKnotGeometry(1.15, 0.33, 220, 28, 2, 3);
+                // Add organic noise like initial
+                const posAttr = geo.attributes.position;
+                for (let i = 0; i < posAttr.count; i++) {
+                    const x = posAttr.getX(i);
+                    const y = posAttr.getY(i);
+                    const z = posAttr.getZ(i);
+                    const noise = (Math.sin(x * 3.7) + Math.cos(z * 2.9)) * 0.012;
+                    posAttr.setXYZ(i, x + noise, y, z + noise * 0.6);
+                }
+                posAttr.needsUpdate = true;
+                geo.computeVertexNormals();
+                newMesh = new THREE.Mesh(geo, material);
+                
+            } else if (type === 'teapot') {
+                // Classic Utah Teapot approximation using primitives (recognizable SIGGRAPH model)
+                const group = new THREE.Group();
+                
+                // Body (main pot) - slightly flattened sphere + cylinder
+                const body = new THREE.Mesh(
+                    new THREE.SphereGeometry(0.95, 48, 32, 0, Math.PI * 2, 0, Math.PI * 0.92),
+                    material
+                );
+                body.scale.set(1, 0.82, 1);
+                body.position.y = 0.35;
+                group.add(body);
+                
+                // Lid
+                const lid = new THREE.Mesh(
+                    new THREE.CylinderGeometry(0.82, 0.78, 0.18, 48),
+                    material
+                );
+                lid.position.y = 1.05;
+                group.add(lid);
+                
+                const lidTop = new THREE.Mesh(
+                    new THREE.SphereGeometry(0.35, 32, 24),
+                    material
+                );
+                lidTop.position.y = 1.22;
+                group.add(lidTop);
+                
+                // Handle (classic C-shape using Torus arc)
+                const handle = new THREE.Mesh(
+                    new THREE.TorusGeometry(0.55, 0.09, 16, 48, Math.PI * 1.15),
+                    material
+                );
+                handle.rotation.z = Math.PI / 2;
+                handle.position.set(-1.05, 0.55, 0);
+                group.add(handle);
+                
+                // Spout
+                const spout = new THREE.Mesh(
+                    new THREE.CylinderGeometry(0.22, 0.16, 0.9, 32),
+                    material
+                );
+                spout.rotation.z = -0.65;
+                spout.position.set(1.0, 0.65, 0);
+                group.add(spout);
+                
+                // Spout tip (small cone-like)
+                const spoutTip = new THREE.Mesh(
+                    new THREE.ConeGeometry(0.18, 0.35, 24),
+                    material
+                );
+                spoutTip.rotation.z = -0.65;
+                spoutTip.position.set(1.55, 0.42, 0);
+                group.add(spoutTip);
+                
+                newMesh = group;
+                
+            } else if (type === 'sphere') {
+                const geo = new THREE.SphereGeometry(1.1, 64, 48);
+                newMesh = new THREE.Mesh(geo, material);
+                
+            } else if (type === 'torus') {
+                const geo = new THREE.TorusGeometry(1.0, 0.38, 48, 72);
+                newMesh = new THREE.Mesh(geo, material);
+                
+            } else if (type === 'box') {
+                const geo = new THREE.BoxGeometry(1.8, 1.4, 1.6);
+                // Add slight bevel by using a higher segment count isn't direct, but ok
+                newMesh = new THREE.Mesh(geo, material);
+            }
+            
+            return newMesh;
+        }
+        
+        function switchTargetGeometry(type) {
+            if (!scene || !material || !currentTargetMesh) return;
+            
+            // Remove old
+            scene.remove(currentTargetMesh);
+            
+            // Create new
+            const newTarget = createTargetMesh(type);
+            scene.add(newTarget);
+            currentTargetMesh = newTarget;
+            mesh = newTarget; // keep legacy reference working
+            
+            // Re-apply current texture and projector settings
+            if (sourceTexture) {
+                material.uniforms.sourceTexture.value = sourceTexture;
+            }
+            updateProjectorMatrix();
+            
+            // Update status
+            const status = document.getElementById('status-text');
+            const names = {
+                'torusknot': 'Torus Knot (highly complex)',
+                'teapot': 'Utah Teapot (classic SIGGRAPH)',
+                'sphere': 'Sphere',
+                'torus': 'Torus',
+                'box': 'Box / Cube'
+            };
+            status.textContent = `Switched to ${names[type] || type} — re-project to see updated mapping`;
+            status.style.color = '#67e8f9';
+            
+            setTimeout(() => {
+                if (status) {
+                    status.textContent = 'Move observer or sweet spot to explore coherence vs distortion';
+                    status.style.color = 'rgba(255,255,255,0.55)';
+                }
+            }, 2200);
+            
+            // Refresh alignment
+            setTimeout(updateAlignmentIndicator, 300);
+        }
+        
+        // Boot everything
+        function bootstrap() {
+            initTailwind();
+            initThreeJS();
+            initSourceCanvas();
+            initKeyboardShortcuts();
+            
+            // Make sure initial texture is a canvas texture
+            setTimeout(() => {
+                if (sourceCanvas) {
+                    const initialTex = new THREE.CanvasTexture(sourceCanvas);
+                    initialTex.anisotropy = 8;
+                    material.uniforms.sourceTexture.value = initialTex;
+                    sourceTexture = initialTex;
+                }
+                updateProjectorMatrix();
+            }, 180);
+            
+            // Seed a nice alignment message
+            setTimeout(() => {
+                const status = document.getElementById('status-text');
+                if (status) status.textContent = 'Interactive lab ready — orbit the view, move the sweet spot sliders, then re-project';
+            }, 1400);
+            
+            // Easter egg: clicking the three-container header area resets camera nicely
+            const container = document.getElementById('three-container');
+            container.addEventListener('dblclick', () => {
+                spherical = { radius: 5.2, theta: 0.9, phi: 1.15 };
+                updateCameraFromSpherical();
+            });
+            
+            // Final nudge to user
+            console.log('%c[AVP Perspective Lab] Fully initialized. All math running client-side with Three.js shaders analogous to RealityKit.', 'color:#475569');
+        }
+        
+        // Start
+        window.onload = bootstrap;
+        
+        // Expose a couple functions for console tinkering (advanced users)
+        window.AVPLab = {
+            setSweetSpot: (x, y, z) => {
+                if (typeof updateSweetSpotPosition === 'function') {
+                    updateSweetSpotPosition(new THREE.Vector3(x, y, z));
+                }
+            },
+            jump: () => typeof jumpToSweetSpot === 'function' && jumpToSweetSpot(),
+            project: () => typeof applyProjection === 'function' && applyProjection()
+        };
+    </script>
+</body>
+</html>
