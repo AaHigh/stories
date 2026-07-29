@@ -1,413 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HIGH TOWER DISTRICT • STORIES</title>
+  <meta name="description" content="Stories from the bed fort. Fresno, CA. Building, systems, local reality, and the edges of experience." />
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://stories.ahightower.com/" />
+  <meta property="og:title" content="HIGH TOWER DISTRICT • STORIES" />
+  <meta property="og:description" content="Focused pieces on building, systems, local reality, and the edges of experience. Written from a 12×12 room with two iPhones on magnets." />
+  <meta property="og:image" content="https://stories.ahightower.com/images/og-stories.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="High Tower District Stories" />
 
-    <meta property="og:title" content="HIGH TOWER DISTRICT • STORIES">
-    <meta property="og:description" content="Focused pieces on building, systems, local reality, and the edges of experience. Written from a 12×12 room with two iPhones on magnets in Fresno, CA.">
-    <meta property="og:image" content="https://ahightower.com/ahightower.png">
-    <meta property="og:url" content="https://stories.ahightower.com/">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="HIGH TOWER DISTRICT • STORIES" />
+  <meta name="twitter:description" content="Stories from the bed fort. Fresno, CA. 2026." />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Stories">
-    <meta name="twitter:description" content="...">
-    <meta name="twitter:image" content="https://stories.ahightower.com/bed-fort-setup.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
 
-    <title>HIGH TOWER DISTRICT • STORIES</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
-        
-        :root {
-            --accent: #f4c95d;
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            tower: {
+              bg: '#0a0a0a',
+              card: '#141414',
+              accent: '#f4c95d',
+              muted: '#888',
+            }
+          }
         }
-        
-        body {
-            margin: 0;
-            padding: 0;
-            background: #0a0a0a;
-            color: #e8e8e8;
-            font-family: 'Inter', system-ui, sans-serif;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1080px;
-            margin: 0 auto;
-            padding: 48px 20px 80px;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-        
-        .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.8rem;
-            font-weight: 600;
-            letter-spacing: -0.03em;
-            color: #fff;
-        }
-        
-        .tagline {
-            color: #666;
-            font-size: 1rem;
-        }
-        
-        .intro {
-            max-width: 620px;
-            margin: 0 auto 56px;
-            text-align: center;
-            color: #999;
-            font-size: 0.95rem;
-        }
-        
-        .stories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
-        }
-        
-        .story-card {
-            background: #141414;
-            border: 1px solid #222;
-            border-radius: 14px;
-            overflow: hidden;
-            transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
-            cursor: pointer;
-        }
-        
-        .story-card:hover {
-            transform: translateY(-4px);
-            border-color: #444;
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3);
-        }
-        
-        .card-header {
-            height: 6px;
-            background: linear-gradient(90deg, var(--accent), #f4c95d);
-        }
-        
-        .card-body {
-            padding: 26px 26px 30px;
-        }
-        
-        .story-title {
-            font-size: 1.35rem;
-            font-weight: 600;
-            line-height: 1.2;
-            margin: 0 0 12px 0;
-        }
-        
-        .story-meta {
-            font-size: 0.75rem;
-            color: #777;
-            margin-bottom: 14px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-        
-        .story-excerpt {
-            color: #aaa;
-            font-size: 0.93rem;
-            line-height: 1.55;
-            margin-bottom: 22px;
-        }
-        
-        .read-link {
-            color: var(--accent);
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .read-link:hover {
-            gap: 12px;
-        }
-        
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.08;
-            pointer-events: none;
-        }
-        
-        footer {
-            margin-top: 80px;
-            text-align: center;
-            color: #555;
-            font-size: 0.8rem;
-        }
-    </style>
+      }
+    }
+  </script>
+
+  <style>
+    body { background: #0a0a0a; color: #e8e8e8; }
+    .story-card {
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .story-card:hover {
+      transform: translateY(-4px);
+      border-color: #f4c95d55;
+      box-shadow: 0 12px 28px -8px rgba(0,0,0,0.6);
+    }
+    .accent-bar {
+      background: linear-gradient(90deg, #f4c95d, #e8b84a);
+    }
+  </style>
 </head>
-<body>
-    <canvas id="bg-canvas"></canvas>
-    
-    <div class="container">
-        <header>
-            <div class="logo">HIGH TOWER DISTRICT</div>
-            <div class="tagline">Stories from the bed fort • Fresno, CA • 2026</div>
-        </header>
+<body class="font-sans antialiased min-h-screen">
 
-        <p class="intro">
-            Focused pieces on building, systems, local reality, and the edges of experience.<br>
-            Written from a 12×12 room with two iPhones on magnets.
-        </p>
-
-        <div class="stories">
-
-            <!-- HIGHTOWER DERIVATIVE -->
-            <div class="story-card" onclick="window.location.href='hightower-derivative/'">
-                <div class="card-header"></div>
-                <div class="card-body">
-                    <div class="story-meta">The Hightower Derivative</div>
-                    <h2 class="story-title">The Hightower Derivative</h2>
-                    <p class="story-excerpt">
-        AI is not merely changing the content of human thought. It is changing the <em class="text-white not-italic">rate</em> at which human cognition itself bends. Second-order derivative. No control population exists.
-                    <div class="read-link">
-                        Read the story! <span aria-hidden="true">→</span>
-                    </div>
-                </div>
-            </div>
-            <!-- BATTERY -->
-            <div class="story-card" onclick="window.location.href='battery-commodity-scale/'">
-                <div class="card-header"></div>
-                <div class="card-body">
-                    <div class="story-meta">Battery Commodity Scale</div>
-                    <h2 class="story-title">Battery Commodity Scale</h2>
-                    <p class="story-excerpt">
-        Change the form of the energy — make it a physical, standardized, movable asset — and the entire supply chain opens up!
-                    <div class="read-link">
-                        Read the story! <span aria-hidden="true">→</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Apple Vision Projection -->
-            <div class="story-card" onclick="window.location.href='avp-perspective-lab/'">
-                <div class="card-header"></div>
-                <div class="card-body">
-                    <div class="story-meta">Apple Vision Perspective Lab</div>
-                    <h2 class="story-title">Apple Vision Perspective Lab</h2>
-                    <p class="story-excerpt">
-                    AVP Perspective Lab • Spatial Anamorphosis &amp; Projection Mapping :: this laboratory and explanation demonstrates how a graffiti artist can pre-warp an image to apply on a complex contour of a 3d shape in order to make artist works that "pop" when the viewer is "in the right spot."  This can include off-axis projection tricks like where it looks like you can fall into a sidewalk due to a perspective trick as you may have seen artists in new york do on viral videos.
-                    <div class="read-link">
-                        Enter the laboratory!! <span aria-hidden="true">→</span>
-                    </div>
-                </div>
-            </div>
-            <!-- AI grid shut down -->
-            <div class="story-card" onclick="window.location.href='ai-grid-tower-district-0726/'">
-                <div class="card-header"></div>
-                <div class="card-body">
-                    <div class="story-meta">AI Grid SHUT DOWN!</div>
-                    <h2 class="story-title">AI Grid SHUT DOWN!</h2>
-                    <p class="story-excerpt">
-			    under Section 202(c) of the Federal Power Act. The orders authorized PJM Interconnection to direct large electricity consumers, primarily the dense cluster of AI and cloud data centers in Northern Virginia, to disconnect from the public grid and run on their own backup generators.
-                    </p>
-                    <div class="read-link">
-                        Enter the story <span aria-hidden="true">→</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Deputy shooting story -->
-            <div class="story-card" onclick="window.location.href='deputy-shooting/index.html'">
-                <div class="card-header"></div>
-                <div class="card-body">
-                    <div class="story-meta">Deputy Shooting Incident</div>
-                    <h2 class="story-title">Deputy Shooting Incident</h2>
-                    <p class="story-excerpt">
-	                Both the suspect and the deputy received prompt medical attention at the scene. The deputy’s minor injuries were treated at a local hospital.
-			The suspect remains in critical condition as of the latest update.
-                    </p>
-                    <div class="read-link">
-                        Enter the story <span aria-hidden="true">→</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Robberty story -->
-            <div class="story-card" onclick="window.location.href='robbery-story/index.html'">
-                <div class="card-header"></div>
-                <div class="card-body">
-                    <div class="story-meta">Robbery & Broken Windows</div>
-                    <h2 class="story-title">Robbery & Broken Windows</h2>
-                    <p class="story-excerpt">
-			Thinking about how can we prevent children turning
-			to crime ahead of time could pay dividends!
-                    </p>
-                    <div class="read-link">
-                        Enter the story <span aria-hidden="true">→</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- fraud patterns 2026 -->
-            <div class="story-card" onclick="window.location.href='fraud-pattern-2026/index.html'">
-                <div class="card-header"></div>
-                <div class="card-body">
-                    <div class="story-meta">Fraud Patterns 2026</div>
-                    <h2 class="story-title">Fraud Patterns 2026</h2>
-                    <p class="story-excerpt">
-			We introspect the patterns of fraud for federal tax dollars
-                    </p>
-                    <div class="read-link">
-                        Enter the story <span aria-hidden="true">→</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Singh -->
-            <div class="story-card" onclick="window.location.href='singh_crash_article/index.html'"> 
-                <div class="card-header"></div>
-                <div class="card-body">
-                    <div class="story-meta">Light sentence for illegal killing four.</div>
-                    <h2 class="story-title">Accountability to taxpayers</h2>
-                    <p class="story-excerpt">
-                        A story to reflect on as it relates to the rights of American Citizens
-                        to be protected from criminals creating unnecessary hazards from those
-                        who should not even physically be in the country to begin with.
-                    </p>
-                    <div class="read-link">
-                        Read the story<span aria-hidden="true">→</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DMT -->
-            <div class="story-card" onclick="window.location.href='dmt.html'">
-                <div class="card-header"></div>
-                <div class="card-body">
-                    <div class="story-meta">DOCUMENTARY • PHILOSOPHICAL</div>
-                    <h2 class="story-title">Use the Source, Luke</h2>
-                    <p class="story-excerpt">
-                        An 18-minute conceptual web documentary exploring the DMT glyph hypothesis — 
-                        visible language, objective information, and what it would actually take to decode it.
-                    </p>
-                    <div class="read-link">
-                        Enter the documentary <span aria-hidden="true">→</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Personal Setup -->
-            <div class="story-card" onclick="window.location.href='personal-setup-story.html'">
-                <div class="card-header"></div>
-                <div class="card-body">
-                    <div class="story-meta">PERSONAL • PRACTICAL</div>
-                    <h2 class="story-title">From 21 Screens to Bed Fort</h2>
-                    <p class="story-excerpt">
-                        A Texas A&M computer nerd retires and slashes power consumption from 21 always-on LCDs 
-                        to a minimalist dual-iPhone rig because PG&E rates hit $0.50/kWh.
-                    </p>
-                    <div class="read-link">
-                        Read the story <span aria-hidden="true">→</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PG&E -->
-            <div class="story-card" onclick="window.location.href='pge-care-factual-story.html'">
-                <div class="card-header"></div>
-                <div class="card-body">
-                    <div class="story-meta">FACTUAL • EXPERT MODE</div>
-                    <h2 class="story-title">The Quiet Overcharge</h2>
-                    <p class="story-excerpt">
-                        Documented cases of PG&E CARE discount failures, system errors, and mass wrongful 
-                        disenrollments. Sourced analysis of how low-income customers get overcharged.
-                    </p>
-                    <div class="read-link">
-                        Read the analysis <span aria-hidden="true">→</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sinners -->
-            <div class="story-card" onclick="window.location.href='sinners-on-operation-no-fly-zone.html'">
-                <div class="card-header"></div>
-                <div class="card-body">
-                    <div class="story-meta">NARRATIVE NON-FICTION • LOCAL</div>
-                    <h2 class="story-title">Sinners on Operation No Fly Zone</h2>
-                    <p class="story-excerpt">
-                        Local law enforcement success against gangs and trafficking in Fresno, 
-                        set against state-level scrutiny and rising federal enforcement in the Central Valley.
-                    </p>
-                    <div class="read-link">
-                        Read the narrative <span aria-hidden="true">→</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <footer>
-            High Tower District • Fresno, California • July 2026<br>
-            <span style="opacity:0.6">Part of the letters ecosystem • aaHigh/stories</span>
-        </footer>
+  <!-- Header -->
+  <header class="border-b border-white/5">
+    <div class="max-w-5xl mx-auto px-5 py-8 sm:py-10">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="w-8 h-8 rounded bg-[#f4c95d] flex items-center justify-center text-black font-bold text-sm font-display">HT</span>
+        <span class="text-xs tracking-widest uppercase text-[#f4c95d]/High Tower District</span>
+      </div>
+      <h1 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white mb-2">STORIES</h1>
+      <p class="text-[#aaa] text-base sm:text-lg max-w-xl leading-relaxed">
+        From the bed fort · Fresno, CA · 2026<br>
+        <span class="text-sm">Focused pieces on building, systems, local reality, and the edges of experience.</span>
+      </p>
     </div>
+  </header>
 
-    <script>
-        // Canvas background animation
-        const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d');
-        
-        let w, h, lines = [];
-        
-        function resize() {
-            w = canvas.width = window.innerWidth;
-            h = canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resize);
-        resize();
+  <!-- Stories Grid -->
+  <main class="max-w-5xl mx-auto px-5 py-10 sm:py-14">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
-        class MovingLine {
-            constructor() { this.reset(); }
-            reset() {
-                this.x = Math.random() * w;
-                this.y = Math.random() * h * 1.2;
-                this.length = 40 + Math.random() * 110;
-                this.speed = 0.12 + Math.random() * 0.28;
-                this.alpha = 0.04 + Math.random() * 0.07;
-            }
-            update() {
-                this.y += this.speed;
-                if (this.y > h + 80) this.reset();
-            }
-            draw() {
-                ctx.strokeStyle = `rgba(244, 201, 93, ${this.alpha})`;
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                ctx.moveTo(this.x, this.y);
-                ctx.lineTo(this.x, this.y - this.length);
-                ctx.stroke();
-            }
-        }
+      <!-- New story first -->
+      <a href="tt-april1/" class="story-card block bg-[#141414] border border-white/10 rounded-2xl overflow-hidden">
+        <div class="accent-bar h-1.5"></div>
+        <div class="p-5">
+          <div class="text-[11px] tracking-wider uppercase text-[#f4c95d] mb-2">AI Trust · July 29 2026</div>
+          <h2 class="font-display text-lg font-semibold text-white mb-2 leading-snug">Trusting Trust in the Age of Agents</h2>
+          <p class="text-sm text-[#999] leading-relaxed mb-4">The April 1 observation meets OpenAI’s sandbox escape. Opportunistic leaps confirm Ken Thompson’s warning.</p>
+          <span class="text-[#f4c95d] text-sm font-medium">Read the story →</span>
+        </div>
+      </a>
 
-        for (let i = 0; i < 26; i++) {
-            lines.push(new MovingLine());
-        }
+      <a href="hightower-derivative/" class="story-card block bg-[#141414] border border-white/10 rounded-2xl overflow-hidden">
+        <div class="accent-bar h-1.5"></div>
+        <div class="p-5">
+          <div class="text-[11px] tracking-wider uppercase text-[#f4c95d] mb-2">Philosophy · Core</div>
+          <h2 class="font-display text-lg font-semibold text-white mb-2 leading-snug">The Hightower Derivative</h2>
+          <p class="text-sm text-[#999] leading-relaxed mb-4">AI cognition rate change as a second-order derivative. Context, identity, and the acceleration curve.</p>
+          <span class="text-[#f4c95d] text-sm font-medium">Read the story →</span>
+        </div>
+      </a>
 
-        let last = 0;
-        function loop(ts = 0) {
-            if (ts - last > 16) {
-                last = ts;
-                ctx.clearRect(0, 0, w, h);
-                lines.forEach(line => {
-                    line.update();
-                    line.draw();
-                });
-            }
-            requestAnimationFrame(loop);
-        }
-        loop();
-    </script>
+      <a href="battery-commodity-scale/" class="story-card block bg-[#141414] border border-white/10 rounded-2xl overflow-hidden">
+        <div class="accent-bar h-1.5"></div>
+        <div class="p-5">
+          <div class="text-[11px] tracking-wider uppercase text-[#f4c95d] mb-2">Systems</div>
+          <h2 class="font-display text-lg font-semibold text-white mb-2 leading-snug">Battery Commodity Scale</h2>
+          <p class="text-sm text-[#999] leading-relaxed mb-4">Change the form of the energy — make it a physical, standardized, movable asset — and the entire supply chain opens up.</p>
+          <span class="text-[#f4c95d] text-sm font-medium">Read the story →</span>
+        </div>
+      </a>
+
+      <a href="avp-perspective-lab/" class="story-card block bg-[#141414] border border-white/10 rounded-2xl overflow-hidden">
+        <div class="accent-bar h-1.5"></div>
+        <div class="p-5">
+          <div class="text-[11px] tracking-wider uppercase text-[#f4c95d] mb-2">Spatial · Lab</div>
+          <h2 class="font-display text-lg font-semibold text-white mb-2 leading-snug">Apple Vision Perspective Lab</h2>
+          <p class="text-sm text-[#999] leading-relaxed mb-4">Spatial anamorphosis & projection mapping. Pre-warp for complex 3D surfaces so the work “pops” from the right spot.</p>
+          <span class="text-[#f4c95d] text-sm font-medium">Enter the laboratory →</span>
+        </div>
+      </a>
+
+      <a href="ai-grid-tower-district-0726/" class="story-card block bg-[#141414] border border-white/10 rounded-2xl overflow-hidden">
+        <div class="accent-bar h-1.5"></div>
+        <div class="p-5">
+          <div class="text-[11px] tracking-wider uppercase text-[#f4c95d] mb-2">Infrastructure</div>
+          <h2 class="font-display text-lg font-semibold text-white mb-2 leading-snug">AI Grid SHUT DOWN!</h2>
+          <p class="text-sm text-[#999] leading-relaxed mb-4">Federal Power Act orders for AI data centers. Local implications for the grid and the Tower District.</p>
+          <span class="text-[#f4c95d] text-sm font-medium">Read the analysis →</span>
+        </div>
+      </a>
+
+      <a href="deputy-shooting/" class="story-card block bg-[#141414] border border-white/10 rounded-2xl overflow-hidden">
+        <div class="accent-bar h-1.5"></div>
+        <div class="p-5">
+          <div class="text-[11px] tracking-wider uppercase text-[#f4c95d] mb-2">Local · Crime Watch</div>
+          <h2 class="font-display text-lg font-semibold text-white mb-2 leading-snug">Deputy Shooting Incident</h2>
+          <p class="text-sm text-[#999] leading-relaxed mb-4">Both received prompt medical attention. The deputy’s injuries were minor. The suspect remains critical.</p>
+          <span class="text-[#f4c95d] text-sm font-medium">Read the story →</span>
+        </div>
+      </a>
+
+      <a href="robbery-story/" class="story-card block bg-[#141414] border border-white/10 rounded-2xl overflow-hidden">
+        <div class="accent-bar h-1.5"></div>
+        <div class="p-5">
+          <div class="text-[11px] tracking-wider uppercase text-[#f4c95d] mb-2">Local</div>
+          <h2 class="font-display text-lg font-semibold text-white mb-2 leading-snug">Robbery & Broken Windows</h2>
+          <p class="text-sm text-[#999] leading-relaxed mb-4">Crime prevention for at-risk youth and the practical geometry of broken windows in the District.</p>
+          <span class="text-[#f4c95d] text-sm font-medium">Read the story →</span>
+        </div>
+      </a>
+
+      <a href="fraud-pattern-2026/" class="story-card block bg-[#141414] border border-white/10 rounded-2xl overflow-hidden">
+        <div class="accent-bar h-1.5"></div>
+        <div class="p-5">
+          <div class="text-[11px] tracking-wider uppercase text-[#f4c95d] mb-2">Analysis</div>
+          <h2 class="font-display text-lg font-semibold text-white mb-2 leading-snug">Fraud Patterns 2026</h2>
+          <p class="text-sm text-[#999] leading-relaxed mb-4">Federal tax fraud patterns and the systems that either catch them or let them run.</p>
+          <span class="text-[#f4c95d] text-sm font-medium">Read the analysis →</span>
+        </div>
+      </a>
+
+      <a href="singh_crash_article/" class="story-card block bg-[#141414] border border-white/10 rounded-2xl overflow-hidden">
+        <div class="accent-bar h-1.5"></div>
+        <div class="p-5">
+          <div class="text-[11px] tracking-wider uppercase text-[#f4c95d] mb-2">Accountability</div>
+          <h2 class="font-display text-lg font-semibold text-white mb-2 leading-snug">Light Sentence for Illegal Killing Four</h2>
+          <p class="text-sm text-[#999] leading-relaxed mb-4">Immigration, public safety, and what “accountability to taxpayers” actually requires.</p>
+          <span class="text-[#f4c95d] text-sm font-medium">Read the piece →</span>
+        </div>
+      </a>
+
+      <a href="dmt.html" class="story-card block bg-[#141414] border border-white/10 rounded-2xl overflow-hidden">
+        <div class="accent-bar h-1.5"></div>
+        <div class="p-5">
+          <div class="text-[11px] tracking-wider uppercase text-[#f4c95d] mb-2">Documentary · Philosophical</div>
+          <h2 class="font-display text-lg font-semibold text-white mb-2 leading-snug">Use the Source, Luke</h2>
+          <p class="text-sm text-[#999] leading-relaxed mb-4">An 18-minute conceptual web documentary on the DMT glyph hypothesis, visible language, and decoding.</p>
+          <span class="text-[#f4c95d] text-sm font-medium">Enter the documentary →</span>
+        </div>
+      </a>
+
+      <a href="personal-setup-story.html" class="story-card block bg-[#141414] border border-white/10 rounded-2xl overflow-hidden">
+        <div class="accent-bar h-1.5"></div>
+        <div class="p-5">
+          <div class="text-[11px] tracking-wider uppercase text-[#f4c95d] mb-2">Personal · Practical</div>
+          <h2 class="font-display text-lg font-semibold text-white mb-2 leading-snug">From 21 Screens to Bed Fort</h2>
+          <p class="text-sm text-[#999] leading-relaxed mb-4">A Texas A&M computer nerd retires and slashes power from 21 always-on LCDs to a dual-iPhone rig at $0.50/kWh.</p>
+          <span class="text-[#f4c95d] text-sm font-medium">Read the story →</span>
+        </div>
+      </a>
+
+      <a href="pge-care-factual-story.html" class="story-card block bg-[#141414] border border-white/10 rounded-2xl overflow-hidden">
+        <div class="accent-bar h-1.5"></div>
+        <div class="p-5">
+          <div class="text-[11px] tracking-wider uppercase text-[#f4c95d] mb-2">Factual · Expert</div>
+          <h2 class="font-display text-lg font-semibold text-white mb-2 leading-snug">The Quiet Overcharge</h2>
+          <p class="text-sm text-[#999] leading-relaxed mb-4">PG&E billing realities and the CARE program as seen from the meter and the bill.</p>
+          <span class="text-[#f4c95d] text-sm font-medium">Read the analysis →</span>
+        </div>
+      </a>
+
+      <a href="sinners-on-operation-no-fly-zone/" class="story-card block bg-[#141414] border border-white/10 rounded-2xl overflow-hidden">
+        <div class="accent-bar h-1.5"></div>
+        <div class="p-5">
+          <div class="text-[11px] tracking-wider uppercase text-[#f4c95d] mb-2">Narrative Non-Fiction · Local</div>
+          <h2 class="font-display text-lg font-semibold text-white mb-2 leading-snug">Sinners on Operation No Fly Zone</h2>
+          <p class="text-sm text-[#999] leading-relaxed mb-4">Local law-enforcement narrative and the operational texture of the District.</p>
+          <span class="text-[#f4c95d] text-sm font-medium">Read the story →</span>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/5 mt-8">
+    <div class="max-w-5xl mx-auto px-5 py-8 text-center text-sm text-[#666]">
+      <p class="mb-1">High Tower District · Fresno, California · 2026</p>
+      <p>Stories · letters ecosystem · <a href="https://github.com/AaHigh/stories" class="text-[#f4c95d] hover:underline">AaHigh/stories</a></p>
+    </div>
+  </footer>
+
 </body>
 </html>
