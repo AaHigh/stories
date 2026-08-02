@@ -164,8 +164,23 @@
         IV. Interlude — The Track
       </h2>
       <p class="text-slate-600 mb-6">
-        The following lyrics were written to be rendered by Suno as a Hypnagogic Trap / Dystopian Lullaby piece. The finished audio file is intended to replace the placeholder below.
+        The following lyrics were written for Suno and rendered as a Hypnagogic Trap / Dystopian Lullaby piece. Play the finished track below.
       </p>
+
+      <!-- Audio Player -->
+      <div class="bg-slate-900 rounded-xl p-5 md:p-6 mb-8 shadow-lg">
+        <audio id="spinAudio" controls playsinline preload="metadata" class="w-full mb-3">
+          <source src="spin-signal.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <div class="flex items-center justify-between text-sm text-slate-400">
+          <span>The Spin Signal</span>
+          <span>High Tower District</span>
+        </div>
+        <p class="text-xs text-slate-500 mt-3 text-center">
+          On iPhone: start playback, then lock the screen. Lock-screen controls and continued play work best after the track has begun.
+        </p>
+      </div>
       
       <div class="lyrics-block text-slate-100 p-6 md:p-8 rounded-lg mb-6 font-mono text-sm leading-relaxed whitespace-pre-wrap">[Style: Hypnagogic Trap, Dystopian Lullaby, Underground Fresno Grit, cinematic orchestral swell, deep 808s, ethereal female and male dual vocals, slow build to ecstatic release]
 
@@ -238,12 +253,6 @@ And the chemicals say
 You can die happy now
 
 [End]</div>
-
-      <div class="bg-slate-100 border border-slate-300 rounded-lg p-6 text-center">
-        <p class="text-slate-500 text-sm uppercase tracking-widest mb-2">Audio Placeholder</p>
-        <p class="font-mono text-slate-700 text-lg">spin-signal.mp3</p>
-        <p class="text-slate-500 text-sm mt-2">Replace this placeholder with the finished Suno track generated from the lyrics above.</p>
-      </div>
     </section>
 
     <!-- Chapter 5 -->
@@ -288,11 +297,8 @@ You can die happy now
 
     <!-- Footer note -->
     <section class="border-t border-slate-200 pt-10 text-sm text-slate-500">
-      <p class="mb-4">
-        This transmission was assembled from a single extended conversation on the nature of discovery, hyperbolic modeling, and the search for a meme large enough to contain the ultimate epiphany. It is offered as a High Tower District story in the expanded format appropriate to philosophical and speculative subjects.
-      </p>
       <p>
-        Lyrics prepared for Suno generation. Audio file <code class="bg-slate-100 px-1 rounded">spin-signal.mp3</code> is the intended companion track.
+        This transmission was assembled from a single extended conversation on the nature of discovery, hyperbolic modeling, and the search for a meme large enough to contain the ultimate epiphany. It is offered as a High Tower District story in the expanded format appropriate to philosophical and speculative subjects.
       </p>
     </section>
 
@@ -305,6 +311,27 @@ You can die happy now
       <p>Fresno · California · 2026</p>
     </div>
   </footer>
+
+  <script>
+    // Media Session for lock-screen controls and better background behavior
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: 'The Spin Signal',
+        artist: 'High Tower District',
+        album: 'Hyperbolic Transmissions',
+        artwork: [
+          { src: 'images/preview.jpg', sizes: '1176x784', type: 'image/jpeg' }
+        ]
+      });
+
+      // Optional: wire play/pause to the actual audio element
+      const audio = document.getElementById('spinAudio');
+      if (audio) {
+        navigator.mediaSession.setActionHandler('play', () => audio.play());
+        navigator.mediaSession.setActionHandler('pause', () => audio.pause());
+      }
+    }
+  </script>
 
 </body>
 </html>
