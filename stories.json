@@ -1,0 +1,263 @@
+{
+  "site": {
+    "pageTitle": "HIGH TOWER DISTRICT • STORIES",
+    "description": "Stories from the bed fort · Fresno, CA · 2026. Philosophy, systems, local reality, and the edges of experience.",
+    "ogTitle": "HIGH TOWER DISTRICT • STORIES",
+    "ogDescription": "From the bed fort · Fresno, CA · 2026. Philosophy, systems, local reality, and the edges of experience.",
+    "ogUrl": "https://stories.ahightower.com/",
+    "ogImage": "https://stories.ahightower.com/images/ht-stories-preview.jpg",
+    "themeColor": "#080018",
+    "appleTitle": "STORIES"
+  },
+  "header": {
+    "title": "HIGH TOWER DISTRICT",
+    "subtitle": "STORIES · FRESNO · 2026",
+    "tagline": "Focused pieces on building, systems, local reality, and the edges of experience. Written from a 12×12 room with two iPhones on magnets."
+  },
+  "footer": {
+    "links": [
+      {
+        "text": "ahightower.com",
+        "href": "https://ahightower.com"
+      },
+      {
+        "text": "github.com/AaHigh/stories",
+        "href": "https://github.com/AaHigh/stories"
+      }
+    ],
+    "credit": "HIGH TOWER DISTRICT · FRESNO CA · 2026"
+  },
+  "sections": [
+    {
+      "title": "Philosophy & Cognition",
+      "stories": [
+        {
+          "href": "hightower-derivative/",
+          "category": "Core",
+          "title": "The Hightower Derivative",
+          "description": "AI is not merely changing the content of human thought. It is changing the rate at which human cognition itself bends. Second-order derivative. No control population exists.",
+          "arrow": "read →"
+        },
+        {
+          "href": "trusting-trust-april1/",
+          "category": "Core",
+          "title": "Trusting Trust in the Age of Agents",
+          "description": "The April 1 observation meets OpenAI’s sandbox escape. Opportunistic leaps confirm Ken Thompson’s warning.",
+          "arrow": "read →"
+        },
+        {
+          "href": "rate-first/",
+          "category": "Measurement",
+          "title": "Measurement First",
+          "description": "The open-weights debate is the Facebook playbook applied to cognition. Measurement of the Hightower Derivative comes first. Power to people for their humanity.",
+          "arrow": "read →"
+        },
+        {
+          "href": "path-signal/",
+          "category": "Signal",
+          "title": "The Path Is the Signal",
+          "description": "AI does not destroy independent thought by removing choice. It risks making the human decision trajectory invisible.",
+          "arrow": "read →"
+        },
+        {
+          "href": "spin-signal/",
+          "category": "Narrative",
+          "title": "The Spin Signal",
+          "description": "A hyperbolic narrative of the ultimate epiphany. One discovery that collapses time, reverses the swirl, and proves we can still see the path.",
+          "arrow": "read →"
+        }
+      ]
+    },
+    {
+      "title": "AI Systems & Containment",
+      "stories": [
+        {
+          "href": "april1-flag/",
+          "category": "Safety · Harnesses",
+          "title": "AI & Containment",
+          "description": "On April 1 2026 the same day Anthropic leaked its agent harness, the question was whether the model itself raised the flag.",
+          "arrow": "read →"
+        },
+        {
+          "href": "ai-abund/",
+          "category": "Abundance",
+          "title": "Age of Abundance & AI",
+          "description": "People fear AI will take jobs and leave us poor. The counterintuitive truth is the opposite: massive productivity creates surplus.",
+          "arrow": "read →"
+        },
+        {
+          "href": "ai-grid-tower-district-0726/",
+          "category": "Infrastructure",
+          "title": "AI Grid SHUT DOWN!",
+          "description": "Federal Power Act orders for AI data centers. Local implications for the grid and the Tower District.",
+          "arrow": "read →"
+        },
+        {
+          "href": "mandami-ai/",
+          "category": "Parallel Playbooks",
+          "title": "From Mandami to the Machine",
+          "description": "Japanese American redress → Black reparations task forces → NYC cash talks amid deficit. Meanwhile AI data centers light up.",
+          "arrow": "read →"
+        },
+        {
+          "href": "vis-grid/",
+          "category": "Interface",
+          "title": "What Influence Doth Thou Have?",
+          "description": "At the top level of AI exploration, unlimited visual choice grids maximize data into the human brain while minimizing the interface tax.",
+          "arrow": "read →"
+        }
+      ]
+    },
+    {
+      "title": "Local District Reality",
+      "stories": [
+        {
+          "href": "deputy-shooting/",
+          "category": "Crime Watch",
+          "title": "Deputy Shooting Incident",
+          "description": "Both the suspect and the deputy received prompt medical attention at the scene. The deputy’s injuries were minor. The suspect remains critical.",
+          "arrow": "read →"
+        },
+        {
+          "href": "d3-hatchet/",
+          "category": "District 3",
+          "title": "0.8 Miles From Home",
+          "description": "Morning of August 3, 2026. A man chopped with a hatchet at Belmont and Effie. Exactly 0.78 miles from the door in the Tower District.",
+          "arrow": "read →"
+        },
+        {
+          "href": "robbery-story/",
+          "category": "Local",
+          "title": "Robbery & Broken Windows",
+          "description": "Crime prevention for at-risk youth and the practical geometry of broken windows in the District.",
+          "arrow": "read →"
+        },
+        {
+          "href": "sinners-on-operation-no-fly-zone.html",
+          "category": "Narrative Non-Fiction",
+          "title": "Sinners on Operation No Fly Zone",
+          "description": "Local law-enforcement narrative and the operational texture of the District.",
+          "arrow": "read →"
+        },
+        {
+          "href": "singh_crash_article/",
+          "category": "Accountability",
+          "title": "Light Sentence for Illegal Killing Four",
+          "description": "Immigration, public safety, and what accountability to taxpayers actually requires.",
+          "arrow": "read →"
+        },
+        {
+          "href": "fraud-pattern-2026/",
+          "category": "Analysis",
+          "title": "Fraud Patterns 2026",
+          "description": "Federal tax fraud patterns and the systems that either catch them or let them run.",
+          "arrow": "read →"
+        },
+        {
+          "href": "engage-cost/",
+          "category": "Engagement",
+          "title": "The Real Cost of Engagement",
+          "description": "Rare acts of vandalism become “civic duty” inside Facebook’s engagement machine. One arrest in Monterey County reveals the cost.",
+          "arrow": "read →"
+        }
+      ]
+    },
+    {
+      "title": "Personal & Practical Systems",
+      "stories": [
+        {
+          "href": "personal-setup-story.html",
+          "category": "Bed Fort",
+          "title": "From 21 Screens to Bed Fort",
+          "description": "A Texas A&M computer nerd retires and slashes power consumption from 21 always-on LCDs to a minimalist dual-iPhone rig because PG&E rates hit $0.50/kWh.",
+          "arrow": "read →"
+        },
+        {
+          "href": "pge-care-factual-story.html",
+          "category": "Utility",
+          "title": "The Quiet Overcharge",
+          "description": "PG&E billing realities and the CARE program as seen from the meter and the bill.",
+          "arrow": "read →"
+        },
+        {
+          "href": "hot-shelf-0726/",
+          "category": "Thermal",
+          "title": "The Hot Shelf",
+          "description": "On a dry July day in the Tower District, the difference between a 99° peak and a 101° peak is not cosmetic. It changes survival strategy.",
+          "arrow": "read →"
+        },
+        {
+          "href": "ghost-bike/",
+          "category": "Operations",
+          "title": "Bike Ghost Kitchen",
+          "description": "A practical, low-overhead path to starting a delivery-only kitchen in Fresno’s Tower District with cargo bikes and tight margins.",
+          "arrow": "read →"
+        },
+        {
+          "href": "battery-commodity-scale/",
+          "category": "Systems",
+          "title": "Battery Commodity Scale",
+          "description": "Change the form of the energy — make it a physical, standardized, movable asset — and the entire supply chain opens up.",
+          "arrow": "read →"
+        }
+      ]
+    },
+    {
+      "title": "Spatial · Patent · Lab",
+      "stories": [
+        {
+          "href": "vrpatent/",
+          "category": "US8992318B2",
+          "title": "Nanoseconds from “Really There”",
+          "description": "How one architecture removed the last major friction between the user and true presence in virtual reality.",
+          "arrow": "read →"
+        },
+        {
+          "href": "avp-perspective-lab/",
+          "category": "Spatial Lab",
+          "title": "Apple Vision Perspective Lab",
+          "description": "Spatial anamorphosis and projection mapping. Pre-warp for complex 3D surfaces so the work pops from the right spot.",
+          "arrow": "enter lab →"
+        }
+      ]
+    },
+    {
+      "title": "Narrative & Experience",
+      "stories": [
+        {
+          "href": "dmt.html",
+          "category": "Documentary",
+          "title": "Use the Source, Luke",
+          "description": "An 18-minute conceptual web documentary on the DMT glyph hypothesis, visible language, and decoding.",
+          "arrow": "enter documentary →"
+        },
+        {
+          "href": "moon-tune/",
+          "category": "Lunar",
+          "title": "What Influence Doth Thou Have?",
+          "description": "Practical lunar awareness for Fresno and the Central Valley: when the full moon gives you cooler night hours and better photo windows.",
+          "arrow": "read →"
+        },
+        {
+          "href": "chip-dip-helix/",
+          "category": "Augmented",
+          "title": "The Double Helix of High Tower Dip",
+          "description": "Tillamook Sharp Cheddar + Taco Works chips form the DNA foundation of the best chip-and-dip combo. Now augmented.",
+          "arrow": "read →"
+        },
+        {
+          "href": "deli-pizza/",
+          "category": "Kitchen",
+          "title": "From Italian Deli Dough to Plate",
+          "description": "How to make pizza at home with dough from the Italian deli — sauce, two cheeses, home oven. Full photo sequence.",
+          "arrow": "read →"
+        }
+      ]
+    }
+  ],
+  "_meta": {
+    "purpose": "Content parameters for the High Tower District Stories index. Edit this file for content changes. The index.html holds styles and presentation logic only.",
+    "lastExtracted": "2026-08-04",
+    "storyCount": 28
+  }
+}

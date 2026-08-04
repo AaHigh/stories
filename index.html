@@ -236,6 +236,19 @@
       color: var(--cyan);
     }
 
+    /* Loading / error states */
+    .status {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+    }
+    .status.error {
+      color: var(--orange);
+    }
+
     /* Mobile tweaks */
     @media (max-width: 420px) {
       .cycle-title { font-size: 1.35rem; }
@@ -244,84 +257,107 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1 class="cycle-title" style="font-size: clamp(1.4rem, 5vw, 1.85rem);">
-      HIGH TOWER DISTRICT
-    </h1>
-    <div class="sub">STORIES · FRESNO · 2026</div>
-    <p class="tagline">
-      Focused pieces on building, systems, local reality, and the edges of experience.
-      Written from a 12×12 room with two iPhones on magnets.
-    </p>
+  <header id="site-header">
+    <!-- Populated from stories.json -->
   </header>
 
   <div class="wrap">
+    <div id="content">
+      <div class="status">loading stories…</div>
+    </div>
 
-    <!-- ══════════════════════════════════════ -->
-    <section>
-      <div class="section-title">Philosophy &amp; Cognition</div>
-      <div class="grid">
+    <footer id="site-footer">
+      <!-- Populated from stories.json -->
+    </footer>
+  </div>
 
-        <a href="hightower-derivative/" class="story-card led-border">
-          <div class="cat-label">Core</div>
-          <h3>The Hightower Derivative</h3>
-          <p>AI is not merely changing the content of human thought. It is changing the rate at which human cognition itself bends. Second-order derivative. No control population exists.</p>
-          <span class="arrow">read →</span>
-        </a>
+  <script>
+    // Presentation engine. Content lives in stories.json.
+    // Agents edit the JSON for content; this file owns styles + render logic.
+    (async function () {
+      const contentEl = document.getElementById('content');
+      const headerEl = document.getElementById('site-header');
+      const footerEl = document.getElementById('site-footer');
 
-        <a href="trusting-trust-april1/" class="story-card led-border">
-          <div class="cat-label">Core</div>
-          <h3>Trusting Trust in the Age of Agents</h3>
-          <p>The April 1 observation meets OpenAI’s sandbox escape. Opportunistic leaps confirm Ken Thompson’s warning.</p>
-          <span class="arrow">read →</span>
-        </a>
+      try {
+        const res = await fetch('./stories.json', { cache: 'no-cache' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
 
-        <a href="rate-first/" class="story-card led-border">
-          <div class="cat-label">Measurement</div>
-          <h3>Measurement First</h3>
-          <p>The open-weights debate is the Facebook playbook applied to cognition. Measurement of the Hightower Derivative comes first. Power to people for their humanity.</p>
-          <span class="arrow">read →</span>
-        </a>
+        // Optional: keep head meta in sync if JSON changes
+        if (data.site) {
+          if (data.site.pageTitle) document.title = data.site.pageTitle;
+          const desc = document.querySelector('meta[name="description"]');
+          if (desc && data.site.description) desc.setAttribute('content', data.site.description);
+        }
 
-        <a href="path-signal/" class="story-card led-border">
-          <div class="cat-label">Signal</div>
-          <h3>The Path Is the Signal</h3>
-          <p>AI does not destroy independent thought by removing choice. It risks making the human decision trajectory invisible.</p>
-          <span class="arrow">read →</span>
-        </a>
+        // Header
+        if (data.header) {
+          headerEl.innerHTML = `
+            <h1 class="cycle-title" style="font-size: clamp(1.4rem, 5vw, 1.85rem);">
+              ${esc(data.header.title)}
+            </h1>
+            <div class="sub">${esc(data.header.subtitle)}</div>
+            <p class="tagline">${esc(data.header.tagline)}</p>
+          `;
+        }
 
-        <a href="spin-signal/" class="story-card led-border">
-          <div class="cat-label">Narrative</div>
-          <h3>The Spin Signal</h3>
-          <p>A hyperbolic narrative of the ultimate epiphany. One discovery that collapses time, reverses the swirl, and proves we can still see the path.</p>
-          <span class="arrow">read →</span>
-        </a>
+        // Sections + cards
+        let html = '';
+        for (const section of (data.sections || [])) {
+          html += `
+            <section>
+              <div class="section-title">${esc(section.title)}</div>
+              <div class="grid">
+          `;
+          for (const story of (section.stories || [])) {
+            html += `
+              <a href="${escAttr(story.href)}" class="story-card led-border">
+                <div class="cat-label">${esc(story.category)}</div>
+                <h3>${esc(story.title)}</h3>
+                <p>${esc(story.description)}</p>
+                <span class="arrow">${esc(story.arrow || 'read →')}</span>
+              </a>
+            `;
+          }
+          html += `
+              </div>
+            </section>
+          `;
+        }
+        contentEl.innerHTML = html || '<div class="status">No stories found in data.</div>';
 
-      </div>
-    </section>
+        // Footer
+        if (data.footer) {
+          const links = (data.footer.links || [])
+            .map(l => `<a href="${escAttr(l.href)}">${esc(l.text)}</a>`)
+            .join(' · ');
+          footerEl.innerHTML = `
+            <p>${links}</p>
+            <p style="margin-top:0.5rem; opacity:0.7;">${esc(data.footer.credit || '')}</p>
+          `;
+        }
+      } catch (err) {
+        console.error(err);
+        contentEl.innerHTML = `<div class="status error">Failed to load stories.json<br>${esc(String(err.message || err))}</div>`;
+      }
 
-    <!-- ══════════════════════════════════════ -->
-    <section>
-      <div class="section-title">AI Systems &amp; Containment</div>
-      <div class="grid">
-
-        <a href="april1-flag/" class="story-card led-border">
-          <div class="cat-label">Safety · Harnesses</div>
-          <h3>AI &amp; Containment</h3>
-          <p>On April 1 2026 the same day Anthropic leaked its agent harness, the question was whether the model itself raised the flag.</p>
-          <span class="arrow">read →</span>
-        </a>
-
-        <a href="ai-abund/" class="story-card led-border">
-          <div class="cat-label">Abundance</div>
-          <h3>Age of Abundance &amp; AI</h3>
-          <p>People fear AI will take jobs and leave us poor. The counterintuitive truth is the opposite: massive productivity creates surplus.</p>
-          <span class="arrow">read →</span>
-        </a>
-
-        <a href="ai-grid-tower-district-0726/" class="story-card led-border">
-          <div class="cat-label">Infrastructure</div>
-          <h3>AI Grid SHUT DOWN!</h3>
+      function esc(s) {
+        if (s == null) return '';
+        return String(s)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+      function escAttr(s) {
+        return esc(s).replace(/'/g, '&#39;');
+      }
+    })();
+  </script>
+</body>
+</html>
+id SHUT DOWN!</h3>
           <p>Federal Power Act orders for AI data centers. Local implications for the grid and the Tower District.</p>
           <span class="arrow">read →</span>
         </a>
