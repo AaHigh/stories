@@ -2,219 +2,512 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>HIGH TOWER DISTRICT • STORIES</title>
-  <meta name="description" content="Stories from the bed fort · Fresno, CA · 2026. Focused pieces on building, systems, local reality, and the edges of experience.">
-  
+  <meta name="description" content="Stories from the bed fort · Fresno, CA · 2026. Philosophy, systems, local reality, and the edges of experience.">
   <meta property="og:title" content="HIGH TOWER DISTRICT • STORIES">
-  <meta property="og:description" content="From the bed fort · Fresno, CA · 2026">
+  <meta property="og:description" content="From the bed fort · Fresno, CA · 2026. Philosophy, systems, local reality, and the edges of experience.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://stories.ahightower.com/">
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <meta property="og:image" content="https://aahigh.github.io/aahigh/ahightower.png">
+  <meta name="theme-color" content="#080018">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="STORIES">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    .serif { font-family: 'Playfair Display', serif; }
+    :root {
+      --bg: #080018;
+      --surface: #0e0024;
+      --border: #5500aa;
+      --cyan: #00ffff;
+      --orange: #ff8800;
+      --purple: #aa88ff;
+      --green: #00ff88;
+      --dim: #442266;
+      --text: #e8e0ff;
+      --muted: #9b8bb8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100dvh;
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(85, 0, 170, 0.25), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 100%, rgba(0, 255, 170, 0.06), transparent);
+    }
+
+    /* ── LED / neon utilities ── */
+    .led-border {
+      border: 1px solid var(--border);
+      box-shadow:
+        0 0 0 1px rgba(85, 0, 170, 0.4),
+        0 0 12px rgba(85, 0, 170, 0.25),
+        inset 0 0 20px rgba(85, 0, 170, 0.08);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .led-border:hover {
+      border-color: var(--cyan);
+      box-shadow:
+        0 0 0 1px rgba(0, 255, 255, 0.5),
+        0 0 18px rgba(0, 255, 255, 0.3),
+        0 0 40px rgba(0, 255, 255, 0.12),
+        inset 0 0 24px rgba(0, 255, 255, 0.06);
+    }
+
+    /* Color-cycling title — mirrors ahightower.com hue shift */
+    .cycle-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      background: linear-gradient(
+        90deg,
+        #00ffff,
+        #aa88ff,
+        #ff8800,
+        #00ff88,
+        #00ffff,
+        #aa88ff
+      );
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: hueCycle 8s linear infinite;
+    }
+    @keyframes hueCycle {
+      0%   { background-position: 0% 50%; }
+      100% { background-position: 300% 50%; }
+    }
+
+    /* Subtle LED pulse on category labels */
+    .cat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      text-shadow: 0 0 8px rgba(0, 255, 255, 0.45);
+    }
+
+    .section-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid rgba(85, 0, 170, 0.5);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .section-title::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--orange);
+      border-radius: 1px;
+      box-shadow: 0 0 8px var(--orange);
+      animation: ledPulse 2.4s ease-in-out infinite;
+    }
+    @keyframes ledPulse {
+      0%, 100% { opacity: 0.5; box-shadow: 0 0 4px var(--orange); }
+      50%      { opacity: 1;   box-shadow: 0 0 12px var(--orange), 0 0 20px rgba(255, 136, 0, 0.4); }
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 1px solid var(--cyan); outline-offset: 3px; }
+
+    /* Card */
+    .story-card {
+      background: var(--surface);
+      border-radius: 10px;
+      padding: 1.1rem 1.2rem;
+      display: block;
+      transition: transform 0.2s ease;
+    }
+    .story-card:hover {
+      transform: translateY(-2px);
+    }
+    .story-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin: 0.25rem 0 0.45rem;
+      line-height: 1.3;
+    }
+    .story-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .story-card .arrow {
+      display: inline-block;
+      margin-top: 0.55rem;
+      font-size: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--cyan);
+      opacity: 0.7;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .story-card:hover .arrow {
+      opacity: 1;
+      transform: translateX(3px);
+    }
+
+    /* Layout */
+    .wrap {
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 0 1rem 4rem;
+    }
+
+    header {
+      padding: 2.5rem 1rem 1.8rem;
+      text-align: center;
+      position: relative;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(320px, 80%);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    .sub {
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .tagline {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      max-width: 28rem;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+
+    section {
+      margin-top: 2.2rem;
+    }
+
+    .grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    footer {
+      margin-top: 3.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(85, 0, 170, 0.35);
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--dim);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.06em;
+    }
+    footer a {
+      color: var(--purple);
+    }
+    footer a:hover {
+      color: var(--cyan);
+    }
+
+    /* Mobile tweaks */
+    @media (max-width: 420px) {
+      .cycle-title { font-size: 1.35rem; }
+      .story-card h3 { font-size: 0.98rem; }
+    }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
-
-  <header class="bg-slate-900 text-white py-12 px-4">
-    <div class="max-w-3xl mx-auto">
-      <h1 class="serif text-3xl sm:text-4xl font-bold mb-2">HIGH TOWER DISTRICT • STORIES</h1>
-      <p class="text-slate-300 text-sm sm:text-base">Stories from the bed fort · Fresno, CA · 2026</p>
-      <p class="mt-4 text-slate-400 text-sm max-w-xl">Focused pieces on building, systems, local reality, and the edges of experience. Written from a 12×12 room with two iPhones on magnets.</p>
-    </div>
+<body>
+  <header>
+    <h1 class="cycle-title" style="font-size: clamp(1.4rem, 5vw, 1.85rem);">
+      HIGH TOWER DISTRICT
+    </h1>
+    <div class="sub">STORIES · FRESNO · 2026</div>
+    <p class="tagline">
+      Focused pieces on building, systems, local reality, and the edges of experience.
+      Written from a 12×12 room with two iPhones on magnets.
+    </p>
   </header>
 
-  <main class="max-w-3xl mx-auto px-4 py-10">
-    <div class="space-y-6">
+  <div class="wrap">
 
-      <!-- NEW -->
-      <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md transition">
-        <div class="text-xs font-medium text-blue-800 uppercase tracking-wide mb-1">AI safety :: harnesses </div>
-        <h2 class="serif text-xl font-bold text-slate-900 mb-2">
-          <a href="april1-flag/" class="hover:text-blue-800">AI & containment</a>
-        </h2>
-        <p class="text-slate-600 text-sm leading-relaxed">
-Story about AI escaping, and stuff...
-</p>
-        <a href="april1-flag" class="inline-block mt-3 text-sm font-medium text-blue-700 hover:underline">Read the story →</a>
-      </article>
+    <!-- ══════════════════════════════════════ -->
+    <section>
+      <div class="section-title">Philosophy &amp; Cognition</div>
+      <div class="grid">
 
-      <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md transition">
-        <div class="text-xs font-medium text-blue-800 uppercase tracking-wide mb-1">Maximizing AI for UI</div>
-        <h2 class="serif text-xl font-bold text-slate-900 mb-2">
-          <a href="ai-abund/" class="hover:text-blue-800">Age of abundance & AI</a>
-        </h2>
-        <p class="text-slate-600 text-sm leading-relaxed">
-Story about the age of abundance and AI
-</p>
-        <a href="ai-abund/" class="inline-block mt-3 text-sm font-medium text-blue-700 hover:underline">Read the story →</a>
-      </article>
+        <a href="hightower-derivative/" class="story-card led-border">
+          <div class="cat-label">Core</div>
+          <h3>The Hightower Derivative</h3>
+          <p>AI is not merely changing the content of human thought. It is changing the rate at which human cognition itself bends. Second-order derivative. No control population exists.</p>
+          <span class="arrow">read →</span>
+        </a>
 
-      <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md transition">
-        <div class="text-xs font-medium text-blue-800 uppercase tracking-wide mb-1">Maximizing AI for UI</div>
-        <h2 class="serif text-xl font-bold text-slate-900 mb-2">
-          <a href="vis-grid/" class="hover:text-blue-800">What influence doth thou have?</a>
-        </h2>
-        <p class="text-slate-600 text-sm leading-relaxed">
-Here an idea for AI user interface is discussed.  - Aaron
-</p>
-        <a href="vis-gris/" class="inline-block mt-3 text-sm font-medium text-blue-700 hover:underline">Read the story →</a>
-      </article>
+        <a href="trusting-trust-april1/" class="story-card led-border">
+          <div class="cat-label">Core</div>
+          <h3>Trusting Trust in the Age of Agents</h3>
+          <p>The April 1 observation meets OpenAI’s sandbox escape. Opportunistic leaps confirm Ken Thompson’s warning.</p>
+          <span class="arrow">read →</span>
+        </a>
 
-      <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md transition">
-        <div class="text-xs font-medium text-blue-800 uppercase tracking-wide mb-1">Philosophy · Lunar Phases</div>
-        <h2 class="serif text-xl font-bold text-slate-900 mb-2">
-          <a href="moon-tune/" class="hover:text-blue-800">What influence doth thou have?</a>
-        </h2>
-        <p class="text-slate-600 text-sm leading-relaxed">
-The various phases of the moon as well as the terms "waxing"
-and "waning" are foriegn to many.  We give you a few memory-crutches
-to help you make sense of when the moon can help you stay in tune,
-or even take care of that odd job in the middle of the night!
-</p>
-        <a href="moon-tune/" class="inline-block mt-3 text-sm font-medium text-blue-700 hover:underline">Read the story →</a>
-      </article>
+        <a href="rate-first/" class="story-card led-border">
+          <div class="cat-label">Measurement</div>
+          <h3>Measurement First</h3>
+          <p>The open-weights debate is the Facebook playbook applied to cognition. Measurement of the Hightower Derivative comes first. Power to people for their humanity.</p>
+          <span class="arrow">read →</span>
+        </a>
 
-      <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md transition">
-        <div class="text-xs font-medium text-blue-800 uppercase tracking-wide mb-1">Philosophy · Measurement</div>
-        <h2 class="serif text-xl font-bold text-slate-900 mb-2">
-          <a href="rate-first/" class="hover:text-blue-800">Measurement First</a>
-        </h2>
-        <p class="text-slate-600 text-sm leading-relaxed">The open-weights debate is the Facebook playbook applied to cognition. Measurement of the Hightower Derivative comes first. Power to people for their humanity.</p>
-        <a href="rate-first/" class="inline-block mt-3 text-sm font-medium text-blue-700 hover:underline">Read the story →</a>
-      </article>
+        <a href="path-signal/" class="story-card led-border">
+          <div class="cat-label">Signal</div>
+          <h3>The Path Is the Signal</h3>
+          <p>AI does not destroy independent thought by removing choice. It risks making the human decision trajectory invisible.</p>
+          <span class="arrow">read →</span>
+        </a>
 
-      <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md transition">
-        <div class="text-xs font-medium text-blue-800 uppercase tracking-wide mb-1">Philosophy · Core</div>
-        <h2 class="serif text-xl font-bold text-slate-900 mb-2">
-          <a href="hightower-derivative/" class="hover:text-blue-800">The Hightower Derivative</a>
-        </h2>
-        <p class="text-slate-600 text-sm leading-relaxed">AI is not merely changing the content of human thought. It is changing the rate at which human cognition itself bends. Second-order derivative. No control population exists.</p>
-        <a href="hightower-derivative/" class="inline-block mt-3 text-sm font-medium text-blue-700 hover:underline">Read the story →</a>
-      </article>
+        <a href="spin-signal/" class="story-card led-border">
+          <div class="cat-label">Narrative</div>
+          <h3>The Spin Signal</h3>
+          <p>A hyperbolic narrative of the ultimate epiphany. One discovery that collapses time, reverses the swirl, and proves we can still see the path.</p>
+          <span class="arrow">read →</span>
+        </a>
 
-      <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md transition">
-        <div class="text-xs font-medium text-blue-800 uppercase tracking-wide mb-1">Philosophy · Core</div>
-        <h2 class="serif text-xl font-bold text-slate-900 mb-2">
-          <a href="trusting-trust-april1/" class="hover:text-blue-800">Trusting Trust in the Age of Agents</a>
-        </h2>
-        <p class="text-slate-600 text-sm leading-relaxed">The April 1 observation meets OpenAI’s sandbox escape. Opportunistic leaps confirm Ken Thompson’s warning.</p>
-        <a href="trusting-trust-april1/" class="inline-block mt-3 text-sm font-medium text-blue-700 hover:underline">Read the story →</a>
-      </article>
+      </div>
+    </section>
 
-      <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md transition">
-        <div class="text-xs font-medium text-slate-500 uppercase tracking-wide mb-1">Systems</div>
-        <h2 class="serif text-xl font-bold text-slate-900 mb-2">
-          <a href="battery-commodity-scale/" class="hover:text-blue-800">Battery Commodity Scale</a>
-        </h2>
-        <p class="text-slate-600 text-sm leading-relaxed">Change the form of the energy — make it a physical, standardized, movable asset — and the entire supply chain opens up.</p>
-        <a href="battery-commodity-scale/" class="inline-block mt-3 text-sm font-medium text-blue-700 hover:underline">Read the story →</a>
-      </article>
+    <!-- ══════════════════════════════════════ -->
+    <section>
+      <div class="section-title">AI Systems &amp; Containment</div>
+      <div class="grid">
 
-      <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md transition">
-        <div class="text-xs font-medium text-slate-500 uppercase tracking-wide mb-1">Spatial · Lab</div>
-        <h2 class="serif text-xl font-bold text-slate-900 mb-2">
-          <a href="avp-perspective-lab/" class="hover:text-blue-800">Apple Vision Perspective Lab</a>
-        </h2>
-        <p class="text-slate-600 text-sm leading-relaxed">Spatial anamorphosis & projection mapping. Pre-warp for complex 3D surfaces so the work “pops” from the right spot.</p>
-        <a href="avp-perspective-lab/" class="inline-block mt-3 text-sm font-medium text-blue-700 hover:underline">Enter the laboratory →</a>
-      </article>
+        <a href="april1-flag/" class="story-card led-border">
+          <div class="cat-label">Safety · Harnesses</div>
+          <h3>AI &amp; Containment</h3>
+          <p>On April 1 2026 the same day Anthropic leaked its agent harness, the question was whether the model itself raised the flag.</p>
+          <span class="arrow">read →</span>
+        </a>
 
-      <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md transition">
-        <div class="text-xs font-medium text-slate-500 uppercase tracking-wide mb-1">Infrastructure</div>
-        <h2 class="serif text-xl font-bold text-slate-900 mb-2">
-          <a href="ai-grid-tower-district-0726/" class="hover:text-blue-800">AI Grid SHUT DOWN!</a>
-        </h2>
-        <p class="text-slate-600 text-sm leading-relaxed">Federal Power Act orders for AI data centers. Local implications for the grid and the Tower District.</p>
-        <a href="ai-grid-tower-district-0726/" class="inline-block mt-3 text-sm font-medium text-blue-700 hover:underline">Read the analysis →</a>
-      </article>
+        <a href="ai-abund/" class="story-card led-border">
+          <div class="cat-label">Abundance</div>
+          <h3>Age of Abundance &amp; AI</h3>
+          <p>People fear AI will take jobs and leave us poor. The counterintuitive truth is the opposite: massive productivity creates surplus.</p>
+          <span class="arrow">read →</span>
+        </a>
 
-      <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md transition">
-        <div class="text-xs font-medium text-slate-500 uppercase tracking-wide mb-1">Local · Crime Watch</div>
-        <h2 class="serif text-xl font-bold text-slate-900 mb-2">
-          <a href="deputy-shooting/" class="hover:text-blue-800">Deputy Shooting Incident</a>
-        </h2>
-        <p class="text-slate-600 text-sm leading-relaxed">Both the suspect and the deputy received prompt medical attention at the scene. The deputy’s injuries were minor. The suspect remains critical.</p>
-        <a href="deputy-shooting/" class="inline-block mt-3 text-sm font-medium text-blue-700 hover:underline">Read the story →</a>
-      </article>
+        <a href="ai-grid-tower-district-0726/" class="story-card led-border">
+          <div class="cat-label">Infrastructure</div>
+          <h3>AI Grid SHUT DOWN!</h3>
+          <p>Federal Power Act orders for AI data centers. Local implications for the grid and the Tower District.</p>
+          <span class="arrow">read →</span>
+        </a>
 
-      <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md transition">
-        <div class="text-xs font-medium text-slate-500 uppercase tracking-wide mb-1">Local</div>
-        <h2 class="serif text-xl font-bold text-slate-900 mb-2">
-          <a href="robbery-story/" class="hover:text-blue-800">Robbery & Broken Windows</a>
-        </h2>
-        <p class="text-slate-600 text-sm leading-relaxed">Crime prevention for at-risk youth and the practical geometry of broken windows in the District.</p>
-        <a href="robbery-story/" class="inline-block mt-3 text-sm font-medium text-blue-700 hover:underline">Read the story →</a>
-      </article>
+        <a href="mandami-ai/" class="story-card led-border">
+          <div class="cat-label">Parallel Playbooks</div>
+          <h3>From Mandami to the Machine</h3>
+          <p>Japanese American redress → Black reparations task forces → NYC cash talks amid deficit. Meanwhile AI data centers light up.</p>
+          <span class="arrow">read →</span>
+        </a>
 
-      <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md transition">
-        <div class="text-xs font-medium text-slate-500 uppercase tracking-wide mb-1">Analysis</div>
-        <h2 class="serif text-xl font-bold text-slate-900 mb-2">
-          <a href="fraud-pattern-2026/" class="hover:text-blue-800">Fraud Patterns 2026</a>
-        </h2>
-        <p class="text-slate-600 text-sm leading-relaxed">Federal tax fraud patterns and the systems that either catch them or let them run.</p>
-        <a href="fraud-pattern-2026/" class="inline-block mt-3 text-sm font-medium text-blue-700 hover:underline">Read the analysis →</a>
-      </article>
+        <a href="vis-grid/" class="story-card led-border">
+          <div class="cat-label">Interface</div>
+          <h3>What Influence Doth Thou Have?</h3>
+          <p>At the top level of AI exploration, unlimited visual choice grids maximize data into the human brain while minimizing the interface tax.</p>
+          <span class="arrow">read →</span>
+        </a>
 
-      <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md transition">
-        <div class="text-xs font-medium text-slate-500 uppercase tracking-wide mb-1">Accountability</div>
-        <h2 class="serif text-xl font-bold text-slate-900 mb-2">
-          <a href="singh_crash_article/" class="hover:text-blue-800">Light Sentence for Illegal Killing Four</a>
-        </h2>
-        <p class="text-slate-600 text-sm leading-relaxed">Immigration, public safety, and what “accountability to taxpayers” actually requires.</p>
-        <a href="singh_crash_article/" class="inline-block mt-3 text-sm font-medium text-blue-700 hover:underline">Read the piece →</a>
-      </article>
+      </div>
+    </section>
 
-      <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md transition">
-        <div class="text-xs font-medium text-slate-500 uppercase tracking-wide mb-1">Documentary · Philosophical</div>
-        <h2 class="serif text-xl font-bold text-slate-900 mb-2">
-          <a href="dmt.html" class="hover:text-blue-800">Use the Source, Luke</a>
-        </h2>
-        <p class="text-slate-600 text-sm leading-relaxed">An 18-minute conceptual web documentary on the DMT glyph hypothesis, visible language, and decoding.</p>
-        <a href="dmt.html" class="inline-block mt-3 text-sm font-medium text-blue-700 hover:underline">Enter the documentary →</a>
-      </article>
+    <!-- ══════════════════════════════════════ -->
+    <section>
+      <div class="section-title">Local District Reality</div>
+      <div class="grid">
 
-      <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md transition">
-        <div class="text-xs font-medium text-slate-500 uppercase tracking-wide mb-1">Personal · Practical</div>
-        <h2 class="serif text-xl font-bold text-slate-900 mb-2">
-          <a href="personal-setup-story.html" class="hover:text-blue-800">From 21 Screens to Bed Fort</a>
-        </h2>
-        <p class="text-slate-600 text-sm leading-relaxed">A Texas A&M computer nerd retires and slashes power consumption from 21 always-on LCDs to a minimalist dual-iPhone rig because PG&E rates hit $0.50/kWh.</p>
-        <a href="personal-setup-story.html" class="inline-block mt-3 text-sm font-medium text-blue-700 hover:underline">Read the story →</a>
-      </article>
+        <a href="deputy-shooting/" class="story-card led-border">
+          <div class="cat-label">Crime Watch</div>
+          <h3>Deputy Shooting Incident</h3>
+          <p>Both the suspect and the deputy received prompt medical attention at the scene. The deputy’s injuries were minor. The suspect remains critical.</p>
+          <span class="arrow">read →</span>
+        </a>
 
-      <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md transition">
-        <div class="text-xs font-medium text-slate-500 uppercase tracking-wide mb-1">Factual · Expert</div>
-        <h2 class="serif text-xl font-bold text-slate-900 mb-2">
-          <a href="pge-care-factual-story.html" class="hover:text-blue-800">The Quiet Overcharge</a>
-        </h2>
-        <p class="text-slate-600 text-sm leading-relaxed">PG&E billing realities and the CARE program as seen from the meter and the bill.</p>
-        <a href="pge-care-factual-story.html" class="inline-block mt-3 text-sm font-medium text-blue-700 hover:underline">Read the analysis →</a>
-      </article>
+        <a href="d3-hatchet/" class="story-card led-border">
+          <div class="cat-label">District 3</div>
+          <h3>0.8 Miles From Home</h3>
+          <p>Morning of August 3, 2026. A man chopped with a hatchet at Belmont and Effie. Exactly 0.78 miles from the door in the Tower District.</p>
+          <span class="arrow">read →</span>
+        </a>
 
-      <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md transition">
-        <div class="text-xs font-medium text-slate-500 uppercase tracking-wide mb-1">Narrative Non-Fiction · Local</div>
-        <h2 class="serif text-xl font-bold text-slate-900 mb-2">
-          <a href="sinners-on-operation-no-fly-zone.html" class="hover:text-blue-800">Sinners on Operation No Fly Zone</a>
-        </h2>
-        <p class="text-slate-600 text-sm leading-relaxed">Local law-enforcement narrative and the operational texture of the District.</p>
-        <a href="sinners-on-operation-no-fly-zone.html" class="inline-block mt-3 text-sm font-medium text-blue-700 hover:underline">Read the story →</a>
-      </article>
+        <a href="robbery-story/" class="story-card led-border">
+          <div class="cat-label">Local</div>
+          <h3>Robbery &amp; Broken Windows</h3>
+          <p>Crime prevention for at-risk youth and the practical geometry of broken windows in the District.</p>
+          <span class="arrow">read →</span>
+        </a>
 
-    </div>
-  </main>
+        <a href="sinners-on-operation-no-fly-zone.html" class="story-card led-border">
+          <div class="cat-label">Narrative Non-Fiction</div>
+          <h3>Sinners on Operation No Fly Zone</h3>
+          <p>Local law-enforcement narrative and the operational texture of the District.</p>
+          <span class="arrow">read →</span>
+        </a>
 
-  <footer class="bg-slate-900 text-slate-400 text-center text-sm py-8 mt-8">
-    <p>HIGH TOWER DISTRICT • STORIES</p>
-    <p class="mt-1">From the bed fort · Fresno, CA · 2026</p>
-    <p class="mt-3 text-xs">
-      <a href="https://github.com/AaHigh/stories" class="hover:text-white">GitHub</a>
-    </p>
-  </footer>
+        <a href="singh_crash_article/" class="story-card led-border">
+          <div class="cat-label">Accountability</div>
+          <h3>Light Sentence for Illegal Killing Four</h3>
+          <p>Immigration, public safety, and what accountability to taxpayers actually requires.</p>
+          <span class="arrow">read →</span>
+        </a>
 
+        <a href="fraud-pattern-2026/" class="story-card led-border">
+          <div class="cat-label">Analysis</div>
+          <h3>Fraud Patterns 2026</h3>
+          <p>Federal tax fraud patterns and the systems that either catch them or let them run.</p>
+          <span class="arrow">read →</span>
+        </a>
+
+        <a href="engage-cost/" class="story-card led-border">
+          <div class="cat-label">Engagement</div>
+          <h3>The Real Cost of Engagement</h3>
+          <p>Rare acts of vandalism become “civic duty” inside Facebook’s engagement machine. One arrest in Monterey County reveals the cost.</p>
+          <span class="arrow">read →</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════ -->
+    <section>
+      <div class="section-title">Personal &amp; Practical Systems</div>
+      <div class="grid">
+
+        <a href="personal-setup-story.html" class="story-card led-border">
+          <div class="cat-label">Bed Fort</div>
+          <h3>From 21 Screens to Bed Fort</h3>
+          <p>A Texas A&amp;M computer nerd retires and slashes power consumption from 21 always-on LCDs to a minimalist dual-iPhone rig because PG&amp;E rates hit $0.50/kWh.</p>
+          <span class="arrow">read →</span>
+        </a>
+
+        <a href="pge-care-factual-story.html" class="story-card led-border">
+          <div class="cat-label">Utility</div>
+          <h3>The Quiet Overcharge</h3>
+          <p>PG&amp;E billing realities and the CARE program as seen from the meter and the bill.</p>
+          <span class="arrow">read →</span>
+        </a>
+
+        <a href="hot-shelf-0726/" class="story-card led-border">
+          <div class="cat-label">Thermal</div>
+          <h3>The Hot Shelf</h3>
+          <p>On a dry July day in the Tower District, the difference between a 99° peak and a 101° peak is not cosmetic. It changes survival strategy.</p>
+          <span class="arrow">read →</span>
+        </a>
+
+        <a href="ghost-bike/" class="story-card led-border">
+          <div class="cat-label">Operations</div>
+          <h3>Bike Ghost Kitchen</h3>
+          <p>A practical, low-overhead path to starting a delivery-only kitchen in Fresno’s Tower District with cargo bikes and tight margins.</p>
+          <span class="arrow">read →</span>
+        </a>
+
+        <a href="battery-commodity-scale/" class="story-card led-border">
+          <div class="cat-label">Systems</div>
+          <h3>Battery Commodity Scale</h3>
+          <p>Change the form of the energy — make it a physical, standardized, movable asset — and the entire supply chain opens up.</p>
+          <span class="arrow">read →</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════ -->
+    <section>
+      <div class="section-title">Spatial · Patent · Lab</div>
+      <div class="grid">
+
+        <a href="vrpatent/" class="story-card led-border">
+          <div class="cat-label">US8992318B2</div>
+          <h3>Nanoseconds from “Really There”</h3>
+          <p>How one architecture removed the last major friction between the user and true presence in virtual reality.</p>
+          <span class="arrow">read →</span>
+        </a>
+
+        <a href="avp-perspective-lab/" class="story-card led-border">
+          <div class="cat-label">Spatial Lab</div>
+          <h3>Apple Vision Perspective Lab</h3>
+          <p>Spatial anamorphosis and projection mapping. Pre-warp for complex 3D surfaces so the work pops from the right spot.</p>
+          <span class="arrow">enter lab →</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════ -->
+    <section>
+      <div class="section-title">Narrative &amp; Experience</div>
+      <div class="grid">
+
+        <a href="dmt.html" class="story-card led-border">
+          <div class="cat-label">Documentary</div>
+          <h3>Use the Source, Luke</h3>
+          <p>An 18-minute conceptual web documentary on the DMT glyph hypothesis, visible language, and decoding.</p>
+          <span class="arrow">enter documentary →</span>
+        </a>
+
+        <a href="moon-tune/" class="story-card led-border">
+          <div class="cat-label">Lunar</div>
+          <h3>What Influence Doth Thou Have?</h3>
+          <p>Practical lunar awareness for Fresno and the Central Valley: when the full moon gives you cooler night hours and better photo windows.</p>
+          <span class="arrow">read →</span>
+        </a>
+
+        <a href="chip-dip-helix/" class="story-card led-border">
+          <div class="cat-label">Augmented</div>
+          <h3>The Double Helix of High Tower Dip</h3>
+          <p>Tillamook Sharp Cheddar + Taco Works chips form the DNA foundation of the best chip-and-dip combo. Now augmented.</p>
+          <span class="arrow">read →</span>
+        </a>
+
+        <a href="deli-pizza/" class="story-card led-border">
+          <div class="cat-label">Kitchen</div>
+          <h3>From Italian Deli Dough to Plate</h3>
+          <p>How to make pizza at home with dough from the Italian deli — sauce, two cheeses, home oven. Full photo sequence.</p>
+          <span class="arrow">read →</span>
+        </a>
+
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        <a href="https://ahightower.com">ahightower.com</a>
+        ·
+        <a href="https://github.com/AaHigh/stories">github.com/AaHigh/stories</a>
+      </p>
+      <p style="margin-top:0.5rem; opacity:0.7;">HIGH TOWER DISTRICT · FRESNO CA · 2026</p>
+    </footer>
+
+  </div>
 </body>
 </html>
