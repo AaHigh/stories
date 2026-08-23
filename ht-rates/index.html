@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homeless Rates by State — High Tower District Guide</title>
+  <meta name="description" content="Practical red-white-blue map of U.S. homelessness rates per 10,000 residents. Red = lowest rates. Blue = highest. A High Tower District civic tool for understanding where housing costs drive visible homelessness." />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://aahigh.github.io/stories/ht-rates/" />
+  <meta property="og:title" content="Homeless Rates by State — High Tower District Guide" />
+  <meta property="og:description" content="Red = least homeless. Blue = most. Housing costs, not poverty, drive the map. Mississippi at 4 per 10k; DC and New York at the top. Practical guide from the High Tower District." />
+  <meta property="og:image" content="images/og.png" />
+  <meta property="og:image:secure_url" content="images/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="U.S. map of homelessness rates colored red (low) to blue (high) with High Tower District branding" />
+  <meta property="og:site_name" content="High Tower District Stories" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Homeless Rates by State — High Tower District Guide" />
+  <meta name="twitter:description" content="Red = least homeless. Blue = most. Housing costs drive the pattern more than poverty. Practical map from the High Tower District." />
+  <meta name="twitter:image" content="images/og.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+          },
+          colors: {
+            tower: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              800: '#1e293b',
+              900: '#0f172a',
+              blue: '#1e3a5f',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    h1, h2, h3, .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+
+  <!-- Sticky Nav -->
+  <nav class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-700/50">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="text-amber-400 font-bold tracking-tight text-sm uppercase">High Tower District</span>
+        <span class="text-slate-400 text-xs hidden sm:inline">· Stories</span>
+      </div>
+      <div class="text-slate-400 text-xs">
+        Civic Tool · Aug 2026
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+    <div class="max-w-5xl mx-auto px-4 pt-12 pb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-medium mb-5">
+        <span>Data Guide</span>
+        <span class="text-amber-500/60">•</span>
+        <span>August 23, 2026</span>
+      </div>
+      <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight max-w-3xl">
+        Homeless Rates by State
+      </h1>
+      <p class="mt-4 text-lg sm:text-xl text-slate-300 max-w-2xl leading-relaxed">
+        A practical red–white–blue guide for anyone who wants to understand — or avoid — visible homelessness.
+      </p>
+      <p class="mt-3 text-sm text-slate-400">
+        From the High Tower District · Tower District, Fresno
+      </p>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="max-w-5xl mx-auto px-4 py-10 space-y-12">
+
+    <!-- Map -->
+    <section>
+      <figure class="rounded-xl overflow-hidden border border-slate-200 shadow-lg bg-white">
+        <img 
+          src="images/map.png" 
+          alt="U.S. map of homelessness rates per 10,000 residents. Red states have the lowest rates; blue states the highest. High Tower District edition." 
+          class="w-full h-auto"
+          loading="eager"
+        />
+        <figcaption class="px-4 py-3 text-sm text-slate-600 bg-slate-50 border-t border-slate-100">
+          Red = least homeless (preferred). White ≈ national average (~22). Blue = most homeless. Data: HUD 2025 Annual Homelessness Assessment Report, point-in-time count.
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- Key Insight Card -->
+    <section class="grid md:grid-cols-2 gap-6">
+      <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+        <h2 class="font-serif text-xl font-bold text-slate-900 mb-3">U.S. Overall</h2>
+        <p class="text-3xl font-bold text-slate-800 tracking-tight">745,652</p>
+        <p class="text-slate-600 mt-1">people counted as homeless</p>
+        <p class="text-sm text-slate-500 mt-3">About <strong>22</strong> of every 10,000 residents. Source: HUD 2025 AHAR (January 2025 point-in-time).</p>
+      </div>
+      <div class="bg-white rounded-xl border border-blue-200 p-6 shadow-sm bg-gradient-to-br from-white to-blue-50">
+        <h2 class="font-serif text-xl font-bold text-slate-900 mb-3">Key Insight</h2>
+        <p class="text-slate-700 leading-relaxed">
+          Housing costs, not poverty, drive homelessness. That is why Mississippi and Louisiana — two of America’s poorest states — sit near the bottom of the rate scale.
+        </p>
+      </div>
+    </section>
+
+    <!-- Ranked Lists -->
+    <section>
+      <h2 class="font-serif text-2xl font-bold text-slate-900 mb-6">Where the rates are lowest and highest</h2>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Low -->
+        <div class="bg-white rounded-xl border border-red-200 overflow-hidden shadow-sm">
+          <div class="bg-red-700 text-white px-5 py-3">
+            <h3 class="font-semibold tracking-wide text-sm uppercase">Lowest Rates (Red)</h3>
+            <p class="text-red-100 text-xs mt-0.5">Best statistical signal if you want to minimize visible homelessness</p>
+          </div>
+          <ul class="divide-y divide-slate-100 text-sm">
+            <li class="px-5 py-3 flex justify-between items-center"><span class="font-medium">Mississippi</span><span class="font-mono text-red-700 font-bold">4</span></li>
+            <li class="px-5 py-3 flex justify-between items-center"><span class="font-medium">Georgia, Louisiana, South Carolina, Virginia</span><span class="font-mono text-red-700 font-bold">8</span></li>
+            <li class="px-5 py-3 flex justify-between items-center"><span class="font-medium">Texas, Iowa, Kansas, Oklahoma, Wyoming, Wisconsin</span><span class="font-mono text-red-600 font-bold">9</span></li>
+            <li class="px-5 py-3 flex justify-between items-center"><span class="font-medium">Michigan, Indiana, Ohio, Connecticut</span><span class="font-mono text-red-600 font-bold">10</span></li>
+            <li class="px-5 py-3 flex justify-between items-center text-slate-600"><span>Pennsylvania, Maryland, West Virginia, Alabama, North Dakota + several others</span><span class="font-mono">11–12</span></li>
+          </ul>
+        </div>
+
+        <!-- High -->
+        <div class="bg-white rounded-xl border border-blue-200 overflow-hidden shadow-sm">
+          <div class="bg-blue-900 text-white px-5 py-3">
+            <h3 class="font-semibold tracking-wide text-sm uppercase">Highest Rates (Blue)</h3>
+            <p class="text-blue-200 text-xs mt-0.5">Strongest “avoid if you dislike visible homelessness” signal</p>
+          </div>
+          <ul class="divide-y divide-slate-100 text-sm">
+            <li class="px-5 py-3 flex justify-between items-center"><span class="font-medium">District of Columbia</span><span class="font-mono text-blue-900 font-bold">74</span></li>
+            <li class="px-5 py-3 flex justify-between items-center"><span class="font-medium">New York</span><span class="font-mono text-blue-900 font-bold">73</span></li>
+            <li class="px-5 py-3 flex justify-between items-center"><span class="font-medium">Oregon</span><span class="font-mono text-blue-800 font-bold">64</span></li>
+            <li class="px-5 py-3 flex justify-between items-center"><span class="font-medium">Vermont</span><span class="font-mono text-blue-800 font-bold">53</span></li>
+            <li class="px-5 py-3 flex justify-between items-center"><span class="font-medium">Hawaii</span><span class="font-mono text-blue-700 font-bold">48</span></li>
+            <li class="px-5 py-3 flex justify-between items-center"><span class="font-medium">California</span><span class="font-mono text-blue-700 font-bold">46</span></li>
+            <li class="px-5 py-3 flex justify-between items-center"><span class="font-medium">Washington &amp; Massachusetts</span><span class="font-mono text-blue-700 font-bold">40</span></li>
+            <li class="px-5 py-3 flex justify-between items-center text-slate-600"><span>Alaska 36 · Nevada 30 · Colorado 28</span><span class="font-mono">—</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Context -->
+    <section class="bg-slate-900 text-slate-100 rounded-xl p-6 sm:p-8">
+      <h2 class="font-serif text-xl font-bold mb-4">What the map actually shows</h2>
+      <div class="space-y-4 text-slate-300 leading-relaxed">
+        <p>
+          These are rates, not absolute counts. A populous state can have more total homeless people while still showing a lower rate than a smaller high-cost state.
+        </p>
+        <p>
+          The color pattern tracks housing costs and regulatory environment far more closely than overall poverty rates. That is the central factual takeaway from the HUD data.
+        </p>
+        <p>
+          For anyone in the High Tower District (or considering a move), the map is a clean comparative tool: red and light-red zones are where the per-capita numbers are lowest. Blue zones are where the rates — and the visible street disorder that often follows — are highest.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sources -->
+    <section class="border-t border-slate-200 pt-8">
+      <h2 class="font-serif text-lg font-bold text-slate-800 mb-3">Sources</h2>
+      <ul class="text-sm text-slate-600 space-y-1">
+        <li>U.S. Department of Housing and Urban Development, 2025 Annual Homelessness Assessment Report (point-in-time count of people in emergency shelter, transitional housing, safe havens, or unsheltered during the last 10 days of January 2025).</li>
+        <li>U.S. Census Bureau, Vintage 2025 population estimates.</li>
+        <li>Data current as of August 2026.</li>
+        <li>Original visualization concept adapted from Visual Capitalist; recolored and rebranded by High Tower District for practical use.</li>
+      </ul>
+    </section>
+
+    <!-- Closing -->
+    <section class="bg-amber-50 border border-amber-200 rounded-xl p-6 text-center">
+      <p class="font-serif text-lg text-slate-800 font-medium">
+        High Tower District
+      </p>
+      <p class="text-sm text-slate-600 mt-2 max-w-xl mx-auto">
+        Local eyes on local conditions. National data when it helps the neighborhood understand the wider pattern.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 bg-white mt-8">
+    <div class="max-w-5xl mx-auto px-4 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-slate-500">
+      <div>
+        © 2026 High Tower District Stories · Tower District, Fresno
+      </div>
+      <div class="flex gap-4">
+        <span>Independent civic tool</span>
+        <span>·</span>
+        <span>Not affiliated with HUD</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
