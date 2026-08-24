@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canal Watch: Hybrid AI &amp; I/O Perimeter for the High Tower District</title>
+  <meta name="description" content="A practical design for combining the ControlByWeb X-410 programmable I/O controller with reverse-engineered Wuloo solar driveway receivers and edge AI to monitor the canal bank at 721 E La Sierra, classify activity, estimate speed, and issue targeted warnings under California Penal Code 374.7.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Canal Watch: Hybrid AI &amp; I/O Perimeter for the High Tower District">
+  <meta property="og:description" content="Cost-effective programmable security using reverse-engineered Wuloo zone signals into an X-410 controller. Detects walkers, bikes, and vehicles near the canal, estimates speed, and issues littering warnings under PC 374.7. Local, no monthly cloud tax.">
+  <meta property="og:image" content="images/canal.jpg">
+  <meta property="og:image:secure_url" content="images/canal.jpg">
+  <meta property="og:image:width" content="1568">
+  <meta property="og:image:height" content="882">
+  <meta property="og:image:alt" content="Fresno-area irrigation canal with concrete banks and flowing water, typical of the High Tower District waterway corridor">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://aahigh.github.io/stories/canal-watch/">
+  <meta property="og:site_name" content="High Tower District Stories">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Canal Watch: Hybrid AI &amp; I/O Perimeter for the High Tower District">
+  <meta name="twitter:description" content="Programmable edge controller + solar motion sensors + local AI for canal bank monitoring and PC 374.7 awareness.">
+  <meta name="twitter:image" content="images/canal.jpg">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    h1, h2, h3, .serif { font-family: 'Playfair Display', Georgia, serif; }
+    .fact-card { transition: transform 0.15s ease, box-shadow 0.15s ease; }
+    .fact-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1); }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+  <!-- Sticky Nav -->
+  <nav class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-700">
+    <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="https://aahigh.github.io/stories/" class="text-white font-semibold tracking-tight text-sm sm:text-base">High Tower District</a>
+      <span class="text-slate-400 text-xs sm:text-sm">Stories</span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="bg-slate-900 text-white">
+    <div class="max-w-3xl mx-auto px-4 pt-10 pb-12">
+      <div class="flex flex-wrap gap-2 mb-4">
+        <span class="inline-block bg-blue-600/20 text-blue-300 text-xs font-medium px-2.5 py-1 rounded">Civic Tech</span>
+        <span class="inline-block bg-emerald-600/20 text-emerald-300 text-xs font-medium px-2.5 py-1 rounded">Perimeter Design</span>
+        <span class="inline-block bg-slate-700 text-slate-300 text-xs font-medium px-2.5 py-1 rounded">August 23, 2026</span>
+      </div>
+      <h1 class="serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-4">
+        Canal Watch
+      </h1>
+      <p class="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl">
+        A practical hybrid of the ControlByWeb X-410 web-enabled I/O controller, reverse-engineered Wuloo solar driveway receivers, and edge AI for detecting activity along the canal bank at 721 E La Sierra Drive — including classification, speed estimates, and targeted warnings for littering under California Penal Code 374.7.
+      </p>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="max-w-3xl mx-auto px-4 py-10 space-y-14">
+
+    <!-- Lead image -->
+    <figure>
+      <img src="images/canal.jpg" alt="Concrete-lined irrigation canal with flowing water in the Fresno area, similar to the waterway corridor near the High Tower District" class="w-full rounded-xl shadow-lg object-cover max-h-80">
+      <figcaption class="mt-3 text-sm text-slate-500 text-center">Typical Fresno-area canal bank. Littering or dumping within 150 feet of the high-water mark is a misdemeanor under Penal Code 374.7.</figcaption>
+    </figure>
+
+    <!-- Why this matters -->
+    <section>
+      <h2 class="serif text-2xl sm:text-3xl font-bold text-slate-900 mb-4">Why the canal bank needs a different kind of watch</h2>
+      <p class="text-slate-700 leading-relaxed mb-4">
+        The stretch near 721 E La Sierra sits against a waterway. Under California Penal Code § 374.7, depositing waste matter into a canal or onto the bank or shore within 150 feet of the high-water mark is a misdemeanor. First-offense fines start at $250 and climb with each conviction; courts can also order litter pickup as a condition of probation.
+      </p>
+      <p class="text-slate-700 leading-relaxed">
+        A simple driveway chime is useful. A system that can distinguish a walker from a bicycle from a vehicle, measure approximate speed between two points, and then drive lights or a short verbal warning only when the pattern matches a problem is far more useful — and far less noisy for the neighborhood.
+      </p>
+    </section>
+
+    <!-- Fact cards -->
+    <section>
+      <h2 class="serif text-2xl font-bold text-slate-900 mb-5">Core pieces already on hand</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="fact-card bg-white border border-slate-200 rounded-xl p-5">
+          <img src="images/x410.jpg" alt="ControlByWeb X-410 web-enabled programmable I/O controller showing relays, inputs, and Ethernet port" class="w-full rounded-lg mb-4 object-contain max-h-48 bg-slate-50">
+          <h3 class="font-semibold text-slate-900 mb-1">ControlByWeb X-410</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            4 relays (1 A, shared common), 4 optically isolated digital inputs (4–26 VDC), 1-Wire bus, built-in web server, task builder, BASIC interpreter, email alerts, logging. Price range roughly $300–400. Designed for edge control without monthly fees.
+          </p>
+        </div>
+        <div class="fact-card bg-white border border-slate-200 rounded-xl p-5">
+          <img src="images/wuloo.jpg" alt="Wuloo solar driveway alarm system with two brown outdoor motion sensors and black indoor receiver unit" class="w-full rounded-lg mb-4 object-contain max-h-48 bg-slate-50">
+          <h3 class="font-semibold text-slate-900 mb-1">Wuloo Solar Driveway Alarm</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Solar-powered outdoor PIR sensors, claimed 1800 ft wireless range, expandable to multiple sensors (up to 8), indoor receiver with zone LEDs, clock and customizable chimes. Inexpensive long-range detection. Zone indicators and internal logic lines are the integration target.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <section>
+      <h2 class="serif text-2xl sm:text-3xl font-bold text-slate-900 mb-4">System architecture in plain terms</h2>
+      <p class="text-slate-700 leading-relaxed mb-4">
+        Treat the X-410 as the deterministic brain. It does not need cloud permission to close a relay or measure the time between two input transitions. Because the builder has an electrical engineering background and can solder, the preferred path is to open the Wuloo receiver, probe the internal signals that indicate which zone has triggered, and bring those lines out as four clean digital inputs to the X-410.
+      </p>
+
+      <div class="bg-white border border-slate-200 rounded-xl p-5 sm:p-6 space-y-4">
+        <div>
+          <h3 class="font-semibold text-slate-900">1. Sensing layer (Wuloo reverse-engineered)</h3>
+          <ul class="mt-2 text-sm text-slate-600 space-y-1 list-disc list-inside">
+            <li>Open the Wuloo receiver and use a voltmeter (or logic probe/scope) while triggering each sensor to locate lines that go high or low on detection.</li>
+            <li>Expect (or search for) a 3-bit binary zone ID plus a 4th latch/strobe or “active” bit — matching the expandable-to-8-sensor design and the visible zone LEDs/touch buttons on the front panel.</li>
+            <li>Bring four wires out: the three ID bits and the latch. Buffer them if needed so the X-410 sees clean 4–26 VDC levels. Shared ground is required; keep the receiver’s low-voltage supply isolated from higher-power loads.</li>
+            <li>One or two inexpensive IP cameras aimed at the canal bank and approach path for the AI classification layer.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-slate-900">2. Edge logic (X-410)</h3>
+          <ul class="mt-2 text-sm text-slate-600 space-y-1 list-disc list-inside">
+            <li>The four digital inputs now carry the decoded zone ID + latch from the Wuloo. Additional contact sensors can still be used for precise timing between known distances.</li>
+            <li>Conditional tasks and timers: known distance between two physical sensors (or timed zone sequence) → approximate speed.</li>
+            <li>Relays drive low-voltage lights, solid-state relays for higher loads, or a small amplifier/speaker for a short recorded warning.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-slate-900">3. Classification layer (local AI)</h3>
+          <ul class="mt-2 text-sm text-slate-600 space-y-1 list-disc list-inside">
+            <li>Frigate NVR (or similar) running on a used mini-PC or Raspberry Pi 5 + Coral USB accelerator.</li>
+            <li>Object detection for person / bicycle / vehicle. Zone filtering so only the canal-bank zone generates events.</li>
+            <li>Events published over MQTT or HTTP; a small script or Home Assistant automation calls the X-410 JSON/API to actuate relays.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-slate-900">4. Outputs that manage the environment</h3>
+          <ul class="mt-2 text-sm text-slate-600 space-y-1 list-disc list-inside">
+            <li>Flash a series of exterior lights after confirmed motion (simple case).</li>
+            <li>Different flash patterns or short audio cues for “slow walker near bank” versus “vehicle”.</li>
+            <li>Digital signals available for any downstream device that accepts a contact closure or 5–24 V control.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Integration note -->
+    <section>
+      <h2 class="serif text-2xl font-bold text-slate-900 mb-4">Confirming the reverse-engineering path</h2>
+      <p class="text-slate-700 leading-relaxed mb-4">
+        Public manuals and FCC filings for similar multi-zone driveway receivers (and the Wuloo’s own documentation of “Alert Zone LED Indicator” plus individual zone touch buttons) make the plan highly plausible. The receiver almost certainly decodes a sensor ID from the RF packet and then drives zone-specific indicators or GPIO lines. A 3-bit binary ID plus a latch/strobe bit is a classic way to present up to eight zones on four lines.
+      </p>
+      <p class="text-slate-700 leading-relaxed mb-4">
+        Exact pinout and voltage levels cannot be confirmed without the specific board in hand — no public schematic or teardown of this exact Wuloo model was found. The practical method remains the correct one for an electrical engineer:
+      </p>
+      <ul class="text-slate-700 space-y-2 list-disc list-inside mb-4">
+        <li>Power the receiver from its normal 4.5–5 V supply.</li>
+        <li>Trigger each paired sensor in turn while probing with a voltmeter or logic analyzer around the zone LEDs, MCU pins, and any obvious data/latch lines.</li>
+        <li>Once the four lines are identified, buffer them (simple transistor or optocoupler stage recommended) so the X-410 inputs see clean 4–26 VDC signals with adequate hold time (X-410 minimum is 20 ms).</li>
+        <li>Share grounds carefully and keep the receiver’s low-voltage domain protected from any higher-power switching.</li>
+      </ul>
+      <p class="text-slate-700 leading-relaxed">
+        If the parallel bus proves elusive, a fallback is to tap individual zone LED drivers (one wire per zone) or, at higher effort, decode the RF packets themselves with a separate 433/868 MHz module. The four-wire ID + latch approach is the cleanest target and matches the hardware already on the bench.
+      </p>
+    </section>
+
+    <!-- AI capabilities -->
+    <section>
+      <h2 class="serif text-2xl sm:text-3xl font-bold text-slate-900 mb-4">What the AI layer actually enables</h2>
+      <figure class="mb-6">
+        <img src="images/ai-detect.jpg" alt="Nighttime security camera view with bounding boxes detecting a vehicle and person" class="w-full rounded-xl shadow object-cover max-h-72">
+        <figcaption class="mt-2 text-sm text-slate-500 text-center">Local object detection can distinguish person, bicycle, and vehicle without sending video to the cloud.</figcaption>
+      </figure>
+      <p class="text-slate-700 leading-relaxed mb-4">
+        Basic PIR sensors only report “motion.” With two or more sensors a known distance apart, the X-410 can already compute a crude speed from the time delta. Adding a local vision model upgrades the system:
+      </p>
+      <ul class="text-slate-700 space-y-2 list-disc list-inside mb-4">
+        <li><strong>Classification</strong> — person walking versus bicycle versus vehicle, reducing false triggers from wind, animals, or distant traffic.</li>
+        <li><strong>Zone awareness</strong> — only the canal-bank zone or the approach path generates actions.</li>
+        <li><strong>Speed refinement</strong> — multi-frame tracking across cameras improves the estimate beyond simple two-sensor timing.</li>
+        <li><strong>Littering pattern</strong> — a person lingering or performing a discard motion near the bank can be flagged for review or for a mild automated warning. Full reliable “litter detection” still benefits from human confirmation; the system can at least raise the right events at the right time.</li>
+      </ul>
+      <p class="text-slate-700 leading-relaxed">
+        All of this stays on local hardware. No continuous video upload, no subscription for basic detection.
+      </p>
+    </section>
+
+    <!-- Cost and alternatives -->
+    <section>
+      <h2 class="serif text-2xl sm:text-3xl font-bold text-slate-900 mb-4">Cost-effective path versus alternatives</h2>
+      
+      <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5 mb-6">
+        <h3 class="font-semibold text-emerald-900 mb-2">Recommended hybrid (lowest ongoing cost, highest control)</h3>
+        <ul class="text-sm text-emerald-900/90 space-y-1">
+          <li>• X-410 already owned or ~$300–400</li>
+          <li>• Wuloo already owned (~$100 class) — reverse-engineered for zone ID + latch</li>
+          <li>• 1–2 budget RTSP/IP cameras (~$60–120 each)</li>
+          <li>• Used mini-PC or Pi 5 + Coral TPU (~$150–300)</li>
+          <li>• Buffer transistors/optocouplers, optional contact sensors, relays for lights, small PA or outdoor speaker</li>
+          <li>• Software: Frigate + optional Home Assistant — free and open</li>
+        </ul>
+        <p class="text-sm text-emerald-800 mt-3">One-time outlay in the $400–900 range depending on how much is already on the bench. No monthly cloud fees for the core logic. The reverse-engineering step replaces the need for extra contact sensors in many cases.</p>
+      </div>
+
+      <div class="space-y-4 text-slate-700">
+        <div>
+          <h3 class="font-semibold text-slate-900">Commercial cloud systems (Ring, Arlo, Nest, etc.)</h3>
+          <p class="text-sm leading-relaxed">Fast to install, good mobile apps, AI features behind subscriptions. Limited ability to drive arbitrary digital outputs or run custom timing logic without extra hardware. Ongoing cost and cloud dependency.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-slate-900">Full Home Assistant + Zigbee/Z-Wave + cameras</h3>
+          <p class="text-sm leading-relaxed">Extremely flexible and still local. Higher initial learning curve and more devices to manage. Excellent long-term if the goal expands beyond the canal bank.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-slate-900">Pure industrial expansion</h3>
+          <p class="text-sm leading-relaxed">Additional ControlByWeb modules, more inputs and relays, peer-to-peer. Highest reliability, higher unit cost, less native vision AI.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Practical next steps -->
+    <section>
+      <h2 class="serif text-2xl font-bold text-slate-900 mb-4">Practical first steps at 721 E La Sierra</h2>
+      <ol class="list-decimal list-inside space-y-3 text-slate-700">
+        <li>Mount the existing Wuloo sensors for coverage of the approaches and the canal edge. Confirm range and false-trigger rate.</li>
+        <li>Open the Wuloo receiver. With a voltmeter or logic probe, trigger each sensor and map the internal signals that indicate zone ID and activity. Aim for three ID bits + one latch/strobe line. Buffer and bring the four wires to the X-410 digital inputs.</li>
+        <li>Configure the X-410 inputs to read the binary zone code and use its timers for inter-sensor timing / speed estimates. Log the results.</li>
+        <li>Add one camera with a clear view of the bank. Stand up Frigate with a person/vehicle/bicycle model and a zone limited to the waterway corridor.</li>
+        <li>Create a small bridge (Node-RED, Home Assistant, or a short Python script) that turns Frigate events into X-410 relay commands. Define the simplest useful output first: a short light sequence after confirmed motion in the protected zone.</li>
+      </ol>
+    </section>
+
+    <!-- Legal note -->
+    <section class="bg-slate-100 border border-slate-200 rounded-xl p-5">
+      <h2 class="serif text-xl font-bold text-slate-900 mb-2">On enforcement and community</h2>
+      <p class="text-sm text-slate-700 leading-relaxed">
+        An automated system that flashes lights or plays a short warning is a deterrent and a documentation tool. It is not a substitute for calling the appropriate authority when a clear violation of Penal Code 374.7 is observed. The High Tower District has already shown that organized, factual reporting improves outcomes. This design simply makes the observation layer more precise and less burdensome.
+      </p>
+    </section>
+
+    <!-- Closing -->
+    <section>
+      <h2 class="serif text-2xl font-bold text-slate-900 mb-4">Closing reflection</h2>
+      <p class="text-slate-700 leading-relaxed mb-4">
+        The combination of a web-enabled industrial I/O controller, reverse-engineered zone signals from inexpensive solar motion sensors, and a modest local AI stack produces a perimeter that is both programmable and capable of the kind of classification that pure PIR systems cannot deliver. The X-410 keeps the critical decision path offline and deterministic. The AI layer reduces noise. The canal gets a quieter, smarter form of attention.
+      </p>
+      <p class="text-slate-700 leading-relaxed">
+        For the High Tower District the practical question is not whether to buy another cloud subscription. It is whether a few hundred dollars of hardware, an evening of careful probing and soldering, and a weekend of configuration can turn an ordinary property line into a useful, shareable model for protecting the waterway that runs through the neighborhood.
+      </p>
+    </section>
+
+    <!-- Sources -->
+    <section class="border-t border-slate-200 pt-8">
+      <h2 class="serif text-xl font-bold text-slate-900 mb-4">Sources</h2>
+      <ul class="text-sm text-slate-600 space-y-2">
+        <li>ControlByWeb X-410 product specifications and documentation — controlbyweb.com (digital inputs 4–26 VDC, 20 ms minimum hold)</li>
+        <li>California Penal Code § 374.7 (littering or dumping into or within 150 feet of a waterway) — leginfo.legislature.ca.gov</li>
+        <li>Wuloo / QH-series solar driveway alarm product literature and user manuals (zone LED indicators and expandability to 8 sensors)</li>
+        <li>Common multi-zone RF receiver patterns and similar driveway-alarm integration examples</li>
+        <li>Frigate NVR project documentation for local object detection</li>
+        <li>Local observation and design notes for 721 E La Sierra Drive, Fresno, California</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 mt-16">
+    <div class="max-w-3xl mx-auto px-4 py-8 text-center text-sm">
+      <p class="mb-1">High Tower District Stories</p>
+      <p class="text-slate-500">Independent local documentation · aahigh.github.io/stories</p>
+    </div>
+  </footer>
+
+</body>
+</html>
