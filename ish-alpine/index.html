@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- === OPENGRAPH & TWITTER CARDS - MANDATORY FOR PREVIEWS === -->
+    <meta property="og:title" content="Thin Linux Client: Alpine on Every iPhone • High Tower District Stories">
+    <meta property="og:description" content="How Alpine Linux under iSH, tcsh, git, and a plugged keyboard turn dual iPhones into a consistent thin Linux client that travels with the phone. No separate machine required.">
+    <meta property="og:image" content="https://stories.ahightower.com/ish-alpine/images/preview.jpg">
+    <meta property="og:image:secure_url" content="https://stories.ahightower.com/ish-alpine/images/preview.jpg">
+    <meta property="og:image:width" content="1168">
+    <meta property="og:image:height" content="784">
+    <meta property="og:image:alt" content="iPhone running Alpine Linux terminal next to a compact mechanical keyboard with cyan and purple neon glow">
+    <meta property="og:url" content="https://stories.ahightower.com/ish-alpine/">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="High Tower District Stories">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Thin Linux Client: Alpine on Every iPhone • High Tower District Stories">
+    <meta name="twitter:description" content="How Alpine Linux under iSH, tcsh, git, and a plugged keyboard turn dual iPhones into a consistent thin Linux client that travels with the phone.">
+    <meta name="twitter:image" content="https://stories.ahightower.com/ish-alpine/images/preview.jpg">
+    
+    <title>Thin Linux Client: Alpine on Every iPhone • High Tower District Stories</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap');
+        
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        .heading-serif { font-family: 'Playfair Display', Georgia, serif; }
+        
+        .story-container { max-width: 980px; margin: 0 auto; }
+        .section-header { border-left: 4px solid #1e40af; padding-left: 1rem; }
+        .fact-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .fact-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); }
+        .pull-quote { border-left: 4px solid #1e40af; font-style: italic; }
+        
+        img { border-radius: 8px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+        .highlight { background-color: #fefce8; padding: 0.1em 0.3em; border-radius: 3px; }
+        pre.terminal {
+            background: #0a0a0a;
+            color: #00ff88;
+            font-family: 'JetBrains Mono', ui-monospace, monospace;
+            font-size: 0.85rem;
+            line-height: 1.45;
+            padding: 1.25rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid #1e293b;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-9 h-9 bg-blue-900 rounded-xl flex items-center justify-center">
+                    <i class="fa-solid fa-tower-broadcast text-white text-xl"></i>
+                </div>
+                <div>
+                    <span class="font-semibold text-xl tracking-tight">High Tower District</span>
+                    <span class="text-xs text-slate-500 block -mt-1">Stories Archive</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-x-2 text-sm">
+                <div class="px-3 py-1.5 bg-slate-100 rounded-full flex items-center gap-x-2 text-xs font-medium text-slate-600">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <span>Infrastructure</span>
+                </div>
+                <a href="#" onclick="window.print()" class="px-4 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 flex items-center gap-x-2 transition-colors">
+                    <i class="fa-solid fa-print"></i>
+                    <span class="hidden sm:inline">Print / PDF</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="bg-gradient-to-b from-slate-900 to-blue-950 text-white py-12">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="flex items-center gap-x-2 mb-4 flex-wrap gap-y-2">
+                <div class="inline-flex items-center px-3 py-1 rounded-full bg-white/10 text-xs font-medium tracking-[1px]">
+                    AUGUST 24, 2026 • SYSTEMS
+                </div>
+                <div class="inline-flex items-center px-3 py-1 rounded-full bg-emerald-500/90 text-white text-xs font-medium">
+                    <i class="fa-solid fa-terminal mr-1.5"></i>
+                    LIVE WORKFLOW
+                </div>
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter heading-serif leading-none mb-4">
+                Thin Linux Client
+            </h1>
+            <p class="text-xl sm:text-2xl text-slate-300 font-light leading-relaxed max-w-2xl">
+                Alpine under iSH. tcsh. git. A keyboard plugged into the phone. The same environment on every iPhone I own.
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <article class="story-container px-6 py-12">
+        
+        <!-- Lead -->
+        <div class="prose prose-lg max-w-none mb-12">
+            <p class="text-xl text-slate-700 leading-relaxed">
+                The terminal opens with the Alpine welcome message. Packages via apk. TCSH is installed. Type <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">t</code> and the shell switches. From there the muscle memory takes over.
+            </p>
+        </div>
+
+        <!-- Image: the actual screenshot -->
+        <figure class="mb-12">
+            <img src="images/terminal-ls.jpg" alt="iPhone screenshot of Alpine Linux under iSH showing ls of the stories directory with High Tower District story folders" class="w-full max-w-md mx-auto shadow-lg">
+            <figcaption class="text-center text-sm text-slate-500 mt-3">
+                Live session: ~/stories under Alpine on iSH. The same tree that lives on the other phone.
+            </figcaption>
+        </figure>
+
+        <!-- Chapter 1 -->
+        <section class="mb-14">
+            <div class="section-header mb-6">
+                <h2 class="text-2xl font-semibold text-slate-900 heading-serif">The Thin Client</h2>
+            </div>
+            <div class="prose prose-lg max-w-none text-slate-700 space-y-4">
+                <p>
+                    iSH runs a full Alpine Linux userspace on iOS without a jailbreak. It is not a remote session. It is local. The filesystem lives on the phone. apk installs packages. git works. tcsh is available with aliases. The entire command line environment that once required a dedicated machine now runs inside the same device that already carries the camera, the messages, and the bed-side mount.
+                </p>
+                <p>
+                    This is the definition of a thin client in reverse. The computing surface is thin. The persistence and the identity of the environment travel with the hardware you already own.
+                </p>
+            </div>
+        </section>
+
+        <!-- Chapter 2 -->
+        <section class="mb-14">
+            <div class="section-header mb-6">
+                <h2 class="text-2xl font-semibold text-slate-900 heading-serif">Keyboard and Motor Memory</h2>
+            </div>
+            <div class="prose prose-lg max-w-none text-slate-700 space-y-4">
+                <p>
+                    On-screen keyboards break the continuity of skill. The fingers that spent decades on real keyboards lose their accuracy when forced onto glass. Plugging a keyboard into the phone restores the physical map. The same keystrokes that once drove workstations now drive the Alpine shell. ls, cd, git status, apk add, the aliases that were typed once and remembered forever.
+                </p>
+                <p>
+                    Motor memory is infrastructure. When the input surface matches the one the hands expect, the cognitive load drops. The mind stays on the work instead of on the interface. That is the practical reason for the cable or the wireless connection.
+                </p>
+            </div>
+        </section>
+
+        <!-- Chapter 3 -->
+        <section class="mb-14">
+            <div class="section-header mb-6">
+                <h2 class="text-2xl font-semibold text-slate-900 heading-serif">Why Not a Separate Linux Machine</h2>
+            </div>
+            <div class="prose prose-lg max-w-none text-slate-700 space-y-4">
+                <p>
+                    A dedicated Linux laptop or mini PC is another device. It needs power. It needs updates. It needs to be carried or left somewhere. When it is left behind, the environment is left behind with it.
+                </p>
+                <p>
+                    The iSH setup lives on every iPhone. There is more than one. The dual phone arrangement means the same packages, the same shell configuration, the same git identity, and the same ~/stories directory can exist on both. When one is charging or in use for something else, the other is already running the identical environment. There is no second machine to keep in sync. There is no second operating system to maintain. The thin client is the phone you already carry.
+                </p>
+                <p>
+                    Continuity is the real advantage. The environment does not depend on being in a particular room or at a particular desk. It is present wherever the phone is present.
+                </p>
+            </div>
+        </section>
+
+        <!-- Preview visual -->
+        <figure class="mb-14">
+            <img src="images/preview.jpg" alt="iPhone running Alpine Linux terminal next to a compact mechanical keyboard illuminated with cyan and purple light" class="w-full shadow-lg">
+            <figcaption class="text-center text-sm text-slate-500 mt-3">
+                The practical surface: phone, keyboard, Alpine. Same environment on every device that already lives in the pocket or on the bed mount.
+            </figcaption>
+        </figure>
+
+        <!-- Chapter 4 -->
+        <section class="mb-14">
+            <div class="section-header mb-6">
+                <h2 class="text-2xl font-semibold text-slate-900 heading-serif">The Stories Directory as Proof</h2>
+            </div>
+            <div class="prose prose-lg max-w-none text-slate-700 space-y-4">
+                <p>
+                    The ls output is not decorative. It is the working archive. The same folders that appear on the screen are the ones that get pushed to the High Tower District Stories repository. The thin client is not a toy shell. It is the surface used to maintain the record.
+                </p>
+                <pre class="terminal">localhost:~# t
+~# sto
+~/stories# ls
+1.jpg
+2.jpg
+3.jpg
+4.jpg
+CNAME
+PredatorLand1.mp3
+...
+ai-grid-tower-district-0726
+canal-watch
+d3-hatchet
+fallacies.pdf
+fraud-pattern-2026
+ghost-bike
+...</pre>
+                <p>
+                    Everything needed for the next story, the next commit, the next update sits inside the same environment that opens with a single character alias. That is the leverage.
+                </p>
+            </div>
+        </section>
+
+        <!-- Closing reflection -->
+        <section class="mb-14">
+            <div class="section-header mb-6">
+                <h2 class="text-2xl font-semibold text-slate-900 heading-serif">Reflection</h2>
+            </div>
+            <div class="prose prose-lg max-w-none text-slate-700 space-y-4">
+                <p>
+                    Full Linux installs have their place. Separate machines have their place. For the daily work of writing, committing, and maintaining the High Tower District archive, the thin client is enough. Alpine under iSH plus a keyboard restores the command line without requiring a second computer to own, charge, or remember.
+                </p>
+                <p>
+                    The same environment on every iPhone means the skill stays sharp and the work stays continuous. That is the practical win.
+                </p>
+            </div>
+        </section>
+
+        <!-- Pull quote -->
+        <blockquote class="pull-quote pl-6 py-2 my-12 text-xl text-slate-800 max-w-2xl">
+            The environment travels with the phone because it is the phone.
+        </blockquote>
+
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                <div class="flex items-center gap-x-3">
+                    <div class="w-8 h-8 bg-blue-900 rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-tower-broadcast text-white text-sm"></i>
+                    </div>
+                    <div>
+                        <div class="font-medium text-white">High Tower District Stories</div>
+                        <div class="text-xs">Fresno · Tower District · 2026</div>
+                    </div>
+                </div>
+                <div class="text-sm">
+                    Independent systems notes from the bed fort.
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-slate-800 text-xs text-slate-500">
+                Published August 24, 2026. Alpine Linux under iSH on iOS. Keyboard input for motor memory continuity.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
