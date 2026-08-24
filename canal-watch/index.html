@@ -167,9 +167,30 @@
         <li>Once the four lines are identified, buffer them (simple transistor or optocoupler stage recommended) so the X-410 inputs see clean 4–26 VDC signals with adequate hold time (X-410 minimum is 20 ms).</li>
         <li>Share grounds carefully and keep the receiver’s low-voltage domain protected from any higher-power switching.</li>
       </ul>
-      <p class="text-slate-700 leading-relaxed">
+      <p class="text-slate-700 leading-relaxed mb-6">
         If the parallel bus proves elusive, a fallback is to tap individual zone LED drivers (one wire per zone) or, at higher effort, decode the RF packets themselves with a separate 433/868 MHz module. The four-wire ID + latch approach is the cleanest target and matches the hardware already on the bench.
       </p>
+
+      <figure class="mb-6">
+        <img src="images/wuloo-setup.jpg" alt="Wuloo outdoor wireless solar driveway alarm system showing the black receiver with blue digital display and two brown solar motion sensors" class="w-full rounded-xl shadow object-cover max-h-72">
+        <figcaption class="mt-2 text-sm text-slate-500 text-center">The actual Wuloo system (receiver + solar sensors). The receiver is the unit that gets opened for probing and soldering.</figcaption>
+      </figure>
+
+      <h3 class="font-semibold text-slate-900 mb-3">The DIY soldering sequence</h3>
+      <p class="text-slate-700 leading-relaxed mb-4">
+        Once the zone-ID and latch lines are identified with the voltmeter, the entertaining part begins: clean flux, bright solder joints, and a tidy cable that leaves the receiver ready to talk to the X-410.
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <figure>
+          <img src="images/solder-active.jpg" alt="DIY workbench close-up of Wuloo receiver circuit board in a third-hand tool while a soldering iron applies molten solder and flux to a joint, independent colored wires already attached, multimeter and tools visible" class="w-full rounded-xl shadow object-cover">
+          <figcaption class="mt-2 text-sm text-slate-500 text-center">Active soldering: flux, molten joint, independent wires hanging free. The classic “smoke and shine” moment of electronics hobby work.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/solder-clean.jpg" alt="Same Wuloo receiver board in third-hand tool with four clean soldered wires, next to a neatly bundled and zip-tied cable of the same wires, soldering iron in stand, flux bottle and tools on wooden bench" class="w-full rounded-xl shadow object-cover">
+          <figcaption class="mt-2 text-sm text-slate-500 text-center">Cleanup stage: independent wires become a single tidy bundle ready for the X-410 inputs. Satisfying DIY finish.</figcaption>
+        </figure>
+      </div>
     </section>
 
     <!-- AI capabilities -->
