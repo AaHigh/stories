@@ -4,6 +4,7 @@
 # 5 minutes: pull latest, unzip with overwrite, delete the archive, git add
 # the extracted directory, commit. No prompts.
 # Usage from the repo:  tcsh zipin.tcsh   or   ./zipin.tcsh
+set echo = 1
 
 set MAX_AGE_MIN = 5
 
