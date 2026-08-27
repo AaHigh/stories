@@ -1,0 +1,194 @@
+#!/bin/tcsh
+# zipin.tcsh
+# If exactly one zip (or zip-like) file appeared in the repo root in the last
+# 5 minutes: pull latest, unzip with overwrite, delete the archive, git add
+# the extracted directory, commit. No prompts.
+# Usage from the repo:  tcsh zipin.tcsh   or   ./zipin.tcsh
+
+set MAX_AGE_MIN = 5
+
+alias die 'echo "zipin: \!*" > /dev/stderr ; exit 1'
+
+# Must be inside a git work tree.
+git rev-parse --is-inside-work-tree >& /dev/null
+if ($status != 0) then
+    die "not inside a git repository"
+endif
+
+set ROOT = `git rev-parse --show-toplevel`
+if ($status != 0) then
+    die "cannot resolve git root"
+endif
+cd "$ROOT"
+if ($status != 0) then
+    die "cannot cd to $ROOT"
+endif
+
+# Collect candidate archives at repo root only. Prefer *.zip / *.ZIP.
+set candidates = ()
+foreach f (`find "$ROOT" -maxdepth 1 -type f -mmin -${MAX_AGE_MIN} \( -name '*.zip' -o -name '*.ZIP' \)`)
+    if ("$f" != "") then
+        set candidates = ($candidates:q "$f")
+    endif
+end
+
+# Also accept a recent non-.zip file that `file` reports as a zip archive.
+which file >& /dev/null
+if ($status == 0) then
+    foreach f (`find "$ROOT" -maxdepth 1 -type f -mmin -${MAX_AGE_MIN}`)
+        if ("$f" == "") continue
+        set base = `basename "$f"`
+        switch ("$base")
+        case *.zip:
+        case *.ZIP:
+            continue
+        endsw
+        set kind = "`file -b $f`"
+        echo "$kind" | grep -qi zip
+        if ($status == 0) then
+            set candidates = ($candidates:q "$f")
+        endif
+    end
+endif
+
+set count = $#candidates
+if ($count == 0) then
+    die "no zip created in the last ${MAX_AGE_MIN} minutes at repo root"
+endif
+if ($count > 1) then
+    echo "zipin: found more than one recent archive:" > /dev/stderr
+    foreach f ($candidates:q)
+        echo "  $f" > /dev/stderr
+    end
+    die "refusing to guess. Leave exactly one recent zip."
+endif
+
+set ARCHIVE = "$candidates[1]"
+set ARCHIVE_BASE = `basename "$ARCHIVE"`
+set STEM = "$ARCHIVE_BASE"
+switch ("$STEM")
+case *.zip:
+case *.ZIP:
+    set STEM = "$STEM:r"
+    breaksw
+endsw
+
+echo "zipin: archive = $ARCHIVE_BASE"
+echo "zipin: stem    = $STEM"
+
+# (0) Update from remote. Must succeed. No prompts.
+setenv GIT_TERMINAL_PROMPT 0
+setenv GIT_MERGE_AUTOEDIT no
+
+set BRANCH = `git rev-parse --abbrev-ref HEAD`
+if ($status != 0) then
+    die "cannot read current branch"
+endif
+if ("$BRANCH" == "HEAD") then
+    die "detached HEAD. Check out a branch first."
+endif
+
+# Upstream, if set.
+set REMOTE = ""
+set up = `git rev-parse --abbrev-ref --symbolic-full-name '@{u}'`
+if ($status == 0) then
+    set REMOTE = "$up"
+endif
+
+if ("$REMOTE" == "") then
+    git remote get-url origin >& /dev/null
+    if ($status != 0) then
+        die "no upstream and no origin remote"
+    endif
+    git ls-remote --heads origin "$BRANCH" | grep -q .
+    if ($status == 0) then
+        set REMOTE = "origin/${BRANCH}"
+    else
+        git ls-remote --heads origin main | grep -q .
+        if ($status == 0) then
+            set REMOTE = "origin/main"
+        else
+            git ls-remote --heads origin master | grep -q .
+            if ($status == 0) then
+                set REMOTE = "origin/master"
+            else
+                die "no upstream and cannot find origin/${BRANCH}, origin/main, or origin/master"
+            endif
+        endif
+    endif
+    echo "zipin: no upstream set. Pulling $REMOTE"
+endif
+
+echo "zipin: pulling (ff-only) $REMOTE"
+
+set REMOTE_NAME = `echo "$REMOTE" | sed 's|/.*||'`
+set REMOTE_REF  = `echo "$REMOTE" | sed 's|^[^/]*/||'`
+
+git fetch --quiet "$REMOTE_NAME" "$REMOTE_REF"
+if ($status != 0) then
+    die "git fetch failed. Stopped before unzip."
+endif
+
+# If remote is ancestor of HEAD, we are already up to date or ahead.
+# If HEAD is ancestor of remote, fast-forward.
+# If neither, histories diverged.
+git merge-base --is-ancestor HEAD "$REMOTE_NAME/$REMOTE_REF"
+set head_is_anc = $status
+git merge-base --is-ancestor "$REMOTE_NAME/$REMOTE_REF" HEAD
+set remote_is_anc = $status
+
+if ($head_is_anc != 0 && $remote_is_anc != 0) then
+    die "local and $REMOTE have diverged. Resolve that before ingesting a zip."
+endif
+
+if ($head_is_anc == 0) then
+    git merge --ff-only --quiet "$REMOTE_NAME/$REMOTE_REF"
+    if ($status != 0) then
+        die "ff-only pull failed. Stopped before unzip."
+    endif
+else
+    echo "zipin: local is already ahead of $REMOTE. Continuing without merge."
+endif
+echo "zipin: tree is up to date with $REMOTE"
+
+# (1) Unzip, overwrite, no prompts.
+which unzip >& /dev/null
+if ($status != 0) then
+    die "unzip is not installed"
+endif
+echo "zipin: unzip -o $ARCHIVE_BASE"
+unzip -o -q "$ARCHIVE" -d "$ROOT"
+if ($status != 0) then
+    die "unzip failed"
+endif
+
+# (2) Remove the archive immediately.
+rm -f "$ARCHIVE"
+echo "zipin: removed $ARCHIVE_BASE"
+
+# (3) Stage the extracted directory. Git decides new vs modified.
+if (! -e "$ROOT/$STEM") then
+    die "after unzip, expected $STEM in the repo root and it is missing"
+endif
+git add -- "$STEM"
+if ($status != 0) then
+    die "git add failed"
+endif
+echo "zipin: git add $STEM"
+
+# (4) Commit. No editor. Skip cleanly if nothing changed.
+git diff --cached --quiet
+if ($status == 0) then
+    echo "zipin: nothing new to commit (contents already match HEAD)"
+    exit 0
+endif
+
+set stamp = `date -u +%Y-%m-%dT%H:%MZ`
+set MSG = "Ingest ${STEM} from zip (${stamp})"
+git commit -m "$MSG"
+if ($status != 0) then
+    die "git commit failed (check user.name / user.email)"
+endif
+echo "zipin: committed: $MSG"
+git status --short
+exit 0
