@@ -12,242 +12,313 @@
   <meta property="og:image" content="https://stories.ahightower.com/images/ht-stories-preview.jpg">
   <meta property="og:image:width" content="1280">
   <meta property="og:image:height" content="720">
-  <meta name="theme-color" content="#080018">
+  <meta name="theme-color" content="#14110c">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="STORIES">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,700&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #080018;
-      --surface: #0e0024;
-      --border: #5500aa;
-      --cyan: #00ffff;
-      --orange: #ff8800;
-      --purple: #aa88ff;
-      --green: #00ff88;
-      --dim: #442266;
-      --text: #e8e0ff;
-      --muted: #9b8bb8;
+      --bg: #14110c;
+      --bg-2: #1c1812;
+      --paper: #231e16;
+      --paper-2: #2b241b;
+      --line: rgba(232, 196, 122, 0.22);
+      --line-strong: rgba(232, 196, 122, 0.45);
+      --amber: #e8b44a;
+      --amber-hot: #ffcf70;
+      --signal: #d94b32;
+      --cream: #f4ead6;
+      --muted: #b7a78a;
+      --dim: #7d705c;
+      --ink: #f4ead6;
+      --safe-top: env(safe-area-inset-top, 0px);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html {
       background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--ink);
+      font-family: Figtree, system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
       scroll-behavior: smooth;
     }
 
     body {
       min-height: 100dvh;
-      background: var(--bg);
-      background-image:
-        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(85, 0, 170, 0.25), transparent),
-        radial-gradient(ellipse 60% 40% at 100% 100%, rgba(0, 255, 170, 0.06), transparent);
-    }
-
-    .led-border {
-      border: 1px solid var(--border);
-      box-shadow:
-        0 0 0 1px rgba(85, 0, 170, 0.4),
-        0 0 12px rgba(85, 0, 170, 0.25),
-        inset 0 0 20px rgba(85, 0, 170, 0.08);
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-    .led-border:hover {
-      border-color: var(--cyan);
-      box-shadow:
-        0 0 0 1px rgba(0, 255, 255, 0.5),
-        0 0 18px rgba(0, 255, 255, 0.3),
-        0 0 40px rgba(0, 255, 255, 0.12),
-        inset 0 0 24px rgba(0, 255, 255, 0.06);
-    }
-
-    .cycle-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      background: linear-gradient(
-        90deg,
-        #00ffff,
-        #aa88ff,
-        #ff8800,
-        #00ff88,
-        #00ffff,
-        #aa88ff
-      );
-      background-size: 300% 100%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: hueCycle 8s linear infinite;
-    }
-    @keyframes hueCycle {
-      0%   { background-position: 0% 50%; }
-      100% { background-position: 300% 50%; }
-    }
-
-    .cat-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--cyan);
-      text-shadow: 0 0 8px rgba(0, 255, 255, 0.45);
-    }
-
-    .section-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--purple);
-      margin-bottom: 1rem;
-      padding-bottom: 0.4rem;
-      border-bottom: 1px solid rgba(85, 0, 170, 0.5);
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .section-title::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      background: var(--orange);
-      border-radius: 1px;
-      box-shadow: 0 0 8px var(--orange);
-      animation: ledPulse 2.4s ease-in-out infinite;
-    }
-    @keyframes ledPulse {
-      0%, 100% { opacity: 0.5; box-shadow: 0 0 4px var(--orange); }
-      50%      { opacity: 1;   box-shadow: 0 0 12px var(--orange), 0 0 20px rgba(255, 136, 0, 0.4); }
+      background:
+        radial-gradient(ellipse 90% 50% at 50% -10%, rgba(232, 180, 74, 0.10), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 100% 100%, rgba(217, 75, 50, 0.08), transparent 50%),
+        repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.12) 3px, rgba(0,0,0,0.12) 4px),
+        var(--bg);
     }
 
     a { color: inherit; text-decoration: none; }
-    a:focus-visible { outline: 1px solid var(--cyan); outline-offset: 3px; }
+    a:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
 
-    .story-card {
-      background: var(--surface);
-      border-radius: 10px;
-      padding: 1.1rem 1.2rem;
-      display: block;
-      transition: transform 0.2s ease;
+    .mast {
+      padding: calc(1.6rem + var(--safe-top)) 1rem 1.15rem;
+      text-align: center;
     }
-    .story-card:hover {
-      transform: translateY(-2px);
+    .kicker {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--amber);
     }
-    .story-card h3 {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: #fff;
-      margin: 0.25rem 0 0.45rem;
-      line-height: 1.3;
+    .kicker span {
+      color: var(--signal);
+      letter-spacing: 0.18em;
     }
-    .story-card p {
-      font-size: 0.82rem;
+    .mast h1 {
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 650;
+      font-size: clamp(1.55rem, 6.4vw, 2.15rem);
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin-top: 0.45rem;
+      color: var(--cream);
+    }
+    .mast .sub {
+      margin-top: 0.45rem;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--muted);
-      line-height: 1.45;
     }
-    .story-card .arrow {
-      display: inline-block;
-      margin-top: 0.55rem;
-      font-size: 0.75rem;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--cyan);
-      opacity: 0.7;
-      transition: opacity 0.2s, transform 0.2s;
+    .mast .tagline {
+      margin: 0.85rem auto 0;
+      max-width: 28rem;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: var(--muted);
     }
-    .story-card:hover .arrow {
-      opacity: 1;
-      transform: translateX(3px);
+
+    .toolbar-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 0.55rem 1rem 0.7rem;
+      background: linear-gradient(180deg, rgba(20,17,12,0.96) 70%, rgba(20,17,12,0.55) 100%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .toolbar {
+      max-width: 42rem;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .switch {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px;
+    }
+    .switch button {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-family: Figtree, system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.02em;
+      padding: 0.62rem 0.4rem;
+      border-radius: 999px;
+      min-height: 44px;
+      cursor: pointer;
+    }
+    .switch button[aria-pressed="true"] {
+      background: var(--amber);
+      color: #1a1408;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--amber);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.45rem 0.65rem;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
     }
 
     .wrap {
       max-width: 42rem;
       margin: 0 auto;
-      padding: 0 1rem 4rem;
+      padding: 0.4rem 1rem 4rem;
     }
 
-    header {
-      padding: 2.5rem 1rem 1.8rem;
-      text-align: center;
-      position: relative;
-    }
-    header::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(320px, 80%);
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border), transparent);
-    }
-
-    .sub {
-      margin-top: 0.6rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-    }
-    .tagline {
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      color: var(--muted);
-      max-width: 28rem;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.5;
-    }
-
-    section {
-      margin-top: 2.2rem;
-    }
-
-    .grid {
+    .section-head {
       display: flex;
-      flex-direction: column;
+      align-items: baseline;
+      justify-content: space-between;
       gap: 0.75rem;
+      margin: 1.7rem 0 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--line);
     }
+    .section-head h2 {
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 650;
+      font-size: 1.18rem;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+    .section-head .n {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.68rem;
+      color: var(--dim);
+      letter-spacing: 0.08em;
+    }
+
+    .month-head {
+      margin: 1.8rem 0 0.8rem;
+    }
+    .month-head .yr {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+    .month-head h2 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: 650;
+      letter-spacing: -0.03em;
+    }
+
+    .grid { display: flex; flex-direction: column; gap: 0.7rem; }
+
+    .story-card {
+      display: block;
+      background: linear-gradient(180deg, var(--paper-2), var(--paper));
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1rem 1.05rem 0.95rem;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+    .story-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--line-strong);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.28);
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      margin-bottom: 0.28rem;
+    }
+    .cat-label {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+    .date-label {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      color: var(--dim);
+      white-space: nowrap;
+    }
+    .story-card h3 {
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 650;
+      font-size: 1.08rem;
+      line-height: 1.28;
+      color: var(--cream);
+      margin: 0.1rem 0 0.4rem;
+    }
+    .story-card p {
+      font-size: 0.86rem;
+      line-height: 1.48;
+      color: var(--muted);
+    }
+    .story-card .arrow {
+      display: inline-block;
+      margin-top: 0.55rem;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      color: var(--amber);
+      opacity: 0.75;
+      transition: transform 0.18s ease, opacity 0.18s ease;
+    }
+    .story-card:hover .arrow { opacity: 1; transform: translateX(3px); }
 
     footer {
-      margin-top: 3.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(85, 0, 170, 0.35);
+      margin-top: 2.8rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--line);
       text-align: center;
-      font-size: 0.7rem;
-      color: var(--dim);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.68rem;
       letter-spacing: 0.06em;
+      color: var(--dim);
     }
-    footer a {
-      color: var(--purple);
-    }
-    footer a:hover {
-      color: var(--cyan);
-    }
+    footer a { color: var(--amber); }
+    footer a:hover { color: var(--amber-hot); }
+    footer .credit { margin-top: 0.45rem; opacity: 0.75; }
 
     .status {
       text-align: center;
       padding: 3rem 1rem;
       color: var(--muted);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: "IBM Plex Mono", monospace;
       font-size: 0.8rem;
-      letter-spacing: 0.06em;
     }
 
+    .jump {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0.2rem 0 0.4rem;
+    }
+    .jump a {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.64rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.38rem 0.58rem;
+    }
+    .jump a:hover { color: var(--amber); border-color: var(--line-strong); }
+
     @media (max-width: 420px) {
-      .cycle-title { font-size: 1.35rem; }
-      .story-card h3 { font-size: 0.98rem; }
+      .story-card h3 { font-size: 1.02rem; }
+      .mast h1 { font-size: 1.55rem; }
     }
   </style>
 </head>
 <body>
-  <header id="site-header"></header>
+  <header class="mast" id="site-header"></header>
+  <div class="toolbar-wrap">
+    <div class="toolbar">
+      <div class="switch" role="tablist" aria-label="Story arrangement">
+        <button type="button" id="btn-cat" role="tab" aria-pressed="true">Categories</button>
+        <button type="button" id="btn-chrono" role="tab" aria-pressed="false">Chronological</button>
+      </div>
+      <div class="count-pill" id="count-pill"></div>
+    </div>
+  </div>
   <div class="wrap">
     <div id="content"><div class="status">loading…</div></div>
     <footer id="site-footer"></footer>
@@ -293,70 +364,80 @@
           "category": "Core",
           "title": "The Hightower Derivative",
           "description": "AI is not merely changing the content of human thought. It is changing the rate at which human cognition itself bends. Second-order derivative. No control population exists.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": null
         },
         {
           "href": "mwi-playback/",
           "category": "Hyperbole",
           "title": "The Accidental Transcription and the High Score of the Cosmos",
           "description": "A free speech-to-text discovery becomes a meditation on Many-Worlds Hilbert space, the rarity of the sinless humanoid, and the singular perfect playback that may be the return of Christ.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-04"
         },
         {
           "href": "trusting-trust-april1/",
           "category": "Core",
           "title": "Trusting Trust in the Age of Agents",
           "description": "The April 1 observation meets OpenAI’s sandbox escape. Opportunistic leaps confirm Ken Thompson’s warning.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-07-29"
         },
         {
           "href": "rate-first/",
           "category": "Measurement",
           "title": "Measurement First",
           "description": "The open-weights debate is the Facebook playbook applied to cognition. Measurement of the Hightower Derivative comes first. Power to people for their humanity.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-07-31"
         },
         {
           "href": "path-signal/",
           "category": "Signal",
           "title": "The Path Is the Signal",
           "description": "AI does not destroy independent thought by removing choice. It risks making the human decision trajectory invisible.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-02"
         },
         {
           "href": "spin-signal/",
           "category": "Narrative",
           "title": "The Spin Signal",
           "description": "A hyperbolic narrative of the ultimate epiphany. One discovery that collapses time, reverses the swirl, and proves we can still see the path.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-02"
         },
         {
           "href": "pfc-joy/",
           "category": "Agency",
           "title": "True Joy Is Within Reach",
           "description": "Science shows the prefrontal cortex can restore the joy we knew as children. Objective evidence that hope and agency belong to everyone.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-25"
         },
         {
           "href": "first-queer/",
           "category": "Fallacy",
           "title": "The Hasty Generalization",
           "description": "A Facebook reply about the hasty generalization fallacy is often the first thing strangers see. Here is why that first impression can feel queer, and what actually sits underneath.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": null
         },
         {
           "href": "leaf-scam/",
           "category": "Parallel",
           "title": "The Leaf Node",
           "description": "A contemplative parallel between Fresno fentanyl dealers and Ghanaian Sakawa boys: the leaf nodes of scam hierarchies where extractors sit above and false moral high ground feeds the rest.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-04"
         },
         {
           "href": "false-high/",
           "category": "Satire",
           "title": "The Eternal Arab Honor of Christian Freedom",
           "description": "A hyperbolic satirical roast of false moral high ground on religious freedom claims, including the recent Ceuta surge documented by Nick Shirley.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-05"
         }
       ]
     },
@@ -368,56 +449,64 @@
           "category": "Safety · Harnesses",
           "title": "AI & Containment",
           "description": "On April 1 2026 the same day Anthropic leaked its agent harness, the question was whether the model itself raised the flag.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-04-01"
         },
         {
           "href": "ai-abund/",
           "category": "Abundance",
           "title": "Age of Abundance & AI",
           "description": "People fear AI will take jobs and leave us poor. The counterintuitive truth is the opposite: massive productivity creates surplus.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-01"
         },
         {
           "href": "ai-grid-tower-district-0726/",
           "category": "Infrastructure",
           "title": "AI Grid SHUT DOWN!",
           "description": "Federal Power Act orders for AI data centers. Local implications for the grid and the Tower District.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-07-16"
         },
         {
           "href": "mandami-ai/",
           "category": "Parallel Playbooks",
           "title": "From Mandami to the Machine",
           "description": "Japanese American redress → Black reparations task forces → NYC cash talks amid deficit. Meanwhile AI data centers light up.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-07-29"
         },
         {
           "href": "vis-grid/",
           "category": "Interface",
           "title": "What Influence Doth Thou Have?",
           "description": "At the top level of AI exploration, unlimited visual choice grids maximize data into the human brain while minimizing the interface tax.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-01"
         },
         {
           "href": "ai-pyramid/",
           "category": "Hyperbole",
           "title": "We Are Paying to Build Their Pyramid",
           "description": "A hyperbolic look at how frontier AI companies turned the intelligence of the entire planet into free labor while charging us for the privilege of feeding it.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-05"
         },
         {
           "href": "seed-25/",
           "category": "Video Models",
           "title": "Seedance 2.5: The Realism Jump That Matters",
           "description": "ByteDance’s Seedance 2.5 doubles clip length, multiplies references, and pushes facial realism to near-human levels. Why it matters for anyone building interactive or skill-based media.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": null
         },
         {
           "href": "dnb-paywin/",
           "category": "Arcade Parallel",
           "title": "When Food Runs the Arcades",
           "description": "Dave & Buster’s capital expenditures under food-industry leadership, Meta’s AI CapEx parallel, and how pay-to-win high-limit players erode the skill-based working-class arcade.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": null
         }
       ]
     },
@@ -425,151 +514,236 @@
       "title": "Local District Reality",
       "stories": [
         {
+          "href": "pge-strap/",
+          "category": "Utility",
+          "title": "The Gravy He Believes",
+          "description": "A High Tower District opinion with a public record attached: public-safety talk on one side, PG&E risk and donor gravy on the other.",
+          "arrow": "read →",
+          "date": null
+        },
+        {
+          "href": "whistle-or-down/",
+          "category": "Record",
+          "title": "Whistleblow or Go Down",
+          "description": "You best become a whistleblower or you're going to go down. I'm done. Official tape 1:49:12.",
+          "arrow": "read →",
+          "date": "2026-08-19"
+        },
+        {
+          "href": "pc-aug19/",
+          "category": "Council",
+          "title": "Follow the Law",
+          "description": "August 19, 2026 at 1:49:12. District 3 dropout after PC 311.11. The homeless problem is a criminal problem. Whistleblow or go down.",
+          "arrow": "read →",
+          "date": "2026-08-19"
+        },
+        {
+          "href": "not-home/",
+          "category": "Planning",
+          "title": "This Is Not a Homeless Problem",
+          "description": "The loaded label is homeless. Wiener killed the 311.11 office ban. Thomas and Arias swap chairs. Official tape 1:49:12.",
+          "arrow": "read →",
+          "date": "2026-08-19"
+        },
+        {
+          "href": "enjoy-self/",
+          "category": "Record",
+          "title": "Enjoy Yourself",
+          "description": "The YouTube Short from Echo and Thomas hit 10,000 views. On the street the recorder stayed civil. The man who left the Honda wanted the attention.",
+          "arrow": "read →",
+          "date": "2026-08-26"
+        },
+        {
+          "href": "take-care/",
+          "category": "Enforcement",
+          "title": "The Rules Changed",
+          "description": "Open-air use, possession, and paraphernalia are being enforced again. Protect yourself from a charge you did not know was back on the books.",
+          "arrow": "read →",
+          "date": "2026-08-27"
+        },
+        {
+          "href": "wl-comics/",
+          "category": "Van Ness",
+          "title": "Wonderland Comics Is Still Open",
+          "description": "1409 N Van Ness. A Tower District comic shop that started at a swap meet in 1965, opened in 1974, moved to Van Ness in 1984, and is still open.",
+          "arrow": "read →",
+          "date": "2026-08-28"
+        },
+        {
+          "href": "bcg-1475/",
+          "category": "Van Ness",
+          "title": "The Consoles Leave at Night",
+          "description": "Wednesday morning a rock hit the front door of Battle City Games at 1475 N Van Ness. It did not go through. The owner is taking the hardware home at night.",
+          "arrow": "read →",
+          "date": "2026-08-28"
+        },
+        {
           "href": "d3-dais/",
           "category": "District 3 · Dais",
           "title": "Spidey Senses and Murder",
           "description": "January 15 and 29 tapes plus August 19. Unhoused as a soft label on a break-in. Murder as a loaded verdict from a nonpartisan chair. Fallacy call at 1:15:38.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-28"
         },
         {
           "href": "richies/",
           "category": "Olive · Food",
           "title": "Richie's Pizza & Hot Dogs",
           "description": "Neon slice. Quilted pizza flag. $20 whole pie. New York slices and gourmet dogs on Olive, plus the wave from the line.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-27"
         },
         {
           "href": "togo-29/",
           "category": "Hospitality · Law",
           "title": "Cocktails To-Go Through 2029",
           "description": "The legislature passed a bill to extend restaurant cocktails-to-go. Pickup only. Meal required. Sealed lid. What that actually means on Olive Avenue.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-27"
         },
         {
           "href": "warn-over/",
           "category": "Canal · Enforcement",
           "title": "Warning Phase Over",
           "description": "At 721 E La Sierra the previous 24 hours are on permanent display. PC 374.7 is written in pink. The warning is finished. Citizen arrest mode begins.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-25"
         },
         {
           "href": "deputy-shooting/",
           "category": "Crime Watch",
           "title": "Deputy Shooting Incident",
           "description": "Both the suspect and the deputy received prompt medical attention at the scene. The deputy’s injuries were minor. The suspect remains critical.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-07-14"
         },
         {
           "href": "d3-hatchet/",
           "category": "District 3",
           "title": "0.8 Miles From Home",
           "description": "Morning of August 3, 2026. A man chopped with a hatchet at Belmont and Effie. Exactly 0.78 miles from the door in the Tower District.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-03"
         },
         {
           "href": "robbery-story/",
           "category": "Local",
           "title": "Robbery & Broken Windows",
           "description": "Crime prevention for at-risk youth and the practical geometry of broken windows in the District.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": null
         },
         {
           "href": "sinners-on-operation-no-fly-zone.html",
           "category": "Narrative Non-Fiction",
           "title": "Sinners on Operation No Fly Zone",
           "description": "Local law-enforcement narrative and the operational texture of the District.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": null
         },
         {
           "href": "singh_crash_article/",
           "category": "Accountability",
           "title": "Light Sentence for Illegal Killing Four",
           "description": "Immigration, public safety, and what accountability to taxpayers actually requires.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-07-15"
         },
         {
           "href": "fraud-pattern-2026/",
           "category": "Analysis",
           "title": "Fraud Patterns 2026",
           "description": "Federal tax fraud patterns and the systems that either catch them or let them run.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": null
         },
         {
           "href": "engage-cost/",
           "category": "Engagement",
           "title": "The Real Cost of Engagement",
           "description": "Rare acts of vandalism become “civic duty” inside Facebook’s engagement machine. One arrest in Monterey County reveals the cost.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-07-30"
         },
         {
           "href": "echo-stop/",
           "category": "Record",
           "title": "Echo and Thomas",
           "description": "A Honda Accord runs the stop at Thomas and Broadway, then converts a slow-down signal into a molestation story. Plate 9DZH843. Recorded August 26, 2026.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-26"
         },
         {
           "href": "dda-stab/",
           "category": "Crime Watch",
           "title": "Courthouse Park Knife Attack",
           "description": "Dustin Crawford, 42, stabbed a senior Fresno County deputy district attorney three times in the back on Aug 20, 2026. Officials call it targeted retaliation.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-20"
         },
         {
           "href": "d3-hotspots/",
           "category": "District 3",
           "title": "Open-Air Drug Hotspots",
           "description": "Field-timed hotspots in Fresno District 3, the Prop 36 legal toolkit, and a suggested plan to stop open-air drug use on public streets and parking lots.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-26"
         },
         {
           "href": "td-wheelie/",
           "category": "Record",
           "title": "The OG Record · $750 Profile Hubs",
           "description": "Garry Bredefeld used the Tower District as proof bike lanes destroy streets. The actual record: continuous controlled wheelies since 2019 and an official SE Bikes Profile Racing hubs prize.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-07-19"
         },
         {
           "href": "tower-conflu/",
           "category": "Signals",
           "title": "Confluence in the Tower",
           "description": "When open-air markets, limited quality-of-life enforcement, residual mayoral influence, and high-visibility personal branding occupy the same ground, the story writes itself through confluence.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": null
         },
         {
           "href": "roads-suit/",
           "category": "Ballot",
           "title": "Judge Carousel: Better Roads Lawsuit",
           "description": "Fresno County’s lawsuit over the November Better Roads, Safe Streets ballot placement hits a third judge in 10 days as printing deadlines close in.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-25"
         },
         {
           "href": "ht-rates/",
           "category": "Civic Tool",
           "title": "Homeless Rates by State Guide",
           "description": "A practical map of U.S. homelessness rates per 10,000 residents. Red is lowest. Blue is highest. A civic tool for seeing where housing costs drive visible homelessness.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-23"
         },
         {
           "href": "speak255/",
           "category": "Council",
           "title": "Speaking at 2:55",
           "description": "Direct jump to the second public comment at the 2:55:23 mark of the Fresno City Council meeting on December 4, 2025. Community input on federal funds and criminal activity.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2025-12-04"
         },
         {
           "href": "kyle-win/",
           "category": "Local Win",
           "title": "Standing With Kyle Kirkland",
           "description": "Club One Casino owner and California Gaming Association president Kyle Kirkland secured a major legal win for Fresno jobs and local tax revenue.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-22"
         },
         {
           "href": "low-bail/",
           "category": "Hypothesis",
           "title": "The $45,000 Hypothesis",
           "description": "A speculative look at second-order effects when low bail in a double-fatal Reedley hit-and-run is treated as a product of corruption rather than schedule.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-06"
         }
       ]
     },
@@ -577,53 +751,68 @@
       "title": "Kids & Accountability",
       "stories": [
         {
+          "href": "bus-stops/",
+          "category": "Trafficking",
+          "title": "The Bus Stop Is Not a Hunting Ground",
+          "description": "A 38-year-old Fresno man was sentenced Thursday for human trafficking and the assault of three minors. Some of the contact started at bus stops.",
+          "arrow": "read →",
+          "date": "2026-08-28"
+        },
+        {
           "href": "guardians/",
           "category": "Training",
           "title": "Guardians Training — Protect Our Kids",
           "description": "Saturday Aug 29 at Cornerstone: $25 practical training to recognize grooming patterns, respond without compromise, and teach kids to log off and tell an adult.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-29"
         },
         {
           "href": "meta-375m/",
           "category": "Verdict",
           "title": "Meta Ordered to Pay $375 Million",
           "description": "A New Mexico jury ordered Meta to pay $375 million after finding the company misled users about platform safety and enabled sexual exploitation of young people.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-03-24"
         },
         {
           "href": "hhs-kids/",
           "category": "Record",
           "title": "The Assembly Line of Children",
           "description": "When vulnerable children were treated as units on a production line, and the follow-up calls went unanswered. A record that California cannot reward.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-14"
         },
         {
           "href": "ms13-kids/",
           "category": "Oversight",
           "title": "How Did They End Up With MS-13?",
           "description": "Rep. Andy Biggs pressed HHS Secretary Xavier Becerra on how unaccompanied migrant children ended up with MS-13 sponsors. The vetting failures and the numbers.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-08"
         },
         {
           "href": "hef-tip/",
           "category": "2005 Tip",
           "title": "Hefner’s 2005 Epstein Tip",
           "description": "Court filings show Hugh Hefner repeatedly reported Jeffrey Epstein’s abuse of Playmate Audra Christiansen to the FBI in 2005. Agents followed up 15 years later.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": null
         },
         {
           "href": "sys-fail/",
           "category": "Institution",
           "title": "The Fifteen-Year Silence",
           "description": "In 2005 Hugh Hefner reported Jeffrey Epstein to the FBI after a Playmate described rape and trafficking. The bureau waited fifteen years.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": null
         },
         {
           "href": "safety-first/",
           "category": "Standard",
           "title": "When Innocence Ends",
           "description": "Public safety first. When a minor carries out an execution-style killing, the child status that once protected them should end. A call for federal default adult accountability.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-25"
         }
       ]
     },
@@ -635,77 +824,88 @@
           "category": "Bed Fort",
           "title": "From 21 Screens to Bed Fort",
           "description": "A Texas A&M computer nerd retires and slashes power consumption from 21 always-on LCDs to a minimalist dual-iPhone rig because PG&E rates hit $0.50/kWh.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": null
         },
         {
           "href": "pge-care-factual-story.html",
           "category": "Utility",
           "title": "The Quiet Overcharge",
           "description": "PG&E billing realities and the CARE program as seen from the meter and the bill.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": null
         },
         {
           "href": "hot-shelf-0726/",
           "category": "Thermal",
           "title": "The Hot Shelf",
           "description": "On a dry July day in the Tower District, the difference between a 99° peak and a 101° peak is not cosmetic. It changes survival strategy.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-07-26"
         },
         {
           "href": "ghost-bike/",
           "category": "Operations",
           "title": "Bike Ghost Kitchen",
           "description": "A practical, low-overhead path to starting a delivery-only kitchen in Fresno’s Tower District with cargo bikes and tight margins.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-03"
         },
         {
           "href": "battery-commodity-scale/",
           "category": "Systems",
           "title": "Battery Commodity Scale",
           "description": "Change the form of the energy — make it a physical, standardized, movable asset — and the entire supply chain opens up.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": null
         },
         {
           "href": "work-diff/",
           "category": "Workflow",
           "title": "Frictionless by Design",
           "description": "A mobile-first, zero-shift, no-laptop workflow built around Grok, an iPhone 16, ISH, TCSH, and the deliberate removal of every unnecessary keystroke.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-05"
         },
         {
           "href": "ish-alpine/",
           "category": "Thin Client",
           "title": "Thin Linux Client: Alpine on Every iPhone",
           "description": "How Alpine Linux under iSH, tcsh, git, and a plugged keyboard turn dual iPhones into a consistent thin Linux client that travels with the phone.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-24"
         },
         {
           "href": "optical-daq/",
           "category": "Hardware",
           "title": "Optical Timestamp Capture",
           "description": "8 photodiodes taped to Wuloo LEDs, MCU with 1 ms timestamps, USB-C to Android, Wi-Fi out. Full schematic notes, BOM, and software path.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": null
         },
         {
           "href": "canal-watch/",
           "category": "Perimeter",
           "title": "Canal Watch",
           "description": "Hybrid AI and I/O perimeter for the canal bank at 721 E La Sierra: ControlByWeb X-410, Wuloo receivers, edge classification, and targeted warnings under PC 374.7.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-23"
         },
         {
           "href": "talent-base/",
           "category": "Teams",
           "title": "Beyond the Bidding War",
           "description": "Compensation is table stakes. The teams that keep the best engineers invest first in coherent standards, technical integrity, and environments free of performative friction.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-05"
         },
         {
           "href": "davis-tx/",
           "category": "Migration",
           "title": "Another CEO Votes With His Feet",
           "description": "Digital Brands Group CEO Hil Davis moved headquarters from Vernon, California to Round Rock, Texas. Fact-check and context on the California-to-Texas vote.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": null
         }
       ]
     },
@@ -717,21 +917,24 @@
           "category": "US8992318B2",
           "title": "Nanoseconds from “Really There”",
           "description": "How one architecture removed the last major friction between the user and true presence in virtual reality.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": null
         },
         {
           "href": "avp-perspective-lab/",
           "category": "Spatial Lab",
           "title": "Apple Vision Perspective Lab",
           "description": "Spatial anamorphosis and projection mapping. Pre-warp for complex 3D surfaces so the work pops from the right spot.",
-          "arrow": "enter lab →"
+          "arrow": "enter lab →",
+          "date": null
         },
         {
           "href": "dark-heel/",
           "category": "Method",
           "title": "The Dark-Side Alignment",
           "description": "A precise method for playing the Don’t Pass / Don’t Come alignment. Never bet the come-out. The dark-side geometry, stated clean.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": null
         }
       ]
     },
@@ -739,90 +942,109 @@
       "title": "Narrative & Experience",
       "stories": [
         {
+          "href": "korolev/",
+          "category": "Mars",
+          "title": "The Ice Was Always There",
+          "description": "Korolev crater is a real 50-mile bowl of water ice on Mars. The photo is from 2018. The shock is not the ice. It is how long the ice was already measured.",
+          "arrow": "read →",
+          "date": null
+        },
+        {
           "href": "dmt.html",
           "category": "Documentary",
           "title": "Use the Source, Luke",
           "description": "An 18-minute conceptual web documentary on the DMT glyph hypothesis, visible language, and decoding.",
-          "arrow": "enter documentary →"
+          "arrow": "enter documentary →",
+          "date": null
         },
         {
           "href": "moon-tune/",
           "category": "Lunar",
           "title": "What Influence Doth Thou Have?",
           "description": "Practical lunar awareness for Fresno and the Central Valley: when the full moon gives you cooler night hours and better photo windows.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-07-31"
         },
         {
           "href": "chip-dip-helix/",
           "category": "Augmented",
           "title": "The Double Helix of High Tower Dip",
           "description": "Tillamook Sharp Cheddar + Taco Works chips form the DNA foundation of the best chip-and-dip combo. Now augmented.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": null
         },
         {
           "href": "deli-pizza/",
           "category": "Kitchen",
           "title": "From Italian Deli Dough to Plate",
           "description": "How to make pizza at home with dough from the Italian deli — sauce, two cheeses, home oven. Full photo sequence.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-01"
         },
         {
           "href": "pour-td/",
           "category": "Olive Ave",
           "title": "The Enchanted Pour",
           "description": "Detention Billiards is gone. In its place on Olive Avenue, The Enchanted Pour and Sin ’n Satin are rewriting the room with neon, moss, green lights, and a deliberate welcome from Lisa Tackett.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-06-27"
         },
         {
           "href": "sno-neph/",
           "category": "559",
           "title": "Nephateri on the Cover",
           "description": "A June 2026 SNO Magazine cover names Nephateri the best rap artist in Fresno. The glasses, the 559 barcode, and why a local cover still matters.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-26"
         },
         {
           "href": "ndt-fans/",
           "category": "Cosmos",
           "title": "Digital Cosmos",
           "description": "Mapping the largest Neil deGrasse Tyson fan communities on Facebook, where hundreds of thousands gather to debate the stars, the void, and everything in between.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-16"
         },
         {
           "href": "zebra-striping-yipes/",
           "category": "Guide",
           "title": "Yipes! Stripes!",
           "description": "A long, funny High Tower District story about zebra-striping as a practice for bars, starring a Fruit Stripe-style pride zebra named Yipes.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": null
         },
         {
           "href": "ht-pizza/",
           "category": "Ghost Kitchen",
           "title": "High TOWER Pizza",
           "description": "Home-cooked pizzas from the Tower District ghost kitchen. Delivered by electric cargo bike.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": null
         },
         {
           "href": "cc-weld/",
           "category": "Local Trade",
           "title": "CC Custom Welding",
           "description": "Local 24/7 mobile welding, fabrication, trailer repair, and building maintenance. Free estimates across the Central Valley.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-24"
         },
         {
           "href": "ah-adrian/",
           "category": "Sidewalk",
           "title": "A Meeting Near SFU Skateboards",
           "description": "Real context from the sidewalk in front of SFU Skateboards on Fulton, the food directed to Van Ness and Belmont, and a clear follow-up on CELLTOWER, skill, and ethical intent.",
-          "arrow": "read →"
+          "arrow": "read →",
+          "date": "2026-08-15"
         }
       ]
     }
   ],
   "_meta": {
     "purpose": "Content parameters for the High Tower District Stories index. Edit this file for content changes. The index.html holds styles and presentation logic only.",
-    "lastExtracted": "2026-08-27",
-    "storyCount": 69,
-    "note": "Existing cards left unchanged. Added previously unlisted repo stories plus togo-29."
+    "lastExtracted": "2026-08-30",
+    "storyCount": 81,
+    "note": "Index restyle 2026-08-30. Same JSON contract. Added date fields plus chronological view. Published repo stories that were missing from the old index were appended to their sections."
   }
 }
   </script>
@@ -832,48 +1054,11 @@
       const contentEl = document.getElementById('content');
       const headerEl = document.getElementById('site-header');
       const footerEl = document.getElementById('site-footer');
+      const btnCat = document.getElementById('btn-cat');
+      const btnChrono = document.getElementById('btn-chrono');
+      const countPill = document.getElementById('count-pill');
       const raw = document.getElementById('stories-data').textContent;
-
-      try {
-        const data = JSON.parse(raw);
-
-        if (data.site && data.site.pageTitle) document.title = data.site.pageTitle;
-
-        if (data.header) {
-          headerEl.innerHTML =
-            '<h1 class="cycle-title" style="font-size: clamp(1.4rem, 5vw, 1.85rem);">' +
-            esc(data.header.title) + '</h1>' +
-            '<div class="sub">' + esc(data.header.subtitle) + '</div>' +
-            '<p class="tagline">' + esc(data.header.tagline) + '</p>';
-        }
-
-        let html = '';
-        for (const section of (data.sections || [])) {
-          html += '<section><div class="section-title">' + esc(section.title) + '</div><div class="grid">';
-          for (const story of (section.stories || [])) {
-            html +=
-              '<a href="' + escAttr(story.href) + '" class="story-card led-border">' +
-              '<div class="cat-label">' + esc(story.category) + '</div>' +
-              '<h3>' + esc(story.title) + '</h3>' +
-              '<p>' + esc(story.description) + '</p>' +
-              '<span class="arrow">' + esc(story.arrow || 'read →') + '</span></a>';
-          }
-          html += '</div></section>';
-        }
-        contentEl.innerHTML = html || '<div class="status">No stories found.</div>';
-
-        if (data.footer) {
-          const links = (data.footer.links || [])
-            .map(function (l) { return '<a href="' + escAttr(l.href) + '">' + esc(l.text) + '</a>'; })
-            .join(' · ');
-          footerEl.innerHTML =
-            '<p>' + links + '</p>' +
-            '<p style="margin-top:0.5rem; opacity:0.7;">' + esc(data.footer.credit || '') + '</p>';
-        }
-      } catch (err) {
-        contentEl.innerHTML = '<div class="status">Data error</div>';
-        console.error(err);
-      }
+      const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
       function esc(s) {
         if (s == null) return '';
@@ -883,11 +1068,172 @@
           .replace(/>/g, '&gt;')
           .replace(/"/g, '&quot;');
       }
-      function escAttr(s) {
-        return esc(s).replace(/'/g, '&#39;');
+      function escAttr(s) { return esc(s).replace(/'/g, '&#39;'); }
+
+      function prettyDate(iso) {
+        if (!iso) return '';
+        const p = iso.split('-');
+        if (p.length !== 3) return iso;
+        const m = MONTHS[parseInt(p[1], 10) - 1];
+        return m ? (m.slice(0, 3) + ' ' + parseInt(p[2], 10) + ', ' + p[0]) : iso;
+      }
+
+      function monthKey(iso) {
+        if (!iso) return 'undated';
+        return iso.slice(0, 7);
+      }
+
+      function monthTitle(key) {
+        if (key === 'undated') return { yr: 'ARCHIVE', name: 'Undated' };
+        const y = key.slice(0, 4);
+        const m = MONTHS[parseInt(key.slice(5, 7), 10) - 1] || key;
+        return { yr: y, name: m };
+      }
+
+      function flatten(data) {
+        const out = [];
+        for (const section of (data.sections || [])) {
+          for (const story of (section.stories || [])) {
+            out.push(Object.assign({ section: section.title }, story));
+          }
+        }
+        return out;
+      }
+
+      function cardHTML(story, showDate) {
+        const date = showDate ? prettyDate(story.date) : '';
+        return (
+          '<a href="' + escAttr(story.href) + '" class="story-card">' +
+            '<div class="card-meta">' +
+              '<div class="cat-label">' + esc(story.category) + '</div>' +
+              (date ? '<div class="date-label">' + esc(date) + '</div>' : '') +
+            '</div>' +
+            '<h3>' + esc(story.title) + '</h3>' +
+            '<p>' + esc(story.description) + '</p>' +
+            '<span class="arrow">' + esc(story.arrow || 'read →') + '</span>' +
+          '</a>'
+        );
+      }
+
+      function renderCategories(data) {
+        let html = '';
+        for (const section of (data.sections || [])) {
+          const n = (section.stories || []).length;
+          html += '<section>' +
+            '<div class="section-head"><h2>' + esc(section.title) + '</h2><div class="n">' + n + '</div></div>' +
+            '<div class="grid">';
+          for (const story of (section.stories || [])) html += cardHTML(story, true);
+          html += '</div></section>';
+        }
+        return html || '<div class="status">No stories found.</div>';
+      }
+
+      function renderChrono(data) {
+        const all = flatten(data);
+        const dated = all.filter(function (s) { return s.date; });
+        const undated = all.filter(function (s) { return !s.date; });
+        dated.sort(function (a, b) {
+          if (a.date === b.date) return a.title.localeCompare(b.title);
+          return a.date < b.date ? 1 : -1;
+        });
+        const groups = {};
+        const order = [];
+        dated.forEach(function (s) {
+          const k = monthKey(s.date);
+          if (!groups[k]) { groups[k] = []; order.push(k); }
+          groups[k].push(s);
+        });
+        let html = '<div class="jump">';
+        order.forEach(function (k) {
+          const t = monthTitle(k);
+          html += '<a href="#m-' + k + '">' + esc(t.name.slice(0, 3) + ' ' + t.yr) + '</a>';
+        });
+        if (undated.length) html += '<a href="#m-undated">Undated</a>';
+        html += '</div>';
+        order.forEach(function (k) {
+          const t = monthTitle(k);
+          html += '<section id="m-' + k + '">' +
+            '<div class="month-head"><div class="yr">' + esc(t.yr) + '</div><h2>' + esc(t.name) + '</h2></div>' +
+            '<div class="grid">';
+          groups[k].forEach(function (s) { html += cardHTML(s, true); });
+          html += '</div></section>';
+        });
+        if (undated.length) {
+          html += '<section id="m-undated">' +
+            '<div class="month-head"><div class="yr">ARCHIVE</div><h2>Undated</h2></div>' +
+            '<div class="grid">';
+          undated.forEach(function (s) { html += cardHTML(s, false); });
+          html += '</div></section>';
+        }
+        return html;
+      }
+
+      function currentView() {
+        const hash = (location.hash || '').replace('#', '');
+        if (hash === 'chrono' || hash.indexOf('m-') === 0) return 'chrono';
+        if (hash === 'categories' || hash === 'cat') return 'categories';
+        try {
+          const saved = localStorage.getItem('ht-stories-view');
+          if (saved === 'chrono' || saved === 'categories') return saved;
+        } catch (e) {}
+        return 'categories';
+      }
+
+      let DATA = null;
+
+      function paint(view) {
+        if (!DATA) return;
+        const isChrono = view === 'chrono';
+        btnCat.setAttribute('aria-pressed', isChrono ? 'false' : 'true');
+        btnChrono.setAttribute('aria-pressed', isChrono ? 'true' : 'false');
+        contentEl.innerHTML = isChrono ? renderChrono(DATA) : renderCategories(DATA);
+        try { localStorage.setItem('ht-stories-view', view); } catch (e) {}
+        if (isChrono && location.hash && location.hash.indexOf('#m-') === 0) {
+          const el = document.getElementById(location.hash.slice(1));
+          if (el) el.scrollIntoView({ block: 'start' });
+        }
+      }
+
+      function setView(view, pushHash) {
+        if (pushHash) {
+          const next = view === 'chrono' ? '#chrono' : '#categories';
+          if (location.hash !== next) history.replaceState(null, '', next);
+        }
+        paint(view);
+      }
+
+      try {
+        DATA = JSON.parse(raw);
+        if (DATA.site && DATA.site.pageTitle) document.title = DATA.site.pageTitle;
+        if (DATA.header) {
+          headerEl.innerHTML =
+            '<div class="kicker">HIGH TOWER <span>DISTRICT</span></div>' +
+            '<h1>' + esc(DATA.header.title) + '</h1>' +
+            '<div class="sub">' + esc(DATA.header.subtitle) + '</div>' +
+            '<p class="tagline">' + esc(DATA.header.tagline) + '</p>';
+        }
+        const total = flatten(DATA).length;
+        countPill.textContent = total + ' stories';
+
+        if (DATA.footer) {
+          const links = (DATA.footer.links || [])
+            .map(function (l) { return '<a href="' + escAttr(l.href) + '">' + esc(l.text) + '</a>'; })
+            .join(' · ');
+          footerEl.innerHTML =
+            '<p>' + links + '</p>' +
+            '<p class="credit">' + esc(DATA.footer.credit || '') + '</p>';
+        }
+
+        btnCat.addEventListener('click', function () { setView('categories', true); window.scrollTo(0, 0); });
+        btnChrono.addEventListener('click', function () { setView('chrono', true); window.scrollTo(0, 0); });
+        window.addEventListener('hashchange', function () { paint(currentView()); });
+
+        setView(currentView(), false);
+      } catch (err) {
+        contentEl.innerHTML = '<div class="status">Data error</div>';
+        console.error(err);
       }
     })();
   </script>
 </body>
 </html>
-
