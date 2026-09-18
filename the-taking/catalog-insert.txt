@@ -1,0 +1,8 @@
+Paste into the Local District Reality stories array in stories/index.html:
+
+{
+  "href": "the-taking/",
+  "category": "Civic Record",
+  "title": "The Taking",
+  "description": "He said he would be next. Three days later the tile shop burned at 4:15 a.m. The city already had the locks. The underpass still is not poured."
+}

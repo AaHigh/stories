@@ -1,0 +1,8 @@
+1. Unzip the-taking next to ht-668.
+2. Paste catalog-insert.txt object into Local District Reality in stories/index.html.
+3. From stories repo:
+   ga the-taking index.html
+   com the-taking civic record
+
+Live after Pages rebuild:
+https://stories.ahightower.com/the-taking/
