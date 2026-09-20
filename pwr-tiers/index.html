@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The 4.6-Cent Illusion | High Tower District</title>
+  <meta name="description" content="Austin Energy’s first-tier energy charge is 4.640 cents. The bill is not. Full 200 to 2,000 kWh comparison of Austin and Fresno on a $40,000 income, with and without low-income discounts." />
+  <link rel="canonical" href="https://stories.ahightower.com/pwr-tiers/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="High Tower District Stories" />
+  <meta property="og:title" content="The 4.6-Cent Illusion" />
+  <meta property="og:description" content="Same kilowatt-hour. Austin $115. Fresno $338. What a $40,000 household actually pays from 200 to 2,000 kWh a month." />
+  <meta property="og:url" content="https://stories.ahightower.com/pwr-tiers/" />
+  <meta property="og:image" content="https://stories.ahightower.com/pwr-tiers/images/og-cover.jpg" />
+  <meta property="og:image:secure_url" content="https://stories.ahightower.com/pwr-tiers/images/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Split image of Austin and Fresno with electric bills of $115 and $338 at 850 kWh" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The 4.6-Cent Illusion" />
+  <meta name="twitter:description" content="Austin’s 4.640-cent energy line is real. The all-in bill is not 4.6 cents. Full chart, 200 to 2,000 kWh." />
+  <meta name="twitter:image" content="https://stories.ahightower.com/pwr-tiers/images/og-cover.jpg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: Inter, system-ui, sans-serif; }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+    .chart-wrap { position: relative; height: 300px; }
+    @media (min-width: 768px) { .chart-wrap { height: 380px; } }
+    table.data { font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <nav class="sticky top-0 z-50 bg-slate-900 text-white">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="https://stories.ahightower.com/" class="font-semibold tracking-wide text-sm md:text-base">THE HIGH TOWER DISTRICT</a>
+      <span class="text-xs uppercase tracking-widest text-slate-300">Stories</span>
+    </div>
+  </nav>
+
+  <header class="bg-slate-900 text-white">
+    <div class="max-w-5xl mx-auto px-4 pt-10 pb-12">
+      <p class="text-amber-400 text-xs font-semibold uppercase tracking-widest mb-3">Rates · Fresno and Austin · September 19, 2026</p>
+      <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">The 4.6-Cent Illusion</h1>
+      <p class="text-lg md:text-xl text-slate-300 max-w-3xl">Austin Energy’s first-tier energy charge is 4.640 cents per kilowatt-hour. That line is real. It is not the bill. Here is every 200 kWh step from 200 to 2,000, on a $40,000 income, with the low-usage and low-income discounts both cities actually offer.</p>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-10 space-y-12">
+
+    <figure>
+      <img src="images/og-cover.jpg" alt="Austin bill $115 versus Fresno bill $338 at the same 850 kWh" class="w-full rounded-lg shadow-md" />
+      <figcaption class="text-sm text-slate-500 mt-2">Same usage. Different cities. The 4.6-cent line is only one row on the Austin tariff.</figcaption>
+    </figure>
+
+    <section class="grid md:grid-cols-3 gap-4">
+      <div class="bg-white border border-slate-200 rounded-lg p-5">
+        <p class="text-xs uppercase tracking-widest text-slate-500">Austin energy line</p>
+        <p class="text-3xl font-serif font-bold text-slate-900 mt-1">4.640¢</p>
+        <p class="text-sm text-slate-600 mt-2">First 300 kWh only. Energy charge. Not the bill.</p>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-lg p-5">
+        <p class="text-xs uppercase tracking-widest text-slate-500">Austin all-in at 850 kWh</p>
+        <p class="text-3xl font-serif font-bold text-slate-900 mt-1">13.5¢</p>
+        <p class="text-sm text-slate-600 mt-2">About $115 a month after every rider and the $16.50 customer charge.</p>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-lg p-5">
+        <p class="text-xs uppercase tracking-widest text-slate-500">Fresno all-in at 850 kWh</p>
+        <p class="text-3xl font-serif font-bold text-red-800 mt-1">~40¢</p>
+        <p class="text-sm text-slate-600 mt-2">About $338 a month on PG&amp;E E-1 with no CARE.</p>
+      </div>
+    </section>
+
+    <article class="prose prose-slate max-w-none">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">The 4.2-cent memory is close. It is not the bill.</h2>
+      <p class="text-lg leading-relaxed mb-4">Austin Energy does use cheap energy tiers. The current inside-city energy charge is 4.640 cents for the first 300 kWh, then 5.138 cents from 301 to 900, then 7.525 cents from 901 to 2,000. Older filings sat near 4.1 cents on that first step. So the 4.2-cent figure people remember is in the neighborhood of the energy line, not a fabrication.</p>
+      <p class="text-lg leading-relaxed mb-4">Every Austin kWh also carries a Power Supply Adjustment, a regulatory charge, and community-benefit riders. Those add 6.525 cents on top of the energy line. Then there is a $16.50 monthly customer charge and about 1 percent city tax. That is why 200 kWh in Austin costs about $39, not $9.28. The energy line at 200 kWh really is 4.640 cents. The all-in rate at 200 kWh is 19.6 cents because the fixed charge is spread over so few kilowatt-hours.</p>
+      <p class="text-lg leading-relaxed mb-4">Fresno sits in PG&amp;E Baseline Territory R. The current bundled E-1 energy prices are 32.561 cents up to baseline and 40.702 cents above it, plus a $24.15 Base Services Charge if the household is not on CARE or FERA. That is the no-assistance case this story was asked to run.</p>
+    </article>
+
+    <figure>
+      <img src="images/meter.jpg" alt="Residential kilowatt-hour meter" class="w-full rounded-lg shadow-md" />
+      <figcaption class="text-sm text-slate-500 mt-2">The meter counts kWh. The tariff decides what those kWh cost after riders, baseline, and the monthly fixed charge.</figcaption>
+    </figure>
+
+    <section>
+      <h2 class="text-3xl font-bold text-slate-900 mb-2">The full ladder, 200 to 2,000 kWh</h2>
+      <p class="text-slate-600 mb-4">Same usage every month. Austin Energy inside city, current residential tariff. Fresno PG&amp;E E-1, Territory R, four summer months and eight winter months averaged. No CARE. No Austin CAP. $40,000 gross income. Electricity only. No other utilities and no income tax.</p>
+      <div class="overflow-x-auto bg-white border border-slate-200 rounded-lg">
+        <table class="data min-w-full text-sm">
+          <thead class="bg-slate-900 text-white">
+            <tr>
+              <th class="px-3 py-3 text-left">kWh / mo</th>
+              <th class="px-3 py-3 text-right">Austin bill</th>
+              <th class="px-3 py-3 text-right">Austin ¢</th>
+              <th class="px-3 py-3 text-right">Austin year</th>
+              <th class="px-3 py-3 text-right">Austin % of $40k</th>
+              <th class="px-3 py-3 text-right">Left in Austin</th>
+              <th class="px-3 py-3 text-right">Fresno bill</th>
+              <th class="px-3 py-3 text-right">Fresno ¢</th>
+              <th class="px-3 py-3 text-right">Fresno year</th>
+              <th class="px-3 py-3 text-right">Fresno % of $40k</th>
+              <th class="px-3 py-3 text-right">Left in Fresno</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="bg-white"><td class="px-3 py-2">200</td><td class="px-3 py-2 text-right">$39</td><td class="px-3 py-2 text-right">19.6</td><td class="px-3 py-2 text-right">$471</td><td class="px-3 py-2 text-right">1.2%</td><td class="px-3 py-2 text-right">$39,529</td><td class="px-3 py-2 text-right">$89</td><td class="px-3 py-2 text-right">44.6</td><td class="px-3 py-2 text-right">$1,071</td><td class="px-3 py-2 text-right">2.7%</td><td class="px-3 py-2 text-right">$38,929</td></tr>
+            <tr class="bg-slate-50"><td class="px-3 py-2">400</td><td class="px-3 py-2 text-right">$62</td><td class="px-3 py-2 text-right">15.6</td><td class="px-3 py-2 text-right">$747</td><td class="px-3 py-2 text-right">1.9%</td><td class="px-3 py-2 text-right">$39,253</td><td class="px-3 py-2 text-right">$159</td><td class="px-3 py-2 text-right">39.7</td><td class="px-3 py-2 text-right">$1,907</td><td class="px-3 py-2 text-right">4.8%</td><td class="px-3 py-2 text-right">$38,093</td></tr>
+            <tr class="bg-white"><td class="px-3 py-2">600</td><td class="px-3 py-2 text-right">$86</td><td class="px-3 py-2 text-right">14.3</td><td class="px-3 py-2 text-right">$1,030</td><td class="px-3 py-2 text-right">2.6%</td><td class="px-3 py-2 text-right">$38,970</td><td class="px-3 py-2 text-right">$237</td><td class="px-3 py-2 text-right">39.4</td><td class="px-3 py-2 text-right">$2,839</td><td class="px-3 py-2 text-right">7.1%</td><td class="px-3 py-2 text-right">$37,161</td></tr>
+            <tr class="bg-slate-50"><td class="px-3 py-2">800</td><td class="px-3 py-2 text-right">$109</td><td class="px-3 py-2 text-right">13.7</td><td class="px-3 py-2 text-right">$1,313</td><td class="px-3 py-2 text-right">3.3%</td><td class="px-3 py-2 text-right">$38,687</td><td class="px-3 py-2 text-right">$318</td><td class="px-3 py-2 text-right">39.7</td><td class="px-3 py-2 text-right">$3,816</td><td class="px-3 py-2 text-right">9.5%</td><td class="px-3 py-2 text-right">$36,184</td></tr>
+            <tr class="bg-amber-50 font-semibold"><td class="px-3 py-2">850</td><td class="px-3 py-2 text-right">$115</td><td class="px-3 py-2 text-right">13.5</td><td class="px-3 py-2 text-right">$1,383</td><td class="px-3 py-2 text-right">3.5%</td><td class="px-3 py-2 text-right">$38,617</td><td class="px-3 py-2 text-right">$338</td><td class="px-3 py-2 text-right">39.8</td><td class="px-3 py-2 text-right">$4,060</td><td class="px-3 py-2 text-right">10.2%</td><td class="px-3 py-2 text-right">$35,940</td></tr>
+            <tr class="bg-white"><td class="px-3 py-2">1,000</td><td class="px-3 py-2 text-right">$135</td><td class="px-3 py-2 text-right">13.5</td><td class="px-3 py-2 text-right">$1,624</td><td class="px-3 py-2 text-right">4.1%</td><td class="px-3 py-2 text-right">$38,376</td><td class="px-3 py-2 text-right">$399</td><td class="px-3 py-2 text-right">39.9</td><td class="px-3 py-2 text-right">$4,792</td><td class="px-3 py-2 text-right">12.0%</td><td class="px-3 py-2 text-right">$35,208</td></tr>
+            <tr class="bg-slate-50"><td class="px-3 py-2">1,200</td><td class="px-3 py-2 text-right">$164</td><td class="px-3 py-2 text-right">13.6</td><td class="px-3 py-2 text-right">$1,965</td><td class="px-3 py-2 text-right">4.9%</td><td class="px-3 py-2 text-right">$38,035</td><td class="px-3 py-2 text-right">$481</td><td class="px-3 py-2 text-right">40.1</td><td class="px-3 py-2 text-right">$5,769</td><td class="px-3 py-2 text-right">14.4%</td><td class="px-3 py-2 text-right">$34,231</td></tr>
+            <tr class="bg-white"><td class="px-3 py-2">1,400</td><td class="px-3 py-2 text-right">$192</td><td class="px-3 py-2 text-right">13.7</td><td class="px-3 py-2 text-right">$2,306</td><td class="px-3 py-2 text-right">5.8%</td><td class="px-3 py-2 text-right">$37,694</td><td class="px-3 py-2 text-right">$562</td><td class="px-3 py-2 text-right">40.2</td><td class="px-3 py-2 text-right">$6,746</td><td class="px-3 py-2 text-right">16.9%</td><td class="px-3 py-2 text-right">$33,254</td></tr>
+            <tr class="bg-slate-50"><td class="px-3 py-2">1,600</td><td class="px-3 py-2 text-right">$221</td><td class="px-3 py-2 text-right">13.8</td><td class="px-3 py-2 text-right">$2,646</td><td class="px-3 py-2 text-right">6.6%</td><td class="px-3 py-2 text-right">$37,354</td><td class="px-3 py-2 text-right">$644</td><td class="px-3 py-2 text-right">40.2</td><td class="px-3 py-2 text-right">$7,723</td><td class="px-3 py-2 text-right">19.3%</td><td class="px-3 py-2 text-right">$32,277</td></tr>
+            <tr class="bg-white"><td class="px-3 py-2">1,800</td><td class="px-3 py-2 text-right">$249</td><td class="px-3 py-2 text-right">13.8</td><td class="px-3 py-2 text-right">$2,987</td><td class="px-3 py-2 text-right">7.5%</td><td class="px-3 py-2 text-right">$37,013</td><td class="px-3 py-2 text-right">$725</td><td class="px-3 py-2 text-right">40.3</td><td class="px-3 py-2 text-right">$8,700</td><td class="px-3 py-2 text-right">21.7%</td><td class="px-3 py-2 text-right">$31,300</td></tr>
+            <tr class="bg-slate-50"><td class="px-3 py-2">2,000</td><td class="px-3 py-2 text-right">$277</td><td class="px-3 py-2 text-right">13.9</td><td class="px-3 py-2 text-right">$3,327</td><td class="px-3 py-2 text-right">8.3%</td><td class="px-3 py-2 text-right">$36,673</td><td class="px-3 py-2 text-right">$806</td><td class="px-3 py-2 text-right">40.3</td><td class="px-3 py-2 text-right">$9,677</td><td class="px-3 py-2 text-right">24.2%</td><td class="px-3 py-2 text-right">$30,323</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-slate-500 mt-3">Austin bills include the $16.50 customer charge, all per-kWh riders, and 1 percent city tax. Fresno bills include the $24.15 Base Services Charge. 850 kWh is highlighted because that was the first usage asked.</p>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-slate-900 mb-2">Four charts</h2>
+      <p class="text-slate-600 mb-8">Chart 1 is the all-in city rate. Chart 2 is the monthly bill. Chart 3 is the discount ladder: Austin CAP and PG&amp;E CARE against full retail. Chart 4 is the slice of a $40,000 paycheck those bills take.</p>
+
+      <div class="bg-white border border-slate-200 rounded-lg p-4 md:p-6 mb-8">
+        <h3 class="text-xl font-bold mb-1">1. All-in rate the city actually charges</h3>
+        <p class="text-sm text-slate-500 mb-4">Cents per kWh after the fixed monthly charge is spread across that month’s usage.</p>
+        <div class="chart-wrap"><canvas id="chartRate"></canvas></div>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-lg p-4 md:p-6 mb-8">
+        <h3 class="text-xl font-bold mb-1">2. Monthly bill at each usage step</h3>
+        <p class="text-sm text-slate-500 mb-4">Dollars per month, no assistance.</p>
+        <div class="chart-wrap"><canvas id="chartBill"></canvas></div>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-lg p-4 md:p-6 mb-8">
+        <h3 class="text-xl font-bold mb-1">3. Low-usage tiers and low-income discounts</h3>
+        <p class="text-sm text-slate-500 mb-4">Austin CAP waives the customer charge, drops the CAP rider, and takes 10 percent off kWh charges. PG&amp;E CARE cuts the fixed charge to about $6 and cuts volumetric rates by roughly 37 percent. Both programs are income-gated. They are not automatic just because usage is low.</p>
+        <div class="chart-wrap"><canvas id="chartDiscount"></canvas></div>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-lg p-4 md:p-6">
+        <h3 class="text-xl font-bold mb-1">4. Share of a $40,000 income</h3>
+        <p class="text-sm text-slate-500 mb-4">Percent of gross annual pay pre-allocated to electricity alone.</p>
+        <div class="chart-wrap"><canvas id="chartShare"></canvas></div>
+      </div>
+    </section>
+
+    <figure>
+      <img src="images/fresno.jpg" alt="Downtown Fresno in late-day sun" class="w-full rounded-lg shadow-md" />
+      <figcaption class="text-sm text-slate-500 mt-2">Fresno. Same valley heat that drives the 850 and 1,000 kWh summer months. PG&amp;E is the wires and the generation for almost every house in 93728.</figcaption>
+    </figure>
+
+    <article class="space-y-4">
+      <h2 class="text-3xl font-bold text-slate-900">What the discounts actually are</h2>
+      <p class="text-lg leading-relaxed">Austin does give a break for using less. That is the tier table: 4.640, then 5.138, then 7.525, then 10.884 cents on the energy line. The low-usage gift is real. It is also small next to the riders. Crossing 900 kWh is the first sharp step. Crossing 2,000 kWh is the second.</p>
+      <p class="text-lg leading-relaxed">Austin CAP is the income program. Eligible households at or below 200 percent of federal poverty, or on SNAP, Medicaid, SSI, CHIP, Lifeline, CEAP, and related lists, get the customer charge waived, the CAP rider waived, and a 10 percent cut on kilowatt-hour charges. On 860 kWh, Austin Energy’s own budget example moved a $117 bill to about $86. That is a bigger gift than the cheap first tier, and it is not the same thing as the tier.</p>
+      <p class="text-lg leading-relaxed">PG&amp;E CARE is the Fresno income program. A 1 or 2 person household at $40,000 is under the current CARE cap of $43,280. This story still prints the no-assistance column because that is what was asked. If that household enrolled, the 850 kWh Fresno year drops from about $4,060 to about $2,200. Still more than Austin retail. Not the same cliff.</p>
+      <p class="text-lg leading-relaxed">PG&amp;E also has a baseline allowance, which is a low-usage tier by another name. In Territory R the summer baseline is 17.7 kWh per day, about 539 kWh in a 30-day month. Winter baseline is 10.4 kWh per day, about 317 kWh. Use under baseline and you stay on 32.561 cents. Go over and the rest is 40.702 cents. That is why Fresno’s all-in rate flattens near 40 cents once a house is living above winter baseline most of the year.</p>
+    </article>
+
+    <section class="bg-slate-900 text-white rounded-lg p-6 md:p-8">
+      <h2 class="text-2xl font-bold mb-3">The $40,000 sentence</h2>
+      <p class="text-slate-200 leading-relaxed mb-3">At 200 kWh, electricity takes 1.2 percent of $40,000 in Austin and 2.7 percent in Fresno. At 850 kWh it takes 3.5 percent in Austin and 10.2 percent in Fresno. At 2,000 kWh it takes 8.3 percent in Austin and 24.2 percent in Fresno.</p>
+      <p class="text-slate-200 leading-relaxed">That last Fresno number is a quarter of a $40,000 gross year, before rent, water, food, or tax, with no CARE. The 4.6-cent Austin line is not a lie. It is an incomplete sentence.</p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 mb-3">Sources</h2>
+      <ul class="text-sm text-slate-600 space-y-2 list-disc pl-5">
+        <li>Austin Energy Residential Rates, inside city, customer charge $16.50, energy tiers 4.640 / 5.138 / 7.525 / 10.884 cents, PSA 4.118 cents, PSA admin minus 0.206 cents, community benefit 1.275 cents, regulatory 1.338 cents. Typical 860 kWh example $116.45. <a class="text-blue-800 underline" href="https://austinenergy.com/rates/residential-rates">austinenergy.com/rates/residential-rates</a></li>
+        <li>Austin Energy Electric Tariff, CAP: waive customer charge and CAP rider, 10 percent reduction on kWh charges, eligibility at 200 percent of federal poverty or listed aid programs. October 1, 2026 tariff on file with the City Clerk.</li>
+        <li>PG&amp;E Electric Schedule E-1 effective March 1 / June 1, 2026: Tier 1 $0.32561, Tier 2 $0.40702, Base Services Charge Income Tier 3 $0.79343 per day. Baseline Territory R for Fresno County under 3,500 feet: summer 17.7 kWh/day, winter 10.4 kWh/day.</li>
+        <li>PG&amp;E rate advisories January 1 and March 1, 2026: bundled residential non-CARE average 41.46 cents then 40.60 cents. 500 kWh non-CARE example $203.54. CARE example $117.42.</li>
+        <li>CARE income guidelines through May 31, 2027: $43,280 or less for a 1–2 person household.</li>
+        <li>No California Climate Credit was subtracted. It is automatic, about $72 a year, and is not a low-income program.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="bg-slate-900 text-slate-400 mt-12">
+    <div class="max-w-5xl mx-auto px-4 py-8 text-sm">
+      <p class="font-semibold text-white">THE HIGH TOWER DISTRICT</p>
+      <p class="mt-2">Independent local reporting from 93728. Rates change. Read the tariff, not the slogan.</p>
+      <p class="mt-4">&copy; 2026 High Tower District Stories</p>
+    </div>
+  </footer>
+
+  <script>
+    const kwh = [200,400,600,800,1000,1200,1400,1600,1800,2000];
+    const atxBill = [39.22,62.27,85.83,109.39,135.36,163.74,192.13,220.51,248.89,277.27];
+    const fatBill = [89.27,158.92,236.56,317.96,399.37,480.77,562.18,643.58,724.98,806.39];
+    const atxC = [19.61,15.57,14.31,13.67,13.54,13.65,13.72,13.78,13.83,13.86];
+    const fatC = [44.64,39.73,39.43,39.75,39.94,40.06,40.16,40.22,40.28,40.32];
+    const capBill = [19.27,39.00,59.18,79.35,101.70,126.22,150.74,175.25,199.77,224.29];
+    const careBill = [47.03,90.91,139.82,191.10,242.39,293.67,344.96,396.24,447.53,498.81];
+    const atxShare = [1.2,1.9,2.6,3.3,4.1,4.9,5.8,6.6,7.5,8.3];
+    const fatShare = [2.7,4.8,7.1,9.5,12.0,14.4,16.9,19.3,21.7,24.2];
+    const careShare = [1.4,2.7,4.2,5.7,7.3,8.8,10.3,11.9,13.4,15.0];
+    const capShare = [0.6,1.2,1.8,2.4,3.1,3.8,4.5,5.3,6.0,6.7];
+
+    const grid = { color: 'rgba(15,23,42,0.08)' };
+    const common = {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { labels: { boxWidth: 12, font: { family: 'Inter', size: 12 } } }
+      },
+      scales: {
+        x: { grid, title: { display: true, text: 'kWh per month' } },
+        y: { grid, beginAtZero: true }
+      }
+    };
+
+    new Chart(document.getElementById('chartRate'), {
+      type: 'line',
+      data: {
+        labels: kwh,
+        datasets: [
+          { label: 'Austin all-in ¢', data: atxC, borderColor: '#1d4ed8', backgroundColor: '#1d4ed8', tension: 0.2, pointRadius: 3 },
+          { label: 'Fresno all-in ¢', data: fatC, borderColor: '#b91c1c', backgroundColor: '#b91c1c', tension: 0.2, pointRadius: 3 }
+        ]
+      },
+      options: { ...common, scales: { ...common.scales, y: { ...common.scales.y, title: { display: true, text: 'cents per kWh' } } } }
+    });
+
+    new Chart(document.getElementById('chartBill'), {
+      type: 'bar',
+      data: {
+        labels: kwh,
+        datasets: [
+          { label: 'Austin $', data: atxBill, backgroundColor: '#1d4ed8' },
+          { label: 'Fresno $', data: fatBill, backgroundColor: '#b91c1c' }
+        ]
+      },
+      options: { ...common, scales: { ...common.scales, y: { ...common.scales.y, title: { display: true, text: 'dollars per month' } } } }
+    });
+
+    new Chart(document.getElementById('chartDiscount'), {
+      type: 'line',
+      data: {
+        labels: kwh,
+        datasets: [
+          { label: 'Austin retail', data: atxBill, borderColor: '#1d4ed8', tension: 0.2, pointRadius: 2 },
+          { label: 'Austin CAP', data: capBill, borderColor: '#93c5fd', borderDash: [6,3], tension: 0.2, pointRadius: 2 },
+          { label: 'Fresno retail', data: fatBill, borderColor: '#b91c1c', tension: 0.2, pointRadius: 2 },
+          { label: 'Fresno CARE', data: careBill, borderColor: '#fca5a5', borderDash: [6,3], tension: 0.2, pointRadius: 2 }
+        ]
+      },
+      options: { ...common, scales: { ...common.scales, y: { ...common.scales.y, title: { display: true, text: 'dollars per month' } } } }
+    });
+
+    new Chart(document.getElementById('chartShare'), {
+      type: 'line',
+      data: {
+        labels: kwh,
+        datasets: [
+          { label: 'Austin retail %', data: atxShare, borderColor: '#1d4ed8', tension: 0.2, pointRadius: 2 },
+          { label: 'Austin CAP %', data: capShare, borderColor: '#93c5fd', borderDash: [6,3], tension: 0.2, pointRadius: 2 },
+          { label: 'Fresno retail %', data: fatShare, borderColor: '#b91c1c', tension: 0.2, pointRadius: 2 },
+          { label: 'Fresno CARE %', data: careShare, borderColor: '#fca5a5', borderDash: [6,3], tension: 0.2, pointRadius: 2 }
+        ]
+      },
+      options: { ...common, scales: { ...common.scales, y: { ...common.scales.y, title: { display: true, text: 'percent of $40,000' } } } }
+    });
+  </script>
+</body>
+</html>
