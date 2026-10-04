@@ -15,12 +15,12 @@
   <meta property="og:image:secure_url" content="https://stories.ahightower.com/td-pages/images/og-td-pages.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Guide illustration of the Tower Theatre marquee at night on Olive Avenue in Fresno">
+  <meta property="og:image:alt" content="Tower Theatre at dusk on Olive Avenue, neon tower and marquee lit">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Ten Tower Pages">
   <meta name="twitter:description" content="Ten Tower District Facebook pages, each with a history of the room and photos to scroll.">
   <meta name="twitter:image" content="https://stories.ahightower.com/td-pages/images/og-td-pages.jpg">
-  <meta name="twitter:image:alt" content="Guide illustration of the Tower Theatre marquee at night on Olive Avenue in Fresno">
+  <meta name="twitter:image:alt" content="Tower Theatre at dusk on Olive Avenue, neon tower and marquee lit">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -40,8 +40,8 @@
   <style>
     .gallery { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
     .gallery figure { flex: 0 0 86%; max-width: 520px; scroll-snap-align: start; }
-    .gallery img { width: 100%; height: 240px; object-fit: cover; border-radius: 12px; }
-    @media (min-width: 768px) { .gallery img { height: 300px; } .gallery figure { flex-basis: 48%; } }
+    .gallery img { width: 100%; height: auto; max-height: 70vh; object-fit: contain; background: #0f172a; border-radius: 12px; }
+    @media (min-width: 768px) { .gallery figure { flex-basis: 48%; } }
     .gallery::-webkit-scrollbar { height: 6px; }
     .gallery::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 99px; }
   </style>
@@ -72,14 +72,20 @@
       <h1 class="font-serif text-4xl md:text-6xl mt-3">Ten Tower Pages</h1>
       <p class="mt-4 max-w-2xl text-lg text-slate-200">Ten Facebook doors on Olive, Wishon, Van Ness, and Fern. Each stop has the address, a short history of the room, photos to scroll, and the page itself.</p>
     </div>
-    <img src="images/hero-theatre.jpg" alt="Guide illustration of the Tower Theatre marquee at night on Olive Avenue" class="w-full max-h-[460px] object-cover">
-    <p class="max-w-5xl mx-auto px-4 py-3 text-xs text-slate-400">Guide illustration of the Tower Theatre marquee. The Theatre is the landmark these rooms orient from. It is not one of the ten pages.</p>
+    <img src="images/tower-night.jpg" alt="Tower Theatre at dusk, neon tower and marquee lit on Olive Avenue" class="w-full max-h-[70vh] object-contain bg-slate-950">
+    <p class="max-w-5xl mx-auto px-4 py-3 text-xs text-slate-400">Tower Theatre at dusk. The landmark these rooms orient from. It is not one of the ten pages.</p>
   </section>
 
   <main class="max-w-5xl mx-auto px-4 py-10 space-y-8">
     <section class="bg-white border border-slate-200 rounded-2xl p-6">
       <p>Start at the Tower Theatre and walk. Breakfast is on the west end of Olive. Pizza and a concert room sit just off that corner. Indian food holds the Fulton corner that sat empty for years. Cocktails and tacos share 920 East Olive. Wishon still has the 1976 pizza parlor and the beer bar that is not a mortuary. Van Ness has the neighborhood market and the brewery in the old Audie's Olympic.</p>
-      <p class="mt-3 text-sm text-slate-600">Hours move. Check the Facebook page before you walk over. Plates marked as guide illustrations are not live menu photos.</p>
+      <p class="mt-3 text-sm text-slate-600">Hours move. Check the Facebook page before you walk over.</p>
+      <div class="gallery mt-5">
+        <figure>
+          <img src="images/olive-dusk.jpg" alt="Olive Avenue sidewalk at dusk with the Tower Theatre marquee down the block">
+          <figcaption class="text-xs text-slate-500 mt-2">Olive at dusk. The Theatre is down the block.</figcaption>
+        </figure>
+      </div>
     </section>
 
     <article id="irenes" class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
@@ -96,11 +102,11 @@
           <figcaption class="text-xs text-slate-500 mt-2">The Olive side mural. Family owned here since 1991.</figcaption>
         </figure>
         <figure>
-          <img src="images/irenes-plate.jpg" alt="Guide illustration of a breakfast plate and coffee">
-          <figcaption class="text-xs text-slate-500 mt-2">Guide plate. Not a live photo of the menu.</figcaption>
+          <img src="images/irenes-burger.jpg" alt="Burger and fries on a patio table">
+          <figcaption class="text-xs text-slate-500 mt-2">Patio burger. Breakfast room, lunch plate.</figcaption>
         </figure>
       </div>
-      <a class="inline-block mt-5 rounded-full bg-blue-900 text-white px-5 py-2 text-sm font-semibold" href="https://www.facebook.com/profile.php?id=100042718856535" target="_blank" rel="noopener">Irene's Cafe on Facebook</a>
+      <a class="inline-block mt-5 rounded-full bg-blue-900 text-white px-5 py-2 text-sm font-semibold" href="https://www.facebook.com/p/Irenes-Cafe-100042718856535/" target="_blank" rel="noopener">Irene's Cafe</a>
     </article>
 
     <article id="mamamia" class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
@@ -109,11 +115,15 @@
       <p class="mt-3">The Tower room opened in October 2017 beside Lucy's Lounge at 733 East Olive, after the signs had been up for months. Mama Mia was already a north-Fresno shop at Palm and Bullard, about fifty years old by then, founded by Mike Di Nuzzo. His children, Michael Anthony, Lorenzo, and Gianna, took the Tower location. The Bee described an express menu for people who wanted a quick meal, with late hours on the weekend side. Phone (559) 369-4298.</p>
       <div class="gallery mt-5">
         <figure>
-          <img src="images/meneds-pizza.jpg" alt="Guide illustration of a thin-crust pepperoni pizza">
-          <figcaption class="text-xs text-slate-500 mt-2">Guide plate for the pizza stop. Not a photo from the Mama Mia oven.</figcaption>
+          <img src="images/slice-window.jpg" alt="Customers at an Olive Avenue slice window under an open sign">
+          <figcaption class="text-xs text-slate-500 mt-2">Olive slice window after dark.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/slice-sign.jpg" alt="Five dollar slice sign, cheese or pepperoni, offer good until 6 pm">
+          <figcaption class="text-xs text-slate-500 mt-2">Five dollar cheese or pepperoni, good until 6 p.m.</figcaption>
         </figure>
       </div>
-      <a class="inline-block mt-5 rounded-full bg-blue-900 text-white px-5 py-2 text-sm font-semibold" href="https://www.facebook.com/profile.php?id=100063702874487" target="_blank" rel="noopener">Mama Mia on Facebook</a>
+      <a class="inline-block mt-5 rounded-full bg-blue-900 text-white px-5 py-2 text-sm font-semibold" href="https://www.facebook.com/p/Mama-Mia-Pizzeria-Tower-District-100063702874487/" target="_blank" rel="noopener">Mama Mia</a>
     </article>
 
     <article id="strummers" class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
@@ -122,11 +132,19 @@
       <p class="mt-3">Named for Joe Strummer of The Clash. The room is a concert hall, restaurant, and bar one block south of Olive, booked through Numbskull Shows. One side is the live room. The other is a full bar and kitchen with meat, vegetarian, and vegan plates, often with no cover. Published notes put all ages in the building until 9 p.m., then 21 and over. Phone (559) 485-5356. The mural inside says the quiet part out loud: Greetings from Strummer's, Fresno, California.</p>
       <div class="gallery mt-5">
         <figure>
+          <img src="images/strummers-bar.jpg" alt="Strummer's bar, pool table, and red pendant lights">
+          <figcaption class="text-xs text-slate-500 mt-2">The bar side. Pool table in the foreground.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/strummers-booths.jpg" alt="Strummer's booths under red lights and show posters">
+          <figcaption class="text-xs text-slate-500 mt-2">Booths and show posters under the red lamps.</figcaption>
+        </figure>
+        <figure>
           <img src="images/strummers-mural.jpg" alt="Greetings from Strummer's mural inside the Fresno venue">
-          <figcaption class="text-xs text-slate-500 mt-2">Interior mural at 833 East Fern. Clash imagery in the letters.</figcaption>
+          <figcaption class="text-xs text-slate-500 mt-2">Greetings from Strummer's. Clash imagery in the letters.</figcaption>
         </figure>
       </div>
-      <a class="inline-block mt-5 rounded-full bg-blue-900 text-white px-5 py-2 text-sm font-semibold" href="https://www.facebook.com/strummersfresno" target="_blank" rel="noopener">Strummer's on Facebook</a>
+      <a class="inline-block mt-5 rounded-full bg-blue-900 text-white px-5 py-2 text-sm font-semibold" href="https://www.facebook.com/strummersfresno" target="_blank" rel="noopener">Strummer's</a>
     </article>
 
     <article id="indias" class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
@@ -135,11 +153,15 @@
       <p class="mt-3">Opened Monday, April 29, 2019, in the former Million Elephant Cafe and Bar at Fulton and Olive. The corner had sat empty nearly four years. Three years before the opening, the Bee had written about bullets in the building and plywood on the windows. Owner Sunny Sehgal told the paper the job was a renovation down to the foundation, on the order of half a million dollars, after the family had been eighteenth on a waiting list for the space. The kitchen is Northern Indian, Punjab in particular: curries, tikka masala, karahi, korma, tandoori, roti, and naan. A second room later opened on West Ashlan.</p>
       <div class="gallery mt-5">
         <figure>
-          <img src="images/india-plate.jpg" alt="Guide illustration of butter chicken, rice, naan, and raita">
-          <figcaption class="text-xs text-slate-500 mt-2">Guide plate for the Fulton corner. Not a live photo from the pass.</figcaption>
+          <img src="images/india-sign.jpg" alt="India's Oven neon sign on the Fulton and Olive corner">
+          <figcaption class="text-xs text-slate-500 mt-2">Neon on the Fulton corner.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/india-bowls.jpg" alt="Two bowls of curry and rice with orchid garnish at India's Oven">
+          <figcaption class="text-xs text-slate-500 mt-2">Two bowls at the table.</figcaption>
         </figure>
       </div>
-      <a class="inline-block mt-5 rounded-full bg-blue-900 text-white px-5 py-2 text-sm font-semibold" href="https://www.facebook.com/indiasoven" target="_blank" rel="noopener">India's Oven on Facebook</a>
+      <a class="inline-block mt-5 rounded-full bg-blue-900 text-white px-5 py-2 text-sm font-semibold" href="https://www.facebook.com/indiasoven" target="_blank" rel="noopener">India's Oven</a>
     </article>
 
     <article id="wolf" class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
@@ -148,11 +170,19 @@
       <p class="mt-3">Opened in December 2021 in part of the old Fulton's Folly antique collective, behind the Deli Delicious corner. Majority owner Craig Johnson called the bar a love letter to Fresno. Partners include Gazebo Gardens owner Scott Miller, Jeff Wolpert, and dentist Scott Schapansky. The name points at Chester Arthur Burnett, the blues singer Howlin' Wolf, and the 1956 record Smokestack Lightning. The room is speakeasy and art deco on purpose: house syrups, a stage, patio, and seating that reused pieces from the closed Chicken Pie Shop. The same circle owns Goldstein's on Wishon. Phone listed by Visit Fresno County: (559) 319-8545.</p>
       <div class="gallery mt-5">
         <figure>
+          <img src="images/wolf-helmets.jpg" alt="Howlin Wolf lounge with a motorcycle and helmet wall">
+          <figcaption class="text-xs text-slate-500 mt-2">Helmet wall and the motorcycle. Shuffleboard in front.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/wolf-drink.jpg" alt="A drink on the Howlin Wolf bar with the wolf mark on the menu">
+          <figcaption class="text-xs text-slate-500 mt-2">Bar rail. Wolf mark on the menu.</figcaption>
+        </figure>
+        <figure>
           <img src="images/wolf-bar.jpg" alt="Bar interior at The Howlin Wolf in the Tower District">
-          <figcaption class="text-xs text-slate-500 mt-2">Bar interior from the December 2021 opening coverage. Gallery wall and rail above the bottles.</figcaption>
+          <figcaption class="text-xs text-slate-500 mt-2">Bottle rail and gallery wall.</figcaption>
         </figure>
       </div>
-      <a class="inline-block mt-5 rounded-full bg-blue-900 text-white px-5 py-2 text-sm font-semibold" href="https://www.facebook.com/thehowlinwolffresno" target="_blank" rel="noopener">The Howlin' Wolf on Facebook</a>
+      <a class="inline-block mt-5 rounded-full bg-blue-900 text-white px-5 py-2 text-sm font-semibold" href="https://www.facebook.com/thehowlinwolffresno" target="_blank" rel="noopener">The Howlin' Wolf</a>
     </article>
 
     <article id="tipzy" class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
@@ -161,11 +191,15 @@
       <p class="mt-3">Grand opening Saturday, September 23, 2023, next door to the Howlin' Wolf. Claudia Moreno, known for twenty years as DJ Tipzy, had run the original Tipzy's on Belmont Avenue since 2019 and set the turntables down to open this room with partner Angelina Ybarra. The pitch was homemade tortillas and salsa, not a bar that happened to have tacos. Karaoke stayed on the calendar. The Belmont shop had cost her about $20,000 and maxed cards before the Tower landlord's brother, a regular there, helped open the door. Phone posted for the Tower room: (559) 721-2871.</p>
       <div class="gallery mt-5">
         <figure>
-          <img src="images/tipzy-tacos.jpg" alt="Guide illustration of street tacos, salsa, lime, and a beer">
-          <figcaption class="text-xs text-slate-500 mt-2">Guide plate. Not a live photo from suite 103.</figcaption>
+          <img src="images/tipzy-platter.jpg" alt="A round platter of tacos with lime and salsa">
+          <figcaption class="text-xs text-slate-500 mt-2">The platter.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/tipzy-bar.jpg" alt="Tacos on the bar at Tipzy's with a water glass">
+          <figcaption class="text-xs text-slate-500 mt-2">Tacos on the bar.</figcaption>
         </figure>
       </div>
-      <a class="inline-block mt-5 rounded-full bg-blue-900 text-white px-5 py-2 text-sm font-semibold" href="https://www.facebook.com/tipzystacosbeer" target="_blank" rel="noopener">Tipzy's on Facebook</a>
+      <a class="inline-block mt-5 rounded-full bg-blue-900 text-white px-5 py-2 text-sm font-semibold" href="https://www.facebook.com/tipzystacosbeer" target="_blank" rel="noopener">Tipzy's</a>
     </article>
 
     <article id="meneds" class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
@@ -174,11 +208,11 @@
       <p class="mt-3">The Wishon parlor has a City of Fresno business start date of May 22, 1976. That makes it the oldest room on this list. The name is older than the address. Russ "Me" Johnson, brother of Shakey's founder Shakey Johnson, and Ed Sandlin fired the first oven in Sacramento in 1958. Fresno is where the chain took root. Tom Ferdinandi Sr. and Jim DeMera later bought local shops, including the Blackstone parlor, and the Ferdinandi brothers grew the Valley footprint. The Tower room is the one with the games in the corner and the self-pour taps. Thin crust, combination pizza, a booth if you get there early.</p>
       <div class="gallery mt-5">
         <figure>
-          <img src="images/meneds-pizza.jpg" alt="Guide illustration of a pepperoni pizza with arcade machines in the background">
-          <figcaption class="text-xs text-slate-500 mt-2">Guide plate. The Wishon room has carried an amusement-device permit since the 1976 opening.</figcaption>
+          <img src="images/meneds-sign.jpg" alt="Me-n-Ed's Pizza Parlor Tower District neon sign at night">
+          <figcaption class="text-xs text-slate-500 mt-2">The Wishon sign, with the Tower neon behind it.</figcaption>
         </figure>
       </div>
-      <a class="inline-block mt-5 rounded-full bg-blue-900 text-white px-5 py-2 text-sm font-semibold" href="https://www.facebook.com/MeNEdsTower" target="_blank" rel="noopener">Me-n-Ed's Tower on Facebook</a>
+      <a class="inline-block mt-5 rounded-full bg-blue-900 text-white px-5 py-2 text-sm font-semibold" href="https://www.facebook.com/MeNEdsTower" target="_blank" rel="noopener">Me-n-Ed's</a>
     </article>
 
     <article id="goldstein" class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
@@ -187,11 +221,23 @@
       <p class="mt-3">Opened the week of July 17, 2015. It is not a mortuary and it is not a deli. Co-owner Ephiram Bosse's line, reported by the Bee, was "No bodies. No pastrami. Just beer." Goldstein is Emmanuel Goldstein from George Orwell's 1984. Bosse and contractor-artist Craig Johnson built the room. Johnson did most of the visual work, and the art has been for sale. A boat has served as a bar. Outside food is allowed. The tap list has run around forty handles, plus cider and the odd non-beer. Monday nights have drawn card players to the back patio.</p>
       <div class="gallery mt-5">
         <figure>
-          <img src="images/goldstein-taps.jpg" alt="Guide illustration of a craft beer bar with a boat-shaped bar and many taps">
-          <figcaption class="text-xs text-slate-500 mt-2">Guide illustration of the reported boat bar and tap wall. Not a live photo of 1279 Wishon.</figcaption>
+          <img src="images/goldstein-night.jpg" alt="Goldstein's neon sign at dusk on Wishon">
+          <figcaption class="text-xs text-slate-500 mt-2">The Wishon sign at dusk. Address 1279 on the window.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/goldstein-day.jpg" alt="Goldstein's Mortuary and Delicatessen storefront in daylight">
+          <figcaption class="text-xs text-slate-500 mt-2">Daylight. The blade sign says mortuary and delicatessen.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/goldstein-taps.jpg" alt="Bartender and the handwritten tap board at Goldstein's">
+          <figcaption class="text-xs text-slate-500 mt-2">The tap board.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/goldstein-crowd.jpg" alt="A full room at the Goldstein's tap wall">
+          <figcaption class="text-xs text-slate-500 mt-2">A full night on the tap wall.</figcaption>
         </figure>
       </div>
-      <a class="inline-block mt-5 rounded-full bg-blue-900 text-white px-5 py-2 text-sm font-semibold" href="https://www.facebook.com/goldsteinsbeer" target="_blank" rel="noopener">Goldstein's on Facebook</a>
+      <a class="inline-block mt-5 rounded-full bg-blue-900 text-white px-5 py-2 text-sm font-semibold" href="https://www.facebook.com/goldsteinsbeer" target="_blank" rel="noopener">Goldstein's</a>
     </article>
 
     <article id="market" class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
@@ -204,11 +250,11 @@
           <figcaption class="text-xs text-slate-500 mt-2">Storefront at 1233 North Van Ness. Pole sign and the yellow service band.</figcaption>
         </figure>
         <figure>
-          <img src="images/market-produce.jpg" alt="Guide illustration of produce and a hot deli case">
-          <figcaption class="text-xs text-slate-500 mt-2">Guide plate for the produce and hot case. Not a photo from inside the store.</figcaption>
+          <img src="images/market-coolers.jpg" alt="Drink coolers inside Tower Market">
+          <figcaption class="text-xs text-slate-500 mt-2">The cooler wall.</figcaption>
         </figure>
       </div>
-      <a class="inline-block mt-5 rounded-full bg-blue-900 text-white px-5 py-2 text-sm font-semibold" href="https://www.facebook.com/towermarketfresno" target="_blank" rel="noopener">Tower Market on Facebook</a>
+      <a class="inline-block mt-5 rounded-full bg-blue-900 text-white px-5 py-2 text-sm font-semibold" href="https://www.facebook.com/towermarketfresno" target="_blank" rel="noopener">Tower Market</a>
     </article>
 
     <article id="summerfox" class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
@@ -217,11 +263,11 @@
       <p class="mt-3">Opened the week of St. Patrick's Day 2025, about three hours after the ABC license landed, according to partner Jason Hatwig. The building is the old Audie's Olympic Tavern, also Club Fred under Fred Martinez, later the Oly, then a short Full Circle Olympic taproom in 2019. Audie's closed in 2016. The art deco front went mostly dark after that. A cannabis plan for the Artist Tree died on appeal at City Council. Summer Fox, the Fresno and Clovis brewery tied to the Hsia and Lisitsin families, painted the room orange and black and kept the stage. The blue shag and the Freds mural did not make the trip. Live music and trivia are back on the Facebook page.</p>
       <div class="gallery mt-5">
         <figure>
-          <img src="images/summerfox.jpg" alt="Guide illustration of pints on a bar with a small stage and orange walls">
-          <figcaption class="text-xs text-slate-500 mt-2">Guide illustration of the Van Ness taproom. Not a live photo of the Olympic facade.</figcaption>
+          <img src="images/sequoia-777.jpg" alt="Sequoia Brewing sign above the doors at 777">
+          <figcaption class="text-xs text-slate-500 mt-2">777 is Sequoia Brewing, down Olive from Irene's. Not one of the ten pages. No Summer Fox photo in this set.</figcaption>
         </figure>
       </div>
-      <a class="inline-block mt-5 rounded-full bg-blue-900 text-white px-5 py-2 text-sm font-semibold" href="https://www.facebook.com/profile.php?id=61558391776767" target="_blank" rel="noopener">Summer Fox Tower on Facebook</a>
+      <a class="inline-block mt-5 rounded-full bg-blue-900 text-white px-5 py-2 text-sm font-semibold" href="https://www.facebook.com/p/Summer-Fox-Tower-61558391776767/" target="_blank" rel="noopener">Summer Fox Tower</a>
     </article>
 
     <section class="bg-slate-900 text-white rounded-2xl p-6">
