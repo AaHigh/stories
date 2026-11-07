@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>Two Laws, One Street — High Tower District Stories</title>
+<meta name="description" content="In Fresno's Tower District, a DUI stop can get a blood test back in under three days and a public apology from the police chief. A few feet away, open drug use runs into a law voters passed and Sacramento never funded. This is how one street ended up with two different legal systems." />
+
+<!-- Open Graph -->
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="High Tower District Stories" />
+<meta property="og:title" content="Two Laws, One Street" />
+<meta property="og:description" content="A DUI blood test back in under three days, with an apology. Open drug use on the same street, under a law with no money behind it. Fresno's Tower District is living under two legal systems at once." />
+<meta property="og:url" content="https://stories.ahightower.com/" />
+<meta property="og:image" content="assets/hero.webp" />
+<meta property="og:image:secure_url" content="assets/hero.webp" />
+<meta property="og:image:width" content="2240" />
+<meta property="og:image:height" content="1120" />
+<meta property="og:image:alt" content="Illustration of a Tower District street at night: a motorcycle officer's traffic stop lit under the theatre tower on one side, figures sitting in shadow against a shuttered storefront on the other." />
+<meta property="article:published_time" content="2026-11-07" />
+<meta property="article:author" content="Aaron Michael Hightower" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Two Laws, One Street" />
+<meta name="twitter:description" content="A DUI blood test back in under three days, with an apology. Open drug use on the same street, under a law with no money behind it. Two legal systems, one street." />
+<meta name="twitter:image" content="assets/hero.webp" />
+<meta name="twitter:image:alt" content="Illustration of a Tower District street at night, split between a lit traffic stop and a shadowed sidewalk." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --paper:#f6f5f1;
+    --surface:#ffffff;
+    --ink:#17202b;
+    --ink-soft:#3d4a5a;
+    --muted:#66727f;
+    --line:#ddd8cc;
+    --navy:#1e3a5f;
+    --navy-deep:#12263f;
+    --amber:#b97e1e;
+    --amber-soft:#f3e7cd;
+    --red:#a33327;
+    --red-soft:#f6e3df;
+    --teal:#1f5c50;
+    --teal-soft:#ddebe6;
+    --shadow:0 1px 2px rgba(18,32,48,.06),0 10px 30px -18px rgba(18,32,48,.35);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#0d1420;
+      --surface:#16202f;
+      --ink:#e9edf2;
+      --ink-soft:#c3ccd7;
+      --muted:#93a1b1;
+      --line:#2a3a4f;
+      --navy:#7fa8d9;
+      --navy-deep:#a9c6e8;
+      --amber:#e0aa4e;
+      --amber-soft:#33301f;
+      --red:#e08a7d;
+      --red-soft:#3a2723;
+      --teal:#7fc4b2;
+      --teal-soft:#1d2f2b;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -18px rgba(0,0,0,.7);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Inter",system-ui,-apple-system,sans-serif;
+    font-size:17px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--amber-soft)}
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{max-width:1080px;margin:0 auto;padding:0 20px;height:56px;display:flex;align-items:center;gap:18px}
+  .brand{font-family:"Playfair Display",Georgia,serif;font-weight:800;font-size:17px;letter-spacing:.02em;color:var(--ink);text-decoration:none;white-space:nowrap}
+  .brand span{color:var(--navy)}
+  .nav-links{margin-left:auto;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{color:var(--ink-soft);text-decoration:none;font-size:13.5px;font-weight:600;padding:7px 10px;border-radius:6px;white-space:nowrap}
+  .nav-links a:hover{color:var(--navy);background:var(--surface)}
+
+  /* ---------- hero ---------- */
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  .hero{padding:52px 0 8px;text-align:left}
+  .kicker{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--navy)}
+  .kicker .dot{width:5px;height:5px;border-radius:50%;background:var(--amber)}
+  .kicker .place{color:var(--muted);letter-spacing:.1em}
+  h1{
+    font-family:"Playfair Display",Georgia,serif;font-weight:800;
+    font-size:clamp(44px,8.5vw,84px);line-height:.98;letter-spacing:-.01em;
+    margin:18px 0 0;color:var(--ink);
+  }
+  h1 em{font-style:italic;font-weight:600;color:var(--navy)}
+  .standfirst{
+    font-size:clamp(19px,2.6vw,23px);line-height:1.5;color:var(--ink-soft);
+    max-width:46em;margin:22px 0 0;font-weight:400;
+  }
+  .standfirst strong{color:var(--ink)}
+  .byline{
+    display:flex;flex-wrap:wrap;gap:8px 22px;align-items:baseline;
+    margin:26px 0 30px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    font-size:14px;color:var(--muted);
+  }
+  .byline b{color:var(--ink);font-weight:600}
+  .byline .mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px}
+  figure.herofig{margin:0}
+  figure.herofig img{width:100%;height:auto;display:block;border-radius:10px;box-shadow:var(--shadow)}
+  figcaption{font-size:13.5px;color:var(--muted);line-height:1.55;margin-top:10px;max-width:62em}
+  figcaption b{color:var(--ink-soft)}
+
+  /* ---------- fact strip ---------- */
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:38px 0 6px}
+  .fact{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 18px 14px;box-shadow:var(--shadow)}
+  .fact .num{font-family:"Playfair Display",Georgia,serif;font-weight:800;font-size:clamp(26px,3.4vw,34px);line-height:1.05;color:var(--navy)}
+  .fact .num.warn{color:var(--red)}
+  .fact .lab{font-size:13px;color:var(--muted);line-height:1.5;margin-top:7px}
+  .fact .lab b{color:var(--ink-soft)}
+
+  /* ---------- article ---------- */
+  article{max-width:760px;margin:0 auto;padding:26px 0 10px}
+  article p{margin:0 0 1.25em;color:var(--ink-soft)}
+  article p strong, article li strong{color:var(--ink)}
+  article .lede{font-size:20px;line-height:1.6;color:var(--ink)}
+  article .lede::first-letter{
+    font-family:"Playfair Display",Georgia,serif;font-weight:800;
+    font-size:3.1em;float:left;line-height:.82;padding:6px 12px 0 0;color:var(--navy);
+  }
+  h2{
+    font-family:"Playfair Display",Georgia,serif;font-weight:800;
+    font-size:clamp(28px,4.5vw,38px);line-height:1.12;color:var(--ink);
+    margin:52px 0 6px;letter-spacing:-.01em;
+  }
+  h2 + .sub{color:var(--muted);font-size:15.5px;margin:0 0 20px}
+  .chnum{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;font-weight:600;letter-spacing:.18em;color:var(--amber);text-transform:uppercase;display:block;margin-bottom:8px}
+  blockquote{
+    margin:30px 0;padding:4px 0 4px 22px;border-left:3px solid var(--amber);
+    font-family:"Playfair Display",Georgia,serif;font-size:clamp(20px,3vw,25px);
+    font-style:italic;line-height:1.45;color:var(--ink);
+  }
+  blockquote cite{display:block;font-family:"Inter",sans-serif;font-style:normal;font-size:13.5px;color:var(--muted);margin-top:10px}
+
+  .callout{
+    background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:22px 24px;margin:30px 0;box-shadow:var(--shadow);
+  }
+  .callout h3{margin:0 0 8px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);font-weight:700}
+  .callout p{margin:0 0 .8em;font-size:15.5px}
+  .callout p:last-child{margin-bottom:0}
+  .callout.amber h3{color:var(--amber)}
+  .callout.account{border-left:4px solid var(--amber)}
+  .acctag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber);border-radius:99px;padding:3px 10px;margin-bottom:12px}
+  .callout .statute{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:14.5px;line-height:1.6;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:12px 0}
+
+  /* timeline */
+  .timeline{margin:30px 0 6px;border-left:2px solid var(--line);padding-left:0;list-style:none}
+  .timeline li{position:relative;padding:0 0 26px 30px;margin:0}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:3px solid var(--navy)}
+  .timeline li.hot::before{border-color:var(--red)}
+  .timeline .when{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy)}
+  .timeline li.hot .when{color:var(--red)}
+  .timeline h4{margin:3px 0 5px;font-size:17.5px;color:var(--ink)}
+  .timeline p{margin:0;font-size:15.5px}
+
+  /* funding bars */
+  .bars{margin:26px 0 8px}
+  .bar-row{margin-bottom:18px}
+  .bar-row .blab{display:flex;justify-content:space-between;gap:14px;font-size:14.5px;margin-bottom:6px}
+  .bar-row .blab b{color:var(--ink)}
+  .bar-row .blab span{font-family:"IBM Plex Mono",ui-monospace,monospace;color:var(--muted);white-space:nowrap}
+  .track{height:14px;background:var(--line);border-radius:99px;overflow:hidden}
+  .fill{height:100%;border-radius:99px;background:var(--navy)}
+  .fill.amber{background:var(--amber)}
+  .fill.red{background:var(--red)}
+
+  /* stepper */
+  .stepper{background:var(--navy-deep);border-radius:14px;padding:28px;margin:38px 0;color:#e9edf2;box-shadow:var(--shadow)}
+  @media (prefers-color-scheme: dark){ .stepper{background:#0a1220;border:1px solid var(--line)} }
+  .stepper h3{font-family:"Playfair Display",Georgia,serif;font-size:clamp(22px,3.4vw,28px);margin:0 0 6px;color:#fff;font-weight:800}
+  .stepper .intro{color:#b9c7da;font-size:15px;margin:0 0 20px;max-width:56em}
+  .lane-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+  .lane-tab{
+    appearance:none;border:1px solid rgba(255,255,255,.35);background:transparent;color:#dbe6f5;
+    font:inherit;font-size:14px;font-weight:600;padding:9px 16px;border-radius:99px;cursor:pointer;
+  }
+  .lane-tab[aria-selected="true"]{background:#fff;color:#12263f;border-color:#fff}
+  .lane-tab:focus-visible,.sbtn:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+  .step-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:22px;min-height:172px}
+  .step-card .snum{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#e0aa4e;font-weight:600}
+  .step-card h4{margin:8px 0 8px;font-size:20px;color:#fff}
+  .step-card p{margin:0;color:#cfdae9;font-size:15.5px}
+  .step-nav{display:flex;align-items:center;gap:14px;margin-top:18px}
+  .sbtn{appearance:none;border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;font:inherit;font-size:14px;font-weight:600;padding:9px 18px;border-radius:8px;cursor:pointer}
+  .sbtn:disabled{opacity:.35;cursor:default}
+  .dots{display:flex;gap:7px;margin-left:auto}
+  .dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.3);display:block}
+  .dots i.on{background:#e0aa4e}
+
+  /* ledger */
+  .ledger{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:30px 0}
+  .lane{border-radius:12px;padding:24px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow)}
+  .lane h3{font-family:"Playfair Display",Georgia,serif;font-size:22px;margin:0 0 4px;color:var(--ink)}
+  .lane .tag{font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+  .lane.dui .tag{color:var(--teal)}
+  .lane.p36 .tag{color:var(--red)}
+  .lane ul{list-style:none;margin:16px 0 0;padding:0}
+  .lane li{padding:11px 0;border-top:1px solid var(--line);font-size:15px;color:var(--ink-soft)}
+  .lane li:first-child{border-top:none;padding-top:2px}
+  .lane li b{display:block;color:var(--ink);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+
+  /* sources + footer */
+  .sources{max-width:760px;margin:0 auto;padding:44px 0 8px}
+  .sources h2{margin-top:0}
+  .sources ol{padding-left:22px;color:var(--ink-soft);font-size:15px}
+  .sources li{margin-bottom:12px}
+  .sources a{color:var(--navy);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+  .sources .what{display:block;color:var(--muted);font-size:13.5px;margin-top:2px}
+  .note{max-width:760px;margin:26px auto 0;font-size:13.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+  footer{margin-top:54px;border-top:1px solid var(--line)}
+  .foot-in{max-width:1080px;margin:0 auto;padding:26px 20px 40px;display:flex;flex-wrap:wrap;gap:10px 26px;align-items:baseline;font-size:14px;color:var(--muted)}
+  .foot-in .brand{font-size:15px}
+  .foot-in a{color:var(--navy);text-decoration:none;font-weight:600}
+
+  /* ---------- photos ---------- */
+  figure.photo{margin:34px 0}
+  figure.photo img{width:100%;height:auto;display:block;border-radius:10px;box-shadow:var(--shadow)}
+  figure.photo.narrow{max-width:520px;margin-left:auto;margin-right:auto}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:34px 0}
+  .duo figure.photo{margin:0}
+  .duo figure.photo img{height:100%;object-fit:cover}
+  .duo figcaption{grid-column:1/-1;margin-top:2px}
+  .ailabel{display:inline-block;background:var(--red);color:#fff;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:6px;padding:5px 12px;margin-bottom:10px}
+  @media (prefers-color-scheme: dark){ .ailabel{background:#7c2d23} }
+  .videowrap{position:relative;padding-top:56.25%;border-radius:10px;overflow:hidden;box-shadow:var(--shadow);margin:26px 0 10px;background:#000}
+  .videowrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  @media (max-width:640px){ .duo{grid-template-columns:1fr} .duo figure.photo img{height:auto} }
+
+  @media (max-width:820px){
+    .facts{grid-template-columns:1fr 1fr}
+    .ledger{grid-template-columns:1fr}
+    .hero{padding-top:36px}
+  }
+  @media (max-width:480px){
+    .facts{grid-template-columns:1fr}
+    body{font-size:16.5px}
+    .step-card{min-height:0}
+  }
+  @media print{
+    .nav,.step-nav,.lane-tabs{display:none}
+    body{background:#fff}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Story sections">
+  <div class="nav-in">
+    <a class="brand" href="#top">High Tower <span>District</span> — Stories</a>
+    <div class="nav-links">
+      <a href="#shootings">The Shootings</a>
+      <a href="#stop">The Stop</a>
+      <a href="#money">The Money</a>
+      <a href="#prop36">Prop 36</a>
+      <a href="#sidewalk">The Sidewalk</a>
+      <a href="#doorway">The Doorway</a>
+      <a href="#calls">The Calls</a>
+      <a href="#kathryn">Kathryn</a>
+      <a href="#district3">District 3</a>
+      <a href="#pattern">The Pattern</a>
+      <a href="#howlin">The Pizza Party</a>
+      <a href="#sources">Sources</a>
+    </div>
+  </div>
+</nav>
+
+<header class="wrap hero" id="top">
+  <div class="kicker">Civic · Fresno, California <span class="dot" aria-hidden="true"></span> <span class="place">Tower District</span></div>
+  <h1>Two Laws,<br /><em>One Street</em></h1>
+  <p class="standfirst">On one side of Olive Avenue, a DUI stop can move at the speed of an expedited lab — <strong>blood drawn Saturday night, results back in under three days, a public apology from the chief of police.</strong> On the other side of the same street, people smoke meth in the open under a law California voters passed two years ago — a law that arrived with <strong>no money to enforce the very treatment it promises</strong>. Same sidewalk. Two legal systems. This is how that happened, and why it isn't an accident.</p>
+  <div class="byline">
+    <span>By <b>Aaron Michael Hightower</b></span>
+    <span class="mono">November 7, 2026</span>
+    <span>Tower District, Fresno</span>
+  </div>
+  <figure class="herofig">
+    <img src="assets/hero.webp" width="2240" height="1120" alt="Illustration of a Tower District street at night: a motorcycle officer's traffic stop lit under the theatre tower on one side, figures sitting in shadow against a shuttered storefront on the other." />
+    <figcaption><b>One street, two kinds of attention.</b> Illustration for this story. On the left, the machinery of DUI enforcement — funded, staffed, and fast. On the right, the sidewalk the other law was written for, waiting on money that hasn't come.</figcaption>
+  </figure>
+
+  <div class="facts" role="list" aria-label="Key figures">
+    <div class="fact" role="listitem">
+      <div class="num">$635,000</div>
+      <div class="lab">Federal grant funding for Fresno's <b>Selective Traffic Enforcement Program</b> — DUI checkpoints, saturation patrols, and officer overtime, Oct. 2025 – Sept. 2026.</div>
+    </div>
+    <div class="fact" role="listitem">
+      <div class="num">&lt; 3 days</div>
+      <div class="lab">How fast a council candidate's <b>blood test</b> came back once the lab was asked to expedite it. The normal wait: <b>about three weeks</b>.</div>
+    </div>
+    <div class="fact" role="listitem">
+      <div class="num warn">8 of 101</div>
+      <div class="lab">In Fresno County in 2025, of <b>101 Prop 36 felony drug cases</b>, just <b>8 people elected treatment</b>. The rest went nowhere.</div>
+    </div>
+    <div class="fact" role="listitem">
+      <div class="num warn">$0</div>
+      <div class="lab">Dedicated treatment funding written into <b>Proposition 36 itself</b> when voters passed it in November 2024.</div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <p class="lede">I live in the Tower District, about half a mile from the Tower Theatre, and I watch this street the way you watch weather. So let me tell you what the last three weeks looked like from here — because if you only saw the headlines, you saw two separate stories. Out here, it's one story, and the seam between the two halves is money.</p>
+
+  <h2 id="shootings"><span class="chnum">Chapter One</span>First, the shootings</h2>
+  <p class="sub">How a nightlife district got a safety plan in a matter of hours</p>
+
+  <p>In the early hours of <strong>Sunday, October 18</strong>, someone fired nine shots outside the MIA nightclub on Olive Avenue, in the middle of the annual Zombie Crawl crowd. Two people were wounded. Police arrested a 16-year-old from Fowler the next day, after an hour-long standoff. It was the <strong>fourth shooting in the Tower District in six months</strong>.</p>
+
+  <p>The city's response was immediate and total. Mayor Jerry Dyer declared <strong>"zero tolerance for violence in the Tower."</strong> Within days there was a Tower District safety plan: more officers on weekend nights, contract officers posted in front of MIA, Vibez Lounge, and Bobby Salazar's, four mobile camera-and-light trailers, a curfew for minors after 10 p.m., a crackdown on club patios open past 10, street vendors moved into a designated lot, and sidewalks power-washed after 2 a.m. Fresno's weekend policing costs in the Tower had already exploded — the Fresno Bee put the increase at <strong>more than 900%</strong>.</p>
+
+  <p>Nobody should begrudge a neighborhood a fast answer to gunfire. But notice what the speed proves: <strong>when the city decides something is a priority, the machinery exists.</strong> Officers appear. Trailers appear. Overtime gets found. Keep that in mind, because the following Saturday night, that same machinery pulled over a man who was out watching it work.</p>
+
+  <p>And the October 18 shooting was not an isolated night. <strong>In my account, there was a shooting every week in the run-up to the public safety meeting being called</strong> — one after another, until the meeting itself became unavoidable. When the arrest from the shooting in front of Mia's surfaced, it surfaced the way violence surfaces now: as content. A Fresno Activities post reported that a <strong>16-year-old Fowler Punjabi teen was arrested at his home and taken into custody at 11:44 p.m. Sunday</strong> in connection with a shooting that injured two people in the Tower District early Sunday morning. In the screenshot, the teen is wearing a hoodie that says <strong>Fresno Activities</strong> — which I describe, in my opinion, as one of the most popular groups on Facebook, one that <strong>monetizes and glorifies violence</strong>. His details were not released because he is a minor, and I am not naming him here; his face is blurred in the screenshot below, in this story, on purpose.</p>
+
+  <figure class="photo narrow">
+    <img src="assets/teen-arrest.jpg" width="1179" height="1507" alt="Screenshot of a Fresno Activities post reporting the arrest of a 16-year-old Fowler teen at 11:44 p.m. Sunday in connection with a Tower District shooting; the teen's face in the inset photo is blurred." />
+    <figcaption><b>Screenshot: Fresno Activities.</b> The post reports a 16-year-old arrested at home at 11:44 p.m. Sunday in connection with a Tower District shooting that injured two people. The minor's face is blurred here. My account: this was the shooter from the incident in front of Mia's, and the hoodie tells the rest of the story — everybody wants to see who is pulling the trigger, and the shooter becomes famous.</figcaption>
+  </figure>
+
+  <p>That fame is the engine, in my account. Police are hamstrung when it comes to enforcing against 16-year-olds, and against the people in jail called so-called <strong>SHOT CALLERS</strong> — and meanwhile the person who pulls the trigger gets highlighted, gets seen, gets famous as a gang banger. And people like me, who want law and order, get labeled a Trump supporter or a MAGA kind of guy just for expecting people to follow the law. That is the trade this street is being offered: attention for the violence, a label for the objection.</p>
+
+  <p>A week earlier, the same pattern ran in the other direction — a family, not a headline. ABC30 Action News carried <strong>Roxanne Armstrong, Tyrone's mother</strong>, under the caption "Family members man shot and killed in Fres..." In my account: a woman lost her son to gang violence <strong>just a week earlier, across the street from Mia's</strong>, shot dead by a 19-year-old shooter who was held to justice — and they say it was unrelated. One week after another. Glorification of violence on one side of the street, a mother on the other, and a city that does not seem able to control public safety at all — <strong>with the exception of DUI enforcement</strong>.</p>
+
+  <figure class="photo">
+    <img src="assets/roxanne.jpg" width="1179" height="790" alt="ABC30 Action News still identifying Roxanne Armstrong as Tyrone's mother, with a caption about a man shot and killed in Fresno." />
+    <figcaption><b>Still: ABC30 Action News.</b> Roxanne Armstrong, Tyrone's mother. My account: her son was killed a week before the Mia's shooting, across the street from it, and the two were called unrelated.</figcaption>
+  </figure>
+
+  <p>So the safety meeting happened — the city in the room, listening. And here is my account of where the congressman was while it did. At the same time they were having the public safety meeting, <strong>Jim Costa was, in my account, boozing it up at Sequoia Brewery instead of doing his job listening to the safety meeting</strong> — while his rival, <strong>Kyle Kirkland, was at the safety meeting</strong>. Just like Jim won't show up for a debate, in my account, he's not showing up for the public safety meeting either, because he's already got a win booked and is celebrating there with his cronies. The image below is how that account gets illustrated — and it is labeled, in red, for exactly what it is:</p>
+
+  <figure class="photo narrow">
+    <span class="ailabel">AI-augmented illustration — not a real photograph</span>
+    <img src="assets/costa-cheers.jpg" width="1179" height="2087" alt="AI-augmented illustration of a bar scene under a CHEERS 777 OLIVE AVENUE sign, with notes about Jim Costa lounging at the bar and a Kyle Kirkland B+ scorecard from the Libertarian Party of Fresno County. This is an illustration, not a photograph." />
+    <figcaption><b>AI-augmented illustration — not a photograph, and not evidence Jim Costa was photographed at any bar.</b> The illustration shows a "CHEERS — 777 OLIVE AVENUE" sign, a note reading "Jim Costa — LOUNGING AT THE BAR," and a Kyle Kirkland B+ scorecard from the Libertarian Party of Fresno County. It illustrates my account, stated in the text above: that while the public safety meeting was happening, Costa was celebrating a win he considered booked instead of listening. Presented as my illustrated account only.</figcaption>
+  </figure>
+
+  <figure class="photo narrow">
+    <img src="assets/suits.jpg" width="1179" height="2094" alt="Two men seated at a red table with a rose arrangement, photographed November 3, 2026." />
+    <figcaption><b>November 3, 2026, 8:19 p.m.</b> Two men at a red table with a rose arrangement. I am not naming either man in this story, and I am not stating where this was taken, because I have not confirmed either for publication.</figcaption>
+  </figure>
+
+  <h2 id="stop"><span class="chnum">Chapter Two</span>Saturday night: the stop</h2>
+  <p class="sub">Wishon and Olive, 11:54 p.m., October 24</p>
+
+  <p><strong>Naindeep Singh</strong> — executive director of the Jakara Movement, a Central Unified school board trustee, and the leading candidate for Fresno City Council District 1 — was on his <strong>third consecutive day of observing the Tower District safety plan</strong> when a motorcycle officer stopped him at Wishon and Olive for an expired registration sticker. Singh says he had paid the registration back on June 19 and that his tags had been ripped off the car. What happened next is not in dispute, because the police chief laid it out herself:</p>
+
+  <ul class="timeline">
+    <li>
+      <span class="when">Sat, Oct 24 · 11:54 p.m.</span>
+      <h4>The stop</h4>
+      <p>A motorcycle traffic officer — a trained drug recognition expert — runs Singh through field sobriety tests. Per Chief Mindy Casto, Singh <strong>fails six of eight indicators</strong>, including the walk-and-turn and finger-to-nose tests, with a pulse up to 128. A breath test for alcohol comes back <strong>negative</strong>.</p>
+    </li>
+    <li>
+      <span class="when">Sat night · Community Regional</span>
+      <h4>The blood draw</h4>
+      <p>Singh agrees to a blood test at Community Regional Medical Center to screen for drugs. On his wife's advice — she is a health professional and was with him — an <strong>independent toxicology screen</strong> is run at the same hospital. He is released with two citations, not booked.</p>
+    </li>
+    <li>
+      <span class="when">Mon, Oct 26</span>
+      <h4>"I will be fully exonerated"</h4>
+      <p>Singh holds a press conference in front of the Tower Theatre with his independent results in hand: <strong>no drugs in his system</strong>. His opponent, Rob Fuentes, had already sent a campaign text calling on him to drop out. The DA's office confirms police have not yet submitted any report or charges.</p>
+    </li>
+    <li class="hot">
+      <span class="when">Tue, Oct 27 · Evening</span>
+      <h4>Case closed — with an apology</h4>
+      <p>Because the arrest was public, the department asked the lab to <strong>expedite</strong> the official test. What normally takes about <strong>three weeks came back in under three days: negative</strong>. Chief Casto holds a second press conference, apologizes to Singh as she had promised she would, and announces the case is closed, the arrest will be removed from his record, and his tow fees refunded.</p>
+    </li>
+  </ul>
+
+  <p>Credit where it's due: the chief kept her word, in public, a week before an election. That almost never happens, and it should be said plainly.</p>
+
+  <p>But step back and look at what you just watched. A stop at 11:54 p.m. Field tests by a specialist. A hospital blood draw the same night. A lab that can be <em>asked to hurry</em> — and does. A chief, an apology, a refunded tow, a closed case, all in <strong>72 hours</strong>. Whatever you think of the stop itself, that is what a fully funded enforcement lane looks like from the inside. It has people, training, overtime, lab priority, and a public-relations apparatus to close the loop.</p>
+
+  <blockquote>"What normally could take three weeks, the test came back less than three days."
+    <cite>— Fresno Police Chief Mindy Casto's account, as reported by Independent in the Field, Oct. 27–28, 2026</cite>
+  </blockquote>
+
+  <h2 id="money"><span class="chnum">Chapter Three</span>Follow the money: the lane that is funded</h2>
+  <p class="sub">DUI enforcement doesn't run on good intentions. It runs on a grant.</p>
+
+  <p>None of that speed is an accident of character. It's purchased. On <strong>September 25, 2025</strong>, the Fresno City Council authorized the police department to accept <strong>$635,000</strong> from the California Office of Traffic Safety — federal highway money, passed through from the National Highway Traffic Safety Administration — for the <strong>Selective Traffic Enforcement Program (STEP)</strong>, covering October 1, 2025 through September 30, 2026. (The prior year's STEP grant later picked up another $98,000 on top.)</p>
+
+  <p>Read what that money is earmarked to buy, because it's the whole anatomy of the fast lane:</p>
+
+  <div class="callout">
+    <h3>What $635,000 buys</h3>
+    <p><strong>Overtime</strong> — so DUI checkpoints and saturation patrols can be staffed on top of regular shifts, on the nights that matter. <strong>Specialist training</strong> — Standard Field Sobriety Tests, Advanced Roadside Impaired Driving Enforcement, and Drug Recognition Expert certification: the exact expertise used at Wishon and Olive. <strong>Follow-through</strong> — warrant service and stakeouts targeting repeat DUI offenders and people who failed to appear. And a stated goal, written into the grant: reduce the number of people killed and injured in crashes involving impaired driving.</p>
+    <p>In 2025, forty-five people died in traffic collisions in Fresno, and the department reports roughly <strong>80% of those fatalities involved someone under the influence</strong> of alcohol, drugs, or medication. The danger is real. So is the funding. That's the point: for this problem, society decided the danger was real <em>and wrote the check</em>.</p>
+  </div>
+
+  <p>There's an escalator built into this lane, too. Shootings in the Tower put more officers on Olive on weekend nights. More officers running traffic enforcement in a nightlife district means more DUI investigations — that's how a candidate out observing the safety plan ends up giving blood at Community Regional. <strong>Violence raised the priority; the priority was already funded; the funded machinery did what funded machinery does.</strong> Nobody in that chain had to ask where the money would come from. It was already there, line-itemed, with a grant number.</p>
+
+  <p>Now cross the street.</p>
+</article>
+
+<article>
+  <h2 id="prop36"><span class="chnum">Chapter Four</span>The other law: Prop 36</h2>
+  <p class="sub">The Homelessness, Drug Addiction, and Theft Reduction Act — passed by the voters, funded by nobody</p>
+
+  <p>In <strong>November 2024</strong>, California voters overwhelmingly passed <strong>Proposition 36</strong>. It partially rolled back Prop 47 and created a new charge: the <strong>treatment-mandated felony</strong>. Here's the mechanism, because the mechanism is where it breaks:</p>
+
+  <p>If a person has <strong>two or more prior drug convictions</strong>, prosecutors can charge simple possession of hard drugs — fentanyl, heroin, cocaine, methamphetamine — as a felony again. The defendant can then plead guilty or no contest and choose court-ordered treatment instead of up to three years behind bars. Finish treatment, and the case is dismissed. That's the deal voters thought they were buying: accountability with a door back out through recovery. "Mass treatment" was the promise.</p>
+
+  <p>Now the part that didn't make the campaign ads: <strong>Prop 36 contained no dedicated funding for any of it.</strong> Not for the treatment beds. Not for the assessments. Not for the courtrooms and public defenders and probation officers the new felonies would require. Counties were told to build the airplane after the voters had already pushed it off the cliff. Lawmakers later asked for <strong>$650 million</strong> to implement it. They got <strong>$100 million, one time</strong> — then another $50 million the following year for pretrial behavioral health and court workload, against estimates that full implementation needs something like $400 million.</p>
+
+  <div class="bars" aria-label="Proposition 36 implementation funding versus what was requested">
+    <div class="bar-row">
+      <div class="blab"><b>Requested by lawmakers to implement Prop 36</b><span>$650M</span></div>
+      <div class="track"><div class="fill" style="width:100%"></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="blab"><b>Appropriated — one-time funds</b><span>$100M</span></div>
+      <div class="track"><div class="fill amber" style="width:15%"></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="blab"><b>Added the next year (pretrial &amp; courts)</b><span>$50M</span></div>
+      <div class="track"><div class="fill red" style="width:8%"></div></div>
+    </div>
+  </div>
+  <p style="font-size:14px;color:var(--muted)">Statewide implementation funding, as reported by CalMatters. Compare the DUI lane: $635,000 for one city's traffic program alone, renewed year after year through the Office of Traffic Safety.</p>
+
+  <div class="callout account">
+    <span class="acctag">Aaron's account</span>
+    <h3>What I put in my own comment thread</h3>
+    <p>I said this part out loud where my neighbors could read it — in a comment on my own thread, the one about not being invited to my own pizza party, because that's where the people in my group actually talk. In that comment I passed along the conclusions of <strong>Assemblymember David Tangipa</strong> after he listened to the Sacramento meeting where Prop 36 funding was on the table and did not come. His conclusion, as I relayed it: the will to fund the law the voters passed was not there.</p>
+    <p>And I set that next to what I believe Sacramento funds without blinking: <strong>millions of dollars of private protection for Governor Gavin Newsom, provided by the California Highway Patrol.</strong> That comparison — and that figure — is my account and my opinion, not an audited number, and I'm not presenting it as one. What is documented is the bar chart above it: the money for Prop 36 treatment that was asked for, and the fraction that showed up. Draw your own conclusion about priorities. I already have.</p>
+  </div>
+
+  <h2><span class="chnum">Chapter Five</span>What "goes nowhere" actually means</h2>
+  <p class="sub">When people say Prop 36 cases go nowhere, this is the nowhere they mean</p>
+
+  <p>Start at the curb, because that's where the law first stalls. An officer watching someone use drugs openly on Olive Avenue can't charge the treatment-mandated felony on sight — <strong>the felony only exists if there are two prior drug convictions</strong>. Establishing those priors takes a records pull, time, and a prosecutor willing to file it. Possession without the priors is still a misdemeanor, and misdemeanors on a crowded weekend in the Tower are triage — the system walks past them to the next call.</p>
+
+  <p>Say the case does get filed. Now the treatment door has to actually exist: an assessment has to be scheduled, a program has to have a bed or a slot, the defendant has to plead guilty to unlock it, and somebody has to pay. In county after county, that chain breaks at the money link. The numbers tell it without any spin from me:</p>
+
+  <div class="callout amber">
+    <h3>The treatment funnel, in numbers</h3>
+    <p><strong>Statewide:</strong> In Prop 36's first six-plus months, prosecutors filed <strong>8,895 treatment-mandated felonies</strong>. About <strong>15% of defendants — 1,290 people — elected treatment</strong>; 771 were actually placed; and just <strong>25 people</strong> in the entire state had completed treatment and earned a dismissal by mid-2025, per the Judicial Council of California.</p>
+    <p><strong>In the 15 busiest counties:</strong> Of <strong>18,666 felony drug cases</strong> charged under Prop 36 last year, 17% involved a defendant who opted for treatment — and only <strong>57 people completed it</strong> and had their cases dismissed (CalMatters analysis).</p>
+    <p><strong>Here in Fresno County:</strong> Of <strong>101 Prop 36 felony drug cases in 2025, only 8 people elected treatment</strong>. The other 93 didn't get the door the voters were promised. They didn't get prison either, in most cases. They got <em>nowhere</em> — a case in the system, a person back on the street, and nothing changed on the sidewalk where it started.</p>
+  </div>
+
+  <p>That's the sentence I keep coming back to, because it's the honest one: <strong>Prop 36 is not being defied. It's being starved.</strong> Officers know the felony path mostly leads to a treatment system that isn't funded to receive people, prosecutors know it, and the people living on the sidewalk know it best of all. A law everyone knows leads nowhere stops being a law. It becomes scenery.</p>
+
+  <figure class="photo">
+    <img src="assets/bikes.jpg" width="1179" height="663" alt="Two bicycles against a stone wall: Aaron's silver bike in front with HIGHTOWER and TOWER RIPPER on the frame, red rims, and LANDING GEAR on the fork; Bereket's white bike behind it." />
+    <figcaption><b>November 4, 2026, 12:39:26 p.m.</b> My silver bike in front — HIGHTOWER and TOWER RIPPER on the frame, red rims, LANDING GEAR on the fork. The white bike behind it is Bereket's. We took this the same day we later ran into Chief Casto at City Council, after leaving this area to go to council.</figcaption>
+  </figure>
+
+  <div class="callout account">
+    <span class="acctag">Aaron's account</span>
+    <h3>The conversation outside City Hall</h3>
+    <p>Start with the timestamps, because they establish how this afternoon actually ran. The bikes photo above is <strong>November 4, 2026, at 12:39:26 p.m.</strong> Thirty-three seconds later, at <strong>12:39:59 p.m.</strong>, I took the downtown photo below — the Security Bank tower and the Smart &amp; Final, the same afternoon, the same few blocks. From there, Bereket and I left that area and went to City Council. That is the afternoon that ended with the two of us standing outside council, and with what happened next.</p>
+    <p>This part is mine — my account of a conversation, told the way it happened to me. I was standing outside City Council talking with my friend <strong>Bereket</strong> — of Ethiopian descent, a good gentleman who believes in law and order the way I do — about an idea the two of us were kicking around: a <strong>vibe-coded app that would let an officer establish a person's two prior drug convictions right there</strong>, so the officer would know on the spot who could actually be sent into the system on a Prop 36 felony and who couldn't. In other words, fix the priors problem in Chapter Five with a phone instead of a prayer.</p>
+    <p>While we were standing there talking about it, <strong>Chief Mindy Casto came out — and she definitely overheard us.</strong> Maybe nothing comes of that. But I don't believe I was standing in that spot, having that exact conversation, at that exact moment, by accident. <strong>I was led there by my higher power to have that conversation at that moment.</strong> That's not a reporting claim. That's my faith, and it's part of why this story exists.</p>
+  </div>
+
+  <div class="duo">
+    <figure class="photo">
+      <img src="assets/downtown.jpg" width="1179" height="663" alt="Downtown Fresno on November 4, 2026: the Security Bank tower and a Smart and Final sign, photographed 33 seconds after the bikes photo." />
+    </figure>
+    <figure class="photo">
+      <img src="assets/hoodie.jpg" width="915" height="1118" alt="A man in a white hoodie and navy jacket smiling at a picnic table with a red bag and papers in front of him, November 6, 2026." />
+    </figure>
+    <figcaption><b>Left:</b> downtown Fresno, November 4, 2026, 12:39:59 p.m. — the Security Bank tower and Smart &amp; Final, thirty-three seconds after the bikes, on the way to council. <b>Right:</b> from that same week — a man in a white hoodie and navy jacket at a picnic table, red bag and papers in front of him, November 6, 2026, 6:16:56 p.m. I am not putting a name to him here, because the photo doesn't need one to belong to that week.</figcaption>
+  </div>
+
+  <div class="stepper" id="walk">
+    <h3>Walk both stops</h3>
+    <p class="intro">Same Saturday night, same few blocks of the Tower. Pick a lane and step through what actually happens — at the curb, at the lab or the courthouse, and at the end.</p>
+    <div class="lane-tabs" role="tablist" aria-label="Choose a lane">
+      <button class="lane-tab" role="tab" id="tab-dui" aria-selected="true" data-lane="dui">The DUI lane</button>
+      <button class="lane-tab" role="tab" id="tab-p36" aria-selected="false" data-lane="p36">The Prop 36 lane</button>
+    </div>
+    <div class="step-card" aria-live="polite">
+      <div class="snum" id="stepNum">Step 1 of 4</div>
+      <h4 id="stepTitle"></h4>
+      <p id="stepBody"></p>
+    </div>
+    <div class="step-nav">
+      <button class="sbtn" id="prevBtn" type="button">← Back</button>
+      <button class="sbtn" id="nextBtn" type="button">Next →</button>
+      <div class="dots" id="dots" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="ledger" aria-label="Side-by-side comparison">
+    <div class="lane dui">
+      <span class="tag">Lane One · Funded</span>
+      <h3>DUI enforcement</h3>
+      <ul>
+        <li><b>Money</b>$635,000 federal STEP grant for Fresno alone, renewed annually through the Office of Traffic Safety.</li>
+        <li><b>People</b>Grant-paid overtime; officers certified in field sobriety testing and drug recognition.</li>
+        <li><b>At the curb</b>Stop, field tests, breath test, same-night hospital blood draw.</li>
+        <li><b>Speed</b>Lab results in under 3 days when expedited. Normal turnaround ~3 weeks.</li>
+        <li><b>The end</b>A filed case, a closed case, or — when the system gets it wrong — an apology from the chief and a refunded tow.</li>
+      </ul>
+    </div>
+    <div class="lane p36">
+      <span class="tag">Lane Two · Unfunded</span>
+      <h3>Prop 36 drug cases</h3>
+      <ul>
+        <li><b>Money</b>$0 dedicated funding in the measure voters passed. $100M one-time statewide, against a $650M request.</li>
+        <li><b>People</b>County treatment systems told to absorb a new felony caseload with no new capacity guaranteed.</li>
+        <li><b>At the curb</b>No felony at all unless two prior drug convictions can be established.</li>
+        <li><b>Speed</b>Fresno County: 8 of 101 felony cases reached treatment.</li>
+        <li><b>The end</b>Statewide, 57 completions and dismissals out of 18,666 cases in the busiest counties. The rest go nowhere.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 id="sidewalk"><span class="chnum">Chapter Six</span>The sidewalk in between</h2>
+  <p class="sub">Penal Code 647(c), the Thursday-to-Monday crowd, and why the bars are the magnet</p>
+
+  <p>Between those two lanes is the sidewalk itself, and what happens on it every weekend. There's a rhythm to it that anyone who lives here can set a watch by: the crowd arrives <strong>Thursday afternoon and leaves Monday morning</strong>. Not because of the weather. Because that's when the bar traffic runs — and where drinking traffic runs, the panhandling and the scams follow, the same way they follow the traffic at a 7-Eleven, a Dollar Tree, or a Walmart. Drunk people coming out of a bar at closing time are, plainly, easy marks. Everybody working that sidewalk knows it. The people doing it aren't getting rich. It's scraps. But it's <em>reliable</em> scraps, and reliability is the whole business model.</p>
+
+  <p>The law has something to say about this, on paper. <strong>California Penal Code § 647c</strong> reads, in full:</p>
+
+  <div class="callout">
+    <h3>Penal Code § 647c</h3>
+    <div class="statute">"Every person who willfully and maliciously obstructs the free movement of any person on any street, sidewalk, or other public place or on or in any place open to the public is guilty of a misdemeanor."</div>
+    <p>Note the nuance, because it matters: <strong>asking for money is protected speech.</strong> What the law actually criminalizes is <em>obstruction</em> — willfully and maliciously blocking someone's movement. Sitting with a sign is not the crime. Body-blocking a drunk patron on the sidewalk outside a bar, following, accosting, refusing to let people pass — that can be. So the conduct residents complain about sits right at the edge of a statute that requires proof of intent, filed as a low-level misdemeanor, in the lane with no dedicated funding and no overtime grant behind it. Guess how often it's the priority on a Saturday night when the funded lane is running checkpoints.</p>
+  </div>
+
+  <p>And watch how the blame travels. The bar owners point at the people on the sidewalk. The city points at the bars and threatens their patios. The state points at the counties. The counties point at Sacramento's empty checkbook. <strong>Everyone in that chain is describing the same street — and everyone has found the one direction to point that isn't at their own ledger.</strong> Meanwhile the actual pattern never changes, because the pattern isn't caused by any one of them. It's caused by traffic, alcohol, addiction, and a treatment law with no treatment in it, all meeting on the same few blocks every Thursday.</p>
+
+  <h2 id="doorway"><span class="chnum">The Sidewalk, Up Close</span>The Dollar Tree doorway</h2>
+  <p class="sub">Fresno Municipal Code 10-2101, a paper bag, a lit cigarette, and a five-year-old</p>
+
+  <p>The sidewalk has a local law, too — <strong>Fresno Municipal Code 10-2101</strong>, the city's sit / lie / sleep / camp rule. On paper, it says the doorway of a store is not a campsite. In practice, on this street, it is scenery — and I have the photographs and the video to show you what "scenery" means.</p>
+
+  <p>On <strong>November 3, 2026, at 1:36:25 p.m.</strong>, a man was lying at the Dollar Tree entrance with a <strong>paper bag over his head</strong>, a bowl of food and a plate beside him, blocking the way in. Not near the door. <em>At</em> the door — the one door everybody has to use. In the close-up from that same doorway, a hand holds a <strong>lit cigarette next to a paper bag</strong>, and the smoke sits right in the path of a <strong>five-year-old child holding her mother's hand</strong> as she walked into the Dollar Tree. Here is my account of the man, stated as my account: <strong>he was pretending to be mentally ill; he said I was harassing him; and in my account he is guilty of crimes that simply don't get enforced, a public nuisance because of the lack of Prop 36 enforcement.</strong> I am not calling him a drug user from these photographs, because a photograph can't tell you that. What it can tell you is that the entrance was blocked, in the middle of the day, and nothing about the funded machinery on this street had anything to say about it.</p>
+
+  <div class="duo">
+    <figure class="photo">
+      <img src="assets/dollar-door.jpg" width="1179" height="1319" alt="A man lying at the Dollar Tree entrance with a paper bag over his head, a bowl of food and a plate beside him, November 3, 2026." />
+    </figure>
+    <figure class="photo">
+      <img src="assets/cigarette.jpg" width="1179" height="1239" alt="Close-up of a hand holding a lit cigarette next to a paper bag at the Dollar Tree entrance." />
+    </figure>
+    <figcaption><b>Left:</b> the Dollar Tree entrance, November 3, 2026, 1:36:25 p.m. — a man lying at the door with a paper bag over his head, a bowl of food and a plate beside him. <b>Right:</b> the close-up — a lit cigarette beside the bag, in the path customers, including a five-year-old holding her mother's hand, had to walk through.</figcaption>
+  </div>
+
+  <p>And I didn't just photograph it. I filmed the whole interaction, unedited — because I know how this gets flipped. Isaiah 5:20 names it: <em>woe to those who call evil good and good evil.</em> In my account, that is the flip-the-script move I run into on this sidewalk — the man blocking the door says <em>he</em> is being harassed, and the man documenting it becomes the problem. So here is the documentation, all ten minutes of it, exactly as it happened:</p>
+
+  <div class="videowrap">
+    <iframe src="https://www.youtube-nocookie.com/embed/G8MaAU5iU6o" title="SIT LIE SLEEP — Aaron's unedited video of the Dollar Tree entrance interaction" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <p style="font-size:14.5px;color:var(--muted)"><strong>"SIT LIE SLEEP"</strong> — my unedited, roughly ten-minute video of the entire interaction at the Dollar Tree entrance. If the player doesn't load, watch it on YouTube: <a href="https://youtu.be/G8MaAU5iU6o" target="_blank" rel="noopener">youtu.be/G8MaAU5iU6o</a>.</p>
+
+  <p>The doorway is one version of it. The ATM is another. Two people lying by an ATM with yellow bollards — one slumped against the wall with a backpack, one in plaid stretched out on the raised platform — directly in the path of anyone who needs the machine. I am not going to tell you whether they were asleep or passed out, because the photo doesn't say, and I am not calling it drug use from the photo alone. In my framing, it doesn't need a diagnosis: <strong>it is a problem caused by a lack of enforcement</strong> — of the sit/lie rule, and of Prop 36 behind it.</p>
+
+  <figure class="photo narrow">
+    <img src="assets/atm.jpg" width="1179" height="2094" alt="Two people lying by an ATM between yellow bollards, one slumped with a backpack and one in plaid on the raised platform." />
+    <figcaption><b>The ATM.</b> Two people lying between the yellow bollards, in the path of ATM traffic. No diagnosis offered — the obstruction is the point.</figcaption>
+  </figure>
+
+  <p>And when the police <em>are</em> at the Dollar Tree? In my observation, their cars sat in that parking lot while <strong>vagrants begged in the same parking lot, completely overlooked</strong>. The funded lane was present. It was just pointed the other way — the way it is always pointed.</p>
+
+  <figure class="photo narrow">
+    <img src="assets/police-dollar.jpg" width="1179" height="2094" alt="Fresno police vehicles parked at the Dollar Tree; license plates blurred." />
+    <figcaption><b>Police at the Dollar Tree.</b> My observation: the begging in that parking lot went completely overlooked. License plates blurred.</figcaption>
+  </figure>
+
+  <p>Walk a few steps to the bus stop and the scene repeats itself, because on this street it is not an incident — it is the furniture. A person slumped over on the bus bench near the Dollar Tree, belongings around them. I describe this as a common scene, and I describe how it appears to me; I am not handing you a diagnosis of a stranger from a photograph. I am telling you that a resident of this district sees this, at this bench, as a matter of routine — and that routine is what an unenforced law looks like after a year.</p>
+
+  <figure class="photo narrow">
+    <img src="assets/bus-bench.jpg" width="1179" height="2094" alt="A person slumped on a bus stop bench near the Dollar Tree with belongings around them; license plates in the background blurred." />
+    <figcaption><b>The bus bench near the Dollar Tree.</b> A common scene, in my account. License plates blurred.</figcaption>
+  </figure>
+
+  <p>Now the optics, because the optics are the other half of the sidewalk economy. People drive to this same Dollar Tree to <strong>hand out free food</strong> — I photographed the cars myself, with my own caption on the photos: "handing out free food at the dollar tree." One is a dark car; the other, a blue Toyota, <strong>November 3, 2026, at 12:59:07 p.m.</strong> The license plates are blurred in this story, because the plates were never the point. The point is the circuit: food handed out at the door of a store whose doorway is a campsite, photographs taken, everybody feeling like something was done — while the laws that would change the scene itself sit unfunded and unenforced a few feet away. Remember these two cars. They come back at the end of this story, because in my account they <em>are</em> the end of this story.</p>
+
+  <div class="duo">
+    <figure class="photo">
+      <img src="assets/car-dark.jpg" width="1178" height="2096" alt="A dark car with Aaron's overlaid caption: handing out free food at the dollar tree. License plate blurred." />
+    </figure>
+    <figure class="photo">
+      <img src="assets/car-blue.jpg" width="1178" height="2096" alt="A blue Toyota with Aaron's overlaid caption: handing out free food at the dollar tree, November 3, 2026. License plate blurred." />
+    </figure>
+    <figcaption><b>The optics, in my own photographs and my own overlaid words.</b> Handing out free food at the Dollar Tree. License plates blurred — the cars are the point, not the plates.</figcaption>
+  </div>
+
+  <h2 id="calls"><span class="chnum">The Sidewalk, Up Close</span>The calls nobody answered</h2>
+  <p class="sub">The blue canopy across from the Tower Theatre, Penal Code 415, and a restraining order nobody will serve</p>
+
+  <div class="callout account">
+    <span class="acctag">Aaron's account</span>
+    <h3>The man under the blue canopy</h3>
+    <p>Across from the Tower Theatre, there is a man who, in my account, <strong>lives in his car and sells things under a blue canopy</strong>. This is the Wishon &amp; Olive ring seller. Here is the pattern, as I have lived it and as I am stating it — my account, not a court finding: <strong>he assaulted me</strong>, and in my opinion he has committed <strong>Penal Code 415</strong> — though that has <strong>not been proven in a court of law</strong>, and I am saying so in the same breath. I believe he is trying to start fights with me because he doesn't like what I am saying about so-called homeless people who violate the law and get away with it.</p>
+    <p>So I called the police. And called. The screenshots below are my own call history — the record of a resident trying to get an answer out of the unfunded lane. In my account, <strong>the police don't respond because it is not a priority, because they don't have any money.</strong> I waited in my hot car. I complained. Then, after consulting with the law, I decided to get a <strong>restraining order</strong>. So let the record be exact, because exactness is the whole point of this story: <strong>I filed. The restraining order was not granted. And now nobody wants to serve the gentleman.</strong> A filing is all there is. Anyone who tells you there is an order in force is telling you more than the court did.</p>
+  </div>
+
+  <div class="duo">
+    <figure class="photo">
+      <img src="assets/calls-1.jpg" width="1179" height="1971" alt="Aaron's screenshot of Fresno Police call history and event numbers, including a PC 415 vendor-under-blue-canopy entry." />
+    </figure>
+    <figure class="photo">
+      <img src="assets/calls-3.jpg" width="1179" height="923" alt="Aaron's screenshot listing police event numbers and call details." />
+    </figure>
+    <figcaption><b>My call record.</b> Event numbers and call history from my own phone — including the PC 415 entry for the vendor under the blue canopy. This is what reporting it looks like from the resident's side of the line.</figcaption>
+  </div>
+
+  <h2 id="kathryn"><span class="chnum">The Sidewalk, Up Close</span>The neighbor who had to move</h2>
+  <p class="sub">Kathryn L. Barile, The Brass Unicorn, and two addresses on Van Ness</p>
+
+  <p>This is not abstract for my neighbors either, and one of them has a name I want spelled right, because she has earned that much: <strong>Kathryn L. Barile</strong> — Kathryn with a K. She is my neighbor; she lives on <strong>Yosemite, just one block south of me</strong>, and she runs <strong>The Brass Unicorn</strong>. The shop used to be at <strong>845 E Fern Ave, at Fern and Maroa</strong>. It is now at <strong>1007 N Van Ness Ave, at E Elizabeth St</strong> — right across the street from the <strong>Fresno Police Department Credit Union at 1004 N Van Ness Ave</strong>. Read that again: she moved across the street from the police's own credit union.</p>
+
+  <p>Here is my account of why: <strong>she was forced to relocate.</strong> A shopkeeper does not leave an address she has built a name at because the new place has better light. In my account, the city does not seem able to control public safety — <strong>with the exception of DUI enforcement</strong> — and when a street becomes unmanageable, the businesses that can move, move, and the ones that can't, close. Kathryn moved. Keep her in mind, too, because she is standing at the end of this story right next to those two cars at the Dollar Tree.</p>
+
+  <h2><span class="chnum">Chapter Seven</span>The same argument, at City Hall</h2>
+  <p class="sub">Fires, eminent domain, and one sentence from the dais</p>
+
+  <p>If you want to hear this whole story compressed into a single sentence, a councilmember already said it. During a February council meeting — the council deep in discussion about the fires around the city's eminent-domain takings near Blackstone and McKinley — <strong>Councilmember Miguel Arias</strong> said, in council, in public:</p>
+
+  <blockquote>"I refuse to equate homelessness with drug usage."
+    <cite>— Councilmember Miguel Arias, in Fresno City Council, as I heard it and recorded it</cite>
+  </blockquote>
+
+  <p>I call that sentence <strong>disingenuous, and dishonest</strong> — and that is my characterization, stated as mine. Here is why: the city manager directs the police department, and the asymmetry this whole story is about <strong>comes from the dais — from the city manager specifically — not from Mindy Casto and her crew</strong>. Refusing to equate homelessness with drug usage, from the dais, on the same February day the Fresno Bee reported the city manager's "spidey senses" and the council sat discussing fires tied to eminent domain — that isn't a principle. It's a way of making the connection unsayable in the one room where saying it would cost somebody something.</p>
+
+  <p>Hold that sentence up against the documented backdrop. The vacant <strong>Carl's Jr.</strong> at Blackstone and McKinley — a building the city itself had seized through eminent domain and closed in December — was <strong>destroyed by fire on January 28</strong>. Another nearby city-owned vacant building burned on <strong>February 8</strong>. On <strong>February 13</strong>, the contents inside the tile shop down the street caught fire. Three buildings, one intersection, about two weeks — and authorities suspecting arson, as Fresnoland reported. The morning after the Carl's Jr. fire, City Manager <strong>Georgeanne White</strong> told the council, in a line the Fresno Bee carried and I wrote up in my earlier story <em>The Taking</em>: <strong>"My spidey-senses were tingling on Carl's Jr. I was pinging the staff, saying, 'When are we demoing? When are we demoing?' I knew this would happen."</strong></p>
+
+  <p>She knew it would happen. The building burned anyway. And here is my account of what I watched happen around that — labeled as my account, because it is: <strong>I believe she was pretending she was not aware of the probability of homeless people setting fires to the Carl's Jr. and to the tile shop, and using the media to manipulate the public into believing the city had nothing to do with those places burning down — when the fires benefited the city by expediting a project that was stuck.</strong> A city manager's hunch gets the cute name. The fires get treated as weather. And a councilmember announces, as a principle, that he refuses to connect the people sleeping in and around those vacant buildings to the drug use everyone in this city can see with their own eyes. Refusing to equate them doesn't make the meth disappear. It just makes the sentence unsayable in the room where the money gets decided.</p>
+
+  <div class="callout account">
+    <span class="acctag">Aaron's account — not court findings</span>
+    <h3>What happened to the tile man</h3>
+    <p>The tile shop is the one at 1780 East McKinley — <strong>A and C Tile</strong>. Here is what is documented: the city sued for the property in July 2024 to make way for the Blackstone–McKinley grade separation project, and in March 2025 a court ordered ownership of the building transferred to the city. The owner told the court that relocating would cost him <strong>$3.4 million to $7 million</strong>.</p>
+    <p>And here is my account of the rest of it, which I am stating as my account and not as any court's finding: <strong>they destroyed that man's reputation by accusing him of being a criminal, in court cases where they seek funds, and they bled him dry with false allegations about his intent — claiming he was trying to slow the process down.</strong> The reality, as I see it, is that the city split his property into two, and now he cannot even get onto his own property without potentially being trespassed, because the city has taken ownership of part of it through eminent domain — and he has been blocked from simply taking his inventory somewhere else by the plain financial fact of what it costs to move all of that material. A man who ran a tile business at that corner since the nineties, boxed out of his own shop, with his life's inventory sitting inside a building he no longer controls — part of which then caught fire. Tell me again how the process is the point.</p>
+    <p>Then, at a later date, they claimed he was <strong>difficult to work with</strong> — and they used the word <strong>criminal</strong> in association with his situation. That, in my account, is a label that was <strong>forced on him by the environment they created</strong>: take part of a man's property, block his access to the rest, make moving his inventory financially impossible, and then treat the cornered man as the problem.</p>
+    <p>It is the same labeling move I have watched in the funded lane. <strong>They took me in for a DUI. They took Singh in for a DUI.</strong> The label lands first — criminal, difficult, impaired — and the expensive process of clearing your name lands on you. And here is the connection I am drawing, stated as my belief: <strong>all of that DUI funding is being used to make life hell for people who happen to land in eminent-domain territory for their corrupt bullet train — which I believe is why they are trying to get access to that land over there.</strong> That motive is my conclusion, not a document I can hand you. The split property, the blocked access, the court fight, and the criminal label are the facts as I have lived and watched them. Connect them the way I have, or don't — but don't tell me the pattern isn't there to be seen.</p>
+  </div>
+
+  <h2><span class="chnum">Chapter Eight</span>Why this isn't abstract for me</h2>
+
+  <p>I've said it before and I'll say it here, in my own story, in my own words: <strong>I was prosecuted for a DUI, while people smoke methamphetamine in the open on these same streets and nothing happens.</strong> I'm not asking for my case to be re-argued, and I'm not asking anyone to feel sorry for me. I'm pointing at the asymmetry, because once you've stood in the fast lane yourself, you cannot unsee how empty the other lane is. The system that processed me had forms, funding, specialists, deadlines, and consequences. The system that processes the sidewalk outside the bars has a voter-approved promise and an appropriation that covered about fifteen cents on the requested dollar.</p>
+
+  <p>And I'll name where it lands, in my own life: <strong>I feel pushed out of my own neighborhood by this asymmetry.</strong> The funded lane runs at full speed against people who do not even drink — a council candidate whose breath test and blood test both came back negative still got the full ride through the machine — while obvious methamphetamine users use meth all over this city, in the open, and are not pursued. That is the street I live on now. That is the neighborhood I am being pushed out of — not by the people on the sidewalk, but by the choice, made somewhere above them and above me, of which laws get to be real.</p>
+
+  <p>And because I believe in being precise about blame, here is my opinion, stated as my opinion: <strong>that asymmetry does not come from Chief Mindy Casto and her crew.</strong> Casto, in the Singh stop, did the hardest thing an official in this story did — she kept her word in public. The direction of the Fresno Police Department, in my view, comes from the city manager. That is not a guess about the org chart: the city itself describes the city manager as the officer who oversees the city's day-to-day operations and exercises control over its departments. My conclusion about how that control is being used is mine. But when a department's funded lane runs perfectly and its unfunded lane doesn't run at all, year after year, somebody is setting the priorities — and in Fresno's government, priorities are the city manager's job.</p>
+
+  <p>That's not a justice system making hard choices. That's a funding decision wearing a justice system's clothes.</p>
+
+  <h2 id="pattern"><span class="chnum">Chapter Nine</span>The same pattern, on a bigger map: SEDA</h2>
+  <p class="sub">Southeast Fresno, the farmers, and the rules changed under people's feet</p>
+
+  <p>If this were only about one tile shop on McKinley, or one stop at Wishon and Olive, you could call it bad luck. I don't call it bad luck, because I keep seeing the same shape in a bigger place: <strong>SEDA</strong>.</p>
+
+  <p>As I understand it and as I am stating it here: SEDA was the Fresno City Council's plan for the <strong>southeast district</strong>. The city spent a bunch of money on it, and then finally cancelled it — because, in the end, it was not congruent with the city's own interest in keeping downtown and the other established areas from becoming blighted through a lack of funding. The money was going to the southeast area. It was <strong>not</strong> going to District 3. You cannot starve the districts you already have in order to build a new one somewhere else and then act surprised when the old ones slide.</p>
+
+  <p>And SEDA is in the news for the other half of the same pattern: <strong>taking land from farmers</strong>. That is my account of the connection I am drawing — the city and the agencies around these big plans reach for other people's land, and the people who have worked that land are told the plan has changed and they have to live with it.</p>
+
+  <div class="callout account">
+    <span class="acctag">Aaron's account — the dots as I connect them</span>
+    <h3>Changing the rules underneath their feet</h3>
+    <p>A and C Tile on McKinley. Farmers in the path of SEDA in the southeast. People in eminent-domain territory where the bullet train wants access. Different maps, same playbook, as I see it:</p>
+    <p><strong>Announce a grand plan. Move the money toward it. Change the rules right underneath people's feet. Then, when a family business or a family farm cannot survive the new rules, call the owner difficult — or criminal — for not getting out of the way fast enough.</strong></p>
+    <p>That is how a family fortune gets destroyed without anyone ever having to say out loud that destroying it was the point. The process does it: the split parcel, the blocked access, the legal bills, the years of delay, the funding that flows everywhere except to the people and the districts being squeezed. SEDA being cancelled after the money was spent does not give the farmers or District 3 those years back, any more than an expedited negative blood test gives Singh back the weekend he spent clearing his name.</p>
+  </div>
+
+  <p>I am not presenting SEDA, the bullet train, and Blackstone–McKinley as one single legal case — they aren't. I am presenting them as one <strong>pattern of abuse</strong>, in my judgment: power decides where it wants to go, funds the lane that gets it there, and lets the people standing on the land pay for the privilege of being moved. Once you have watched it happen to a tile man on your side of town, you recognize it when you see it happening to farmers on the other side.</p>
+
+  <h2 id="howlin"><span class="chnum">Chapter Ten</span>The pizza party, and the dragon's lair</h2>
+  <p class="sub">The Howlin' Wolf, Bobby Salazar, and being steered where I did not agree to go</p>
+
+  <p>This last piece is smaller — no grant, no council vote — but it irritates me for the same reason the big pieces do: because it is about being <strong>manipulated into a place I did not choose</strong>.</p>
+
+  <figure class="photo narrow">
+    <img src="assets/pizza-patio.jpg" width="1179" height="2094" alt="An open pizza box with about half a pepperoni pizza left, on a patio table under a red umbrella with the street behind, November 5, 2026." />
+    <figcaption><b>The pizza-party thread, in one frame.</b> Mamma Mia's patio, November 5, 2026, 5:00:34 p.m. — an open box, about half a pepperoni pizza left, the red umbrella, the street right behind it. This is the world the meeting in the next box was supposed to happen in. I am not telling you whose pizza it was, because that isn't what the photo is evidence of. It's evidence of the place.</figcaption>
+  </figure>
+
+  <div class="callout account">
+    <span class="acctag">Aaron's account</span>
+    <h3>She said the pizza parlor. She was at the bar.</h3>
+    <p>Here is what happened, as I experienced it. The <strong>owner of the Howlin' Wolf</strong> asked to meet at a pizza party. She said she was going to be at the <strong>pizza parlor</strong>. So I was looking for her there — or, more honestly, <strong>I was looking the other way instead of looking for her</strong>, because part of me already did not trust where this was headed.</p>
+    <p>Instead, <strong>she was at the bar — with Bobby Salazar</strong>.</p>
+    <p>I am unwilling to even get anywhere near Bobby Salazar, and I have made that plain. So here is my suspicion, stated as my suspicion and not as proof of her intent: <strong>she could be setting me up — putting me in front of Bobby Salazar by telling me "pizza party" and delivering a bar.</strong> Meet me at the pizza parlor, except the meeting is really over there, in the dragon's lair, proverbially — with the one man in that scene I have said I will not be put in front of.</p>
+    <p>Maybe people will call that reading too much into a changed plan. People who have not spent two years watching labels get forced on men, doors get painted where no door exists, and rules change under their feet get to say that. I don't. When someone tells me one location and is waiting at another, with a person I am deliberately avoiding, I don't call it a mix-up and walk in smiling. I call it what it felt like: <strong>being steered</strong>.</p>
+  </div>
+
+  <p>That is the thread through this whole story, if you want it in one line. The tile man steered out of his own shop and into a criminal label. Farmers steered off land under SEDA. A candidate steered through a DUI process on a negative test. And me — steered away from a pizza parlor toward a bar I never agreed to walk into. The sizes are different. The steering is the same, and I am done pretending I don't notice it.</p>
+
+  <h2 id="district3"><span class="chnum">Chapter Eleven</span>Why I got out: District 3</h2>
+  <p class="sub">The race I dropped, the comment I left on the record, and the pattern that made both inevitable</p>
+
+  <p>People ask why a man who cares this much about one district isn't running to represent it. I was. <strong>I was running for District 3 City Council — and I dropped out.</strong> Here is why, in my account: I heard a fellow candidate say that <strong>he had violated PC 311.11 and still wanted to run</strong>. Sit with that for a second. Not accused by an opponent. Said it himself, and kept running.</p>
+
+  <p>The decision itself came after the <strong>Mardi Gras parade on February 13th</strong>, when I watched the political figures stroll through Olive Avenue with all of the fanfare — knowing all of the facts, knowing how all of these things are applauded, including inappropriate sexuality and violation of the law — literally, in my words, <strong>having criminals representing us in government</strong>. I just didn't want to sit next to them. That is the whole platform of my withdrawal: a man can spend his life asking a city to follow its own laws, or he can take a seat beside people who treat the law as a costume. He cannot do both.</p>
+
+  <div class="callout">
+    <h3>On the record: "Follow the Law"</h3>
+    <p>Getting out of the race didn't get me out of the record. On <strong>August 19, 2026</strong>, I stood before the <strong>Fresno Planning Commission</strong> and said my piece at <strong>1:49:12</strong> of the hearing — the <strong>SEDA hearing</strong>, the one that ended in a <strong>6–1 vote to recommend SEDA</strong>. I talked about <strong>Penal Code 374.7</strong> and the canal litter I pick up myself — <strong>no fewer than 10 items a day at 721 E La Sierra Drive</strong> — and I closed with the only two doors I believe are actually open to a man in my position: <strong>become a whistleblower, or go down</strong>. A week later, on <strong>August 26, 2026</strong>, Nick Shirley was at the Capitol saying his version of the same sentence. Read the whole comment here: <a href="http://stories.ahightower.com/pc-aug19" target="_blank" rel="noopener"><strong>"Follow the Law" — stories.ahightower.com/pc-aug19</strong></a>.</p>
+  </div>
+
+  <p>And if you want to know what kind of record the voters in this district were asked to reward instead, look at the Fresno Bee's screenshot from <strong>August 23</strong>. The Bee's summary line sits right at the top: <strong>Keshia Thomas is still subject to a defamation lawsuit for alleging that former Bullard High coach Don Arax used a racial slur against her son</strong> — under the headline <em>"Facing call to resign, Fresno trustee Keshia Thomas apologizes for racial slur accusation."</em> Let me be exact about the legal posture, because exactness is the point: <strong>the slur allegation is alleged, and the defamation lawsuit is pending. Neither is a proven fact, and I am not presenting either as one.</strong></p>
+
+  <figure class="photo narrow">
+    <img src="assets/keshia.jpg" width="1179" height="2145" alt="Fresno Bee Facebook screenshot, August 23, reporting that Keshia Thomas is still subject to a defamation lawsuit over her allegation against former Bullard High coach Don Arax, with the headline about her apology for the racial slur accusation." />
+    <figcaption><b>Screenshot: The Fresno Bee, August 23.</b> "Thomas is still subject to a defamation lawsuit for alleging former Bullard High coach Don Arax used a racial slur against her son." The allegation is alleged; the lawsuit is pending. My opinion about what it means is in the text.</figcaption>
+  </figure>
+
+  <p>Now my account, labeled as my account and my opinion: <strong>Keshia Thomas destroyed a career, and directed a defense fund against allegations that the principal of the school knew were untrue at the time.</strong> She made it into the <strong>runoff for District 3 City Council</strong> — fortunately, in my view, she wasn't elected. I issued a public statement saying she was <strong>unfit for office</strong>. I did the same for <strong>Rob Fuentes</strong>, and they are still counting the details on that one. If Rob Fuentes makes it into office, then in my own scoring my efforts failed — but I'd like to think my efforts were fruitful in trying to inform the public about her malfeasance, and "malfeasance" is my word for it, my opinion, stated as such.</p>
+
+  <p>Nick Shirley has a name for the machine underneath this: <strong>so-called scammers being elected into office because of a feedback loop that rewards people for fraud.</strong> I tie Thomas to that loop, as my opinion, because the loop is visible from my street: make the allegation, raise the fund, run for the seat, and let anyone who objects be labeled the problem. It is the flip from the Dollar Tree doorway, scaled up to an election — Isaiah 5:20 with a campaign account.</p>
+
+  <figure class="photo">
+    <img src="assets/foley.jpg" width="1179" height="1594" alt="Article excerpt reporting that Foley was sentenced to six years in prison after duping about 100 investors with shares of NanoTech Entertainment and NanoTech Gaming, with a CLUB FED SECURITIES comic below it." />
+    <figcaption><b>Illustration for this section — the article excerpt is real; the comic is not a news quote.</b> The excerpt reports: "On Wednesday, Foley was sentenced to six years in prison after duping about 100 investors with shares of two companies he controlled, San Jose, Calif.-based NanoTech Entertainment (NTEK) and Las Vegas-based NanoTech Gaming, (NTGL)," in the over-the-counter market. Below it, a "CLUB FED SECURITIES" comic captioned "David Foley lends a new meaning to 'insider trading.' You could say he put the 'pen' in penny stocks. (Comic: ChatGPT)." I include the comic as illustration only.</figcaption>
+  </figure>
+
+  <p>That last screenshot is in here because it is the reason I read every other story in this piece the way I do. I have already watched a man run a fraud in the open, watched the system take years to land on him, and watched everyone who pointed early get treated as the difficult ones. Six years, about a hundred investors, two companies — and by the time the sentence arrived, the money and the years were gone. So when I tell you I don't want to sit next to them, understand: I have sat near enough to that table already. Once was enough.</p>
+
+  <h2><span class="chnum">Closing</span>What honest would look like</h2>
+
+  <p>Two honest options exist, and Fresno is currently choosing a third, dishonest one.</p>
+
+  <p><strong>Option one:</strong> fund Prop 36 like the voters meant it — treatment beds, assessments, court capacity — the way DUI enforcement is funded: dedicated money, renewed, with a grant number and a goal written down. If "mass treatment" was the promise, price it and pay it.</p>
+
+  <p><strong>Option two:</strong> admit the state passed a felony it doesn't intend to operate, and say so out loud, so counties, officers, and the people on the sidewalk can stop pretending a door exists where there is only a painted outline of one.</p>
+
+  <p>The dishonest option — the current one — is to keep both fictions running: celebrate the tough law at election time, starve it at budget time, flood one nightlife district with funded enforcement after every shooting, and then act surprised when a routine Saturday-night stop in that flood zone becomes a scandal, an expedited lab test, and an apology — while, a few feet away, the other law's entire caseload quietly goes nowhere at all.</p>
+
+  <p>One street. Two laws. Only one of them was ever given the means to be real. Until that changes, everything else — the plans, the press conferences, the zero tolerance — is just the funded lane, running on time, past a sidewalk that is still waiting.</p>
+
+  <p>But you want my honest closing, in my own words, so here it is — as my account, and not as a claim that any named person here is a criminal as a proven fact: <strong>nobody wants law and order here. They want appeal to optics.</strong> They want to hand food for free to crackheads at the Dollar Tree — I photographed the cars; you saw them — and then ask why nobody wants to set up a business next to a bar called Strummers, <strong>after they've already run the Brass Unicorn's owner down the street because she can't handle all this</strong>. Kathryn Barile moved her shop across from the police credit union and the street still doesn't feel controlled, because the only law on it that was ever given money is the one that processes drivers.</p>
+
+  <p>So yes: <strong>I am contemplating leaving the Tower District.</strong> Not because I stopped caring about it — nobody writes a story this long about a street he's indifferent to — but because I am tired of being made out to be the bad guy who isn't welcome here for saying the laws should apply to everybody on it. Two laws. One street. I live on it. For now.</p>
+
+  <p style="font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:19px;color:var(--ink)">— Aaron Michael Hightower, from the High Tower District</p>
+</article>
+
+<section class="sources" id="sources">
+  <h2>Sources</h2>
+  <p style="color:var(--muted);font-size:15px;margin-top:0">Every fact in this story that isn't my own observation from living here traces to one of these. Read them and check me.</p>
+  <ol>
+    <li>
+      <a href="https://fresnoland.org/2026/10/26/fresno-city-council-candidate-insists-on-innocence/" target="_blank" rel="noopener">Fresnoland — "Council candidate insists on innocence following Fresno police citation" (Oct. 26, 2026)</a>
+      <span class="what">The stop, the citations, Singh's independent toxicology results, and the DA's office confirming no report had been submitted.</span>
+    </li>
+    <li>
+      <a href="https://fresnoland.org/2026/10/27/fresno-police-chief-apologizes-to-council-candidate-after-negative-drug-test-exonerates-him-from-alleged-dui/" target="_blank" rel="noopener">Fresnoland — "Fresno Police Chief apologizes to city council candidate" (Oct. 27–28, 2026)</a>
+      <span class="what">Chief Casto's account: six of eight field-test indicators failed, negative alcohol screen, expedited lab, apology, record cleared.</span>
+    </li>
+    <li>
+      <a href="https://independentinthefield.substack.com/p/case-closed-singh-is-clean" target="_blank" rel="noopener">Independent in the Field — "Case closed: Singh is clean" (Oct. 28, 2026)</a>
+      <span class="what">"What normally could take three weeks, the test came back less than three days" — plus the tow-fee refund and removal of the arrest from Singh's record.</span>
+    </li>
+    <li>
+      <a href="https://fresnoland.org/2026/10/19/tower-district-shooting/" target="_blank" rel="noopener">Fresnoland — "One arrested in Tower District shooting as Fresno police scramble" (Oct. 19, 2026)</a>
+      <span class="what">The October 18 MIA shooting, the 16-year-old suspect, four shootings in six months, and policing costs up more than 900%.</span>
+    </li>
+    <li>
+      <a href="https://fresnoland.org/2026/10/22/tower-district-residents-grill-fresno-city-leaders/" target="_blank" rel="noopener">Fresnoland — "Tower District residents grill Fresno city leaders on police presence at town hall" (Oct. 22, 2026)</a>
+      <span class="what">The safety plan itself: contract officers at MIA, Vibez, and Bobby Salazar's, camera trailers, 10 p.m. minor curfew, patio crackdown, vendor lot.</span>
+    </li>
+    <li>
+      <a href="https://legistar2.granicus.com/daystar.legistar6.sdk.ws/ViewReport.ashx?M=R&From=Granicus&GovernmentGUID=FRES&N=TextL5&ID=20224&GUID=LATEST&Extra=L5&Title=Legislation+Text&Format=pdf&ver=1758742631" target="_blank" rel="noopener">City of Fresno — Legislation Text, File ID 25-1245 (Sept. 25, 2025)</a>
+      <span class="what">The $635,000 STEP grant: source (NHTSA via California Office of Traffic Safety), grant period, and what it pays for — checkpoints, saturation patrols, warrant operations, DRE training.</span>
+    </li>
+    <li>
+      <a href="https://elreporterosf.com/californias-tough-on-crime-law-promised-treatment-heres-why-people-are-falling-through-the-cracks/" target="_blank" rel="noopener">"California's tough-on-crime law promised treatment. Here's why people are falling through the cracks" (CalMatters reporting, Sept. 25, 2026)</a>
+      <span class="what">The 18,666-case analysis across the 15 busiest counties, the 17% treatment opt-in rate, 57 completions, and the funding shortfall.</span>
+    </li>
+    <li>
+      <a href="https://www.addictions.com/news/california-prop-36-promised-addiction-treatment-most-never-get/" target="_blank" rel="noopener">"California Prop 36 Promised Addiction Treatment Most Never Get" (Nov. 4, 2026)</a>
+      <span class="what">Summary of the CalMatters and Judicial Council findings: the $650M request vs. $100M received, and the Judicial Council's first-months funnel (8,895 filed, 25 completed).</span>
+    </li>
+    <li>
+      <a href="https://www.dhcs.ca.gov/services/MH/Pages/Proposition-36.aspx" target="_blank" rel="noopener">California DHCS — Proposition 36 implementation page</a>
+      <span class="what">How the state itself describes the treatment-mandated felony and the one-time $50M AB 102 infrastructure funding — the state conceding, in its own words, that the money is for building capacity that didn't exist.</span>
+    </li>
+    <li>
+      <a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&sectionNum=647c" target="_blank" rel="noopener">California Legislative Information — Penal Code § 647c</a>
+      <span class="what">The statute text quoted in Chapter Six, verbatim.</span>
+    </li>
+    <li>
+      <a href="https://fresnoland.org/2026/03/02/ai-attorney-emeinent-domain-lawsuit/" target="_blank" rel="noopener">Fresnoland — "Did attorney use AI in Fresno eminent domain lawsuit?" (Mar. 2, 2026)</a>
+      <span class="what">The documented spine of Chapter Seven: the eminent-domain suit against A and C Tile on McKinley Avenue, the March 2025 court order transferring ownership, the owner's testimony that relocation would cost $3.4–$7 million, and the fire sequence — Carl's Jr. destroyed Jan. 28, another city-owned building Feb. 8, the tile shop's contents Feb. 13 — with authorities suspecting arson.</span>
+    </li>
+    <li>
+      <a href="https://stories.ahightower.com/the-taking/" target="_blank" rel="noopener">High Tower District Stories — "The Taking"</a>
+      <span class="what">My earlier story on the same intersection, including City Manager Georgeanne White's on-the-record "spidey-senses" statement to the council the morning after the Carl's Jr. fire. The claims in Chapter Seven about intent and media manipulation are my account, stated there and here as mine — they are not findings of that reporting.</span>
+    </li>
+    <li>
+      <a href="https://www.fresno.gov/citymanager/" target="_blank" rel="noopener">City of Fresno — City Manager's office</a>
+      <span class="what">The city's own description of the job: the city manager oversees day-to-day operations and exercises control over all departments except the City Attorney, City Clerk, and City Council. My conclusion in Chapter Eight about how that control is being used is my opinion.</span>
+    </li>
+    <li>
+      <a href="https://youtu.be/G8MaAU5iU6o" target="_blank" rel="noopener">YouTube — "SIT LIE SLEEP" (Aaron's video)</a>
+      <span class="what">My own unedited, roughly ten-minute video of the entire interaction at the Dollar Tree entrance, embedded in the doorway section above. It is documentation, presented as mine.</span>
+    </li>
+    <li>
+      <a href="http://stories.ahightower.com/pc-aug19" target="_blank" rel="noopener">High Tower District Stories — "Follow the Law" (pc-aug19)</a>
+      <span class="what">My August 19, 2026 comment to the Fresno Planning Commission at the SEDA hearing (1:49:12 in the hearing record): Penal Code 374.7, the canal litter at 721 E La Sierra Drive, the 6–1 vote to recommend SEDA, and Nick Shirley at the Capitol on August 26, 2026.</span>
+    </li>
+    <li>
+      Fresno Municipal Code § 10-2101 — the city's sit / lie / sleep / camp rule, the ordinance at issue in the Dollar Tree doorway section. Cited from the code as referenced in my account; the doorway photographs and video are my own.
+      <span class="what">The photographs throughout this story are mine, taken on the dates and times given in their captions. Every readable license plate has been blurred, and a minor's face is blurred in the Fresno Activities screenshot. The bar image in Chapter One is an AI-augmented illustration and is labeled as one where it appears; it is not a photograph and is not presented as one.</span>
+    </li>
+  </ol>
+  <p class="note">A note on method: the Fresno County figure in the fact cards — 8 of 101 Prop 36 felony cases entering treatment — is the county figure from the treatment data reported alongside the statewide analyses above, and it was the figure this story was built around. Where a number here is statewide, it is labeled statewide. The Thursday-to-Monday pattern on Olive Avenue, the bar-door economy, and the view from my side of the street are my own observations as a Tower District resident, and they're labeled as mine by the byline. The boxes marked "Aaron's account" go further, and they're boxed for a reason: the conversation with Bereket outside City Hall and what I believe about being led to it; the conclusions I relayed from Assemblymember Tangipa and my comparison to CHP protection spending for the governor; Councilmember Arias's sentence as I heard and recorded it; my belief about the city manager, the fires, and the media; and my account of what was done to the tile shop's owner — including the accusations made about him and his intent, the later "difficult" and "criminal" labels, and my belief connecting DUI funding, eminent-domain territory, and the bullet train; my account of SEDA as the council's southeast-district plan, its cancellation, its cost, and its effect on farmers and on District 3 funding; and my account of the Howlin' Wolf owner, the pizza-party meeting, and my suspicion about being put in front of Bobby Salazar — are my accounts and opinions, presented in my voice. They are not court findings, and nothing in the sourced reporting above should be read as proving them. The documented record and my account sit side by side in this story so you can weigh each for exactly what it is. The same labeling rule governs the new material: the Dollar Tree doorway, the ATM, the bus bench, the police cars, and the free-food cars are my photographs and my observations, captioned with the dates and times I recorded; my characterizations of the people in them — including the man at the doorway pretending, in my account, to be mentally ill, and my Penal Code 415 opinion about the blue-canopy vendor, which I state in the story has not been proven in a court of law — are my account. My restraining order against that vendor was filed and not granted, and has not been served, and the story says exactly that and nothing more. Kathryn Barile's name and her shop's two addresses are stated as she and the record give them; my account that she was forced to relocate is mine. The Keshia Thomas material is framed as it stands: the Arax allegation is alleged, the defamation lawsuit is pending, and my conclusions about her fitness for office are my opinion. The District 3 withdrawal, the pc-aug19 comment, and the closing statement about leaving the Tower District are my account, in my words.</p>
+</section>
+
+<footer>
+  <div class="foot-in">
+    <a class="brand" href="#top">High Tower <span>District</span> — Stories</a>
+    <span>stories.ahightower.com</span>
+    <span>Verified Skill. Real Stakes. High Tower District.</span>
+    <span style="margin-left:auto">Published November 7, 2026 · Fresno, California</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var lanes = {
+    dui: [
+      { t: "The stop",
+        b: "Saturday night in the Tower. Grant-funded overtime has put extra officers — including drug recognition experts — on Olive Avenue. A car is stopped, field sobriety tests are run on the sidewalk, a breath test is taken. The machinery is already there before anything happens, because the grant paid for it to be there." },
+      { t: "The blood draw",
+        b: "When the breath test doesn't settle it, the driver is taken to Community Regional Medical Center the same night for a blood draw. Citations are issued. The case now exists inside a system with desks, deadlines, and a DA review queue waiting for it." },
+      { t: "The lab",
+        b: "A blood test normally takes about three weeks to come back. If the case is public enough, the department can ask the lab to expedite — and in October 2026, a council candidate's test came back in under three days. Speed, it turns out, is available. It's allocated." },
+      { t: "The end",
+        b: "One way or another, the lane finishes what it starts: charges filed and prosecuted, or a case closed with the record cleared — and in the Singh stop, a public apology from the chief and the tow fees refunded. Funded systems can afford to close the loop, even when the loop is an apology." }
+    ],
+    p36: [
+      { t: "The encounter",
+        b: "Same Saturday night, same street. A person is using drugs in the open on the sidewalk. An officer can see it. But seeing it isn't charging it: the Prop 36 treatment-mandated felony only exists if this person has two or more prior drug convictions — and that fact lives in a records system, not on the sidewalk." },
+      { t: "The priors problem",
+        b: "Without two established priors, possession is a misdemeanor — in a district where officers are triaging shootings, curfews, and DUI saturation patrols. The felony path requires a records pull, a filing decision, and a prosecutor's time. On a crowded weekend, the low-level case is the one the system walks past." },
+      { t: "The guilty plea door",
+        b: "Say the priors check out and the felony is filed. Treatment isn't automatic: the defendant must plead guilty or no contest to unlock it, be assessed, and be placed — in a county treatment system that was given a new felony caseload and one-time, partial funding to build capacity it didn't have." },
+      { t: "The nowhere",
+        b: "Statewide, about 17% of defendants in the busiest counties opted into treatment at all. In Fresno County, 8 of 101 felony cases entered treatment. Just 57 people across those 15 counties completed treatment and earned a dismissal. For everyone else: no treatment, usually no prison either — a case that goes nowhere, and a person back on the same sidewalk." }
+    ]
+  };
+  var lane = "dui", idx = 0;
+  var tabs = document.querySelectorAll(".lane-tab");
+  var numEl = document.getElementById("stepNum");
+  var titleEl = document.getElementById("stepTitle");
+  var bodyEl = document.getElementById("stepBody");
+  var prevBtn = document.getElementById("prevBtn");
+  var nextBtn = document.getElementById("nextBtn");
+  var dotsEl = document.getElementById("dots");
+
+  function render(){
+    var steps = lanes[lane];
+    numEl.textContent = "Step " + (idx + 1) + " of " + steps.length + (lane === "dui" ? " — The DUI lane" : " — The Prop 36 lane");
+    titleEl.textContent = steps[idx].t;
+    bodyEl.textContent = steps[idx].b;
+    prevBtn.disabled = idx === 0;
+    nextBtn.disabled = idx === steps.length - 1;
+    dotsEl.innerHTML = "";
+    for (var i = 0; i < steps.length; i++){
+      var d = document.createElement("i");
+      if (i === idx) d.className = "on";
+      dotsEl.appendChild(d);
+    }
+  }
+  tabs.forEach(function(tab){
+    tab.addEventListener("click", function(){
+      lane = tab.getAttribute("data-lane");
+      idx = 0;
+      tabs.forEach(function(t){ t.setAttribute("aria-selected", t === tab ? "true" : "false"); });
+      render();
+    });
+  });
+  prevBtn.addEventListener("click", function(){ if (idx > 0){ idx--; render(); } });
+  nextBtn.addEventListener("click", function(){ if (idx < lanes[lane].length - 1){ idx++; render(); } });
+  render();
+})();
+</script>
+</body>
+</html>
