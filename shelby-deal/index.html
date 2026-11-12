@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<link rel="canonical" href="https://stories.ahightower.com/shelby-deal/" />
+<title>The $16 Million Flip — High Tower District Stories</title>
+<meta name="description" content="A developer bought a senior home in Cheviot Hills for $11.2 million, then sold it to a homeless-services nonprofit for $27.3 million — with public money. The building still hasn't housed a single person. The viral post about it is mostly right. Here is what it gets wrong." />
+
+<!-- Open Graph -->
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="High Tower District Stories" />
+<meta property="og:title" content="The $16 Million Flip" />
+<meta property="og:description" content="Bought for $11.2 million. Sold for $27.3 million. Paid for with your money. Still empty. What Spencer Pratt's viral post gets right — and the three things it gets wrong." />
+<meta property="og:url" content="https://stories.ahightower.com/shelby-deal/" />
+<meta property="og:image" content="https://stories.ahightower.com/shelby-deal/assets/og-shelby.jpg" />
+<meta property="og:image:secure_url" content="https://stories.ahightower.com/shelby-deal/assets/og-shelby.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Graphic: $11.2 million to $27.3 million — the $16 million flip at 3340 Shelby Drive, Cheviot Hills." />
+<meta property="article:published_time" content="2026-11-11" />
+<meta property="article:author" content="Aaron Michael Hightower" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The $16 Million Flip" />
+<meta name="twitter:description" content="Bought for $11.2 million. Sold for $27.3 million. Paid for with your money. Still empty. What the viral post gets right — and what it gets wrong." />
+<meta name="twitter:image" content="https://stories.ahightower.com/shelby-deal/assets/og-shelby.jpg" />
+<meta name="twitter:image:alt" content="Graphic: $11.2 million to $27.3 million — the $16 million flip at 3340 Shelby Drive." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --paper:#f6f5f1;
+    --surface:#ffffff;
+    --ink:#17202b;
+    --ink-soft:#3d4a5a;
+    --muted:#66727f;
+    --line:#ddd8cc;
+    --navy:#1e3a5f;
+    --navy-deep:#12263f;
+    --amber:#b97e1e;
+    --amber-soft:#f3e7cd;
+    --red:#a33327;
+    --red-soft:#f6e3df;
+    --teal:#1f5c50;
+    --teal-soft:#ddebe6;
+    --shadow:0 1px 2px rgba(18,32,48,.06),0 10px 30px -18px rgba(18,32,48,.35);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#0d1420;
+      --surface:#16202f;
+      --ink:#e9edf2;
+      --ink-soft:#c3ccd7;
+      --muted:#93a1b1;
+      --line:#2a3a4f;
+      --navy:#7fa8d9;
+      --navy-deep:#a9c6e8;
+      --amber:#e0aa4e;
+      --amber-soft:#33301f;
+      --red:#e08a7d;
+      --red-soft:#3a2723;
+      --teal:#7fc4b2;
+      --teal-soft:#1d2f2b;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -18px rgba(0,0,0,.7);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Inter",system-ui,-apple-system,sans-serif;
+    font-size:17px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--amber-soft)}
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{max-width:1080px;margin:0 auto;padding:0 20px;height:56px;display:flex;align-items:center;gap:18px}
+  .brand{font-family:"Playfair Display",Georgia,serif;font-weight:800;font-size:17px;letter-spacing:.02em;color:var(--ink);text-decoration:none;white-space:nowrap}
+  .brand span{color:var(--navy)}
+  .nav-links{margin-left:auto;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{color:var(--ink-soft);text-decoration:none;font-size:13.5px;font-weight:600;padding:7px 10px;border-radius:6px;white-space:nowrap}
+  .nav-links a:hover{color:var(--navy);background:var(--surface)}
+
+  /* ---------- hero ---------- */
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  .hero{padding:52px 0 8px;text-align:left}
+  .kicker{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--navy)}
+  .kicker .dot{width:5px;height:5px;border-radius:50%;background:var(--amber)}
+  .kicker .place{color:var(--muted);letter-spacing:.1em}
+  h1{
+    font-family:"Playfair Display",Georgia,serif;font-weight:800;
+    font-size:clamp(44px,8.5vw,84px);line-height:.98;letter-spacing:-.01em;
+    margin:18px 0 0;color:var(--ink);
+  }
+  h1 em{font-style:italic;font-weight:600;color:var(--navy)}
+  .standfirst{
+    font-size:clamp(19px,2.6vw,23px);line-height:1.5;color:var(--ink-soft);
+    max-width:46em;margin:22px 0 0;font-weight:400;
+  }
+  .standfirst strong{color:var(--ink)}
+  .byline{
+    display:flex;flex-wrap:wrap;gap:8px 22px;align-items:baseline;
+    margin:26px 0 30px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    font-size:14px;color:var(--muted);
+  }
+  .byline b{color:var(--ink);font-weight:600}
+  .byline .mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px}
+  figure.herofig{margin:0}
+  figure.herofig img{width:100%;height:auto;display:block;border-radius:10px;box-shadow:var(--shadow)}
+  figcaption{font-size:13.5px;color:var(--muted);line-height:1.55;margin-top:10px;max-width:62em}
+  figcaption b{color:var(--ink-soft)}
+
+  /* ---------- fact strip ---------- */
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:38px 0 6px}
+  .fact{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 18px 14px;box-shadow:var(--shadow)}
+  .fact .num{font-family:"Playfair Display",Georgia,serif;font-weight:800;font-size:clamp(26px,3.4vw,34px);line-height:1.05;color:var(--navy)}
+  .fact .num.warn{color:var(--red)}
+  .fact .lab{font-size:13px;color:var(--muted);line-height:1.5;margin-top:7px}
+  .fact .lab b{color:var(--ink-soft)}
+
+  /* ---------- article ---------- */
+  article{max-width:760px;margin:0 auto;padding:26px 0 10px}
+  article p{margin:0 0 1.25em;color:var(--ink-soft)}
+  article p strong, article li strong{color:var(--ink)}
+  article .lede{font-size:20px;line-height:1.6;color:var(--ink)}
+  article .lede::first-letter{
+    font-family:"Playfair Display",Georgia,serif;font-weight:800;
+    font-size:3.1em;float:left;line-height:.82;padding:6px 12px 0 0;color:var(--navy);
+  }
+  h2{
+    font-family:"Playfair Display",Georgia,serif;font-weight:800;
+    font-size:clamp(28px,4.5vw,38px);line-height:1.12;color:var(--ink);
+    margin:52px 0 6px;letter-spacing:-.01em;
+  }
+  h2 + .sub{color:var(--muted);font-size:15.5px;margin:0 0 20px}
+  .chnum{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;font-weight:600;letter-spacing:.18em;color:var(--amber);text-transform:uppercase;display:block;margin-bottom:8px}
+  blockquote{
+    margin:30px 0;padding:4px 0 4px 22px;border-left:3px solid var(--amber);
+    font-family:"Playfair Display",Georgia,serif;font-size:clamp(20px,3vw,25px);
+    font-style:italic;line-height:1.45;color:var(--ink);
+  }
+  blockquote cite{display:block;font-family:"Inter",sans-serif;font-style:normal;font-size:13.5px;color:var(--muted);margin-top:10px}
+
+  .callout{
+    background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:22px 24px;margin:30px 0;box-shadow:var(--shadow);
+  }
+  .callout h3{margin:0 0 8px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);font-weight:700}
+  .callout p{margin:0 0 .8em;font-size:15.5px}
+  .callout p:last-child{margin-bottom:0}
+  .callout.amber h3{color:var(--amber)}
+  .callout.account{border-left:4px solid var(--amber)}
+  .acctag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber);border-radius:99px;padding:3px 10px;margin-bottom:12px}
+  .callout .statute{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:14.5px;line-height:1.6;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:12px 0}
+
+  /* timeline */
+  .timeline{margin:30px 0 6px;border-left:2px solid var(--line);padding-left:0;list-style:none}
+  .timeline li{position:relative;padding:0 0 26px 30px;margin:0}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:3px solid var(--navy)}
+  .timeline li.hot::before{border-color:var(--red)}
+  .timeline .when{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy)}
+  .timeline li.hot .when{color:var(--red)}
+  .timeline h4{margin:3px 0 5px;font-size:17.5px;color:var(--ink)}
+  .timeline p{margin:0;font-size:15.5px}
+
+  /* funding bars */
+  .bars{margin:26px 0 8px}
+  .bar-row{margin-bottom:18px}
+  .bar-row .blab{display:flex;justify-content:space-between;gap:14px;font-size:14.5px;margin-bottom:6px}
+  .bar-row .blab b{color:var(--ink)}
+  .bar-row .blab span{font-family:"IBM Plex Mono",ui-monospace,monospace;color:var(--muted);white-space:nowrap}
+  .track{height:14px;background:var(--line);border-radius:99px;overflow:hidden}
+  .fill{height:100%;border-radius:99px;background:var(--navy)}
+  .fill.amber{background:var(--amber)}
+  .fill.red{background:var(--red)}
+
+  /* stepper */
+  .stepper{background:var(--navy-deep);border-radius:14px;padding:28px;margin:38px 0;color:#e9edf2;box-shadow:var(--shadow)}
+  @media (prefers-color-scheme: dark){ .stepper{background:#0a1220;border:1px solid var(--line)} }
+  .stepper h3{font-family:"Playfair Display",Georgia,serif;font-size:clamp(22px,3.4vw,28px);margin:0 0 6px;color:#fff;font-weight:800}
+  .stepper .intro{color:#b9c7da;font-size:15px;margin:0 0 20px;max-width:56em}
+  .lane-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+  .lane-tab{
+    appearance:none;border:1px solid rgba(255,255,255,.35);background:transparent;color:#dbe6f5;
+    font:inherit;font-size:14px;font-weight:600;padding:9px 16px;border-radius:99px;cursor:pointer;
+  }
+  .lane-tab[aria-selected="true"]{background:#fff;color:#12263f;border-color:#fff}
+  .lane-tab:focus-visible,.sbtn:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+  .step-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:22px;min-height:172px}
+  .step-card .snum{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#e0aa4e;font-weight:600}
+  .step-card h4{margin:8px 0 8px;font-size:20px;color:#fff}
+  .step-card p{margin:0;color:#cfdae9;font-size:15.5px}
+  .step-nav{display:flex;align-items:center;gap:14px;margin-top:18px}
+  .sbtn{appearance:none;border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;font:inherit;font-size:14px;font-weight:600;padding:9px 18px;border-radius:8px;cursor:pointer}
+  .sbtn:disabled{opacity:.35;cursor:default}
+  .dots{display:flex;gap:7px;margin-left:auto}
+  .dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.3);display:block}
+  .dots i.on{background:#e0aa4e}
+
+  /* ledger */
+  .ledger{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:30px 0}
+  .lane{border-radius:12px;padding:24px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow)}
+  .lane h3{font-family:"Playfair Display",Georgia,serif;font-size:22px;margin:0 0 4px;color:var(--ink)}
+  .lane .tag{font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+  .lane.dui .tag{color:var(--teal)}
+  .lane.p36 .tag{color:var(--red)}
+  .lane ul{list-style:none;margin:16px 0 0;padding:0}
+  .lane li{padding:11px 0;border-top:1px solid var(--line);font-size:15px;color:var(--ink-soft)}
+  .lane li:first-child{border-top:none;padding-top:2px}
+  .lane li b{display:block;color:var(--ink);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+
+  /* sources + footer */
+  .sources{max-width:760px;margin:0 auto;padding:44px 0 8px}
+  .sources h2{margin-top:0}
+  .sources ol{padding-left:22px;color:var(--ink-soft);font-size:15px}
+  .sources li{margin-bottom:12px}
+  .sources a{color:var(--navy);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+  .sources .what{display:block;color:var(--muted);font-size:13.5px;margin-top:2px}
+  .note{max-width:760px;margin:26px auto 0;font-size:13.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+  footer{margin-top:54px;border-top:1px solid var(--line)}
+  .foot-in{max-width:1080px;margin:0 auto;padding:26px 20px 40px;display:flex;flex-wrap:wrap;gap:10px 26px;align-items:baseline;font-size:14px;color:var(--muted)}
+  .foot-in .brand{font-size:15px}
+  .foot-in a{color:var(--navy);text-decoration:none;font-weight:600}
+
+  /* ---------- photos ---------- */
+  figure.photo{margin:34px 0}
+  figure.photo img{width:100%;height:auto;display:block;border-radius:10px;box-shadow:var(--shadow)}
+  figure.photo.narrow{max-width:520px;margin-left:auto;margin-right:auto}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:34px 0}
+  .duo figure.photo{margin:0}
+  .duo figure.photo img{height:100%;object-fit:cover}
+  .duo figcaption{grid-column:1/-1;margin-top:2px}
+  .ailabel{display:inline-block;background:var(--red);color:#fff;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:6px;padding:5px 12px;margin-bottom:10px}
+  @media (prefers-color-scheme: dark){ .ailabel{background:#7c2d23} }
+  .videowrap{position:relative;padding-top:56.25%;border-radius:10px;overflow:hidden;box-shadow:var(--shadow);margin:26px 0 10px;background:#000}
+  .videowrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  @media (max-width:640px){ .duo{grid-template-columns:1fr} .duo figure.photo img{height:auto} }
+
+  @media (max-width:820px){
+    .facts{grid-template-columns:1fr 1fr}
+    .ledger{grid-template-columns:1fr}
+    .hero{padding-top:36px}
+  }
+  @media (max-width:480px){
+    .facts{grid-template-columns:1fr}
+    body{font-size:16.5px}
+    .step-card{min-height:0}
+  }
+  @media print{
+    .nav,.step-nav,.lane-tabs{display:none}
+    body{background:#fff}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Story sections">
+  <div class="nav-in">
+    <a class="brand" href="#top">High Tower <span>District</span> — Stories</a>
+    <div class="nav-links">
+      <a href="#deal">The Deal</a>
+      <a href="#seniors">The Seniors</a>
+      <a href="#judge">The Judge</a>
+      <a href="#wrong">What It Gets Wrong</a>
+      <a href="#oversight">Who Oversaw It</a>
+      <a href="#sources">Sources</a>
+    </div>
+  </div>
+</nav>
+
+<header class="wrap hero" id="top">
+  <div class="kicker">Civic · Los Angeles, California <span class="dot" aria-hidden="true"></span> <span class="place">Cheviot Hills</span></div>
+  <h1>The $16 Million <em>Flip</em></h1>
+  <p class="standfirst">A developer bought a senior home in Cheviot Hills for <strong>$11.2 million</strong>, then sold it to a homeless-services nonprofit for <strong>$27.3 million</strong> — with your money. A federal case, a judge's finding of probable fraud, and a building that still hasn't housed a single person. The viral post about it is mostly right. Here is what it gets wrong, and why the corrections matter.</p>
+  <div class="byline">
+    <span>By <b>Aaron Michael Hightower</b></span>
+    <span class="mono">November 11, 2026</span>
+    <span>Los Angeles, California</span>
+  </div>
+  <figure class="herofig">
+    <img src="assets/og-shelby.jpg" width="1200" height="630" alt="Graphic: $11.2 million to $27.3 million — the $16 million flip at 3340 Shelby Drive, Cheviot Hills." />
+    <figcaption><b>Designed graphic for this story.</b> No photograph of the property is used here: the listing photos show the building as it was, not as it is, and a rendering dressed up as evidence would be its own kind of flip.</figcaption>
+  </figure>
+  <div class="facts" role="list" aria-label="Key figures">
+    <div class="fact" role="listitem">
+      <div class="num">$11.2M</div>
+      <div class="lab">What developer <b>Steven Taylor</b> paid for the 76-unit senior home at <b>3340 Shelby Drive</b> — using fake bank statements to get the loans, federal prosecutors say.</div>
+    </div>
+    <div class="fact" role="listitem">
+      <div class="num warn">$27.3M</div>
+      <div class="lab">What the <b>Weingart Center</b> paid for the same property months later, with public money — a <b>$16.1 million</b> markup.</div>
+    </div>
+    <div class="fact" role="listitem">
+      <div class="num warn">0</div>
+      <div class="lab">Homeless people housed at the property so far. The grant required <b>full occupancy by February 2025</b>. It has yet to open.</div>
+    </div>
+    <div class="fact" role="listitem">
+      <div class="num">9</div>
+      <div class="lab"><b>Felony counts</b> Taylor faces — bank fraud, money laundering, identity theft. He maintains his innocence. <b>No charges have been filed against Weingart itself.</b></div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <p class="lede">You have probably seen the post by now. It has been passed around Facebook, Threads, and X for weeks: a reality TV star exposes insane corruption in a Los Angeles homeless project — a $30 million grant, a senior home cleared of old people, a building listed at $11.2 million and sold for $27 million, $400,000 a bed a year for rooms that sit empty. It ends with a demand for prison sentences for every Democrat involved. I checked every line of it against the record. The core of it is real, and it is worse than the post makes it sound in one way — a federal judge has already found probable fraud. But three of its details are wrong, and the wrong details are the ones that would let the people who actually did this walk away while the argument stays about the wrong names.</p>
+
+  <h2 id="deal"><span class="chnum">Chapter One</span>The deal</h2>
+  <p class="sub">May 2023 to April 2024: a middleman, a markup, and a missing appraisal</p>
+  <p>The building is the former Terraza of Cheviot Hills, a 76-unit assisted-living facility at 3340 Shelby Drive in Cheviot Hills. In May 2023, under the banner of a declared homelessness emergency, the City of Los Angeles and the Weingart Center Association — one of the city's largest homeless-services nonprofits, headquartered in Skid Row — were negotiating a Project Homekey deal for it. The man on the other side of the table was developer Steven Taylor. He did not own the building yet. He did not open escrow until June 16, 2023.</p>
+  <p>Taylor bought it for $11.2 million. Federal prosecutors say he used fake bank statements to obtain the loans and lines of credit to do it. Then he sold it to Weingart for $27.3 million — more than double, months later, with no improvements in between. The markup was $16.1 million, and it was paid with public money: up to $20.5 million from the City of Los Angeles and $26.6 million in state Homekey funds, with a $1.4-million developer fee going to Weingart itself. When acquisition, operations, and renovation costs are counted, the total public commitment approaches $60 million — roughly $800,000 per bed, for 76 units.</p>
+  <p>Spencer Pratt, who has been hammering this deal in videos since January 2026, says the city ran a competitive Homekey process with more than 30 bidders and then swapped the site at the last minute to favor Weingart, with no appraisal in place when the deal was approved. That part is Pratt's account, and I am labeling it as his. What the record proves on its own is the price gap, and the gap is the scandal: a judge has already put a number on it.</p>
+
+  <div class="bars" aria-label="The money, side by side">
+    <div class="bar-row">
+      <div class="blab"><b>What the developer paid for it</b><span>$11.2M</span></div>
+      <div class="track"><div class="fill" style="width:19%"></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="blab"><b>What Weingart paid for it — public money</b><span>$27.3M</span></div>
+      <div class="track"><div class="fill amber" style="width:46%"></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="blab"><b>Total public money committed, all costs in</b><span>~$60M</span></div>
+      <div class="track"><div class="fill red" style="width:100%"></div></div>
+    </div>
+  </div>
+
+  <h2 id="seniors"><span class="chnum">Chapter Two</span>The seniors</h2>
+  <p class="sub">A functioning assisted-living facility, emptied on a deadline</p>
+  <p>Before it was a line item, 3340 Shelby Drive was a home. It housed senior residents — a working assisted-living facility, not a vacant lot. To make the deal happen, the building had to be delivered vacant, and the purchase agreement required it. Residents were given 60 days to leave or appear in court. A tenant replacement plan was filed to secure the funding, describing protections that the purchase agreement itself made impossible. Eviction records contradict the official story about when and how the residents were relocated.</p>
+  <p>That is the part of this story that should sit with you the longest. The fraud numbers are abstract. The seniors are not. People who had a home were moved out of it so a building could be sold twice — and the people it was sold to house have never moved in. The grant agreement required the building to be fully occupied by February 2025. That deadline came and went. As of this writing, the building has yet to open, and not one homeless person has been housed there.</p>
+
+  <h2 id="judge"><span class="chnum">Chapter Three</span>The judge, the audits, and the woman with 7,500 records requests</h2>
+  <p class="sub">What the courts and the paperwork already say</p>
+  <p>Residents fought back the only way residents can: they filed a taxpayer lawsuit under California Code of Civil Procedure §526a. Los Angeles Superior Court Judge James C. Chalfant looked at the purchase and found what judges rarely say out loud at this stage:</p>
+  <blockquote>"Prima facie evidence of excessive payment, waste, and probably fraud."
+  <cite>— Judge James C. Chalfant, Los Angeles Superior Court, on the Shelby Drive purchase; the court separately put the probable taxpayer waste at about $16 million</cite></blockquote>
+  <p>In June 2026, the court rejected Weingart's attempt to dismiss the fraud and waste claims. The case is moving toward discovery.</p>
+  <p>The paper trail behind the deal is just as bad as the price. Weingart has been out of compliance with federally required annual audits. Its most recent audit, submitted in July 2025 for fiscal year 2023, did not disclose more than $50 million in federally funded Homekey grants, and a 2023 audit found the nonprofit repeatedly failed to properly document its cash flows. In November 2025, Weingart placed its two top officials on leave — president and CEO Kevin Murray, a former state senator, and Ben Rosen, its director of real estate development — and hired an outside law firm to review property valuations. Murray has since resigned from the Los Angeles County Affordable Housing Solutions Agency board, the body that allocates Measure A sales-tax money for housing. He was appointed to that board by Mayor Karen Bass.</p>
+  <p>None of this was uncovered by an inspector general. It was uncovered by a resident — Samantha, of the Integrity Project — who filed more than 7,500 public records requests and pieced the deal together document by document. Remember that the next time someone tells you the system polices itself.</p>
+  <p>And the criminal case: in August 2025, federal authorities arrested Steven Taylor. He faces nine felony counts of bank fraud and money laundering, is free on a $3.6 million bond, and maintains his innocence. Federal prosecutors have said they are investigating what the City of Los Angeles and Weingart knew about his actions. The investigation, led by the U.S. Attorney's Office, is still open. <strong>To be exact: Taylor is the only person charged. No charges have been filed against Weingart, against Mayor Bass, against Nithya Raman, or against Kevin Murray.</strong> A demand for prison sentences is a demand, not a verdict, and this story will not present it as one.</p>
+
+  <ul class="timeline">
+    <li>
+      <span class="when">May 2023</span>
+      <h4>The city and Weingart negotiate the deal</h4>
+      <p>With middleman Steven Taylor — before he has any legal claim to the property.</p>
+    </li>
+    <li>
+      <span class="when">June 16, 2023</span>
+      <h4>Taylor opens escrow</h4>
+      <p>He buys the senior home for $11.2 million, prosecutors say using fake bank statements.</p>
+    </li>
+    <li>
+      <span class="when">April 2024</span>
+      <h4>Weingart buys it for $27.3 million</h4>
+      <p>Public money: up to $20.5 million from the city, $26.6 million in state Homekey funds.</p>
+    </li>
+    <li class="hot">
+      <span class="when">February 2025</span>
+      <h4>The occupancy deadline passes</h4>
+      <p>The grant required the building fully occupied. It isn't. It still hasn't opened.</p>
+    </li>
+    <li class="hot">
+      <span class="when">August 2025</span>
+      <h4>Taylor is arrested</h4>
+      <p>Nine felony counts: bank fraud, money laundering, identity theft. He maintains his innocence.</p>
+    </li>
+    <li>
+      <span class="when">November 2025</span>
+      <h4>Weingart's top two officials placed on leave</h4>
+      <p>CEO Kevin Murray and development director Ben Rosen; an outside law firm is hired.</p>
+    </li>
+    <li>
+      <span class="when">June 2026</span>
+      <h4>Court refuses to dismiss the fraud claims</h4>
+      <p>Judge Chalfant's finding of probable fraud stands, and the taxpayer case moves toward discovery.</p>
+    </li>
+    <li>
+      <span class="when">November 3, 2026</span>
+      <h4>The voters change the guard</h4>
+      <p>Nithya Raman defeats Mayor Karen Bass in the runoff. She takes office December 14.</p>
+    </li>
+  </ul>
+
+  <h2 id="wrong"><span class="chnum">Chapter Four</span>What the viral post gets wrong</h2>
+  <p class="sub">Five corrections. Each one matters, because each wrong name is a right name getting away.</p>
+  <div class="callout amber">
+    <h3>Correction one — the $30 million grant</h3>
+    <p>The viral post says Weingart got a $30 million grant for this property. The $30 million figure belongs to a <strong>different project that never happened</strong>: Weingart planned to buy a 122-room Extended Stay America hotel in Torrance for $30 million with Homekey+ funds. Independent experts valued that hotel at $21.5 to $22.7 million; Torrance's own appraisal said $10.2 million. Weingart pulled out in August 2025. For Shelby Drive, the state money was $26.6 million in Homekey funds, plus up to $20.5 million from the city. Same pattern, different building — and if you cite the wrong building, the defense writes you off.</p>
+  </div>
+  <div class="callout amber">
+    <h3>Correction two — "the LA County Board of Supervisors (all Democrats)"</h3>
+    <p>Wrong twice. Supervisor <strong>Kathryn Barger</strong>, of the Fifth District, is a <strong>Republican</strong> — the only Republican on the five-member board. And the county board didn't fund Shelby Drive at all. The county's $12 million was committed to the Torrance hotel project, the one that died. The Shelby money was city and state money. Blaming the county board for this deal is blaming people who didn't touch it.</p>
+  </div>
+  <div class="callout amber">
+    <h3>Correction three — former Mayor Eric Garcetti</h3>
+    <p>Garcetti left office in <strong>December 2022</strong>. The Shelby deal was negotiated in 2023 and closed in April 2024, under Mayor Karen Bass. Whatever Garcetti's record on homelessness spending, he was gone before this deal existed. He does not belong on this list.</p>
+  </div>
+  <div class="callout amber">
+    <h3>Correction four — $400,000 per bed, per year</h3>
+    <p>This is Spencer Pratt's allegation, and it has <strong>not been confirmed through public contract documents</strong>. What the documents do support is the all-in math: roughly $60 million in public money committed for 76 units — about <strong>$800,000 per bed, once</strong> — for a building that has housed nobody. That number is damning enough without an annual rate nobody has produced the contract for.</p>
+  </div>
+  <div class="callout amber">
+    <h3>Correction five — "no obligation to house anyone"</h3>
+    <p>Also wrong, and the truth is worse. The grant agreement <strong>required</strong> the building to be fully occupied by February 2025. The obligation existed. The deadline passed, the building stayed empty, and the money stayed spent. The scandal isn't that nobody was required to house anyone. It's that everyone was required to — and nobody did.</p>
+  </div>
+  <p>One more, for completeness: the post says Weingart operates "around 10 similar facilities." The Los Angeles Times puts it higher — Weingart operates or is developing <strong>more than a dozen</strong> housing projects across L.A. County, serving nearly 2,000 people a day. The post understates the footprint. That is the only direction in which it understates anything.</p>
+
+  <h2 id="oversight"><span class="chnum">Chapter Five</span>Who actually oversaw the money</h2>
+  <p class="sub">The real list is shorter than the viral one — and more damning for it</p>
+  <div class="ledger">
+    <div class="lane dui">
+      <h3>The record</h3>
+      <span class="tag">Who touched the money</span>
+      <ul>
+        <li><b>Mayor Karen Bass</b>Her administration fast-tracked the deal and allocated $20 million in city funds toward it.</li>
+        <li><b>Kevin Murray, Weingart CEO</b>Former state senator; ran the nonprofit that took the $27.3 million. Bass appointed him to the county housing board that allocates Measure A money. Placed on leave, November 2025. Not charged.</li>
+        <li><b>Nithya Raman</b>Chaired the City Council's Housing and Homelessness Committee for three years — the committee that oversaw homeless spending. She has now beaten Bass for mayor and takes office December 14, inheriting a system that cannot account for hundreds of millions.</li>
+        <li><b>Gov. Gavin Newsom's Homekey program</b>The state pipeline that supplied $26.6 million of the Shelby money — and $3.6 billion statewide since the pandemic, for more than 250 projects.</li>
+      </ul>
+    </div>
+    <div class="lane p36">
+      <h3>The viral post</h3>
+      <span class="tag">Who it blames instead</span>
+      <ul>
+        <li><b>Mayor Karen Bass ✓</b>Correctly named. She was mayor, and her administration moved the money.</li>
+        <li><b>Eric Garcetti ✗</b>Out of office since December 2022, before the deal. Wrong name.</li>
+        <li><b>Nithya Raman — half right</b>She chaired the oversight committee, yes. But the post still lists her as a committee member, not as the mayor-elect who now has to clean it up.</li>
+        <li><b>LA County Board ✗</b>Not all Democrats — Kathryn Barger is a Republican — and the board didn't fund this deal.</li>
+      </ul>
+    </div>
+  </div>
+  <p>And the scale behind all of it: for the 2025–26 fiscal year, Los Angeles approved $953.3 million for homelessness programs, a total that pushed past $1 billion with later additions. By March 31, the city had spent or committed just $368.9 million of it. That left $636.1 million unspent or uncommitted — while 45,194 people were counted homeless in the city, 29,115 of them unsheltered. Raman vowed to track every homelessness dollar, fill empty shelter beds, and cut encampments by at least half before the 2028 Olympics. She will be judged against the same books she spent three years chairing the committee over.</p>
+
+  <h2><span class="chnum">Chapter Six</span>The man who wouldn't let it go</h2>
+  <p class="sub">Spencer Pratt lost his house. Then he ran for mayor on this deal.</p>
+  <p>Spencer Pratt is the former MTV reality star from <em>The Hills</em>. In January 2025 he lost his Pacific Palisades home in the Palisades fire, and he has spent the year since accusing the city's leadership of criminal negligence — first over the fire, then over the money. His January 20, 2026 video laying out the Shelby deal has been watched and reposted for months; he took the same case to Joe Rogan's podcast in April. He ran for mayor of Los Angeles in the June 2026 primary and finished third with about 25.8 percent of the vote — more than 200,000 people — behind Bass and Raman. He has vowed to hand the matter to the IRS and the DOJ. A federal investigation is already underway, under the U.S. Attorney's Office, and the developer at the center of it has already been charged. Pratt didn't start the investigation. He made it impossible to ignore.</p>
+  <p>There is a Fresno parallel here, and it's the reason I'm writing this. I have spent the last month investigating a local page that I believe monetizes suffering while the people it claims to serve stay exactly where they are. The pattern is the same in both cities: the money moves, the buildings don't open, the people who point at it get called the problem, and the only person who did the homework was a private citizen with a records request. In Los Angeles, her name is Samantha. In Fresno, the homework is still mine to do. The difference between the two cities is that in Los Angeles, a judge has already said the word fraud out loud.</p>
+
+  <h2><span class="chnum">Closing</span>What honest would look like</h2>
+  <p>Honest would be the Shelby building opening its doors to the people it was bought for — or the money coming back. Honest would be the taxpayer lawsuit reaching discovery, with depositions, so the public learns who knew the $11.2 million price when they approved $27.3 million. Honest would be Weingart filing the audits the law already requires, disclosing the Homekey money it took, and answering for the $50 million its own audit left out.</p>
+  <p>And honest would be getting the names right. Karen Bass moved this money. Kevin Murray took it. Nithya Raman chaired the committee that oversaw it, and now she owns the cleanup. Eric Garcetti and the county board did not do this one. A list with the wrong names on it is a gift to the right names — it lets them point at the errors and ignore the $16 million. The flip is real. The fraud finding is real. The empty building is real. Don't hand the people responsible a reason to dismiss all three by getting the easy parts wrong.</p>
+  <p>One building. Seventy-six rooms. Zero people housed. Sixteen million dollars that a judge says cannot be justified by market value. That is the story. Everything else is commentary — including mine.</p>
+  <p style="font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:19px;color:var(--ink)">— Aaron Michael Hightower, from the High Tower District</p>
+</article>
+
+<section class="sources" id="sources">
+  <h2>Sources</h2>
+  <p style="color:var(--muted);font-size:15px;margin-top:0">Every fact in this story that isn't my own account traces to one of these. Read them and check me — especially where I say the viral post is wrong.</p>
+  <ol>
+    <li>
+      Los Angeles Times — "Homeless service provider's CEO placed on leave, law firm to probe property valuations" (Nov. 2, 2025)
+      <span class="what">Murray and Rosen placed on leave; the $11.2M-to-$27.3M flip; $20.5M city and $26.6M state Homekey funds; the $1.4M developer fee; the Torrance hotel plan ($30M, experts at $21.5M–$22.7M, Torrance appraisal $10.2M) and Weingart pulling out in August 2025; "more than a dozen" Weingart housing projects, nearly 2,000 people served daily. Cited from the Times' reporting; the paper's site is paywalled, so no link is given here.</span>
+    </li>
+    <li>
+      <a href="https://preprod.zerohedge.com/political/newsoms-national-model-homeless-wracked-fraud" target="_blank" rel="noopener">RealClearInvestigations (Ana Kasparian) — "Newsom's 'National Model' For Homeless Wracked By Fraud"</a>
+      <span class="what">The Shelby deal in full: Taylor's fake bank statements, the $16.1M markup, Bass's $20M city allocation, the February 2025 occupancy deadline missed, Taylor's August arrest on nine felony counts, the missing $50M+ in the FY2023 audit, and the failed cash-flow documentation.</span>
+    </li>
+    <li>
+      <a href="https://thecurrentreport.com/the-60-million-weingart-deal-how-an-orchestrated-fraud-triggered-a-federal-investigation-into-las-homeless-funding-pipeline/" target="_blank" rel="noopener">The Current Report — "The $60 Million Weingart Deal" (Mar. 23, 2026)</a>
+      <span class="what">The ~$60M total public commitment; the seniors emptied under a vacant-delivery requirement; the 60-day notices; Judge Chalfant's "prima facie evidence of excessive payment, waste, and probably fraud"; the May 2023 negotiations before Taylor owned the property.</span>
+    </li>
+    <li>
+      <a href="https://wcbm.com/national-headline/spencer-pratt-says-one-of-las-largest-homeless-ngos-just-suffered-a-major-blow-in-federal-fraud-probe/" target="_blank" rel="noopener">WCBM — "Spencer Pratt Says One of LA's Largest Homeless NGO's Just Suffered a Major Blow in Federal Fraud Probe" (June 26, 2026)</a>
+      <span class="what">The court rejecting Weingart's motion to dismiss the fraud and waste claims; Pratt's "$16M flip" framing and the evicted seniors; the federal investigation.</span>
+    </li>
+    <li>
+      <a href="https://nevadanewsandviews.com/california-to-pay-800k-per-empty-bed-nevadans-eye-200m-shelter-of-our-own/" target="_blank" rel="noopener">Nevada News &amp; Views — "California to Pay $800K Per Empty Bed?"</a>
+      <span class="what">The $400,000-per-bed-per-year figure as Pratt's allegation, explicitly "not yet confirmed through public contract documents"; Taylor charged in late 2025; no criminal charges filed against Weingart itself; executives placed on leave.</span>
+    </li>
+    <li>
+      <a href="https://www.influencewatch.org/non-profit/weingart-center/" target="_blank" rel="noopener">InfluenceWatch — Weingart Center</a>
+      <span class="what">Weingart's history and finances ($101.9M revenue, fiscal year ending April 2024); the Taylor indictment; the May 2026 viral thread carrying the $30M / $400K-per-bed claims.</span>
+    </li>
+    <li>
+      <a href="https://nypost.com/2026/11/10/us-news/nithya-raman-inherits-las-1b-homelessness-spending-mess/" target="_blank" rel="noopener">New York Post — "LA's $1B homeless spending mess lands in Raman's lap" (Nov. 10, 2026)</a>
+      <span class="what">Raman as mayor-elect; the $953.3M approved / $1B+ total homeless budget; $368.9M spent or committed by March 31 against $636.1M unspent; Raman chaired the Housing and Homelessness Committee for three years; her pledges for day one.</span>
+    </li>
+    <li>
+      <a href="https://www.instagram.com/reel/DTtsq3sAF4d/" target="_blank" rel="noopener">Spencer Pratt on Instagram — the Shelby Drive video (Jan. 20, 2026)</a>
+      <span class="what">The origin of the viral claims: the 30-bidder process, the last-minute site swap, the evicted seniors, the $16M markup, the $800,000-per-bed cost, the federal investigation, the unopened building.</span>
+    </li>
+    <li>
+      <a href="https://www.shortform.com/podcast/episode/the-joe-rogan-experience-2026-04-15-episode-summary-2483-spencer-pratt" target="_blank" rel="noopener">The Joe Rogan Experience #2483 — Spencer Pratt (Apr. 15, 2026), summary</a>
+      <span class="what">Pratt's account of the Palisades fire, the $24 billion spent on LA homelessness, and the Taylor flip as federal investigators found it.</span>
+    </li>
+    <li>
+      <a href="https://www.instagram.com/reel/Dervyp9OT-2/" target="_blank" rel="noopener">The Integrity Project on Instagram — "Senior Living. Until 2023." (Oct. 19, 2026)</a>
+      <span class="what">The residents' side: the former senior assisted-living facility, the 60-days-to-leave notices, the gutted interior, and the petition to return Shelby to senior living.</span>
+    </li>
+  </ol>
+  <p class="note">A note on method: the price gap, the federal charges against Steven Taylor, the judge's finding, the audit failures, the missed occupancy deadline, and the empty building are documented in the reporting above. The claims marked as Pratt's — the swapped bid process, the missing appraisal, the $400,000-per-bed annual rate — are his, and they are labeled his wherever they appear, because the contracts that would prove or disprove them have not been made public. Taylor maintains his innocence; no charges have been filed against Weingart, Bass, Raman, or Murray, and nothing here should be read as finding them guilty of a crime. The demand for prison sentences in the viral post is the post's demand, not a legal outcome. My comparison to the Fresno homeless-page investigation is my account, stated as mine.</p>
+</section>
+
+<footer>
+  <div class="foot-in">
+    <a class="brand" href="#top">High Tower <span>District</span> — Stories</a>
+    <span>stories.ahightower.com</span>
+    <span>Verified Skill. Real Stakes. High Tower District.</span>
+    <span style="margin-left:auto">Published November 11, 2026 · Los Angeles, California</span>
+  </div>
+</footer>
+</body>
+</html>
