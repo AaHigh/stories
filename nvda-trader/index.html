@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<title>Nvidia Mystery Trader — The Forensic Read</title>
+<link rel="canonical" href="https://stories.ahightower.com/nvda-trader/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nvidia Mystery Trader — The Forensic Read">
+<meta property="og:description" content="The $200 million Nvidia trade is real. The insider story built on it is not proven.">
+<meta property="og:url" content="https://stories.ahightower.com/nvda-trader/">
+<meta property="og:image" content="https://stories.ahightower.com/nvda-trader/assets/og-nvda-trader.jpg">
+<meta property="og:image:secure_url" content="https://stories.ahightower.com/nvda-trader/assets/og-nvda-trader.jpg">
+<meta property="og:image:width" content="819">
+<meta property="og:image:height" content="1100">
+<meta property="og:image:alt" content="Not the Bee headline: Mystery Trader Bags Nearly $200 Million Shorting Nvidia Right Before Jensen Huang's Scandalous Exit">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nvidia Mystery Trader — The Forensic Read">
+<meta name="twitter:description" content="The $200 million Nvidia trade is real. The insider story built on it is not proven.">
+<meta name="twitter:image" content="https://stories.ahightower.com/nvda-trader/assets/og-nvda-trader.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ee; --surface:#fffefa; --surface2:#edebe2; --ink:#171a16; --muted:#5c6259; --faint:#8a8f85;
+  --line:#d9d6c9; --line-strong:#b9b5a3;
+  --green:#4a7a00; --green-bright:#76b900; --green-bg:#eef4dc;
+  --red:#a61e14; --red-bg:#fbeae7;
+  --amber:#8a5a00; --amber-bg:#fbf0d3;
+  --blue:#1d4e6b; --blue-bg:#e4eef3;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --sans:'Archivo',system-ui,sans-serif;
+  --serif:'Newsreader',Georgia,serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#111311; --surface:#1a1d1a; --surface2:#232623; --ink:#eceade; --muted:#a8aca0; --faint:#7c8076;
+  --line:#33372f; --line-strong:#4a4e44; --green:#9ccc3c; --green-bg:#25300f; --red:#ff8a7a; --red-bg:#3a1712;
+  --amber:#e8b34b; --amber-bg:#382a0e; --blue:#8ec2dd; --blue-bg:#16303d; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.65}
+a{color:var(--blue);text-underline-offset:3px}
+button,[role="button"],summary,select,input{min-height:2.25rem}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+.mono{font-family:var(--mono)}
+.sans{font-family:var(--sans)}
+
+/* top rule */
+.toprule{border-bottom:3px double var(--line-strong);padding:14px 0 12px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline}
+.toprule .brand{font-family:var(--sans);font-weight:800;letter-spacing:.06em;font-size:13px;text-transform:uppercase}
+.toprule .brand span{color:var(--green)}
+.toprule .dateline{font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+/* hero */
+.hero{padding:38px 0 8px}
+.kicker{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin:0 0 14px}
+h1{font-size:clamp(34px,6vw,58px);line-height:1.02;font-weight:700;letter-spacing:-.01em;margin:0 0 16px;max-width:16ch}
+h1 em{font-style:italic;color:var(--green)}
+.dek{font-size:clamp(19px,2.6vw,23px);line-height:1.5;color:var(--muted);max-width:42em;margin:0 0 8px}
+.dek strong{color:var(--ink)}
+.verdict-strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:1.5px solid var(--ink);margin:30px 0 8px;background:var(--surface)}
+.verdict-strip>div{padding:16px 18px;border-right:1px solid var(--line)}
+.verdict-strip>div:last-child{border-right:none}
+.verdict-strip .lab{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:0 0 6px}
+.verdict-strip .big{font-family:var(--sans);font-weight:800;font-size:19px;line-height:1.25;margin:0}
+.verdict-strip p{font-size:14.5px;line-height:1.5;margin:6px 0 0;color:var(--muted)}
+.v-red .lab{color:var(--red)} .v-green .lab{color:var(--green)} .v-amber .lab{color:var(--amber)}
+.byline{font-family:var(--mono);font-size:12.5px;color:var(--muted);padding:10px 0 0;display:flex;gap:18px;flex-wrap:wrap}
+
+/* sections */
+section{padding:34px 0 6px;border-top:1px solid var(--line);margin-top:30px}
+section:first-of-type{border-top:none}
+.sec-head{display:flex;gap:16px;align-items:baseline;margin-bottom:6px}
+.sec-num{font-family:var(--mono);font-size:13px;color:var(--green);font-weight:600;white-space:nowrap}
+h2{font-size:clamp(26px,4vw,36px);line-height:1.12;margin:0;font-weight:700}
+h3{font-family:var(--sans);font-size:16px;font-weight:700;line-height:1.35;margin:22px 0 8px}
+p{margin:0 0 14px;max-width:44em}
+.lede{font-size:20px}
+.small{font-size:14.5px;color:var(--muted)}
+.src{font-family:var(--mono);font-size:11.5px;color:var(--faint);white-space:nowrap}
+.tag{display:inline-block;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:3px;vertical-align:2px}
+.tag-verified{background:var(--green-bg);color:var(--green)}
+.tag-est{background:var(--amber-bg);color:var(--amber)}
+.tag-unv{background:var(--red-bg);color:var(--red)}
+.tag-alleged{background:var(--surface2);color:var(--muted)}
+
+/* ticket */
+.ticket{background:var(--surface);border:1.5px solid var(--ink);margin:20px 0}
+.ticket-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 20px;border-bottom:1px dashed var(--line-strong);align-items:baseline}
+.ticket-head .t{font-family:var(--sans);font-weight:800;font-size:14px;letter-spacing:.08em;text-transform:uppercase}
+.ticket-head .d{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.ticket-grid{display:grid;grid-template-columns:1fr 1fr}
+.ticket-grid>div{padding:18px 20px}
+.ticket-grid>div:first-child{border-right:1px solid var(--line)}
+.leg-lab{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:0 0 4px}
+.buy .leg-lab{color:var(--green)} .sell .leg-lab{color:var(--red)}
+.leg-big{font-family:var(--mono);font-size:clamp(22px,3.4vw,30px);font-weight:600;line-height:1.15;margin:0}
+.leg-sub{font-size:15px;color:var(--muted);margin:6px 0 0;line-height:1.5}
+.ticket-foot{border-top:1px dashed var(--line-strong);padding:14px 20px;display:flex;gap:28px;flex-wrap:wrap}
+.ticket-foot div{font-family:var(--mono);font-size:13px}
+.ticket-foot b{display:block;font-size:11px;font-family:var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+
+/* stat row */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.stat{border-top:3px solid var(--ink);padding:10px 2px 0}
+.stat .n{font-family:var(--mono);font-size:clamp(20px,3vw,27px);font-weight:600;line-height:1.1}
+.stat .l{font-size:13.5px;color:var(--muted);line-height:1.4;margin-top:4px}
+
+/* callout */
+.callout{border-left:4px solid var(--green);background:var(--surface);padding:16px 20px;margin:20px 0}
+.callout.red{border-left-color:var(--red)}
+.callout.amber{border-left-color:var(--amber)}
+.callout p{margin:0;font-size:17px}
+.callout .lab{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:0 0 6px;color:var(--green)}
+.callout.red .lab{color:var(--red)} .callout.amber .lab{color:var(--amber)}
+
+/* charts */
+.chartbox{background:var(--surface);border:1px solid var(--line);padding:20px;margin:20px 0}
+.chartbox h3{margin-top:0}
+.chartbox svg{width:100%;height:auto;display:block}
+.axis-lab{font-family:var(--mono);font-size:10.5px;fill:var(--muted)}
+.grid-l{stroke:var(--line);stroke-width:1}
+.zero-l{stroke:var(--ink);stroke-width:1.2}
+.payoff-l{stroke:var(--green);stroke-width:2.5;fill:none}
+.payoff-fill{fill:var(--green);opacity:.10}
+.loss-fill{fill:var(--red);opacity:.08}
+.price-l{stroke:var(--ink);stroke-width:2.2;fill:none}
+.price-pt{fill:var(--surface);stroke:var(--ink);stroke-width:2}
+.ann-l{stroke:var(--red);stroke-width:1.4;stroke-dasharray:5 4}
+.ann-t{font-family:var(--mono);font-size:10.5px;fill:var(--red);font-weight:600}
+.dot-sel{fill:var(--red)}
+.slider-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:14px;border-top:1px solid var(--line);padding-top:16px}
+.slider-row label{font-family:var(--sans);font-size:13px;font-weight:700}
+input[type=range]{flex:1;min-width:180px;accent-color:var(--green);height:36px}
+.payoff-out{font-family:var(--mono);font-size:15px;background:var(--surface2);padding:10px 14px;border-radius:4px;min-width:230px}
+.payoff-out b{font-size:19px}
+
+/* timeline */
+.tl{list-style:none;margin:18px 0;padding:0;border-left:2px solid var(--line-strong)}
+.tl li{position:relative;padding:0 0 20px 26px}
+.tl li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2.5px solid var(--muted)}
+.tl li.hot::before{border-color:var(--red);background:var(--red)}
+.tl li.trade::before{border-color:var(--green);background:var(--green)}
+.tl .when{font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--muted)}
+.tl .what{font-weight:600;font-size:17.5px;line-height:1.35}
+.tl p{font-size:15.5px;color:var(--muted);margin:2px 0 0;max-width:40em}
+
+/* tables -> cards */
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15.5px;line-height:1.5}
+th{font-family:var(--sans);font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-align:left;padding:10px 12px;border-bottom:2px solid var(--ink);vertical-align:bottom}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child{font-family:var(--sans);font-weight:600;font-size:14.5px}
+.score{font-family:var(--mono);font-weight:600;white-space:nowrap}
+.score.hi{color:var(--red)} .score.lo{color:var(--green)} .score.mid{color:var(--amber)}
+
+/* two col compare */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}
+.card{background:var(--surface);border:1px solid var(--line);padding:20px}
+.card h3{margin-top:0}
+.card ul{margin:8px 0;padding-left:20px}
+.card li{margin-bottom:7px;font-size:16px;line-height:1.5}
+.card.cleared{border-top:4px solid var(--green)} .card.pros{border-top:4px solid var(--red)}
+
+/* chain */
+.chain{display:flex;align-items:stretch;gap:0;margin:18px 0;flex-wrap:wrap}
+.chain .step{flex:1;min-width:140px;background:var(--surface);border:1px solid var(--line);padding:14px}
+.chain .arrow{align-self:center;font-family:var(--mono);color:var(--faint);padding:0 6px;font-size:18px}
+.chain .step b{font-family:var(--sans);font-size:13.5px;display:block;margin-bottom:4px}
+.chain .step span{font-size:13.5px;color:var(--muted);line-height:1.45;display:block}
+
+/* checklist law */
+.lawlist{list-style:none;margin:16px 0;padding:0;counter-reset:law}
+.lawlist li{counter-increment:law;display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.lawlist li::before{content:counter(law);font-family:var(--mono);font-weight:600;font-size:20px;color:var(--green);line-height:1.2;min-width:26px}
+.lawlist b{font-family:var(--sans);font-size:16px}
+.lawlist p{margin:2px 0 0;font-size:16px;color:var(--muted)}
+.missing{font-family:var(--sans);font-size:12px;font-weight:700;color:var(--red);background:var(--red-bg);padding:2px 8px;border-radius:3px;white-space:nowrap;margin-top:3px}
+
+/* verdict table */
+.final{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}
+.final .card ul{list-style:none;padding:0;margin:6px 0 0}
+.final .card li{padding-left:18px;position:relative;font-size:15.5px}
+.final .card li::before{content:"—";position:absolute;left:0;color:var(--faint)}
+.est-card{border-top:4px solid var(--green)} .all-card{border-top:4px solid var(--amber)} .unk-card{border-top:4px solid var(--muted)} .set-card{border-top:4px solid var(--blue)}
+
+/* sources */
+.sources{font-size:14px;color:var(--muted);line-height:1.6}
+.sources li{margin-bottom:9px}
+footer{border-top:3px double var(--line-strong);margin-top:44px;padding:22px 0 46px}
+footer p{font-size:14px;color:var(--muted);max-width:46em}
+
+@media (max-width:760px){
+  .verdict-strip{grid-template-columns:1fr}
+  .verdict-strip>div{border-right:none;border-bottom:1px solid var(--line)}
+  .verdict-strip>div:last-child{border-bottom:none}
+  .ticket-grid{grid-template-columns:1fr}
+  .ticket-grid>div:first-child{border-right:none;border-bottom:1px solid var(--line)}
+  .stats{grid-template-columns:1fr 1fr}
+  .duo,.final{grid-template-columns:1fr}
+  table,thead,tbody,tr,td,th{display:block}
+  thead{display:none}
+  tr{border:1px solid var(--line);background:var(--surface);margin-bottom:12px;padding:6px 4px}
+  td{border-bottom:none;padding:7px 12px}
+  td:first-child{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .chain{flex-direction:column}
+  .chain .arrow{transform:rotate(90deg);padding:4px 0}
+  body{font-size:17px}
+}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+
+/* trigger graphic */
+.trigger-figure{margin:26px auto 8px;max-width:520px;text-align:center}
+.trigger-figure img{width:100%;height:auto;display:block;border:1.5px solid var(--ink)}
+.trigger-figure figcaption{font-family:var(--sans);font-size:13px;line-height:1.5;color:var(--muted);margin-top:10px;text-align:left}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="toprule">
+    <div class="brand">The High Tower <span>District</span> — Forensic Desk</div>
+    <div class="dateline">RESEARCH CHECKED 14 NOV 2026 · PRICES AS OF 12–13 NOV 2026</div>
+  </div>
+
+  <header class="hero">
+    <p class="kicker">Viral headline, examined</p>
+    <h1>The $200 million Nvidia trade is real. The <em>insider story</em> built on it is not proven.</h1>
+    <p class="dek">A headline from <strong>Not the Bee</strong> says a mystery trader “bagged nearly $200 million shorting Nvidia right before Jensen Huang’s scandalous exit.” The trade underneath it exists. But the <strong>$196 million is a paper estimate, not banked profit</strong>, the position was placed <strong>a full month before</strong> the resignation, and its structure is a poor fit for someone who knew a CEO was about to fall. A smaller trade placed <em>hours</em> before the news is the one a forensic accountant would actually circle.</p>
+
+    <div class="verdict-strip">
+      <div class="v-green">
+        <p class="lab">✓ The trade — verified</p>
+        <p class="big">180,000 puts bought, 280,000 sold, ~$8M in</p>
+        <p>12 October 2026, reported identically by the FT (via quotation), The Times, and MarketSpeaker.</p>
+      </div>
+      <div class="v-amber">
+        <p class="lab">~ The $196M — an estimate</p>
+        <p class="big">A mark-to-market calculation, not a payout</p>
+        <p>Per Macro Risk Advisors’ Joseph Niles. No source reports the trader ever closing the position.</p>
+      </div>
+      <div class="v-red">
+        <p class="lab">✕ Insider trading — not established</p>
+        <p class="big">No trader, no source, no regulator action</p>
+        <p>Identity unknown in public. No SEC or FINRA comment or inquiry found as of 14 Nov 2026.</p>
+      </div>
+    </div>
+    <div class="byline"><span>NO INDIVIDUAL IS NAMED AS A WRONGDOER IN THIS REPORT — THE RECORD DOES NOT SUPPORT IT</span></div>
+  </header>
+
+  <figure class="trigger-figure">
+    <img src="assets/og-nvda-trader.jpg" alt="Not the Bee headline: Mystery Trader Bags Nearly $200 Million Shorting Nvidia Right Before Jensen Huang's Scandalous Exit" width="819" height="1100">
+    <figcaption>The Not the Bee graphic that triggered this story. The headline is the claim; the rest of this page is the check.</figcaption>
+  </figure>
+
+
+  <!-- 1 THE TICKET -->
+  <section id="ticket">
+    <div class="sec-head"><span class="sec-num">01</span><h2>The trade ticket: it was not a simple short, and not a simple put buy</h2></div>
+    <p class="lede">The headline says “shorting Nvidia.” Nobody shorted stock here, so far as any source reports. What happened on <strong>12 October 2026</strong> was a two-legged options structure called a <strong>bear put ratio spread</strong> — and the shape of it is the single most important fact in the whole story, because shape is where intent hides.</p>
+
+    <div class="ticket">
+      <div class="ticket-head"><span class="t">Position — NVDA January puts</span><span class="d">ENTERED 12 OCT 2026 · NVDA ≈ $226.32 CLOSE <span class="src">Finnhub</span></span></div>
+      <div class="ticket-grid">
+        <div class="buy">
+          <p class="leg-lab">Leg 1 — Bought</p>
+          <p class="leg-big">180,000 × $150 puts</p>
+          <p class="leg-sub">The right to sell <strong>18 million shares at $150</strong>. With the stock at ~$226, that strike sat <strong>~34% below the market</strong> — deep out of the money. These puts only gain intrinsic value if Nvidia collapses by a third.</p>
+        </div>
+        <div class="sell">
+          <p class="leg-lab">Leg 2 — Sold</p>
+          <p class="leg-big">280,000 × $100 puts</p>
+          <p class="leg-sub">An obligation to <strong>buy 28 million shares at $100</strong> if the stock falls that far — a strike <strong>~56% below the market</strong>. Selling 100,000 <em>more</em> contracts than were bought collected premium that cut the entry cost to ~$8M — and left the trader exposed below $100.</p>
+        </div>
+      </div>
+      <div class="ticket-foot">
+        <div><b>Net cost to enter</b>~$8–8.3 million</div>
+        <div><b>Ratio</b>1 : 1.56 (buy : sell)</div>
+        <div><b>Estimated value, 12 Nov</b>~$196M ≈ 24× premium</div>
+        <div><b>Trader</b>Unidentified in all public reporting</div>
+      </div>
+    </div>
+    <p class="small">Structure, quantities, and cost: Financial Times Alphaville as quoted verbatim by Not the Bee, 13 Nov 2026, corroborated by The Times and MarketSpeaker. The FT original could not be opened directly in this research (paywall/policy block), so its figures rest on that quotation plus two independent corroborations — strong, but second-hand for the FT itself. The exact January expiry day was not stated in the material read.</p>
+
+    <h3>Why “$200 million richer” is the headline’s first sleight of hand</h3>
+    <p>On 12 November, Nvidia closed at <strong>$166.19</strong> — still <em>above both strikes</em>. That means both legs of this trade had <strong>zero intrinsic value</strong>. Every dollar of the ~$196M was time value and volatility value in January options: real on a screen, gone if the stock recovers, if implied volatility collapses, or if the trader holds to expiry and Nvidia finishes above $150 — in which case both legs expire worthless and the whole ~$8M premium is lost. MarketSpeaker states the point plainly: “The reported gain is an estimate of the trade’s profit, not a confirmed cash payout.” With 460,000 contracts, even exiting is non-trivial — a position that size moves the market against itself on the way out. <span class="tag tag-est">Estimate, not realised</span></p>
+
+    <div class="stats">
+      <div class="stat"><div class="n">$226.32</div><div class="l">NVDA close on entry day, 12 Oct 2026 <span class="src">Finnhub</span></div></div>
+      <div class="stat"><div class="n">$166.19</div><div class="l">Close on 12 Nov — down 4.3% on the day, but already down ~25% since entry</div></div>
+      <div class="stat"><div class="n">$148.80</div><div class="l">Intraday low on 12 Nov, the resignation-announcement day</div></div>
+      <div class="stat"><div class="n">~$4.1B</div><div class="l">Long-put notional at entry (18M shares × $226) — institutional scale, not a retail punt</div></div>
+    </div>
+  </section>
+
+  <!-- 2 PAYOFF -->
+  <section id="payoff">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Run the payoff yourself: this is not a lottery ticket</h2></div>
+    <p>The classic insider options trade is a lottery ticket: cheap, near-dated puts struck just below the current price, expiring days after a known event. Small premium in, fortune out, loss capped at the ticket price. This trade fails that template on almost every dimension — most importantly, <strong>its loss is not capped at the $8M premium</strong>. Because the trader sold more puts than they bought, a fall <em>past</em> $100 starts eating the profit, and a wipeout loses roughly <strong>$108 million</strong>. Drag the slider to where Nvidia finishes at January expiry:</p>
+
+    <div class="chartbox">
+      <h3>Profit / loss at January expiry, by NVDA price <span class="src">Arithmetic from the reported legs and ~$8M cost</span></h3>
+      <svg viewBox="0 0 720 300" role="img" aria-label="Payoff chart for the put ratio spread, peaking near 892 million dollars at a stock price of 100 dollars and turning negative below about 10 dollars">
+        <line class="grid-l" x1="70" y1="40" x2="690" y2="40"/><line class="grid-l" x1="70" y1="100" x2="690" y2="100"/>
+        <line class="grid-l" x1="70" y1="160" x2="690" y2="160"/><line class="zero-l" x1="70" y1="220" x2="690" y2="220"/>
+        <line class="grid-l" x1="70" y1="260" x2="690" y2="260"/>
+        <text class="axis-lab" x="8" y="44">$900M</text><text class="axis-lab" x="14" y="104">$600M</text>
+        <text class="axis-lab" x="14" y="164">$300M</text><text class="axis-lab" x="32" y="224">$0</text>
+        <text class="axis-lab" x="8" y="243">−$110M</text>
+        <path class="payoff-fill" d="M96,220 L328,42 L458,220 Z"/>
+        <path class="payoff-l" d="M70,239 L96,221 L328,42 L458,221 L690,221"/>
+        <circle class="price-pt" cx="328" cy="42" r="5"/>
+        <text class="axis-lab" x="300" y="28" font-weight="600">PEAK ≈ $892M AT $100</text>
+        <text class="axis-lab" x="70" y="292">$0</text><text class="axis-lab" x="192" y="292">$50</text>
+        <text class="axis-lab" x="318" y="292">$100</text><text class="axis-lab" x="448" y="292">$150</text>
+        <text class="axis-lab" x="578" y="292">$200</text><text class="axis-lab" x="648" y="292">$226+</text>
+        <text class="axis-lab" x="104" y="248">BREAKEVEN ≈ $10</text>
+      </svg>
+      <div class="slider-row">
+        <label for="px">NVDA AT EXPIRY</label>
+        <input type="range" id="px" min="0" max="240" value="166" step="1" aria-label="Nvidia price at expiry in dollars">
+        <div class="payoff-out">At <b id="pxVal">$166</b> → <b id="payVal">−$8M</b><br><span id="payNote" style="font-size:12.5px">Above $150: both legs expire worthless.</span></div>
+      </div>
+      <p class="small" style="margin-top:14px">Checked points: $150 or above → <strong>−$8M</strong> (premium lost) · $100 → <strong>≈ +$892M</strong> · $50 → <strong>≈ +$392M</strong> · $10 → <strong>≈ −$8M</strong> · $0 → <strong>≈ −$108M</strong>. Note what this means for the insider theory: a trader who <em>knew</em> a resignation was coming and expected a typical 10–15% CEO-shock dip — to roughly $192 — would make <strong>nothing</strong> at expiry from this structure. It only pays on a multi-month collapse, or as a cheap hedge on a huge long position where the holder accepts risk below $100. Both readings fit a sophisticated institutional desk. Neither requires inside knowledge of a resignation.</p>
+    </div>
+
+    <div class="callout">
+      <p class="lab">And if it had been a plain short?</p>
+      <p>The version in the headline — borrow stock, sell it, buy it back cheaper — is even weaker evidence of anything. Shorting has unlimited risk and forces a cover decision within days or weeks; funds and thrill-seekers alike run large shorts on crowded, record-high stocks as a matter of routine. A profitable short proves a bearish view was right. It says nothing, by itself, about <em>how</em> the shorter formed that view.</p>
+    </div>
+  </section>
+
+  <!-- 3 TIMELINE + PRICE -->
+  <section id="timeline">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The timeline is the alibi: most of the fall happened before the resignation existed</h2></div>
+    <p>Not the Bee frames the trade as placed “right before” Huang’s exit. It was placed <strong>31 days before</strong> the announcement — 17 days before the first spy story, and a month before the board made any decision at all. For the October trader to have bet <em>on the resignation</em>, they would have needed to know on 12 October not just about an affair, but that it would produce a board decision on 11 November — at a time when no investigation had been opened.</p>
+
+    <div class="chartbox">
+      <h3>NVDA daily closes, October–November 2026 <span class="src">Finnhub; Little Dog Capital</span></h3>
+      <svg viewBox="0 0 720 280" role="img" aria-label="Line chart of Nvidia closing prices falling from about 239 dollars in early October to about 163 dollars by mid November, with most of the decline occurring before the November 12 resignation announcement">
+        <line class="grid-l" x1="60" y1="40" x2="690" y2="40"/><line class="grid-l" x1="60" y1="100" x2="690" y2="100"/>
+        <line class="grid-l" x1="60" y1="160" x2="690" y2="160"/><line class="grid-l" x1="60" y1="220" x2="690" y2="220"/>
+        <text class="axis-lab" x="10" y="44">$240</text><text class="axis-lab" x="10" y="104">$210</text>
+        <text class="axis-lab" x="10" y="164">$180</text><text class="axis-lab" x="10" y="224">$150</text>
+        <line class="ann-l" x1="640" y1="30" x2="640" y2="235"/>
+        <text class="ann-t" x="470" y="22">RESIGNATION ANNOUNCED 12 NOV</text>
+        <path class="price-l" d="M70,52 L130,44 L150,42 L210,66 L270,92 L340,128 L390,140 L430,152 L470,166 L510,196 L550,214 L580,204 L640,212 L680,218"/>
+        <circle class="price-pt" cx="210" cy="66" r="4.5"/><circle class="dot-sel" cx="640" cy="212" r="5"/>
+        <text class="axis-lab" x="176" y="56" font-weight="600">TRADE: 12 OCT · $226.32</text>
+        <text class="axis-lab" x="520" y="248">10 NOV · $168.89 — ALREADY −25%</text>
+        <text class="axis-lab" x="70" y="266">1 OCT</text><text class="axis-lab" x="330" y="266">LATE OCT</text><text class="axis-lab" x="640" y="266">12 NOV</text>
+      </svg>
+      <p class="small" style="margin:6px 0 0">The resignation-day move was $173.73 → $166.19 (−4.3%). The other ~21 points of the decline — and therefore most of the $196M mark — came from the month-long October–November sell-off in the AI/China trade. Attributing the gain to the resignation misattributes most of it.</p>
+    </div>
+
+    <ol class="tl">
+      <li><span class="when">13 MAY 2026</span><div class="what">Culper Research publicly flags the Huang relationship</div><p>Its 40-page “Nvidia: The China Problem” report calls Huang’s ties to Megaspeed executive Alice Huang “uncomfortably close” and discloses a short position. It does <em>not</em> allege an affair or espionage — but the proximity that later became the scandal was in the public domain six months before the trade. A public bear thesis existed. <span class="src">Seoul Economic Daily; Dealroom</span></p></li>
+      <li class="trade"><span class="when">12 OCT 2026</span><div class="what">The ratio spread is placed — stock at a near-record high</div><p>460,000 contracts, ~$8M premium. At this date there is no public scandal, no investigation, and no board decision to know about.</p></li>
+      <li><span class="when">29 OCT 2026</span><div class="what">NYT reports the intelligence allegation</div><p>Seventeen days <em>after</em> the trade, the New York Times reports a U.S. intelligence assessment concerning Alice Huang and Megaspeed. <span class="tag tag-alleged">Allegation — unproven</span></p></li>
+      <li><span class="when">6 NOV 2026</span><div class="what">FT / NYT report the MSS-recruitment allegation</div><p>Further reporting alleges recruitment by China’s Ministry of State Security. China denies the allegations; Nvidia says it has no evidence of chip diversion and no reason to believe secrets were compromised. No charge has been brought. <span class="tag tag-alleged">Allegation — disputed</span></p></li>
+      <li><span class="when">8 NOV 2026</span><div class="what">Admission and board investigation become public</div><p>Huang’s admission of infidelity and the board’s independent investigation are reported — the first point at which a resignation becomes a foreseeable corporate event.</p></li>
+      <li class="hot"><span class="when">11 NOV 2026, EVENING</span><div class="what">WSJ: board preparing to oust Huang · NYT: second alleged affair · Board meets late</div><p>The only genuinely non-public item all month is the timing and outcome of this night’s board meeting. The resignation is accepted that night. <span class="src">WSJ; Nvidia Form 8-K</span></p></li>
+      <li class="hot"><span class="when">12 NOV 2026</span><div class="what">Resignation announced — no reason given</div><p>Nvidia’s Form 8-K announces Huang resigned as president, CEO, and board member effective immediately. CFO Colette Kress becomes interim CEO (keeping the CFO role); Harvey C. Jones becomes the board’s first chair. Framed as a resignation, not an ouster. <span class="src">Nvidia Form 8-K; USA Today</span></p></li>
+    </ol>
+  </section>
+
+  <!-- 4 NOV 11 -->
+  <section id="nov11">
+    <div class="sec-head"><span class="sec-num">04</span><h2>The trade that actually deserves a circle: 11 November, ~3:30 p.m.</h2></div>
+    <p>Buried under the viral trade is a smaller one that fits the forensic template far better. Options-flow reporting (FlowSeeker, via a social video — <strong>not a major outlet</strong>) says roughly <strong>11,000 November 20 $105 puts</strong> were bought around 3:30 p.m. on Wednesday 11 November, reportedly 99% executed at the ask, and were up ~400% at the next morning’s open. Those last figures are <span class="tag tag-unv">Unverified — single source</span>. What <em>is</em> partially corroborated: GreekSoup’s options tape shows open interest in that contract at 14,217, up <strong>+10,401</strong> from the 11 November close — consistent with ~11,000 new contracts appearing that day. That supports <em>that a large $105-put position appeared</em>. It does not establish the time, the price, or the motive. A further detail in circulation — three put trades totalling ~$490,000 in the session’s last 15 minutes — was <strong>not independently found</strong> in public sources and is not treated as established here.</p>
+    <p>Why investigators would still look: at 3:30 p.m. on 11 November, a buyer was <strong>hours</strong> from market-moving news that was not yet public — the WSJ and NYT evening stories and the late-night board decision. That is the classic insider window. But note the honest limits: the $105 strike was still ~40% below the $173.73 close, so this was no clean “just below the market” ticket either; it needed a panic gap (the stock did trade to $148.80 intraday) just to multiply a few cents of premium through volatility. And by 11 November almost everything except the board’s decision was already public, while the stock had been falling for a week — a momentum trade on public information is a live innocent explanation.</p>
+
+    <table>
+      <thead><tr><th>Forensic factor</th><th>12 Oct ratio spread</th><th>11 Nov $105 puts</th></tr></thead>
+      <tbody>
+        <tr><td>Timing vs. news</td><td>31 days before the announcement; before every public scandal milestone <span class="score lo">WEAK SIGNAL</span></td><td>Hours before evening reports and the board decision <span class="score hi">STRONG SIGNAL</span></td></tr>
+        <tr><td>Expiry</td><td>January — ~3 months; must survive earnings and volatility decay</td><td>20 November — 9 days; pure event window <span class="score hi">STRONG SIGNAL</span></td></tr>
+        <tr><td>Strike logic</td><td>$150 / $100 vs. $226 — needs a 34–56% crash, not a resignation dip</td><td>$105 vs. $173.73 — ~40% below; needs a panic gap, not just the news <span class="score mid">MIXED</span></td></tr>
+        <tr><td>Size</td><td>$8M premium, 460,000 contracts — institutional, hard to hide or exit quietly</td><td>~11,000 contracts — small; ~0.4% of that day’s contract volume, easier to conceal</td></tr>
+        <tr><td>Public alternative</td><td>Culper thesis, record valuation, crowded AI trade — all public in October</td><td>Affair, allegation, investigation, admission all public; stock already falling</td></tr>
+        <tr><td>Verdict</td><td><span class="score lo">Weak evidence of insider trading</span> — structure fits a bear thesis or hedge better</td><td><span class="score hi">A genuine lead</span> — suspicious on timing and expiry, still not proof</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 5 LAW -->
+  <section id="law">
+    <div class="sec-head"><span class="sec-num">05</span><h2>What the law actually requires — and why “unlikely profit” is not on the list</h2></div>
+    <p>Illegal insider trading is charged mainly under <strong>Section 10(b) of the Securities Exchange Act 1934 and SEC Rule 10b-5</strong> (the DOJ prosecutes criminally, also under 18 U.S.C. § 1348). “The trade looks impossible unless they knew” is how an investigation <em>starts</em>. It is not an element of the offence. Here is what the government must actually establish — and what the public record holds on each element today:</p>
+    <ol class="lawlist">
+      <li><div><b>A purchase or sale of a security.</b><p>Options count. This element is met on the reported facts for both trades.</p></div></li>
+      <li><div><b>Material, nonpublic information.</b><p>A CEO resignation is plainly material <em>once decided</em>. A rumour, a personal affair with no established corporate consequence, or a mosaic of public facts is not automatically MNPI. On 12 October, the resignation had not been decided — arguably, there was no such information in existence to trade on.</p></div><span class="missing">NOT SHOWN — OCT TRADE</span></li>
+      <li><div><b>A breach of a duty of trust or confidence.</b><p>The “classical” theory (a company insider) or “misappropriation” theory (a duty owed to the information’s source). A stranger who guesses right, or trades on public research, breaches no duty at all.</p></div><span class="missing">NO SOURCE IDENTIFIED</span></li>
+      <li><div><b>Scienter — knowledge and intent.</b><p>The trader must have known the information was confidential and disclosed in breach of a duty, and traded on the basis of it. In criminal cases, wilfulness.</p></div><span class="missing">NO EVIDENCE IN PUBLIC</span></li>
+      <li><div><b>For tippee cases, a personal benefit to the tipper.</b><p>The chain has to be documented: who knew, who told, who traded.</p></div><span class="missing">NO CHAIN IDENTIFIED</span></li>
+    </ol>
+    <div class="callout amber">
+      <p class="lab">The consequence</p>
+      <p>Even if the October trader somehow knew about the affair in advance, that alone is not a case. The SEC would need to show the trader knew the <strong>resignation decision and its timing</strong>, got it through a breached duty, and traded <em>because of it</em>. Profit, size, and timing are circumstantial — the starting point of an investigation, never its conclusion.</p>
+    </div>
+
+    <h3>“Mystery” means anonymous to you — not to a regulator</h3>
+    <p>Options feel like dark money because you never see a counterparty’s name. That anonymity is only skin-deep. The Options Clearing Corporation steps in as central counterparty between clearing members; your broker holds your name, address, tax ID, and account records under Exchange Act Rules 17a-3/17a-4; and under <strong>Rule 17a-25 (electronic blue sheets)</strong> the SEC or FINRA can compel any broker to produce, within days, the full record of every account that traded a security in a review period. FINRA and SEC surveillance systems (ARTEMIS, MIDAS, SONAR) already cross-reference options volume against corporate announcements and refer hundreds of cases a year. A 460,000-contract trade is visible to surveillance as a matter of routine.</p>
+    <div class="chain">
+      <div class="step"><b>1 · Exchange print</b><span>“180,000 Jan $150 puts traded 12 Oct” — no names attached publicly.</span></div><span class="arrow">→</span>
+      <div class="step"><b>2 · OCC</b><span>Knows the clearing member and whether the account is proprietary or omnibus — not the ultimate customer.</span></div><span class="arrow">→</span>
+      <div class="step"><b>3 · Broker (blue sheet)</b><span>Knows the customer: identity, tax ID, account age, who placed the order and whether it was solicited.</span></div><span class="arrow">→</span>
+      <div class="step"><b>4 · The person</b><span>Then subpoenas: communications, phone and email records, related accounts, other positions.</span></div>
+    </div>
+    <p class="small">Offshore or omnibus layering slows this chain; it rarely defeats it — the post-9/11 investigation traced its trades through exactly these records. So the correct description of the Nvidia trader is <strong>“unidentified to the public,”</strong> not untraceable.</p>
+
+    <h3>The base-rate problem: in the world’s busiest options market, somebody always wins</h3>
+    <p>Nvidia is the most heavily optioned single stock on earth — roughly <strong>2.9 million contracts a day</strong> on average in the 20 sessions to late September 2026 <span class="src">ORATS via ApexVol</span>. On 11 November alone: <strong>2,961,613 contracts and ~$2.0 billion of premium</strong> ($1.1B calls, $876.6M puts). On 12 November: <strong>9.53 million contracts</strong>. Against that flow, the October spread is ~16% of one average day’s contract volume and its $8M premium is ~0.4% of one day’s premium; the November puts are ~0.4% of that day’s volume. Big bearish bets on Nvidia are placed every single week. Most lose. A few, by construction, will be sitting there looking prophetic whenever bad news lands. Suspicion that ignores that denominator is not analysis — it is pattern-matching.</p>
+  </section>
+
+  <!-- 6 PRECEDENTS -->
+  <section id="precedents">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Precedent: the most damning-looking puts in history were cleared. The prosecuted cases look different.</h2></div>
+    <div class="duo">
+      <div class="card cleared">
+        <h3>Cleared — the post-9/11 airline puts</h3>
+        <p>The pattern looked like a smoking gun: United Airlines put volume on 6 September 2001 exceeded call volume by more than 20-to-1; American Airlines puts surged on 10 September. The SEC and FBI, in the 9/11 Commission’s words, “devoted enormous resources” — and found every suspicious trade had an innocuous explanation:</p>
+        <ul>
+          <li>A <strong>single U.S. institutional investor bought 95% of the UAL puts</strong> on 6 Sept — as part of a strategy that also included <strong>buying 115,000 AMR shares</strong> on 10 Sept, a long position no one with foreknowledge of the attacks would hold.</li>
+          <li>The AMR puts were traced to a <strong>U.S. options newsletter faxed to subscribers on 9 Sept</strong> recommending exactly those trades.</li>
+        </ul>
+        <p>The Commission’s conclusion: “the apparently suspicious consistently proved innocuous,” and no evidence anyone with advance knowledge profited. <em>Balance note:</em> academic work (Poteshman, <em>Journal of Business</em>, 2006) argued the AMR activity was statistically consistent with advance knowledge — the econometric debate is not settled. The lesson survives either way: <strong>volume + timing + profit did not equal proof. A documented, independent strategy is what cleared it.</strong> <span class="src">9/11 Commission Report, ch. 5, fn. 130</span></p>
+      </div>
+      <div class="card pros">
+        <h3>Prosecuted — notice what these have that Nvidia doesn’t</h3>
+        <ul>
+          <li><strong>SEC v. Gleason (1996):</strong> Hollywood Entertainment’s former controller tipped partners about an earnings shortfall; they bought puts before the announcement and sold the day after (+$92,234 and +$39,088). Difference-maker: <strong>an identified insider, a documented tip chain, an exit the day after the news.</strong></li>
+          <li><strong>SEC v. Ramnarine (2012):</strong> a Bristol-Myers Squibb treasury executive bought out-of-the-money calls in three acquisition targets he was personally evaluating, across multiple personal accounts (+$300,000+). Difference-maker: <strong>his job was the source — the trades matched the deals on his desk.</strong></li>
+          <li><strong>U.S. v. Mitchell (guilty plea, 2026):</strong> The Trade Desk’s finance director bought puts <em>during a blackout period</em> before a February 2025 earnings miss, having seen the nonpublic numbers (~$318,362). Difference-maker: <strong>employment + access to the exact figures + blackout trading + a plea.</strong></li>
+        </ul>
+        <p>Every prosecuted case has a <strong>person</strong> linked to the <strong>specific information</strong> by employment, access, or communications. The Nvidia record today has neither side of that ledger: no identified person, source, or communications — and also no documented hedge that would clear it. It sits at the <em>start</em> of an investigation, not the end of one.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 FRAMING -->
+  <section id="framing">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Anatomy of the spin: FT vs. Not the Bee</h2></div>
+    <p>This is the part worth naming plainly, because it is the business model Aaron flagged: outrage content that sells advertising by presenting an estimate as a fortune and a coincidence as a conspiracy. To its credit, Not the Bee quotes the FT passage accurately. Everything around the quotation does the misleading.</p>
+    <table>
+      <thead><tr><th></th><th>Financial Times (as quoted / reported)</th><th>Not the Bee, 13 Nov 2026</th></tr></thead>
+      <tbody>
+        <tr><td>The gain</td><td>“Has now made approximately $196mn — roughly 24 times the initial premium paid, <strong>according to MRA’s calculations</strong>”</td><td>Headline: “Bags Nearly $200 Million.” Closing line: “some mystery trader out there is <strong>now $200 million richer</strong>” — an estimate becomes a banked windfall</td></tr>
+        <tr><td>The cause</td><td>Attributes the gain to “the collapse in Nvidia’s share price <strong>since October</strong>” — a month-long decline</td><td>“Somebody would have made a cool $200 million shorting Nvidia <strong>because they might have known</strong> CEO Jensen Huang was about to be outed” — foreknowledge implied as the cause</td></tr>
+        <tr><td>The gaps</td><td>The FT item establishes no identity, no exit, no information source, no insider-trading allegation, no regulator involvement</td><td>None of those gaps is flagged. The “Whaaaaaaaaaaat?” framing and a “honeypot relationship (that many people don’t even believe is the real story)” aside invite the conspiracy reading the facts don’t supply</td></tr>
+      </tbody>
+    </table>
+    <div class="callout red">
+      <p class="lab">And a word that does quiet damage: “dark money”</p>
+      <p>“Dark money” has a precise meaning, and this isn’t it. Per OpenSecrets, it is <strong>spending meant to influence political outcomes where the source is not disclosed</strong> — principally through 501(c)(4) and 501(c)(6) nonprofits, a phenomenon that grew from under $5.2M in 2006 to over $1B in the 2020 federal cycle. It has nothing to do with securities markets. Borrowing the term for an options trade does double harm: it imports the moral charge of secret political influence, and it implies the trader is untraceable when — per the blue-sheet chain above — regulators can identify them on request. Precision is not pedantry here; the wrong word <em>is</em> the conspiracy theory, smuggled in as vocabulary.</p>
+    </div>
+  </section>
+
+  <!-- 8 FRESNO -->
+  <section id="fresno">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Same discipline, different ledger: the Fresno shelter question</h2></div>
+    <p>The High Tower District has been here before, on its own streets. The standing theory about Fresno homeless services — that shelters double-, triple-, or quadruple-bill for the same person at multiple places at once — has exactly the same shape as the Nvidia story: a pattern that <em>looks</em> damning, attached to a person, circulating faster than the records that would settle it. The forensic answer is the same in both ledgers, so it is worth laying side by side.</p>
+    <p><strong>The verified Fresno record, stated carefully:</strong> Desiree “Dez” Martinez is president of the Fresno Homeless Union and founder of the Facebook page “Homeless in Fresno” and the group We Are Not Invisible — confirmed by a federal court order in <em>Martinez et al. v. City of Fresno</em>, No. 1:22-cv-00307 (E.D. Cal., 24 May 2022). She was arrested during a sweep and charged with interfering. <strong>No conviction has been found. No fraud evidence has been found.</strong> No fraud charge, audit finding, or financial record implicating Martinez or Fresno shelters in double-billing was located in this research. That sentence has to survive contact with anyone’s suspicions, including ours.</p>
+
+    <table>
+      <thead><tr><th></th><th>Nvidia options</th><th>Fresno shelter billing</th></tr></thead>
+      <tbody>
+        <tr><td>The suspicious pattern</td><td>Large profit + suggestive timing</td><td>The same name appearing in several shelters’ counts and bills</td></tr>
+        <tr><td>What the pattern alone proves</td><td>Nothing about how — or whether — the trader knew anything nonpublic</td><td>Nothing about whether the same service, same night, was billed twice</td></tr>
+        <tr><td>Innocent explanations to exclude first</td><td>Hedging; a public bear thesis; luck in the busiest options market on earth; a volatility mark, not an event payoff</td><td>A person can be legitimately enrolled at several providers, receive different billable services the same day (bed-night, intake, outreach, case management are separate), transfer between shelters, or appear in “duplicated” contact tallies vs. “unduplicated” person counts. HMIS matching errors and data lags manufacture apparent duplicates</td></tr>
+        <tr><td>The base-rate trap</td><td>Millions of NVDA contracts daily; many bears, a few big winners — guaranteed</td><td>The system is <em>designed</em> for multi-provider contact. California’s own State Auditor (2024) found the state couldn’t track the effectiveness of ~$24B in homelessness spending — weak tracking makes fraud harder to detect <em>and</em> harder to prove. It cuts both ways</td></tr>
+        <tr><td>What proof requires</td><td>Identity + source of nonpublic information + breached duty + intent + trade on that basis</td><td>See the accountant’s list below</td></tr>
+      </tbody>
+    </table>
+
+    <h3>A forensic accountant’s shopping list — Fresno edition</h3>
+    <p>(i) The <strong>contracts and rate schedules</strong> — what is actually billable, and what the contract defines as a duplicate. Sector contracts expressly require braided funding to be tracked “in a manner that prevents duplicate billing or claiming for the same cost” — because serving the same person under two funders is normal; billing the <em>same cost</em> twice is the violation. (ii) <strong>HMIS records</strong> — the Homeless Management Information System is the deduplication spine: unique client IDs, enrolment and exit dates, bed-night logs across providers. (iii) <strong>Invoices matched line-by-line to HMIS</strong> — same client, same date, same service, two funders = duplicate; different services or dates = not. (iv) <strong>Bank records and the general ledger</strong> — did money received match money billed, and where did it go? (v) <strong>Source documents</strong> — sign-in sheets, bed checks, case notes, staff rosters; a “ghost client” has none of them. (vi) <strong>Intent</strong> — knowing, systematic, and concealed, or definitional overlap and data error?</p>
+    <p>Federal prosecutors in Los Angeles <em>have</em> charged homeless-services fraud — ghost clients, bribery for referrals, billing for services never provided (the Soofer / Young / LAHSA cases, 2025–26). Those are different people, different organisations, a different county. They prove the scheme type exists. Importing them as evidence about Fresno or Martinez would be the identical error to importing the 9/11 put volume as evidence about the Nvidia trader.</p>
+    <div class="callout">
+      <p class="lab">The fallacy has a name</p>
+      <p>Both stories run on the <strong>prosecutor’s fallacy</strong> — base-rate neglect. An outcome can be unlikely <em>if everyone is innocent</em> and still be more likely innocent than guilty, when innocent explanations are vastly more common. Timing is necessary but never sufficient: in markets it must be joined to access and duty; in billing it must be joined to the same cost billed twice, and intent. “They must have known” is not a mechanism. <em>Who told them? Which invoice, which funder, which date, which client ID?</em> A pattern is a question. Records are the answer.</p>
+    </div>
+  </section>
+
+  <!-- 9 VERDICT -->
+  <section id="verdict">
+    <div class="sec-head"><span class="sec-num">09</span><h2>The High Tower verdict</h2></div>
+    <p class="lede">The viral headline is <strong>not evidence of insider trading</strong>. It is evidence that a large bearish bet paid off during a month when Nvidia fell ~27% for many public reasons — and, separately, that a smaller, shorter-dated bet was placed hours before the resignation became public. The first is a striking coincidence whose structure fits innocent explanations better. The second is a genuine red flag that warrants an investigation it does not, by itself, amount to.</p>
+    <div class="final">
+      <div class="card est-card"><h3>Established</h3><ul>
+        <li>The 12 Oct ratio spread: 180,000 Jan $150 puts bought, 280,000 Jan $100 puts sold, ~$8M, stock ~$226</li>
+        <li>~$196M (≈24×) is MRA’s estimated mark at ~$166 on 12 Nov — unrealised; no exit documented</li>
+        <li>Resignation accepted 11 Nov, announced 12 Nov; Kress interim CEO; Jones chair; no reason given</li>
+        <li>NVDA had already fallen ~25% (12 Oct → 10 Nov) before the resignation; resignation day was −4.3%</li>
+        <li>Culper flagged the relationship publicly in May 2026, without alleging an affair or espionage</li>
+        <li>~11,000 Nov 20 $105 puts appear on 11 Nov (open interest +10,401 corroborates a position appearing)</li>
+        <li>Options are anonymous to the public, traceable by regulators; “dark money” means undisclosed political spending</li>
+        <li>Martinez’s roles are court-verified; no fraud evidence and no conviction found</li>
+      </ul></div>
+      <div class="card all-card"><h3>Merely alleged — not established</h3><ul>
+        <li>That the October trader knew about the scandal or resignation in advance (implied by Not the Bee; not established by the FT)</li>
+        <li>That Alice Huang acted as a Chinese intelligence asset, that Nvidia secrets were compromised, or that chip diversion occurred — reported allegations; denied by China; Nvidia says no evidence of diversion; no charge brought</li>
+        <li>That the 11 November put buyers traded on inside information — a plausible hypothesis, no identified trader or source</li>
+        <li>That Fresno shelters double-bill, or that Martinez committed fraud — an unproven theory with no financial evidence behind it yet</li>
+      </ul></div>
+      <div class="card unk-card"><h3>Still unknown</h3><ul>
+        <li>Both traders’ identities; whether either position has been exited, and for how much</li>
+        <li>Whether the October position hedges a large long Nvidia holding</li>
+        <li>Whether the SEC or FINRA has opened any inquiry — none publicly announced; the SEC does not routinely confirm investigations, so silence is not proof either way</li>
+        <li>The exact January expiry date; the precise premium and timing of the 11 November trades (flow figures are single-source)</li>
+      </ul></div>
+      <div class="card set-card"><h3>What would settle it</h3><ul>
+        <li><strong>Blue-sheet identification</strong> of both account holders, plus their communications and relationships, Sept–Nov 2026</li>
+        <li><strong>The full books</strong> — offsetting long positions (the hedge test) and prior ratio-spread history</li>
+        <li><strong>Exit records</strong> — when positions closed and at what prices: realised vs. paper gain</li>
+        <li>For Fresno: <strong>HMIS extracts matched to invoices, remittances, and bank statements</strong> against the contract rate schedules — identity, mechanism, and intent, not pattern alone</li>
+      </ul></div>
+    </div>
+    <p>That is the whole discipline, in markets and in Fresno alike: <strong>a suspicious pattern is a question, not an answer.</strong> The trader may be a thief, a hedger, or the luckiest bear of the month. The shelters may be clean, sloppy, or worse. Nobody honest gets to pick which one from a headline — and anybody selling you the pick before the records are in is selling something other than the truth.</p>
+  </section>
+
+  <section id="sources">
+    <div class="sec-head"><span class="sec-num">§</span><h2>Sources</h2></div>
+    <p class="small">All sources read or corroborated 14 Nov 2026. The FT original was verified through Not the Bee’s verbatim quotation plus The Times and MarketSpeaker, as noted in §01.</p>
+    <ol class="sources">
+      <li>Not the Bee, “Mystery Trader Bags Nearly $200 Million Shorting Nvidia Right Before Jensen Huang’s Scandalous Exit,” 13 Nov 2026. <a href="https://notthebee.com/article/mystery-trader-bags-nearly-200-million-shorting-nvidia-right-before-jensen-huangs-scandalous-exit">notthebee.com</a></li>
+      <li>Financial Times Alphaville (via quotation above). <a href="https://www.ft.com/content/13c485dc-2d51-4920-bd1f-13a11c79d96c">ft.com</a> — direct fetch blocked during research; not read directly.</li>
+      <li>The Times, “Trader ‘made $196m’ shorting Nvidia before Jensen Huang scandal.” <a href="https://www.thetimes.com/business/companies-markets/article/trader-made-196m-shorting-nvidia-before-jensen-huang-scandal-pk2bhttvc">thetimes.com</a></li>
+      <li>MarketSpeaker, “Mystery Nvidia Options Trade Shows $196 Million Estimated Gain,” 13 Nov 2026. <a href="https://marketspeaker.com/nvidia-mystery-put-trade-196-million-gain/">marketspeaker.com</a></li>
+      <li>Nvidia Form 8-K, 12 Nov 2026. <a href="https://d18rn0p25nwr6d.cloudfront.net/CIK-0001045810/2bc9480b-60a6-4d8a-90cb-87190f804a3b.pdf">SEC filing (PDF)</a></li>
+      <li>USA Today, “Jensen Huang resigns as Nvidia CEO amid affair probe,” 12 Nov 2026. <a href="https://www.usatoday.com/story/tech/2026/11/12/jensen-huang-nvidia-ceo-resigns-affair-investigation/92734431007/">usatoday.com</a></li>
+      <li>Finnhub, NVDA historical prices. <a href="https://finnhub.io/?q=%22NVDA%22">finnhub.io</a> · Little Dog Capital, daily closes Oct 30–Nov 13. <a href="https://littledogcapital.substack.com/p/nvidia-lost-its-founder-ceo-the-chip">substack.com</a></li>
+      <li>Wall Street Journal live coverage, 11–12 Nov 2026. <a href="https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-12-2026/card/the-directors-deciding-jensen-huang-s-fate-cya2mOI9KsJKWfBE3er6">wsj.com</a></li>
+      <li>Culper Research coverage: Seoul Economic Daily, 12 Nov 2026. <a href="https://en.sedaily.com/world/2026/11/12/short-sellers-nvidia-china-warning-resurfaces-six-months">sedaily.com</a> · Dealroom. <a href="https://dealroom.co/news/172164-christian-lamarco-s-culper-research-shorted-nvidia-in-may-over-huang-s-c/">dealroom.co</a></li>
+      <li>NYT 29 Oct reporting (via summaries). <a href="https://www.asianvalueinvestor.com/news/hsbc-resume-check-drew-western-intelligence-interest-to-alice-huang">asianvalueinvestor.com</a> · <a href="https://behindtalkies.com/nvidia-jensen-huang-investigation-what-we-know/amp/">behindtalkies.com</a></li>
+      <li>Nov 11 options flow: FlowSeeker video (single-source, unverified detail). <a href="https://www.instagram.com/reel/Dfqihn_P83P/">instagram.com</a> · GreekSoup NVDA options tape. <a href="https://greeksoup.ai/stocks/us/nvda/options/">greeksoup.ai</a></li>
+      <li>NVDA options volume: ApexVol / ORATS. <a href="https://apexvol.com/best/stocks-for-options-trading">apexvol.com</a> · Global Traders Academy, 11 Nov flow. <a href="https://globaltradersacademy.com/articles/institutional-flow-in-nvidia-nvda-56-of-the-options-money-is-in-calls-nov-11">globaltradersacademy.com</a> · OptionCharts. <a href="https://optioncharts.io/options/NVDA/volume">optioncharts.io</a></li>
+      <li>Put ratio spread mechanics: StockMarketWatch. <a href="https://stockmarketwatch.com/edu/options/strategies/put-ratio-spread">stockmarketwatch.com</a></li>
+      <li>Insider-trading elements: SEC Paradigm / Cooley memo. <a href="https://www.sec.gov/files/ctf-memo-paradigm-cooley-051525.pdf">sec.gov (PDF)</a> · Legal500. <a href="https://www.legal500.com/intelligence/united-states/finance-and-banking/enforcement-pipeline-insider-trading-and-hedging-pipes">legal500.com</a></li>
+      <li>Blue sheets / Rule 17a-25: SEC. <a href="https://www.sec.gov/rules-regulations/2001/06/electronic-submission-securities-transaction-information-exchange-members-brokers-dealers">sec.gov</a> · LegalClarity. <a href="https://legalclarity.org/what-are-blue-sheets-sec-data-requests-explained/">legalclarity.org</a> · OCC. <a href="https://www.theocc.com/clearance-and-settlement/stock-loan-programs/occ-market-loan-program-faqs">theocc.com</a></li>
+      <li>9/11 Commission Report, ch. 5, fn. 130 / Terrorist Financing Staff Monograph (reproduction). <a href="https://www.mail-archive.com/fairfieldlife@yahoogroups.com/msg47157.html">mail-archive.com</a></li>
+      <li>SEC v. Gleason et al., Litigation Release No. 15131 (1996). <a href="https://www.sec.gov/file/lr15131txt">sec.gov</a> · SEC v. Ramnarine (2012). <a href="https://www.sec.gov/newsroom/press-releases/2012-2012-148htm">sec.gov</a> · DOJ, Mitchell guilty plea. <a href="https://www.justice.gov/usao-sdny/pr/finance-director-pleads-guilty-insider-trading">justice.gov</a></li>
+      <li>Dark money: OpenSecrets. <a href="https://www.opensecrets.org/outside-spending/dark-money-groups/summary?type=&view=viewpt">opensecrets.org</a> · Wikipedia. <a href="https://en.wikipedia.org/wiki/Dark_money">wikipedia.org</a></li>
+      <li>Martinez et al. v. City of Fresno, No. 1:22-cv-00307 (E.D. Cal., 24 May 2022). <a href="https://cases.justia.com/federal/district-courts/california/caedce/1:2022cv00307/408123/25/0.pdf?ts">justia.com (PDF)</a> · Lake County CoC shelter agreement. <a href="https://www.lakecoc.org/_files/ugd/1f97da_ad90783e79f74db39fe8016324af01bc.pdf">lakecoc.org (PDF)</a> · LA homeless-services fraud charges (separate cases). <a href="https://hsjchronicle.com/1-million-in-homeless-aid-diverted-to-nightclub-new-la-fraud-charges-allege/">hsjchronicle.com</a></li>
+    </ol>
+  </section>
+
+  <footer>
+    <p><strong>The High Tower District — Forensic Desk.</strong> Built from research checked 14 November 2026; prices and events as of 12–13 November 2026. Payoff figures are arithmetic from the reported strikes, quantities, and ~$8M cost, not sourced market prices. Claims labelled unverified or alleged are presented as such throughout, and no individual is named as a wrongdoer — on this record, none can be.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var px=document.getElementById('px'), pv=document.getElementById('pxVal'), out=document.getElementById('payVal'), note=document.getElementById('payNote');
+  function fmt(n){ var a=Math.abs(n); var s=a>=1000?('$'+(a/1000).toFixed(2).replace(/\.?0+$/,'')+'B'):('$'+Math.round(a)+'M'); return (n<0?'−':'')+s.replace('−$','−$'); }
+  function calc(){
+    var s=parseFloat(px.value);
+    var longP=180000*100*Math.max(150-s,0)/1e6;
+    var shortP=280000*100*Math.max(100-s,0)/1e6;
+    var net=longP-shortP-8;
+    pv.textContent='$'+s;
+    out.textContent=(net>=0?'+':'−')+'$'+Math.abs(net>=1000?(net/1000).toFixed(2):Math.round(net))+(net>=1000?'B':'M');
+    out.style.color=net>=0?'var(--green)':'var(--red)';
+    if(s>=150) note.textContent='Above $150: both legs expire worthless. Full premium lost.';
+    else if(s>100) note.textContent='Long puts pay; short puts worthless. Profit climbs toward the $100 peak.';
+    else if(s===100) note.textContent='The sweet spot: maximum profit, ≈ +$892M.';
+    else if(s>10) note.textContent='Past $100 the sold puts bleed the profit away, dollar for dollar.';
+    else if(s>0) note.textContent='Near wipeout territory — the ratio spread now loses money.';
+    else note.textContent='Stock at zero: ≈ −$108M. The premium was never the max loss.';
+  }
+  px.addEventListener('input',calc); calc();
+})();
+</script>
+</body>
+</html>
