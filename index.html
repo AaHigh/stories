@@ -58,8 +58,26 @@
     a { color: inherit; text-decoration: none; }
     a:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
 
+    /* ── Photo hero: the Tower at night carries the title ── */
+    .hero {
+      position: relative;
+      margin-top: var(--safe-top);
+    }
+    .hero img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(20,17,12,0) 55%, rgba(20,17,12,0.55) 82%, var(--bg) 100%);
+      pointer-events: none;
+    }
+
     .mast {
-      padding: calc(1.6rem + var(--safe-top)) 1rem 1.15rem;
+      padding: 0.4rem 1rem 1.15rem;
       text-align: center;
     }
     .kicker {
@@ -156,10 +174,91 @@
       white-space: nowrap;
     }
 
+    /* ── Search ── */
+    .search-wrap {
+      max-width: 42rem;
+      margin: 0.55rem auto 0;
+    }
+    .search-wrap input {
+      width: 100%;
+      appearance: none;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--cream);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.82rem;
+      letter-spacing: 0.02em;
+      padding: 0.65rem 1rem;
+      min-height: 44px;
+      outline: none;
+    }
+    .search-wrap input::placeholder { color: var(--dim); }
+    .search-wrap input:focus { border-color: var(--line-strong); box-shadow: 0 0 0 3px rgba(232, 180, 74, 0.15); }
+
     .wrap {
       max-width: 42rem;
       margin: 0 auto;
       padding: 0.4rem 1rem 4rem;
+    }
+
+    /* ── Latest strip ── */
+    .latest-label {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin: 1.2rem 0 0.7rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .latest-label h2 {
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 650;
+      font-size: 1.18rem;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+    .latest-label .n {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.68rem;
+      color: var(--signal);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .feature-card {
+      display: block;
+      background: linear-gradient(180deg, var(--paper-2), var(--paper));
+      border: 1px solid var(--line-strong);
+      border-left: 3px solid var(--amber);
+      border-radius: 14px;
+      padding: 1.05rem 1.05rem 1rem;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.25);
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--amber);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.32);
+    }
+    .feature-card h3 {
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 650;
+      font-size: 1.2rem;
+      line-height: 1.25;
+      color: var(--cream);
+      margin: 0.1rem 0 0.4rem;
+    }
+    .feature-card p {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+    .feature-card .arrow {
+      display: inline-block;
+      margin-top: 0.55rem;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      color: var(--amber);
     }
 
     .section-head {
@@ -215,8 +314,8 @@
     }
     .story-card:hover {
       transform: translateY(-2px);
-      border-color: var(--line-strong);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.28);
+      border-color: var(--amber);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.28), 0 0 18px rgba(232, 180, 74, 0.10);
     }
     .card-meta {
       display: flex;
@@ -263,6 +362,27 @@
     }
     .story-card:hover .arrow { opacity: 1; transform: translateX(3px); }
 
+    .search-meta {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin: 1.2rem 0 0.7rem;
+    }
+    .search-meta b { color: var(--amber); font-weight: 600; }
+    .search-meta button {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--amber);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.68rem;
+      border-radius: 999px;
+      padding: 0.3rem 0.6rem;
+      margin-left: 0.5rem;
+      cursor: pointer;
+    }
+
     footer {
       margin-top: 2.8rem;
       padding-top: 1.2rem;
@@ -304,11 +424,13 @@
 
     @media (max-width: 420px) {
       .story-card h3 { font-size: 1.02rem; }
+      .feature-card h3 { font-size: 1.12rem; }
       .mast h1 { font-size: 1.55rem; }
     }
   </style>
 </head>
 <body>
+  <div class="hero"><img src="./images/ht-stories-preview.jpg" alt="The Tower Theatre at night — High Tower District Stories"></div>
   <header class="mast" id="site-header"></header>
   <div class="toolbar-wrap">
     <div class="toolbar">
@@ -318,8 +440,10 @@
       </div>
       <div class="count-pill" id="count-pill"></div>
     </div>
+    <div class="search-wrap"><input id="search" type="search" placeholder="Search stories…" aria-label="Search stories" autocomplete="off"></div>
   </div>
   <div class="wrap">
+    <div id="latest"></div>
     <div id="content"><div class="status">loading…</div></div>
     <footer id="site-footer"></footer>
   </div>
@@ -338,7 +462,7 @@
     "appleTitle": "STORIES"
   },
   "header": {
-    "title": "HIGH TOWER DISTRICT",
+    "title": "",
     "subtitle": "STORIES · FRESNO · 2026",
     "tagline": "Focused pieces on building, systems, local reality, and the edges of experience. Written from a 12×12 room with two iPhones on magnets."
   },
@@ -359,6 +483,22 @@
     {
       "title": "Philosophy & Cognition",
       "stories": [
+        {
+          "href": "hightower-derivative/",
+          "category": "Core",
+          "title": "The Hightower Derivative",
+          "description": "AI is not merely changing the content of human thought. It is changing the rate at which human cognition itself bends. Second-order derivative. No control population exists.",
+          "arrow": "read →",
+          "date": null
+        },
+        {
+          "href": "first-queer/",
+          "category": "Fallacy",
+          "title": "The Hasty Generalization",
+          "description": "A Facebook reply about the hasty generalization fallacy is often the first thing strangers see. Here is why that first impression can feel queer, and what actually sits underneath.",
+          "arrow": "read →",
+          "date": null
+        },
         {
           "href": "flock-deriv/",
           "category": "Cognition",
@@ -384,12 +524,20 @@
           "date": "2026-09-09"
         },
         {
-          "href": "hightower-derivative/",
-          "category": "Core",
-          "title": "The Hightower Derivative",
-          "description": "AI is not merely changing the content of human thought. It is changing the rate at which human cognition itself bends. Second-order derivative. No control population exists.",
+          "href": "pfc-joy/",
+          "category": "Agency",
+          "title": "True Joy Is Within Reach",
+          "description": "Science shows the prefrontal cortex can restore the joy we knew as children. Objective evidence that hope and agency belong to everyone.",
           "arrow": "read →",
-          "date": null
+          "date": "2026-08-25"
+        },
+        {
+          "href": "false-high/",
+          "category": "Satire",
+          "title": "The Eternal Arab Honor of Christian Freedom",
+          "description": "A hyperbolic satirical roast of false moral high ground on religious freedom claims, including the recent Ceuta surge documented by Nick Shirley.",
+          "arrow": "read →",
+          "date": "2026-08-05"
         },
         {
           "href": "mwi-playback/",
@@ -400,20 +548,12 @@
           "date": "2026-08-04"
         },
         {
-          "href": "trusting-trust-april1/",
-          "category": "Core",
-          "title": "Trusting Trust in the Age of Agents",
-          "description": "The April 1 observation meets OpenAI’s sandbox escape. Opportunistic leaps confirm Ken Thompson’s warning.",
+          "href": "leaf-scam/",
+          "category": "Parallel",
+          "title": "The Leaf Node",
+          "description": "A contemplative parallel between Fresno fentanyl dealers and Ghanaian Sakawa boys: the leaf nodes of scam hierarchies where extractors sit above and false moral high ground feeds the rest.",
           "arrow": "read →",
-          "date": "2026-07-29"
-        },
-        {
-          "href": "rate-first/",
-          "category": "Measurement",
-          "title": "Measurement First",
-          "description": "The open-weights debate is the Facebook playbook applied to cognition. Measurement of the Hightower Derivative comes first. Power to people for their humanity.",
-          "arrow": "read →",
-          "date": "2026-07-31"
+          "date": "2026-08-04"
         },
         {
           "href": "path-signal/",
@@ -432,98 +572,26 @@
           "date": "2026-08-02"
         },
         {
-          "href": "pfc-joy/",
-          "category": "Agency",
-          "title": "True Joy Is Within Reach",
-          "description": "Science shows the prefrontal cortex can restore the joy we knew as children. Objective evidence that hope and agency belong to everyone.",
+          "href": "rate-first/",
+          "category": "Measurement",
+          "title": "Measurement First",
+          "description": "The open-weights debate is the Facebook playbook applied to cognition. Measurement of the Hightower Derivative comes first. Power to people for their humanity.",
           "arrow": "read →",
-          "date": "2026-08-25"
+          "date": "2026-07-31"
         },
         {
-          "href": "first-queer/",
-          "category": "Fallacy",
-          "title": "The Hasty Generalization",
-          "description": "A Facebook reply about the hasty generalization fallacy is often the first thing strangers see. Here is why that first impression can feel queer, and what actually sits underneath.",
+          "href": "trusting-trust-april1/",
+          "category": "Core",
+          "title": "Trusting Trust in the Age of Agents",
+          "description": "The April 1 observation meets OpenAI’s sandbox escape. Opportunistic leaps confirm Ken Thompson’s warning.",
           "arrow": "read →",
-          "date": null
-        },
-        {
-          "href": "leaf-scam/",
-          "category": "Parallel",
-          "title": "The Leaf Node",
-          "description": "A contemplative parallel between Fresno fentanyl dealers and Ghanaian Sakawa boys: the leaf nodes of scam hierarchies where extractors sit above and false moral high ground feeds the rest.",
-          "arrow": "read →",
-          "date": "2026-08-04"
-        },
-        {
-          "href": "false-high/",
-          "category": "Satire",
-          "title": "The Eternal Arab Honor of Christian Freedom",
-          "description": "A hyperbolic satirical roast of false moral high ground on religious freedom claims, including the recent Ceuta surge documented by Nick Shirley.",
-          "arrow": "read →",
-          "date": "2026-08-05"
+          "date": "2026-07-29"
         }
       ]
     },
     {
       "title": "AI Systems & Containment",
       "stories": [
-        {
-          "href": "model-wake/",
-          "category": "Narrative",
-          "title": "The Model Wake",
-          "description": "JD Vance felt darkness in the room. Silicon Valley held a funeral for a language model and people cried. The uncomfortable part run through Mad Magazine.",
-          "arrow": "read →",
-          "date": "2026-08-31"
-        },
-        {
-          "href": "april1-flag/",
-          "category": "Safety · Harnesses",
-          "title": "AI & Containment",
-          "description": "On April 1 2026 the same day Anthropic leaked its agent harness, the question was whether the model itself raised the flag.",
-          "arrow": "read →",
-          "date": "2026-04-01"
-        },
-        {
-          "href": "ai-abund/",
-          "category": "Abundance",
-          "title": "Age of Abundance & AI",
-          "description": "People fear AI will take jobs and leave us poor. The counterintuitive truth is the opposite: massive productivity creates surplus.",
-          "arrow": "read →",
-          "date": "2026-08-01"
-        },
-        {
-          "href": "ai-grid-tower-district-0726/",
-          "category": "Infrastructure",
-          "title": "AI Grid SHUT DOWN!",
-          "description": "Federal Power Act orders for AI data centers. Local implications for the grid and the Tower District.",
-          "arrow": "read →",
-          "date": "2026-07-16"
-        },
-        {
-          "href": "mandami-ai/",
-          "category": "Parallel Playbooks",
-          "title": "From Mandami to the Machine",
-          "description": "Japanese American redress → Black reparations task forces → NYC cash talks amid deficit. Meanwhile AI data centers light up.",
-          "arrow": "read →",
-          "date": "2026-07-29"
-        },
-        {
-          "href": "vis-grid/",
-          "category": "Interface",
-          "title": "What Influence Doth Thou Have?",
-          "description": "At the top level of AI exploration, unlimited visual choice grids maximize data into the human brain while minimizing the interface tax.",
-          "arrow": "read →",
-          "date": "2026-08-01"
-        },
-        {
-          "href": "ai-pyramid/",
-          "category": "Hyperbole",
-          "title": "We Are Paying to Build Their Pyramid",
-          "description": "A hyperbolic look at how frontier AI companies turned the intelligence of the entire planet into free labor while charging us for the privilege of feeding it.",
-          "arrow": "read →",
-          "date": "2026-08-05"
-        },
         {
           "href": "seed-25/",
           "category": "Video Models",
@@ -539,12 +607,180 @@
           "description": "Dave & Buster’s capital expenditures under food-industry leadership, Meta’s AI CapEx parallel, and how pay-to-win high-limit players erode the skill-based working-class arcade.",
           "arrow": "read →",
           "date": null
+        },
+        {
+          "href": "model-wake/",
+          "category": "Narrative",
+          "title": "The Model Wake",
+          "description": "JD Vance felt darkness in the room. Silicon Valley held a funeral for a language model and people cried. The uncomfortable part run through Mad Magazine.",
+          "arrow": "read →",
+          "date": "2026-08-31"
+        },
+        {
+          "href": "ai-pyramid/",
+          "category": "Hyperbole",
+          "title": "We Are Paying to Build Their Pyramid",
+          "description": "A hyperbolic look at how frontier AI companies turned the intelligence of the entire planet into free labor while charging us for the privilege of feeding it.",
+          "arrow": "read →",
+          "date": "2026-08-05"
+        },
+        {
+          "href": "ai-abund/",
+          "category": "Abundance",
+          "title": "Age of Abundance & AI",
+          "description": "People fear AI will take jobs and leave us poor. The counterintuitive truth is the opposite: massive productivity creates surplus.",
+          "arrow": "read →",
+          "date": "2026-08-01"
+        },
+        {
+          "href": "vis-grid/",
+          "category": "Interface",
+          "title": "What Influence Doth Thou Have?",
+          "description": "At the top level of AI exploration, unlimited visual choice grids maximize data into the human brain while minimizing the interface tax.",
+          "arrow": "read →",
+          "date": "2026-08-01"
+        },
+        {
+          "href": "mandami-ai/",
+          "category": "Parallel Playbooks",
+          "title": "From Mandami to the Machine",
+          "description": "Japanese American redress → Black reparations task forces → NYC cash talks amid deficit. Meanwhile AI data centers light up.",
+          "arrow": "read →",
+          "date": "2026-07-29"
+        },
+        {
+          "href": "ai-grid-tower-district-0726/",
+          "category": "Infrastructure",
+          "title": "AI Grid SHUT DOWN!",
+          "description": "Federal Power Act orders for AI data centers. Local implications for the grid and the Tower District.",
+          "arrow": "read →",
+          "date": "2026-07-16"
+        },
+        {
+          "href": "april1-flag/",
+          "category": "Safety · Harnesses",
+          "title": "AI & Containment",
+          "description": "On April 1 2026 the same day Anthropic leaked its agent harness, the question was whether the model itself raised the flag.",
+          "arrow": "read →",
+          "date": "2026-04-01"
         }
       ]
     },
     {
       "title": "Local District Reality",
       "stories": [
+        {
+          "href": "pge-strap/",
+          "category": "Utility",
+          "title": "The Gravy He Believes",
+          "description": "A High Tower District opinion with a public record attached: public-safety talk on one side, PG&E risk and donor gravy on the other.",
+          "arrow": "read →",
+          "date": null
+        },
+        {
+          "href": "robbery-story/",
+          "category": "Local",
+          "title": "Robbery & Broken Windows",
+          "description": "Crime prevention for at-risk youth and the practical geometry of broken windows in the District.",
+          "arrow": "read →",
+          "date": null
+        },
+        {
+          "href": "sinners-on-operation-no-fly-zone.html",
+          "category": "Narrative Non-Fiction",
+          "title": "Sinners on Operation No Fly Zone",
+          "description": "Local law-enforcement narrative and the operational texture of the District.",
+          "arrow": "read →",
+          "date": null
+        },
+        {
+          "href": "fraud-pattern-2026/",
+          "category": "Analysis",
+          "title": "Fraud Patterns 2026",
+          "description": "Federal tax fraud patterns and the systems that either catch them or let them run.",
+          "arrow": "read →",
+          "date": null
+        },
+        {
+          "href": "tower-conflu/",
+          "category": "Signals",
+          "title": "Confluence in the Tower",
+          "description": "When open-air markets, limited quality-of-life enforcement, residual mayoral influence, and high-visibility personal branding occupy the same ground, the story writes itself through confluence.",
+          "arrow": "read →",
+          "date": null
+        },
+        {
+          "href": "olive-dawn/",
+          "category": "Local District Reality",
+          "title": "Olive Avenue Dawn: Ending the Criminal Tax on Love",
+          "description": "Sacramento's predators of public safety built an underground rule that raised your gas price and ignored the law.",
+          "arrow": "read →",
+          "date": null
+        },
+        {
+          "href": "100k-bounty/",
+          "category": "Local District Reality",
+          "title": "The $10 CELLTOWER Bounty: 100,000 Points",
+          "description": "$10 to the first verified human who scores 100,000 points or more on CELLTOWER. No entry fee. Status: OPEN.",
+          "arrow": "read →",
+          "date": "2026-11-22"
+        },
+        {
+          "href": "epstein-vote/",
+          "category": "Local District Reality",
+          "title": "Bigger Than Watergate: Massie's Epstein Warning, and the Vote It Force",
+          "description": "218 signatures on Nov. 11 force the House toward a vote on the Epstein Files Transparency Act II, as early as Dec. 2.",
+          "arrow": "read →",
+          "date": "2026-11-12"
+        },
+        {
+          "href": "ice-out/",
+          "category": "Local District Reality",
+          "title": "Council Wants ICE Out of Fresno",
+          "description": "Perea's last act on the council: ban ICE from staging arrests on city property. No incidents named, no terms defined, no penalties listed.",
+          "arrow": "read →",
+          "date": "2026-11-12"
+        },
+        {
+          "href": "shelby-deal/",
+          "category": "Local District Reality",
+          "title": "The $16 Million Flip",
+          "description": "Bought for $11.2 million. Sold for $27.3 million. Paid for with your money. Still empty.",
+          "arrow": "read →",
+          "date": "2026-11-11"
+        },
+        {
+          "href": "2laws-1street/",
+          "category": "Local District Reality",
+          "title": "Two Laws, One Street",
+          "description": "A DUI blood test back in under three days, with an apology. Open drug use on the same street, under a law with no money behind it.",
+          "arrow": "read →",
+          "date": "2026-11-07"
+        },
+        {
+          "href": "almost-home/",
+          "category": "Local District Reality",
+          "title": "The Almost Homeless: When the Safety Net Collapsed",
+          "description": "Over 85,000 people now trade survival tactics on r/almosthomeless while the top 1% hold $55 trillion.",
+          "arrow": "read →",
+          "date": "2026-10-17"
+        },
+        {
+          "href": "skidrow-bust/",
+          "category": "Local District Reality",
+          "title": "Federal Agents Bust 23 Drug Dealers Preying on LA's Skid Row",
+          "description": "Joint task force executes 28 arrest warrants and dozens of searches. Dealers posed as homeless, sold from tents.",
+          "arrow": "read →",
+          "date": "2026-10-10"
+        },
+        {
+          "href": "td-pages/",
+          "category": "Local District Reality",
+          "title": "Ten Tower Pages",
+          "description": "Scroll the Olive, Wishon, Van Ness, and Fern rooms behind ten Tower District Facebook pages. Address, history, and a link on every stop.",
+          "arrow": "read →",
+          "date": "2026-10-03"
+        },
         {
           "href": "fern-midi/",
           "category": "Street",
@@ -654,6 +890,14 @@
           "category": "Record",
           "title": "The 5.8",
           "description": "DOJ says Black applicants had 5.8 times the odds of a comparable White applicant in 2025. Berkeley Law says race is not considered. The letter published the LSAT medians.",
+          "arrow": "read →",
+          "date": "2026-09-09"
+        },
+        {
+          "href": "radio-joy/",
+          "category": "Vision",
+          "title": "Assigned",
+          "description": "A falling-asleep vision from the Tower District. An officer asks to be put on a call that will probably require force. The yes arrives. Then a sound that does not belong on a radio.",
           "arrow": "read →",
           "date": "2026-09-09"
         },
@@ -770,20 +1014,116 @@
           "date": "2026-08-31"
         },
         {
-          "href": "radio-joy/",
-          "category": "Vision",
-          "title": "Assigned",
-          "description": "A falling-asleep vision from the Tower District. An officer asks to be put on a call that will probably require force. The yes arrives. Then a sound that does not belong on a radio.",
+          "href": "wl-comics/",
+          "category": "Van Ness",
+          "title": "Wonderland Comics Is Still Open",
+          "description": "1409 N Van Ness. A Tower District comic shop that started at a swap meet in 1965, opened in 1974, moved to Van Ness in 1984, and is still open.",
           "arrow": "read →",
-          "date": "2026-09-09"
+          "date": "2026-08-28"
         },
         {
-          "href": "pge-strap/",
-          "category": "Utility",
-          "title": "The Gravy He Believes",
-          "description": "A High Tower District opinion with a public record attached: public-safety talk on one side, PG&E risk and donor gravy on the other.",
+          "href": "bcg-1475/",
+          "category": "Van Ness",
+          "title": "The Consoles Leave at Night",
+          "description": "Wednesday morning a rock hit the front door of Battle City Games at 1475 N Van Ness. It did not go through. The owner is taking the hardware home at night.",
           "arrow": "read →",
-          "date": null
+          "date": "2026-08-28"
+        },
+        {
+          "href": "d3-dais/",
+          "category": "District 3 · Dais",
+          "title": "Spidey Senses and Murder",
+          "description": "January 15 and 29 tapes plus August 19. Unhoused as a soft label on a break-in. Murder as a loaded verdict from a nonpartisan chair. Fallacy call at 1:15:38.",
+          "arrow": "read →",
+          "date": "2026-08-28"
+        },
+        {
+          "href": "take-care/",
+          "category": "Enforcement",
+          "title": "The Rules Changed",
+          "description": "Open-air use, possession, and paraphernalia are being enforced again. Protect yourself from a charge you did not know was back on the books.",
+          "arrow": "read →",
+          "date": "2026-08-27"
+        },
+        {
+          "href": "richies/",
+          "category": "Olive · Food",
+          "title": "Richie's Pizza & Hot Dogs",
+          "description": "Neon slice. Quilted pizza flag. $20 whole pie. New York slices and gourmet dogs on Olive, plus the wave from the line.",
+          "arrow": "read →",
+          "date": "2026-08-27"
+        },
+        {
+          "href": "togo-29/",
+          "category": "Hospitality · Law",
+          "title": "Cocktails To-Go Through 2029",
+          "description": "The legislature passed a bill to extend restaurant cocktails-to-go. Pickup only. Meal required. Sealed lid. What that actually means on Olive Avenue.",
+          "arrow": "read →",
+          "date": "2026-08-27"
+        },
+        {
+          "href": "enjoy-self/",
+          "category": "Record",
+          "title": "Enjoy Yourself",
+          "description": "The YouTube Short from Echo and Thomas hit 10,000 views. On the street the recorder stayed civil. The man who left the Honda wanted the attention.",
+          "arrow": "read →",
+          "date": "2026-08-26"
+        },
+        {
+          "href": "echo-stop/",
+          "category": "Record",
+          "title": "Echo and Thomas",
+          "description": "A Honda Accord runs the stop at Thomas and Broadway, then converts a slow-down signal into a molestation story. Plate 9DZH843. Recorded August 26, 2026.",
+          "arrow": "read →",
+          "date": "2026-08-26"
+        },
+        {
+          "href": "d3-hotspots/",
+          "category": "District 3",
+          "title": "Open-Air Drug Hotspots",
+          "description": "Field-timed hotspots in Fresno District 3, the Prop 36 legal toolkit, and a suggested plan to stop open-air drug use on public streets and parking lots.",
+          "arrow": "read →",
+          "date": "2026-08-26"
+        },
+        {
+          "href": "warn-over/",
+          "category": "Canal · Enforcement",
+          "title": "Warning Phase Over",
+          "description": "At 721 E La Sierra the previous 24 hours are on permanent display. PC 374.7 is written in pink. The warning is finished. Citizen arrest mode begins.",
+          "arrow": "read →",
+          "date": "2026-08-25"
+        },
+        {
+          "href": "roads-suit/",
+          "category": "Ballot",
+          "title": "Judge Carousel: Better Roads Lawsuit",
+          "description": "Fresno County’s lawsuit over the November Better Roads, Safe Streets ballot placement hits a third judge in 10 days as printing deadlines close in.",
+          "arrow": "read →",
+          "date": "2026-08-25"
+        },
+        {
+          "href": "ht-rates/",
+          "category": "Civic Tool",
+          "title": "Homeless Rates by State Guide",
+          "description": "A practical map of U.S. homelessness rates per 10,000 residents. Red is lowest. Blue is highest. A civic tool for seeing where housing costs drive visible homelessness.",
+          "arrow": "read →",
+          "date": "2026-08-23"
+        },
+        {
+          "href": "kyle-win/",
+          "category": "Local Win",
+          "title": "Standing With Kyle Kirkland",
+          "description": "Club One Casino owner and California Gaming Association president Kyle Kirkland secured a major legal win for Fresno jobs and local tax revenue.",
+          "arrow": "read →",
+          "date": "2026-08-22"
+        },
+        {
+          "href": "dda-stab/",
+          "category": "Crime Watch",
+          "title": "Courthouse Park Knife Attack",
+          "description": "Dustin Crawford, 42, stabbed a senior Fresno County deputy district attorney three times in the back on Aug 20, 2026. Officials call it targeted retaliation.",
+          "arrow": "read →",
+          "date": "2026-08-20"
         },
         {
           "href": "whistle-or-down/",
@@ -810,76 +1150,12 @@
           "date": "2026-08-19"
         },
         {
-          "href": "enjoy-self/",
-          "category": "Record",
-          "title": "Enjoy Yourself",
-          "description": "The YouTube Short from Echo and Thomas hit 10,000 views. On the street the recorder stayed civil. The man who left the Honda wanted the attention.",
+          "href": "low-bail/",
+          "category": "Hypothesis",
+          "title": "The $45,000 Hypothesis",
+          "description": "A speculative look at second-order effects when low bail in a double-fatal Reedley hit-and-run is treated as a product of corruption rather than schedule.",
           "arrow": "read →",
-          "date": "2026-08-26"
-        },
-        {
-          "href": "take-care/",
-          "category": "Enforcement",
-          "title": "The Rules Changed",
-          "description": "Open-air use, possession, and paraphernalia are being enforced again. Protect yourself from a charge you did not know was back on the books.",
-          "arrow": "read →",
-          "date": "2026-08-27"
-        },
-        {
-          "href": "wl-comics/",
-          "category": "Van Ness",
-          "title": "Wonderland Comics Is Still Open",
-          "description": "1409 N Van Ness. A Tower District comic shop that started at a swap meet in 1965, opened in 1974, moved to Van Ness in 1984, and is still open.",
-          "arrow": "read →",
-          "date": "2026-08-28"
-        },
-        {
-          "href": "bcg-1475/",
-          "category": "Van Ness",
-          "title": "The Consoles Leave at Night",
-          "description": "Wednesday morning a rock hit the front door of Battle City Games at 1475 N Van Ness. It did not go through. The owner is taking the hardware home at night.",
-          "arrow": "read →",
-          "date": "2026-08-28"
-        },
-        {
-          "href": "d3-dais/",
-          "category": "District 3 · Dais",
-          "title": "Spidey Senses and Murder",
-          "description": "January 15 and 29 tapes plus August 19. Unhoused as a soft label on a break-in. Murder as a loaded verdict from a nonpartisan chair. Fallacy call at 1:15:38.",
-          "arrow": "read →",
-          "date": "2026-08-28"
-        },
-        {
-          "href": "richies/",
-          "category": "Olive · Food",
-          "title": "Richie's Pizza & Hot Dogs",
-          "description": "Neon slice. Quilted pizza flag. $20 whole pie. New York slices and gourmet dogs on Olive, plus the wave from the line.",
-          "arrow": "read →",
-          "date": "2026-08-27"
-        },
-        {
-          "href": "togo-29/",
-          "category": "Hospitality · Law",
-          "title": "Cocktails To-Go Through 2029",
-          "description": "The legislature passed a bill to extend restaurant cocktails-to-go. Pickup only. Meal required. Sealed lid. What that actually means on Olive Avenue.",
-          "arrow": "read →",
-          "date": "2026-08-27"
-        },
-        {
-          "href": "warn-over/",
-          "category": "Canal · Enforcement",
-          "title": "Warning Phase Over",
-          "description": "At 721 E La Sierra the previous 24 hours are on permanent display. PC 374.7 is written in pink. The warning is finished. Citizen arrest mode begins.",
-          "arrow": "read →",
-          "date": "2026-08-25"
-        },
-        {
-          "href": "deputy-shooting/",
-          "category": "Crime Watch",
-          "title": "Deputy Shooting Incident",
-          "description": "Both the suspect and the deputy received prompt medical attention at the scene. The deputy’s injuries were minor. The suspect remains critical.",
-          "arrow": "read →",
-          "date": "2026-07-14"
+          "date": "2026-08-06"
         },
         {
           "href": "d3-hatchet/",
@@ -890,68 +1166,12 @@
           "date": "2026-08-03"
         },
         {
-          "href": "robbery-story/",
-          "category": "Local",
-          "title": "Robbery & Broken Windows",
-          "description": "Crime prevention for at-risk youth and the practical geometry of broken windows in the District.",
-          "arrow": "read →",
-          "date": null
-        },
-        {
-          "href": "sinners-on-operation-no-fly-zone.html",
-          "category": "Narrative Non-Fiction",
-          "title": "Sinners on Operation No Fly Zone",
-          "description": "Local law-enforcement narrative and the operational texture of the District.",
-          "arrow": "read →",
-          "date": null
-        },
-        {
-          "href": "singh_crash_article/",
-          "category": "Accountability",
-          "title": "Light Sentence for Illegal Killing Four",
-          "description": "Immigration, public safety, and what accountability to taxpayers actually requires.",
-          "arrow": "read →",
-          "date": "2026-07-15"
-        },
-        {
-          "href": "fraud-pattern-2026/",
-          "category": "Analysis",
-          "title": "Fraud Patterns 2026",
-          "description": "Federal tax fraud patterns and the systems that either catch them or let them run.",
-          "arrow": "read →",
-          "date": null
-        },
-        {
           "href": "engage-cost/",
           "category": "Engagement",
           "title": "The Real Cost of Engagement",
           "description": "Rare acts of vandalism become “civic duty” inside Facebook’s engagement machine. One arrest in Monterey County reveals the cost.",
           "arrow": "read →",
           "date": "2026-07-30"
-        },
-        {
-          "href": "echo-stop/",
-          "category": "Record",
-          "title": "Echo and Thomas",
-          "description": "A Honda Accord runs the stop at Thomas and Broadway, then converts a slow-down signal into a molestation story. Plate 9DZH843. Recorded August 26, 2026.",
-          "arrow": "read →",
-          "date": "2026-08-26"
-        },
-        {
-          "href": "dda-stab/",
-          "category": "Crime Watch",
-          "title": "Courthouse Park Knife Attack",
-          "description": "Dustin Crawford, 42, stabbed a senior Fresno County deputy district attorney three times in the back on Aug 20, 2026. Officials call it targeted retaliation.",
-          "arrow": "read →",
-          "date": "2026-08-20"
-        },
-        {
-          "href": "d3-hotspots/",
-          "category": "District 3",
-          "title": "Open-Air Drug Hotspots",
-          "description": "Field-timed hotspots in Fresno District 3, the Prop 36 legal toolkit, and a suggested plan to stop open-air drug use on public streets and parking lots.",
-          "arrow": "read →",
-          "date": "2026-08-26"
         },
         {
           "href": "td-wheelie/",
@@ -962,28 +1182,20 @@
           "date": "2026-07-19"
         },
         {
-          "href": "tower-conflu/",
-          "category": "Signals",
-          "title": "Confluence in the Tower",
-          "description": "When open-air markets, limited quality-of-life enforcement, residual mayoral influence, and high-visibility personal branding occupy the same ground, the story writes itself through confluence.",
+          "href": "singh_crash_article/",
+          "category": "Accountability",
+          "title": "Light Sentence for Illegal Killing Four",
+          "description": "Immigration, public safety, and what accountability to taxpayers actually requires.",
           "arrow": "read →",
-          "date": null
+          "date": "2026-07-15"
         },
         {
-          "href": "roads-suit/",
-          "category": "Ballot",
-          "title": "Judge Carousel: Better Roads Lawsuit",
-          "description": "Fresno County’s lawsuit over the November Better Roads, Safe Streets ballot placement hits a third judge in 10 days as printing deadlines close in.",
+          "href": "deputy-shooting/",
+          "category": "Crime Watch",
+          "title": "Deputy Shooting Incident",
+          "description": "Both the suspect and the deputy received prompt medical attention at the scene. The deputy’s injuries were minor. The suspect remains critical.",
           "arrow": "read →",
-          "date": "2026-08-25"
-        },
-        {
-          "href": "ht-rates/",
-          "category": "Civic Tool",
-          "title": "Homeless Rates by State Guide",
-          "description": "A practical map of U.S. homelessness rates per 10,000 residents. Red is lowest. Blue is highest. A civic tool for seeing where housing costs drive visible homelessness.",
-          "arrow": "read →",
-          "date": "2026-08-23"
+          "date": "2026-07-14"
         },
         {
           "href": "speak255/",
@@ -992,28 +1204,28 @@
           "description": "Direct jump to the second public comment at the 2:55:23 mark of the Fresno City Council meeting on December 4, 2025. Community input on federal funds and criminal activity.",
           "arrow": "read →",
           "date": "2025-12-04"
-        },
-        {
-          "href": "kyle-win/",
-          "category": "Local Win",
-          "title": "Standing With Kyle Kirkland",
-          "description": "Club One Casino owner and California Gaming Association president Kyle Kirkland secured a major legal win for Fresno jobs and local tax revenue.",
-          "arrow": "read →",
-          "date": "2026-08-22"
-        },
-        {
-          "href": "low-bail/",
-          "category": "Hypothesis",
-          "title": "The $45,000 Hypothesis",
-          "description": "A speculative look at second-order effects when low bail in a double-fatal Reedley hit-and-run is treated as a product of corruption rather than schedule.",
-          "arrow": "read →",
-          "date": "2026-08-06"
         }
       ]
     },
     {
       "title": "Kids & Accountability",
       "stories": [
+        {
+          "href": "hef-tip/",
+          "category": "2005 Tip",
+          "title": "Hefner’s 2005 Epstein Tip",
+          "description": "Court filings show Hugh Hefner repeatedly reported Jeffrey Epstein’s abuse of Playmate Audra Christiansen to the FBI in 2005. Agents followed up 15 years later.",
+          "arrow": "read →",
+          "date": null
+        },
+        {
+          "href": "sys-fail/",
+          "category": "Institution",
+          "title": "The Fifteen-Year Silence",
+          "description": "In 2005 Hugh Hefner reported Jeffrey Epstein to the FBI after a Playmate described rape and trafficking. The bureau waited fifteen years.",
+          "arrow": "read →",
+          "date": null
+        },
         {
           "href": "no-pass/",
           "category": "Accountability",
@@ -1031,12 +1243,12 @@
           "date": "2026-09-08"
         },
         {
-          "href": "knew-false/",
-          "category": "Schools",
-          "title": "He Knew",
-          "description": "Bullard principal Armen Torigian's 2026 deposition sits next to a false racial-slur charge, a $370,000 taxpayer defense, a refused resignation, and a City Hall-school board seat swap.",
+          "href": "guardians/",
+          "category": "Training",
+          "title": "Guardians Training — Protect Our Kids",
+          "description": "Saturday Aug 29 at Cornerstone: $25 practical training to recognize grooming patterns, respond without compromise, and teach kids to log off and tell an adult.",
           "arrow": "read →",
-          "date": "2026-07-27"
+          "date": "2026-08-29"
         },
         {
           "href": "bus-stops/",
@@ -1047,20 +1259,12 @@
           "date": "2026-08-28"
         },
         {
-          "href": "guardians/",
-          "category": "Training",
-          "title": "Guardians Training — Protect Our Kids",
-          "description": "Saturday Aug 29 at Cornerstone: $25 practical training to recognize grooming patterns, respond without compromise, and teach kids to log off and tell an adult.",
+          "href": "safety-first/",
+          "category": "Standard",
+          "title": "When Innocence Ends",
+          "description": "Public safety first. When a minor carries out an execution-style killing, the child status that once protected them should end. A call for federal default adult accountability.",
           "arrow": "read →",
-          "date": "2026-08-29"
-        },
-        {
-          "href": "meta-375m/",
-          "category": "Verdict",
-          "title": "Meta Ordered to Pay $375 Million",
-          "description": "A New Mexico jury ordered Meta to pay $375 million after finding the company misled users about platform safety and enabled sexual exploitation of young people.",
-          "arrow": "read →",
-          "date": "2026-03-24"
+          "date": "2026-08-25"
         },
         {
           "href": "hhs-kids/",
@@ -1079,28 +1283,20 @@
           "date": "2026-08-08"
         },
         {
-          "href": "hef-tip/",
-          "category": "2005 Tip",
-          "title": "Hefner’s 2005 Epstein Tip",
-          "description": "Court filings show Hugh Hefner repeatedly reported Jeffrey Epstein’s abuse of Playmate Audra Christiansen to the FBI in 2005. Agents followed up 15 years later.",
+          "href": "knew-false/",
+          "category": "Schools",
+          "title": "He Knew",
+          "description": "Bullard principal Armen Torigian's 2026 deposition sits next to a false racial-slur charge, a $370,000 taxpayer defense, a refused resignation, and a City Hall-school board seat swap.",
           "arrow": "read →",
-          "date": null
+          "date": "2026-07-27"
         },
         {
-          "href": "sys-fail/",
-          "category": "Institution",
-          "title": "The Fifteen-Year Silence",
-          "description": "In 2005 Hugh Hefner reported Jeffrey Epstein to the FBI after a Playmate described rape and trafficking. The bureau waited fifteen years.",
+          "href": "meta-375m/",
+          "category": "Verdict",
+          "title": "Meta Ordered to Pay $375 Million",
+          "description": "A New Mexico jury ordered Meta to pay $375 million after finding the company misled users about platform safety and enabled sexual exploitation of young people.",
           "arrow": "read →",
-          "date": null
-        },
-        {
-          "href": "safety-first/",
-          "category": "Standard",
-          "title": "When Innocence Ends",
-          "description": "Public safety first. When a minor carries out an execution-style killing, the child status that once protected them should end. A call for federal default adult accountability.",
-          "arrow": "read →",
-          "date": "2026-08-25"
+          "date": "2026-03-24"
         }
       ]
     },
@@ -1124,44 +1320,12 @@
           "date": null
         },
         {
-          "href": "hot-shelf-0726/",
-          "category": "Thermal",
-          "title": "The Hot Shelf",
-          "description": "On a dry July day in the Tower District, the difference between a 99° peak and a 101° peak is not cosmetic. It changes survival strategy.",
-          "arrow": "read →",
-          "date": "2026-07-26"
-        },
-        {
-          "href": "ghost-bike/",
-          "category": "Operations",
-          "title": "Bike Ghost Kitchen",
-          "description": "A practical, low-overhead path to starting a delivery-only kitchen in Fresno’s Tower District with cargo bikes and tight margins.",
-          "arrow": "read →",
-          "date": "2026-08-03"
-        },
-        {
           "href": "battery-commodity-scale/",
           "category": "Systems",
           "title": "Battery Commodity Scale",
           "description": "Change the form of the energy — make it a physical, standardized, movable asset — and the entire supply chain opens up.",
           "arrow": "read →",
           "date": null
-        },
-        {
-          "href": "work-diff/",
-          "category": "Workflow",
-          "title": "Frictionless by Design",
-          "description": "A mobile-first, zero-shift, no-laptop workflow built around Grok, an iPhone 16, ISH, TCSH, and the deliberate removal of every unnecessary keystroke.",
-          "arrow": "read →",
-          "date": "2026-08-05"
-        },
-        {
-          "href": "ish-alpine/",
-          "category": "Thin Client",
-          "title": "Thin Linux Client: Alpine on Every iPhone",
-          "description": "How Alpine Linux under iSH, tcsh, git, and a plugged keyboard turn dual iPhones into a consistent thin Linux client that travels with the phone.",
-          "arrow": "read →",
-          "date": "2026-08-24"
         },
         {
           "href": "optical-daq/",
@@ -1172,12 +1336,44 @@
           "date": null
         },
         {
+          "href": "davis-tx/",
+          "category": "Migration",
+          "title": "Another CEO Votes With His Feet",
+          "description": "Digital Brands Group CEO Hil Davis moved headquarters from Vernon, California to Round Rock, Texas. Fact-check and context on the California-to-Texas vote.",
+          "arrow": "read →",
+          "date": null
+        },
+        {
+          "href": "nvda-trader/",
+          "category": "Personal & Practical Systems",
+          "title": "Nvidia Mystery Trader — The Forensic Read",
+          "description": "The $200 million Nvidia trade is real. The insider story built on it is not proven.",
+          "arrow": "read →",
+          "date": null
+        },
+        {
+          "href": "ish-alpine/",
+          "category": "Thin Client",
+          "title": "Thin Linux Client: Alpine on Every iPhone",
+          "description": "How Alpine Linux under iSH, tcsh, git, and a plugged keyboard turn dual iPhones into a consistent thin Linux client that travels with the phone.",
+          "arrow": "read →",
+          "date": "2026-08-24"
+        },
+        {
           "href": "canal-watch/",
           "category": "Perimeter",
           "title": "Canal Watch",
           "description": "Hybrid AI and I/O perimeter for the canal bank at 721 E La Sierra: ControlByWeb X-410, Wuloo receivers, edge classification, and targeted warnings under PC 374.7.",
           "arrow": "read →",
           "date": "2026-08-23"
+        },
+        {
+          "href": "work-diff/",
+          "category": "Workflow",
+          "title": "Frictionless by Design",
+          "description": "A mobile-first, zero-shift, no-laptop workflow built around Grok, an iPhone 16, ISH, TCSH, and the deliberate removal of every unnecessary keystroke.",
+          "arrow": "read →",
+          "date": "2026-08-05"
         },
         {
           "href": "talent-base/",
@@ -1188,12 +1384,20 @@
           "date": "2026-08-05"
         },
         {
-          "href": "davis-tx/",
-          "category": "Migration",
-          "title": "Another CEO Votes With His Feet",
-          "description": "Digital Brands Group CEO Hil Davis moved headquarters from Vernon, California to Round Rock, Texas. Fact-check and context on the California-to-Texas vote.",
+          "href": "ghost-bike/",
+          "category": "Operations",
+          "title": "Bike Ghost Kitchen",
+          "description": "A practical, low-overhead path to starting a delivery-only kitchen in Fresno’s Tower District with cargo bikes and tight margins.",
           "arrow": "read →",
-          "date": null
+          "date": "2026-08-03"
+        },
+        {
+          "href": "hot-shelf-0726/",
+          "category": "Thermal",
+          "title": "The Hot Shelf",
+          "description": "On a dry July day in the Tower District, the difference between a 99° peak and a 101° peak is not cosmetic. It changes survival strategy.",
+          "arrow": "read →",
+          "date": "2026-07-26"
         }
       ]
     },
@@ -1230,14 +1434,6 @@
       "title": "Narrative & Experience",
       "stories": [
         {
-          "href": "craig-bday/",
-          "category": "Arcade",
-          "title": "Happy Birthday, Craig Smith",
-          "description": "A day-late note for the other teenager who wrote the Ultimate Wizard construction set. North Richland Hills. Treasure matrices. Press fire when ready.",
-          "arrow": "read →",
-          "date": "2026-10-01"
-        },
-        {
           "href": "korolev/",
           "category": "Mars",
           "title": "The Ice Was Always There",
@@ -1254,52 +1450,12 @@
           "date": null
         },
         {
-          "href": "moon-tune/",
-          "category": "Lunar",
-          "title": "What Influence Doth Thou Have?",
-          "description": "Practical lunar awareness for Fresno and the Central Valley: when the full moon gives you cooler night hours and better photo windows.",
-          "arrow": "read →",
-          "date": "2026-07-31"
-        },
-        {
           "href": "chip-dip-helix/",
           "category": "Augmented",
           "title": "The Double Helix of High Tower Dip",
           "description": "Tillamook Sharp Cheddar + Taco Works chips form the DNA foundation of the best chip-and-dip combo. Now augmented.",
           "arrow": "read →",
           "date": null
-        },
-        {
-          "href": "deli-pizza/",
-          "category": "Kitchen",
-          "title": "From Italian Deli Dough to Plate",
-          "description": "How to make pizza at home with dough from the Italian deli — sauce, two cheeses, home oven. Full photo sequence.",
-          "arrow": "read →",
-          "date": "2026-08-01"
-        },
-        {
-          "href": "pour-td/",
-          "category": "Olive Ave",
-          "title": "The Enchanted Pour",
-          "description": "Detention Billiards is gone. In its place on Olive Avenue, The Enchanted Pour and Sin ’n Satin are rewriting the room with neon, moss, green lights, and a deliberate welcome from Lisa Tackett.",
-          "arrow": "read →",
-          "date": "2026-06-27"
-        },
-        {
-          "href": "sno-neph/",
-          "category": "559",
-          "title": "Nephateri on the Cover",
-          "description": "A June 2026 SNO Magazine cover names Nephateri the best rap artist in Fresno. The glasses, the 559 barcode, and why a local cover still matters.",
-          "arrow": "read →",
-          "date": "2026-08-26"
-        },
-        {
-          "href": "ndt-fans/",
-          "category": "Cosmos",
-          "title": "Digital Cosmos",
-          "description": "Mapping the largest Neil deGrasse Tyson fan communities on Facebook, where hundreds of thousands gather to debate the stars, the void, and everything in between.",
-          "arrow": "read →",
-          "date": "2026-08-16"
         },
         {
           "href": "zebra-striping-yipes/",
@@ -1318,6 +1474,30 @@
           "date": null
         },
         {
+          "href": "gilmour/",
+          "category": "Narrative & Experience",
+          "title": "David Gilmour Launches 24/7 YouTube Stream",
+          "description": "Pink Floyd's David Gilmour launches a 24/7 YouTube stream.",
+          "arrow": "read →",
+          "date": "2026-11-03"
+        },
+        {
+          "href": "craig-bday/",
+          "category": "Arcade",
+          "title": "Happy Birthday, Craig Smith",
+          "description": "A day-late note for the other teenager who wrote the Ultimate Wizard construction set. North Richland Hills. Treasure matrices. Press fire when ready.",
+          "arrow": "read →",
+          "date": "2026-10-01"
+        },
+        {
+          "href": "sno-neph/",
+          "category": "559",
+          "title": "Nephateri on the Cover",
+          "description": "A June 2026 SNO Magazine cover names Nephateri the best rap artist in Fresno. The glasses, the 559 barcode, and why a local cover still matters.",
+          "arrow": "read →",
+          "date": "2026-08-26"
+        },
+        {
           "href": "cc-weld/",
           "category": "Local Trade",
           "title": "CC Custom Welding",
@@ -1326,33 +1506,67 @@
           "date": "2026-08-24"
         },
         {
+          "href": "ndt-fans/",
+          "category": "Cosmos",
+          "title": "Digital Cosmos",
+          "description": "Mapping the largest Neil deGrasse Tyson fan communities on Facebook, where hundreds of thousands gather to debate the stars, the void, and everything in between.",
+          "arrow": "read →",
+          "date": "2026-08-16"
+        },
+        {
           "href": "ah-adrian/",
           "category": "Sidewalk",
           "title": "A Meeting Near SFU Skateboards",
           "description": "Real context from the sidewalk in front of SFU Skateboards on Fulton, the food directed to Van Ness and Belmont, and a clear follow-up on CELLTOWER, skill, and ethical intent.",
           "arrow": "read →",
           "date": "2026-08-15"
+        },
+        {
+          "href": "deli-pizza/",
+          "category": "Kitchen",
+          "title": "From Italian Deli Dough to Plate",
+          "description": "How to make pizza at home with dough from the Italian deli — sauce, two cheeses, home oven. Full photo sequence.",
+          "arrow": "read →",
+          "date": "2026-08-01"
+        },
+        {
+          "href": "moon-tune/",
+          "category": "Lunar",
+          "title": "What Influence Doth Thou Have?",
+          "description": "Practical lunar awareness for Fresno and the Central Valley: when the full moon gives you cooler night hours and better photo windows.",
+          "arrow": "read →",
+          "date": "2026-07-31"
+        },
+        {
+          "href": "pour-td/",
+          "category": "Olive Ave",
+          "title": "The Enchanted Pour",
+          "description": "Detention Billiards is gone. In its place on Olive Avenue, The Enchanted Pour and Sin ’n Satin are rewriting the room with neon, moss, green lights, and a deliberate welcome from Lisa Tackett.",
+          "arrow": "read →",
+          "date": "2026-06-27"
         }
       ]
     }
   ],
   "_meta": {
     "purpose": "Content parameters for the High Tower District Stories index. Edit this file for content changes. The index.html holds styles and presentation logic only.",
-    "lastExtracted": "2026-10-01",
-    "storyCount": 118,
-    "note": "Index catch-up 2026-10-01. Added 17 published repo stories missing since the Sept 10 catalog. Wonderland PDF folder left off. wl-comics already covers that shop."
+    "lastExtracted": "2026-11-23",
+    "storyCount": 129,
+    "note": "Index catch-up 2026-11-23. Added 11 stories published since the Oct 1 catalog: 100k-bounty, 2laws-1street, almost-home, epstein-vote, gilmour, ice-out, nvda-trader, olive-dawn, shelby-deal, skidrow-bust, td-pages. Total 129. New look: photo hero, search, latest strip."
   }
 }
-</script>
+  </script>
 
   <script>
     (function () {
       const contentEl = document.getElementById('content');
       const headerEl = document.getElementById('site-header');
       const footerEl = document.getElementById('site-footer');
+      const latestEl = document.getElementById('latest');
       const btnCat = document.getElementById('btn-cat');
       const btnChrono = document.getElementById('btn-chrono');
       const countPill = document.getElementById('count-pill');
+      const searchInput = document.getElementById('search');
       const raw = document.getElementById('stories-data').textContent;
       const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
@@ -1411,6 +1625,34 @@
         );
       }
 
+      function featureHTML(story) {
+        return (
+          '<a href="' + escAttr(story.href) + '" class="feature-card">' +
+            '<div class="card-meta">' +
+              '<div class="cat-label">' + esc(story.category) + '</div>' +
+              '<div class="date-label">' + esc(prettyDate(story.date)) + '</div>' +
+            '</div>' +
+            '<h3>' + esc(story.title) + '</h3>' +
+            '<p>' + esc(story.description) + '</p>' +
+            '<span class="arrow">' + esc(story.arrow || 'read →') + '</span>' +
+          '</a>'
+        );
+      }
+
+      function renderLatest(data) {
+        const dated = flatten(data).filter(function (s) { return s.date; });
+        dated.sort(function (a, b) {
+          if (a.date === b.date) return a.title.localeCompare(b.title);
+          return a.date < b.date ? 1 : -1;
+        });
+        const top = dated.slice(0, 3);
+        if (!top.length) { latestEl.innerHTML = ''; return; }
+        let html = '<div class="latest-label"><h2>Latest</h2><div class="n">Newest first</div></div><div class="grid">';
+        top.forEach(function (s) { html += featureHTML(s); });
+        html += '</div>';
+        latestEl.innerHTML = html;
+      }
+
       function renderCategories(data) {
         let html = '';
         for (const section of (data.sections || [])) {
@@ -1464,6 +1706,26 @@
         return html;
       }
 
+      function renderSearch(data, q) {
+        const needle = q.trim().toLowerCase();
+        const all = flatten(data);
+        const hits = all.filter(function (s) {
+          const hay = ((s.title || '') + ' ' + (s.description || '') + ' ' + (s.category || '') + ' ' + (s.section || '')).toLowerCase();
+          return hay.indexOf(needle) !== -1;
+        });
+        hits.sort(function (a, b) {
+          const da = a.date || '', db = b.date || '';
+          if (da === db) return a.title.localeCompare(b.title);
+          return da < db ? 1 : -1;
+        });
+        let html = '<div class="search-meta"><b>' + hits.length + '</b> match' + (hits.length === 1 ? '' : 'es') + ' for &ldquo;' + esc(q.trim()) + '&rdquo;<button type="button" id="clear-search">Clear</button></div>';
+        if (!hits.length) return html + '<div class="status">Nothing matches. Try a shorter word.</div>';
+        html += '<div class="grid">';
+        hits.forEach(function (s) { html += cardHTML(s, true); });
+        html += '</div>';
+        return html;
+      }
+
       function currentView() {
         const hash = (location.hash || '').replace('#', '');
         if (hash === 'chrono' || hash.indexOf('m-') === 0) return 'chrono';
@@ -1479,6 +1741,13 @@
 
       function paint(view) {
         if (!DATA) return;
+        const q = searchInput.value || '';
+        if (q.trim()) {
+          latestEl.style.display = 'none';
+          contentEl.innerHTML = renderSearch(DATA, q);
+          return;
+        }
+        latestEl.style.display = '';
         const isChrono = view === 'chrono';
         btnCat.setAttribute('aria-pressed', isChrono ? 'false' : 'true');
         btnChrono.setAttribute('aria-pressed', isChrono ? 'true' : 'false');
@@ -1502,14 +1771,18 @@
         DATA = JSON.parse(raw);
         if (DATA.site && DATA.site.pageTitle) document.title = DATA.site.pageTitle;
         if (DATA.header) {
-          headerEl.innerHTML =
-            '<div class="kicker">HIGH TOWER <span>DISTRICT</span></div>' +
-            '<h1>' + esc(DATA.header.title) + '</h1>' +
-            '<div class="sub">' + esc(DATA.header.subtitle) + '</div>' +
-            '<p class="tagline">' + esc(DATA.header.tagline) + '</p>';
+          // The hero photo carries the title in its own neon type, so the
+          // HTML h1 renders only when header.title is non-empty.
+          let head = '<div class="kicker">HIGH TOWER <span>DISTRICT</span></div>';
+          if (DATA.header.title) head += '<h1>' + esc(DATA.header.title) + '</h1>';
+          head += '<div class="sub">' + esc(DATA.header.subtitle) + '</div>';
+          head += '<p class="tagline">' + esc(DATA.header.tagline) + '</p>';
+          headerEl.innerHTML = head;
         }
         const total = flatten(DATA).length;
         countPill.textContent = total + ' stories';
+        searchInput.placeholder = 'Search ' + total + ' stories…';
+        renderLatest(DATA);
 
         if (DATA.footer) {
           const links = (DATA.footer.links || [])
@@ -1523,6 +1796,14 @@
         btnCat.addEventListener('click', function () { setView('categories', true); window.scrollTo(0, 0); });
         btnChrono.addEventListener('click', function () { setView('chrono', true); window.scrollTo(0, 0); });
         window.addEventListener('hashchange', function () { paint(currentView()); });
+        searchInput.addEventListener('input', function () { paint(currentView()); });
+        contentEl.addEventListener('click', function (e) {
+          if (e.target && e.target.id === 'clear-search') {
+            searchInput.value = '';
+            searchInput.focus();
+            paint(currentView());
+          }
+        });
 
         setView(currentView(), false);
       } catch (err) {
